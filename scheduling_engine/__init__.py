@@ -8,6 +8,7 @@ from scheduling_engine.models import (
     Schedule,
     ScheduledActivity,
 )
+from scheduling_engine.simulation import CascadeResult, simulate_cascade
 from scheduling_engine.solver import SchedulingDataError, solve_planning_phase
 from scheduling_engine.twin import (
     ActivityState,
@@ -23,6 +24,7 @@ __all__ = [
     "Activity",
     "ActivityState",
     "ActivityTwinState",
+    "CascadeResult",
     "CheckIn",
     "CheckInType",
     "Conflict",
@@ -37,6 +39,7 @@ __all__ = [
     "Schedule",
     "ScheduledActivity",
     "SchedulingDataError",
+    "simulate_cascade",
     "solve_planning_phase",
     "verify_schedule",
 ]

@@ -1,2 +1,3 @@
 ortools>=9.15
+simpy>=4.1
 pytest>=9.0
