@@ -8,6 +8,7 @@ from scheduling_engine.models import (
     Schedule,
     ScheduledActivity,
 )
+from scheduling_engine.reoptimization import CostSignal, ReoptimizationResult, reoptimize
 from scheduling_engine.simulation import CascadeResult, simulate_cascade
 from scheduling_engine.solver import SchedulingDataError, solve_planning_phase
 from scheduling_engine.twin import (
@@ -29,16 +30,19 @@ __all__ = [
     "CheckInType",
     "Conflict",
     "ConflictType",
+    "CostSignal",
     "Divergence",
     "DivergenceType",
     "Event",
     "OperationalDigitalTwin",
+    "ReoptimizationResult",
     "Resource",
     "ResourceRequirement",
     "ResourceType",
     "Schedule",
     "ScheduledActivity",
     "SchedulingDataError",
+    "reoptimize",
     "simulate_cascade",
     "solve_planning_phase",
     "verify_schedule",
