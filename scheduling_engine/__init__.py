@@ -9,12 +9,28 @@ from scheduling_engine.models import (
     ScheduledActivity,
 )
 from scheduling_engine.solver import SchedulingDataError, solve_planning_phase
+from scheduling_engine.twin import (
+    ActivityState,
+    ActivityTwinState,
+    CheckIn,
+    CheckInType,
+    Divergence,
+    DivergenceType,
+    OperationalDigitalTwin,
+)
 
 __all__ = [
     "Activity",
+    "ActivityState",
+    "ActivityTwinState",
+    "CheckIn",
+    "CheckInType",
     "Conflict",
     "ConflictType",
+    "Divergence",
+    "DivergenceType",
     "Event",
+    "OperationalDigitalTwin",
     "Resource",
     "ResourceRequirement",
     "ResourceType",
