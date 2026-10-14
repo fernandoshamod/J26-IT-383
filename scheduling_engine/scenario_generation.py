@@ -72,7 +72,8 @@ ROLE_TURNAROUND_MINUTES = {"av_crew": 10}
 
 
 def generate_scenario(
-    seed: int, include_buffer: bool = False, generous_resources: bool = False
+    seed: int, include_buffer: bool = False, generous_resources: bool = False,
+    consumable_buffer: bool = False,
 ) -> tuple[Event, list[Resource], Schedule]:
     """Build a randomized but plausible event, solve it, and return the
     event, its resource pool, and the resulting (already-locked-if-chosen)
@@ -150,7 +151,31 @@ def generate_scenario(
         locked_activity.locked_start_minutes = schedule.activities[locked_activity.id].start_minutes
         schedule = solve_planning_phase([event], resources, minimize_makespan=False)
 
+    if consumable_buffer and schedule.is_feasible:
+        _make_buffer_consumable(activities, schedule)
     return event, resources, schedule
+
+
+def _make_buffer_consumable(activities: list[Activity], schedule: Schedule) -> None:
+    """Turn the planning buffer into real contingency SLACK (in place).
+
+    `include_buffer` alone adds the buffer as `min_lag_minutes`, which the
+    solver, the simulation and the re-optimiser all ENFORCE: a compulsory
+    gap that can never absorb anything. That was the flaw in the first
+    "precedence slack" experiment. A planner's contingency buffer is
+    padding in the PLAN that can be used up when something runs late. So
+    the buffer shapes the planned times (it was used in the solve above),
+    then the lag is removed, leaving the gap free for absorption.
+
+    Realism guard: nothing may start before its planned time (vendors and
+    guests arrive per the plan), so delay can only be absorbed by consuming
+    spare time, never by pulling later activities forward. Without this
+    guard the result was barely different (85.1% vs 84.6% absorbed), so the
+    gain is not an artefact of unrealistic early starts.
+    """
+    for a in activities:
+        a.min_lag_minutes = {}
+        a.earliest_start_minutes = max(a.earliest_start_minutes, schedule.activities[a.id].start_minutes)
 
 
 @dataclass

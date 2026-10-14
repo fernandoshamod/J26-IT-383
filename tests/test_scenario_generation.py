@@ -74,3 +74,18 @@ def test_disruption_injection_produces_the_expected_divergence():
     ]
     assert len(matching) == 1
     assert matching[0].delta_minutes == scenario.injected_delay_minutes
+
+
+def test_consumable_buffer_is_slack_not_a_rule():
+    """The buffer shapes the plan, but the re-optimiser may consume it; and
+    nothing may start before its planned time."""
+    event, _, schedule = generate_scenario(3, include_buffer=True, consumable_buffer=True)
+    assert schedule.is_feasible
+    assert all(a.min_lag_minutes == {} for a in event.activities)
+    for a in event.activities:
+        assert a.earliest_start_minutes >= schedule.activities[a.id].start_minutes
+    # The plan itself still contains the padding: same plan as the
+    # enforced-buffer version of the same seed.
+    _, _, padded = generate_scenario(3, include_buffer=True)
+    assert {k: v.start_minutes for k, v in schedule.activities.items()} == \
+           {k: v.start_minutes for k, v in padded.activities.items()}

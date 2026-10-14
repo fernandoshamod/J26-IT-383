@@ -24,6 +24,10 @@ prints all three tables, rather than one replacing another:
               (`generate_scenario(..., include_buffer=True)`) — testing
               whether PRECEDENCE slack closes the gap to the proposal's
               60% delay-absorbed target. It didn't.
+  - slack     the corrected buffer test: the same buffer shapes the plan
+              but is real, consumable slack rather than a compulsory gap,
+              and nothing may start before its planned time
+              (`generate_scenario(..., include_buffer=True, consumable_buffer=True)`)
   - generous  the same (unbuffered) generator but with every resource
               role given 2 units instead of the normal mix (three
               singleton roles) (`generate_scenario(..., generous_resources=True)`)
@@ -126,10 +130,11 @@ def _evaluate(activities, resources, original_schedule, revised_schedule, inject
 
 
 def run_one_scenario(
-    seed: int, include_buffer: bool, generous_resources: bool
+    seed: int, include_buffer: bool, generous_resources: bool, consumable_buffer: bool = False
 ) -> dict[str, StrategyOutcome] | None:
     event, resources, schedule = generate_scenario(
-        seed, include_buffer=include_buffer, generous_resources=generous_resources
+        seed, include_buffer=include_buffer, generous_resources=generous_resources,
+        consumable_buffer=consumable_buffer,
     )
     if not schedule.is_feasible:
         return None
@@ -179,7 +184,8 @@ def run_one_scenario(
 
 
 def run_evaluation(
-    count: int, seed_start: int, include_buffer: bool, generous_resources: bool, label: str
+    count: int, seed_start: int, include_buffer: bool, generous_resources: bool, label: str,
+    consumable_buffer: bool = False,
 ) -> None:
     stats = {name: StrategyStats() for name in STRATEGIES}
     generation_failures = 0
@@ -188,7 +194,7 @@ def run_evaluation(
     started = time.time()
     for i in range(count):
         seed = seed_start + i
-        outcomes = run_one_scenario(seed, include_buffer, generous_resources)
+        outcomes = run_one_scenario(seed, include_buffer, generous_resources, consumable_buffer)
         if outcomes is None:
             generation_failures += 1
             continue
@@ -248,7 +254,7 @@ def main() -> None:
     parser.add_argument("--count", type=int, default=200, help="number of scenarios to generate, per configuration")
     parser.add_argument("--seed-start", type=int, default=0)
     parser.add_argument(
-        "--only", choices=["tight", "buffered", "generous"], default=None,
+        "--only", choices=["tight", "buffered", "generous", "slack"], default=None,
         help="run only one configuration instead of all three (default: run and print all three)",
     )
     args = parser.parse_args()
@@ -267,6 +273,11 @@ def main() -> None:
         run_evaluation(
             args.count, args.seed_start, include_buffer=False, generous_resources=True,
             label="With generous resources — 2 units of every role (generate_scenario(..., generous_resources=True))",
+        )
+    if args.only in (None, "slack"):
+        run_evaluation(
+            args.count, args.seed_start, include_buffer=True, generous_resources=False, consumable_buffer=True,
+            label="With CONSUMABLE contingency slack, no early starts (generate_scenario(..., consumable_buffer=True))",
         )
 
 

@@ -329,7 +329,8 @@ second implementation of the same idea wasn't written), and
 |---|---|---|---|---|
 | Tight (original, no slack at all) | 62.0% | 76 (38.0%) | 35.2% (n=124) | 110.1 |
 | Buffered (+precedence slack) | 46.4% | 105 (52.5%) | 33.3% (n=91) | 107.3 |
-| **Generous (+resource slack)** | **64.0%** | **72 (36.0%)** | **59.6% (n=128)** | **67.4** |
+| Generous (+resource slack) | 64.0% | 72 (36.0%) | 59.6% (n=128) | 67.4 |
+| **Slack (consumable buffer, no early starts)** | **66.3%** | **66 (33.7%)** | **84.5% (n=130)** | **41.0** |
 
 *computed only over conflict-free outcomes — a schedule with a conflict
 isn't physically realizable, so comparing its nominal end time to the
@@ -351,7 +352,7 @@ no warning to the planner. This is the proposal's central thesis (Table
 it holds up no matter which generator assumption is varied.
 
 **Chasing the ≥60% delay-absorbed target — two hypotheses tested, one
-ruled out, one confirmed:**
+first wrongly ruled out, then corrected; both confirmed:**
 
 The tight generator's 35.2% delay-absorbed figure clearly beats both
 baselines but sits below the proposal's own ≥60% target. Two different
@@ -360,9 +361,24 @@ explanations were tested empirically rather than assumed:
 1. *Hypothesis: the schedule has no precedence-level slack.*
    `generate_scenario(..., include_buffer=True)` adds a declared,
    randomised contingency gap after each precedence edge — the kind of
-   slack a real planner typically builds into a timeline. Result: **ruled
-   out**. Every metric got slightly worse (conflict-free 46.4%, down from
-   62.0%), not better.
+   slack a real planner typically builds into a timeline. First result:
+   apparently **ruled out**. Every metric got slightly worse
+   (conflict-free 46.4%, down from 62.0%), not better.
+
+   **Correction (re-examined later).** That test was operationalised
+   wrongly. The buffer was added as `min_lag_minutes`, which the solver,
+   the simulation and the re-optimiser all *enforce*: a compulsory gap
+   that can never absorb anything. It tested "make every gap mandatory",
+   not slack. A planner's contingency buffer is padding in the plan that
+   can be used up. The corrected configuration
+   (`consumable_buffer=True`) uses the same buffer to shape the plan,
+   then leaves the gap free to be consumed. It also adds a realism guard:
+   nothing may start before its planned time, so delay can only be
+   absorbed by using up spare time, never by pulling later activities
+   forward. Result: **confirmed, strongly**. CP re-optimisation absorbs
+   **84.5%** of injected delay (n=130), well above the 60% target,
+   with overtime down to 41 min. Without the realism guard the figure
+   was 85.1%, so the gain is not an artefact of unrealistic early starts.
 2. *Hypothesis: the schedule has no resource-level slack* — three of the
    five declared roles have only one unit each (deliberately realistic:
    a single wedding only needs one officiant). `generate_scenario(...,
@@ -372,12 +388,22 @@ explanations were tested empirically rather than assumed:
    same (if anything, marginally better), and overtime drops by nearly
    40% (110.1 → 67.4 minutes) as a bonus side effect.
 
-This is a clean result precisely because the two experiments point in
-different directions: precedence slack doesn't help, resource slack does,
-isolating resource contention (not schedule tightness in general) as the
-actual lever. All three result sets are kept and reported here rather
-than one superseding another, per Section 3.6.1's own "threats to
-validity" framing — the tight generator remains the honest baseline;
+Corrected conclusion: delay absorption depends on **both** kinds of
+slack, spare time in the plan *and* spare resources. A plan with neither
+(the tight generator) can only absorb about 35%. That is a property of
+the plan, not a limit of the re-optimiser, and it is a practical
+recommendation for planners: build consumable contingency time into the
+running order.
+
+Once slack exists, even the greedy baseline absorbs a lot (81.5%). Under
+slack, CP re-optimisation's added value is that it is the only strategy
+that never returns a schedule with a hidden conflict (greedy: 62.8%
+conflict-free, with no warning for the rest), it absorbs the most, and it
+needs the least overtime (41 vs 47 min). The earlier "precedence slack
+doesn't help" reading was wrong, and is kept above, corrected, rather
+than deleted. All three result sets are kept and reported here rather
+than one superseding another (four configurations now), per Section
+3.6.1's own "threats to validity" framing — the tight generator remains the honest baseline;
 the gap it shows is a property of a resource-scarce synthetic world, not
 a flaw in the re-optimisation method. (Run-to-run figures can drift by a
 point or two even for the same configuration — CP-SAT's parallel search
