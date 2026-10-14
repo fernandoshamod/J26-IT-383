@@ -176,3 +176,37 @@ def test_completed_activities_are_not_reported_as_changes(ops):
     changed = {c.activity_id for c in ops.pending_proposal.changes}
     assert "catering_load_in" not in changed  # finished hours ago
     assert {"photos", "dinner_service"} <= changed
+
+
+def test_growing_disruption_supersedes_the_pending_proposal(ops):
+    """A proposal sized for a 20-min overrun is stale once it's 40 min."""
+    _photos_overrun(ops, minutes=20)
+    first = ops.pending_proposal
+    ops.tick(ops.now + 20)
+    assert first.status == "superseded"
+    assert ops.pending_proposal.predicted_extra_duration["photos"] == 40
+
+
+def test_setup_overrun_scenario_protects_the_fixed_corporate_launch():
+    """Demo scenario B: doing nothing would start the other client's fixed
+    10:30 launch late; re-optimisation keeps it and moves the sound check."""
+    from api.scenario import CORPORATE_LAUNCH_START, scenario_kwargs
+    ops = new_operations()
+    play_on_time(ops, **scenario_kwargs("setup_overrun", ops))
+    kinds = [e.kind for e in ops.audit.entries]
+    assert kinds.index("disruption.absorbed") < kinds.index("proposal.created")  # 15 min absorbed, 30 min not
+    p = ops.pending_proposal
+    assert any("corp_event" in v for v in p.do_nothing_violations)
+    assert p.revised.activities["corp_event"].start_minutes == CORPORATE_LAUNCH_START
+    assert p.revised.activities["sound_check"].start_minutes >= p.revised.activities["corp_event"].end_minutes
+    assert p.revised.activities["guest_arrival"].start_minutes == 14 * 60
+
+
+def test_dashboard_and_scenarios_are_served(monkeypatch, tmp_path):
+    monkeypatch.setattr(api_module, "AUDIT_PATH", tmp_path / "audit.jsonl")
+    client = TestClient(api_module.app)
+    page = client.get("/")
+    assert page.status_code == 200 and "Disruption console" in page.text
+    for name in ("late_catering", "setup_overrun", "silent_photographer"):
+        assert client.post(f"/api/demo/scenario/{name}").status_code == 200
+    assert client.post("/api/demo/scenario/nope").status_code == 404

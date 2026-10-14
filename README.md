@@ -640,8 +640,27 @@ the system re-optimises in about 0.01 s against the 5 s target, moving 5
 activities; the planner confirms; Component 4 receives 80 delay-minutes
 and 6 crews on overtime; 7 staff and vendor notifications go out.
 
+**Planner dashboard** (`api/static/index.html`): the original
+`EventOps_Component3_Prototype.html` design with its hard-coded figures
+replaced by live engine data. All seven screens (ops board, running
+order, resources, conflicts, disruption console, re-optimisation, event
+log) render from `GET /api/state`, and every button calls the engine.
+Three one-click demo scenarios:
+
+- **A: catering 40 min late.** A known delay. The simulation shows slack
+  absorbs it before the fixed 14:00 guest arrival, so it is logged and
+  the planner is not interrupted.
+- **B: setup crew overruns.** At 15 min overdue it is absorbed. At 30
+  min, doing nothing would start the *other client's* fixed 10:30
+  corporate launch at 10:40, because the AV crew is shared.
+  Re-optimisation keeps the launch at 10:30 and moves the wedding sound
+  check to 12:40, still before 14:00.
+- **C: photographer goes silent.** Detected from the missing completion
+  check-in alone. The cascade pushes dinner, speeches, entertainment and
+  strike back by 20 min.
+
 ```
-python -m uvicorn api.app:app        # then http://127.0.0.1:8000/docs
+python -m uvicorn api.app:app        # dashboard: http://127.0.0.1:8000   API docs: /docs
 ```
 
 ## Running it

@@ -18,7 +18,8 @@ from fastapi.responses import FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from api.scenario import new_operations, play_on_time
+from api.scenario import new_operations, play_on_time, scenario_kwargs
+from scheduling_engine.conflict_detection import verify_schedule
 from scheduling_engine.integration import to_jsonable
 from scheduling_engine.operations import EventOperations, OperationsError
 from scheduling_engine.twin import CheckInType
@@ -58,6 +59,7 @@ class PlayRequest(BaseModel):
     until_minutes: int
     silent: list[str] = []
     late_start: dict[str, int] = {}
+    no_completion: list[str] = []
 
 
 def _hhmm(m: int) -> str:
@@ -86,6 +88,11 @@ def snapshot() -> dict:
         ))
     activities.sort(key=lambda x: x["planned_start"])
     pending = ops.pending_proposal
+    confirmed = [p for p in ops.proposals if p.status == "confirmed"]
+    events_by_resource: dict[str, set[str]] = {}
+    for a in ops.activities:
+        for rid in ops.schedule.activities[a.id].assigned_resource_ids:
+            events_by_resource.setdefault(rid, set()).add(a.event_id)
     return dict(
         clock=dict(now=ops.now, now_hhmm=_hhmm(ops.now), schedule_version=ops.schedule_version),
         events=[dict(id=e.id, name=e.name) for e in ops.events],
@@ -94,6 +101,9 @@ def snapshot() -> dict:
                         turnaround=r.min_turnaround_minutes) for r in ops.resources],
         divergences=to_jsonable(ops.twin.detect_divergence(ops.now)),
         pending_proposal=_proposal_view(pending) if pending else None,
+        last_confirmed=_proposal_view(confirmed[-1]) if confirmed else None,
+        conflicts=to_jsonable(verify_schedule(ops.activities, ops.resources, ops.schedule.activities)),
+        shared_resources=sorted(r for r, evs in events_by_resource.items() if len(evs) > 1),
         proposals=[dict(id=p.id, status=p.status, created_at_minute=p.created_at_minute,
                         decided_by=p.decided_by) for p in ops.proposals],
         notifications=to_jsonable(ops.notifications.outbox[-50:]),
@@ -161,7 +171,20 @@ def lock(activity_id: str, req: LockRequest) -> dict:
 def demo_play(req: PlayRequest) -> dict:
     """Demo helper: everyone checks in on time up to `until_minutes`, except
     `silent` activities (never confirm) and `late_start` ones."""
-    return _apply(lambda: play_on_time(ops, req.until_minutes, set(req.silent), req.late_start))
+    return _apply(lambda: play_on_time(ops, req.until_minutes, set(req.silent), req.late_start,
+                                       set(req.no_completion)))
+
+
+@app.post("/api/demo/scenario/{name}")
+def demo_scenario(name: str) -> dict:
+    """Reset, then play one of the scripted demo scenarios (see api/scenario.py)."""
+    global ops
+    ops = new_operations(AUDIT_PATH)
+    try:
+        kwargs = scenario_kwargs(name, ops)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    return _apply(lambda: play_on_time(ops, **kwargs))
 
 
 if STATIC_DIR.exists():

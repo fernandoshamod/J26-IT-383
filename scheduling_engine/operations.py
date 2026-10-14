@@ -223,6 +223,12 @@ class EventOperations:
         self.now = max(self.now, now)
         divergences = self.twin.detect_divergence(self.now)
         new = [d for d in divergences if _is_disruptive(d) and self._is_news(d)]
+        pending = self.pending_proposal
+        if new and pending is not None and self._outgrows(pending, new):
+            # The proposal was sized for a smaller disruption; it's stale.
+            pending.status = "superseded"
+            self.audit.record(self.now, TOPIC_PROPOSAL_SUPERSEDED, "system",
+                              f"Proposal #{pending.id} superseded: the disruption has grown; recomputing")
         if new and self.pending_proposal is None:
             for d in new:
                 self.audit.record(self.now, TOPIC_DISRUPTION, "system",
@@ -231,6 +237,19 @@ class EventOperations:
                 self.bus.publish(TOPIC_DISRUPTION, d)
             self._propose([d for d in divergences if _is_disruptive(d)])
         return divergences
+
+    def _outgrows(self, proposal: Proposal, divergences: list[Divergence]) -> bool:
+        sized_for = {_divergence_key(d): d.delta_minutes for d in proposal.trigger}
+        return any(_divergence_key(d) not in sized_for
+                   or d.delta_minutes > sized_for[_divergence_key(d)] + self.twin.tolerance_for(d.activity_id)
+                   for d in divergences)
+
+    def _client_facing(self) -> set[str]:
+        """Activities whose delay a client actually experiences: fixed or
+        locked times, and the last activity of each event (its end time)."""
+        has_successor = {p for a in self.activities for p in a.predecessors}
+        return {a.id for a in self.activities
+                if a.pinned_start_minutes() is not None or a.id not in has_successor}
 
     def _is_news(self, d: Divergence) -> bool:
         seen = self._acknowledged.get(_divergence_key(d))
@@ -253,13 +272,15 @@ class EventOperations:
         violations = [c.message for c in verify_schedule(self.activities, self.resources,
                                                          cascade.predicted_activities)]
         do_nothing_delay = {k: v for k, v in cascade.delay_minutes.items() if v > 0}
-        if not do_nothing_delay and not violations:
-            # Slack absorbs it: nothing downstream moves, no rule breaks.
-            # Record it, don't interrupt the planner (they can still see it).
+        client_delay = {k: v for k, v in do_nothing_delay.items() if k in self._client_facing()}
+        if not client_delay and not violations:
+            # Slack absorbs it: no client-facing time moves, no rule breaks.
+            # Internal activities may shift within their slack; that's what
+            # slack is for. Record it, don't interrupt the planner.
             self._acknowledge(trigger)
             self.audit.record(self.now, TOPIC_DISRUPTION_ABSORBED, "system",
-                              "Simulated: absorbed by slack, no downstream impact — no action needed",
-                              {"trigger": trigger})
+                              "Simulated: absorbed by slack — no client-facing time moves, no rule broken; "
+                              "no action needed", {"trigger": trigger, "internal_shifts": do_nothing_delay})
             return None
         started = time.perf_counter()
         result = reoptimize(self.activities, self.resources, self.schedule, self.twin, self.now, extra,
