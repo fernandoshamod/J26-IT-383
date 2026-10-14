@@ -1,0 +1,204 @@
+{
+  "dataset": {
+    "kaggle": "gauravmalik26/food-delivery-dataset",
+    "rows": 45593
+  },
+  "cleaning": {
+    "rows_in": 45593,
+    "text_nan_converted": 9131,
+    "invalid_ratings_set_missing": 53,
+    "negative_coordinates_sign_fixed": 431,
+    "implausible_distance_set_missing": 0,
+    "missing_after_cleaning": {
+      "weather": 616,
+      "traffic": 601,
+      "city": 1200,
+      "vehicle_type": 0,
+      "order_type": 0,
+      "festival": 228,
+      "distance_km": 3640,
+      "order_hour": 1731,
+      "pickup_wait_min": 1731,
+      "multiple_deliveries": 993,
+      "vehicle_condition": 0,
+      "courier_age": 1854,
+      "courier_rating": 1961,
+      "day_of_week": 0
+    },
+    "rows_out": 45593
+  },
+  "split": {
+    "test_from": "2022-03-28",
+    "train_rows": 35007,
+    "test_rows": 10586
+  },
+  "best_params": {
+    "max_depth": 5,
+    "learning_rate": 0.1,
+    "min_child_weight": 1
+  },
+  "n_trees": 247,
+  "cv_mae": 3.188261365890503,
+  "grid": [
+    {
+      "max_depth": 3,
+      "learning_rate": 0.05,
+      "min_child_weight": 1,
+      "cv_score": 3.402549886703491,
+      "trees": 998
+    },
+    {
+      "max_depth": 3,
+      "learning_rate": 0.05,
+      "min_child_weight": 5,
+      "cv_score": 3.405092191696167,
+      "trees": 997
+    },
+    {
+      "max_depth": 3,
+      "learning_rate": 0.1,
+      "min_child_weight": 1,
+      "cv_score": 3.3716922283172606,
+      "trees": 850
+    },
+    {
+      "max_depth": 3,
+      "learning_rate": 0.1,
+      "min_child_weight": 5,
+      "cv_score": 3.3725293636322022,
+      "trees": 867
+    },
+    {
+      "max_depth": 5,
+      "learning_rate": 0.05,
+      "min_child_weight": 1,
+      "cv_score": 3.188893032073975,
+      "trees": 487
+    },
+    {
+      "max_depth": 5,
+      "learning_rate": 0.05,
+      "min_child_weight": 5,
+      "cv_score": 3.1902575492858887,
+      "trees": 472
+    },
+    {
+      "max_depth": 5,
+      "learning_rate": 0.1,
+      "min_child_weight": 1,
+      "cv_score": 3.188261365890503,
+      "trees": 247
+    },
+    {
+      "max_depth": 5,
+      "learning_rate": 0.1,
+      "min_child_weight": 5,
+      "cv_score": 3.19128360748291,
+      "trees": 237
+    }
+  ],
+  "test": {
+    "B0 overall median": {
+      "MAE": 7.553277914226337,
+      "RMSE": 9.39542661013712,
+      "R2": -0.00036161237736354046,
+      "within_10_min_pct": 72.60532779142264
+    },
+    "B1 median by traffic x weather": {
+      "MAE": 6.214764783676554,
+      "RMSE": 8.023123639931084,
+      "R2": 0.2705240493090083,
+      "within_10_min_pct": 82.59021348951445
+    },
+    "B2 linear regression": {
+      "MAE": 4.786375729053157,
+      "RMSE": 6.02385080572863,
+      "R2": 0.5887817098885566,
+      "within_10_min_pct": 90.85584734555073
+    },
+    "XGBoost": {
+      "MAE": 3.1879111670961278,
+      "RMSE": 4.0487122606561545,
+      "R2": 0.8142375909730803,
+      "within_10_min_pct": 98.242962403174
+    }
+  },
+  "shap_importance": {
+    "traffic": 2.4993999004364014,
+    "courier_age": 2.397900104522705,
+    "distance_km": 1.8163000345230103,
+    "courier_rating": 1.8056000471115112,
+    "vehicle_condition": 1.7788000106811523,
+    "weather": 1.7503999471664429,
+    "multiple_deliveries": 0.7519000172615051,
+    "city": 0.4255000054836273,
+    "order_hour": 0.26460000872612,
+    "festival": 0.1793999969959259,
+    "day_of_week": 0.0771000012755394,
+    "order_type": 0.05079999938607216,
+    "pickup_wait_min": 0.04259999841451645,
+    "vehicle_type": 0.03999999910593033
+  },
+  "effects": [
+    {
+      "name": "traffic = High",
+      "factor": 1.3041191096815747,
+      "ci_low": 1.291781686932506,
+      "ci_high": 1.316619191579853
+    },
+    {
+      "name": "traffic = Jam",
+      "factor": 1.3044487372759515,
+      "ci_low": 1.297360243383645,
+      "ci_high": 1.3121505009626124
+    },
+    {
+      "name": "traffic = Medium",
+      "factor": 1.184470715152502,
+      "ci_low": 1.1769701647829705,
+      "ci_high": 1.1933526130434942
+    },
+    {
+      "name": "weather = Cloudy",
+      "factor": 1.2751120560141427,
+      "ci_low": 1.2661919678847782,
+      "ci_high": 1.2873611727203118
+    },
+    {
+      "name": "weather = Fog",
+      "factor": 1.2760770829742847,
+      "ci_low": 1.266385724468031,
+      "ci_high": 1.287391853027203
+    },
+    {
+      "name": "weather = Sandstorms",
+      "factor": 1.1608956584544252,
+      "ci_low": 1.1513360104964911,
+      "ci_high": 1.1714349826581627
+    },
+    {
+      "name": "weather = Stormy",
+      "factor": 1.162035003041538,
+      "ci_low": 1.1537056857173715,
+      "ci_high": 1.1721400210060748
+    },
+    {
+      "name": "weather = Windy",
+      "factor": 1.1672870651391416,
+      "ci_low": 1.156897697003433,
+      "ci_high": 1.1767395074302536
+    },
+    {
+      "name": "festival = Yes",
+      "factor": 1.2764544209252329,
+      "ci_low": 1.261604600834617,
+      "ci_high": 1.2944579413073354
+    },
+    {
+      "name": "+10 km distance",
+      "factor": 1.1329572748080612,
+      "ci_low": 1.1282421491436763,
+      "ci_high": 1.137932382852193
+    }
+  ]
+}

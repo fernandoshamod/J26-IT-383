@@ -1,0 +1,231 @@
+{
+  "rainfall": {
+    "station_days": 7638,
+    "climatology": [
+      {
+        "month": 1,
+        "mean_daily_mm": 2.0793,
+        "wet_day_probability": 0.1551,
+        "station_days": 651,
+        "mean_monthly_mm": 63.2096,
+        "rainy_by_rule": false
+      },
+      {
+        "month": 2,
+        "mean_daily_mm": 3.0848,
+        "wet_day_probability": 0.2177,
+        "station_days": 565,
+        "mean_monthly_mm": 93.7773,
+        "rainy_by_rule": false
+      },
+      {
+        "month": 3,
+        "mean_daily_mm": 3.4897,
+        "wet_day_probability": 0.2442,
+        "station_days": 651,
+        "mean_monthly_mm": 106.0871,
+        "rainy_by_rule": false
+      },
+      {
+        "month": 4,
+        "mean_daily_mm": 7.3111,
+        "wet_day_probability": 0.4032,
+        "station_days": 630,
+        "mean_monthly_mm": 222.2578,
+        "rainy_by_rule": false
+      },
+      {
+        "month": 5,
+        "mean_daily_mm": 10.9153,
+        "wet_day_probability": 0.5323,
+        "station_days": 620,
+        "mean_monthly_mm": 331.8258,
+        "rainy_by_rule": true
+      },
+      {
+        "month": 6,
+        "mean_daily_mm": 6.9044,
+        "wet_day_probability": 0.546,
+        "station_days": 630,
+        "mean_monthly_mm": 209.8951,
+        "rainy_by_rule": true
+      },
+      {
+        "month": 7,
+        "mean_daily_mm": 2.9022,
+        "wet_day_probability": 0.3026,
+        "station_days": 651,
+        "mean_monthly_mm": 88.2254,
+        "rainy_by_rule": false
+      },
+      {
+        "month": 8,
+        "mean_daily_mm": 3.8237,
+        "wet_day_probability": 0.3594,
+        "station_days": 651,
+        "mean_monthly_mm": 116.2391,
+        "rainy_by_rule": false
+      },
+      {
+        "month": 9,
+        "mean_daily_mm": 8.671,
+        "wet_day_probability": 0.5444,
+        "station_days": 630,
+        "mean_monthly_mm": 263.597,
+        "rainy_by_rule": true
+      },
+      {
+        "month": 10,
+        "mean_daily_mm": 12.9334,
+        "wet_day_probability": 0.5932,
+        "station_days": 590,
+        "mean_monthly_mm": 393.1751,
+        "rainy_by_rule": true
+      },
+      {
+        "month": 11,
+        "mean_daily_mm": 9.559,
+        "wet_day_probability": 0.5444,
+        "station_days": 630,
+        "mean_monthly_mm": 290.595,
+        "rainy_by_rule": true
+      },
+      {
+        "month": 12,
+        "mean_daily_mm": 6.3063,
+        "wet_day_probability": 0.3379,
+        "station_days": 651,
+        "mean_monthly_mm": 191.7115,
+        "rainy_by_rule": false
+      }
+    ],
+    "assumed_rainy_months": [
+      5,
+      6,
+      10,
+      11
+    ],
+    "data_rainy_months": [
+      5,
+      6,
+      9,
+      10,
+      11
+    ],
+    "gauge_vs_model_monthly_correlation": 0.8945304584809122
+  },
+  "olist": {
+    "report": {
+      "orders_in": 99441,
+      "dropped_not_delivered_or_no_date": 2971,
+      "dropped_multi_seller": 1275,
+      "missing_distance_kept": 470,
+      "rows_out": 95195,
+      "late_rate": 0.06850149692735963
+    },
+    "test": {
+      "B0 no information (base rate)": {
+        "ROC_AUC": 0.5,
+        "avg_precision": 0.06893112428658503,
+        "Brier": 0.06417987753741886
+      },
+      "B1 seller's past late-rate": {
+        "ROC_AUC": 0.5388991362551435,
+        "avg_precision": 0.07827442494821318,
+        "Brier": 0.06747086967957948
+      },
+      "B2 logistic regression": {
+        "ROC_AUC": 0.7035378577512474,
+        "avg_precision": 0.1613959108880619,
+        "Brier": 0.06145720964635177
+      },
+      "XGBoost": {
+        "ROC_AUC": 0.7940098786141581,
+        "avg_precision": 0.2795392689394525,
+        "Brier": 0.05654418691592402
+      }
+    },
+    "shap_importance": {
+      "purchase_month": 0.5335999727249146,
+      "promised_days": 0.45559999346733093,
+      "customer_state": 0.43209999799728394,
+      "distance_km": 0.15530000627040863,
+      "product_category": 0.13079999387264252,
+      "seller_state": 0.1096000000834465,
+      "freight_value": 0.08919999748468399,
+      "seller_prior_late_rate": 0.08820000290870667,
+      "same_state": 0.06849999725818634,
+      "weight_kg": 0.0568000003695488,
+      "price": 0.047600001096725464,
+      "n_items": 0.03880000114440918,
+      "seller_prior_orders": 0.026000000536441803,
+      "purchase_dow": 0.020600000396370888,
+      "purchase_hour": 0.013500000350177288
+    },
+    "seller_history_rank": 8,
+    "best_params": {
+      "max_depth": 5,
+      "learning_rate": 0.05,
+      "min_child_weight": 1
+    }
+  },
+  "sip": {
+    "report": {
+      "tasks_in": 12299,
+      "unique_tasks": 10266,
+      "dropped_not_done": 2091,
+      "rows_out": 8175
+    },
+    "planning_fallacy": {
+      "tasks": 8175,
+      "share_overrun": 0.29834862385321104,
+      "share_exact": 0.3745565749235474,
+      "share_underrun": 0.3270948012232416,
+      "median_ratio": 1.0,
+      "mean_ratio": 1.2904025787230087,
+      "p90_ratio": 2.0,
+      "log_ratio_sd": 0.7503878802662017
+    },
+    "test": {
+      "B0 developer's estimate (today's practice)": {
+        "MAE": 4.990692864529473,
+        "RMSE": 25.652772213421937,
+        "R2": -1.272212466315588,
+        "within_2_hours_pct": 71.25129265770424
+      },
+      "B1 estimate x category median ratio": {
+        "MAE": 4.990692864529473,
+        "RMSE": 25.652772213421937,
+        "R2": -1.272212466315588,
+        "within_2_hours_pct": 71.25129265770424
+      },
+      "B2 linear regression": {
+        "MAE": 5.169067890498714,
+        "RMSE": 14.958412619528588,
+        "R2": 0.22740597295738985,
+        "within_2_hours_pct": 45.60496380558428
+      },
+      "XGBoost": {
+        "MAE": 4.242925227490304,
+        "RMSE": 12.928007596164308,
+        "R2": 0.42291003047842946,
+        "within_2_hours_pct": 71.56153050672181
+      }
+    },
+    "shap_importance": {
+      "hours_estimate": 4.919899940490723,
+      "developer_prior_tasks": 0.5525000095367432,
+      "sub_category": 0.43149998784065247,
+      "developer_prior_log_ratio": 0.1965000033378601,
+      "project": 0.1518000066280365,
+      "priority": 0.03739999979734421,
+      "estimate_month": 0.022700000554323196,
+      "category": 0.0026000000070780516
+    },
+    "best_params": {
+      "max_depth": 3,
+      "learning_rate": 0.05,
+      "min_child_weight": 5
+    }
+  }
+}

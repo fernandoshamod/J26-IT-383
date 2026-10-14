@@ -7,12 +7,13 @@ Scheduling engine for the proposal (J26-IT-383). Covers:
 - Objective 3 — Real-Time Operational Digital Twin + divergence detection (execution phase, Section 4.2.2)
 - Objective 4 — discrete-event disruption simulation (execution phase, Section 4.2.2)
 - Objective 5 — adaptive re-optimisation + cost signalling (execution phase, Section 4.2.2)
+- Duration and vendor-lateness prediction (gradient boosting, planning phase, Section 4.2.1)
 
 All six specific objectives named in Section 2.2 now have a corresponding
-module except the duration/lateness prediction model mentioned alongside
-the planning phase in Section 4.2.1. Objective 6's disruption-handling
-half (the 200-scenario comparison against the three baselines) is also
-done — see "Disruption-handling evaluation" below.
+module, and so does the duration/lateness prediction model of Section
+4.2.1 — see "Duration and lateness prediction" below. Objective 6's
+disruption-handling half (the 200-scenario comparison against the three
+baselines) is also done — see "Disruption-handling evaluation" below.
 
 ## Layout
 
@@ -59,6 +60,21 @@ scheduling_engine/
                          naive_forward_shift. The third, "greedy", is
                          simulate_cascade reused directly — see its
                          module docstring for why.
+  history_generation.py  Synthetic historical event records (declared
+                         data-generating process) for training the
+                         prediction models. See data/historical/README.md.
+  data_preparation.py    Auditable cleaning: activity-name aliases,
+                         impossible durations, missing values.
+  public_data.py         Kaggle Food Delivery Dataset: download, cleaning,
+                         and log-linear calibration of traffic/weather/
+                         distance effects (external validation).
+  public_datasets.py     Sri Lanka rain gauges, Olist and SiP: loading,
+                         cleaning, leakage-safe "known-so-far" history
+                         features (seller_history).
+  duration_prediction.py XGBoost duration (regression) and late-vendor
+                         (classification) models: tuning, baselines,
+                         SHAP explanation, save/load, and the functions
+                         that feed predictions into the solver.
 
 tests/
   test_solver.py          One test per constraint type.
@@ -84,6 +100,9 @@ tests/
   test_baselines.py        Each baseline does what Table 5 says —
                          including that naive_forward_shift's blindness
                          to locks shows up as a real, detectable conflict.
+  test_prediction.py       No leakage (vendor history, split, feature
+                         lists), cleaning rules, models beat today's
+                         practice, SHAP sums to the prediction, save/load.
 
 examples/
   run_example.py           The proposal's own eleven-activity wedding,
@@ -136,7 +155,7 @@ shared across both phases so it's made once, here).
 | Fixed / locked times | start pinned via an **assumption literal**, not a plain hard constraint (see below) |
 | Resource exclusivity | one boolean "is this candidate resource assigned" variable per (activity, candidate resource) pair, exactly `count` of them true, feeding an optional interval into `add_no_overlap` (capacity 1) or `add_cumulative` (capacity > 1) per resource |
 | Minimum turnaround | the optional interval used for the exclusivity check is padded by `resource.min_turnaround_minutes` *after* the activity's real end — so the resource stays "blocked" during turnaround without changing when precedence treats the activity as finished |
-| Resource duration | **not a decision variable** — taken as input, standing in for the (separate) duration-prediction model's output |
+| Resource duration | **not a decision variable** — taken as input, produced by the duration-prediction model (`duration_prediction.py`) |
 
 ### Why fixed/locked times use assumptions, not a plain `model.add(...)`
 
@@ -398,6 +417,179 @@ able to explain:**
    disruption, which should be structurally impossible unless something
    upstream of the measurement itself was wrong.
 
+## Duration and lateness prediction (Section 4.2.1)
+
+Files: `scheduling_engine/history_generation.py` (synthetic history),
+`scheduling_engine/data_preparation.py` (cleaning),
+`scheduling_engine/duration_prediction.py` (features, training,
+evaluation, use), `examples/train_prediction_models.py` (the full
+pipeline), `examples/run_prediction_example.py` (models feeding the
+solver). Dataset card: `data/historical/README.md`.
+
+**Data.** No public event-duration dataset exists (Section 3.3.2), so the
+models train on 800 synthetic past events (8,378 activity rows, 4,000
+vendor arrivals, 2022–2025). They come from a declared data-generating
+process whose every effect is a named constant with a stated reason. The
+raw files are deliberately dirty (inconsistent names, missing values,
+impossible durations), and `data_preparation.py` cleans them with
+auditable rules. Since we know the true process, we can also compute an
+**oracle ceiling**: the best score any model could reach.
+
+**Two models, both XGBoost** (gradient boosting is the proposal's locked
+choice: tabular, heterogeneous, scarce data):
+
+- *Duration* (regression, MAE objective): actual minutes for an activity.
+- *Late vendor* (classification): P(vendor arrives > 10 min late, the
+  twin's tolerance). A first attempt regressed exact minutes late and
+  barely beat "assume on time" (MAE 10.6 vs 10.8). About 60% of arrivals
+  are exactly on time and the rest are a noisy tail, so the question was
+  reframed as the yes/no one the twin actually needs.
+
+**Evaluation protocol**: chronological split (train 2022–2024, test 2025),
+5-fold GroupKFold by event for tuning an 8-point grid with early stopping,
+the test set used once, and three baselines including today's practice.
+
+Results on the 206 held-out 2025 events (synthetic, so they show the
+pipeline works and recovers known effects; they are *not* a real-world
+accuracy claim):
+
+| Duration model | MAE (min) | R² | within ±10 min |
+|---|---|---|---|
+| B0 planner estimate (today) | 11.23 | 0.68 | 60.0% |
+| B1 per-activity overrun ratio | 8.90 | 0.80 | 66.7% |
+| B2 linear regression | 8.11 | 0.84 | 70.2% |
+| **XGBoost** | **6.41** | **0.90** | **79.5%** |
+| Oracle ceiling | 5.94 | 0.91 | 81.8% |
+
+| Late-vendor model | ROC-AUC | Avg precision | Brier |
+|---|---|---|---|
+| B0 no information (today) | 0.500 | 0.273 | 0.200 |
+| B1 vendor's past late-rate | 0.753 | 0.508 | 0.168 |
+| B2 logistic regression | 0.735 | 0.523 | 0.176 |
+| **XGBoost** | **0.762** | **0.538** | **0.167** |
+| Oracle ceiling | 0.775 | 0.547 | 0.162 |
+
+- Duration error is cut by 43% against planner estimates. XGBoost closes
+  91% of the gap between today's practice and the theoretical best; for
+  lateness AUC it closes 95%.
+- Explanation (exact TreeSHAP from XGBoost): the features with no planted
+  effect (`is_weekend`, `event_type`, `vendor_category`) come out near the
+  bottom. That's a sanity check real data can't offer.
+- Learning curve: 25 past events already beat the planner (MAE about 8 vs
+  11), and gains flatten after about 400 events.
+- Used in the scheduler: for a 250-guest outdoor October wedding, predicted
+  durations move the realistic end time from 19:45 to 21:30, still
+  conflict-free and still holding the client's fixed 14:00 arrival. The
+  lateness model flags the caterer (64%) for a confirmation call.
+
+Figures are in `results/ml/` and every number is in `results/ml/metrics.json`.
+
+### Public data: external validation and calibration
+
+`scheduling_engine/public_data.py`, `examples/validate_on_public_data.py`,
+results in `results/public/`.
+
+There is still no public *event* dataset, so the **Kaggle Food Delivery
+Dataset** (gauravmalik26/food-delivery-dataset, 45,593 labelled deliveries
+in Indian cities, Feb–Apr 2022) is used as the closest public analogue of
+one part of the problem: a vendor travelling to a site through South Asian
+traffic and weather. Its rows are **never mixed into the event training
+data**. It is used for two things:
+
+**A. External validation.** The same pipeline runs on data we didn't
+generate. Cleaning handles 9,131 text "NaN" values, 431 sign-flipped
+coordinates, 53 impossible ratings and 3,640 unknown locations. The
+evaluation uses a chronological split (last 10 days held out), GroupKFold
+by day, and the same grid.
+
+| Delivery time (held-out 10 days) | MAE (min) | R² |
+|---|---|---|
+| B0 overall median | 7.55 | 0.00 |
+| B1 median by traffic × weather | 6.22 | 0.27 |
+| B2 linear regression | 4.79 | 0.59 |
+| **XGBoost** | **3.19** | **0.81** |
+
+**B. Calibration.** A log-linear model with bootstrap 95% CIs estimates
+the multiplicative effects, holding the other factors fixed. They replaced
+three vendor-lateness constants in `history_generation.py` that had been
+guesses:
+
+| Effect | Public estimate (95% CI) | Assumed before | Now |
+|---|---|---|---|
+| traffic Jam vs Low → rush hour | ×1.30 (1.30–1.31) | ×1.6 | ×1.30 |
+| weather Stormy vs Sunny → rainy month | ×1.16 (1.15–1.17) | ×1.4 | ×1.16 |
+| +10 km distance | ×1.13 (1.13–1.14) | ×1.19 (doubling/40 km) | doubling/55 km |
+
+The raw Jam/Low median ratio is ×1.55. The adjusted ×1.30 is lower because
+jams coincide with other slowing factors, which is why a model that holds
+them fixed is used rather than a raw ratio.
+
+*Provenance caveat:* the uploader doesn't document collection, and some
+properties suggest the data is partly simulated (near-uniform weather
+categories, times bounded to 10–54 min, fixed coordinate offsets). It is
+reported as a widely used public benchmark, not as field measurement.
+
+### More public data: three more assumptions tested
+
+`scheduling_engine/public_datasets.py`, `examples/validate_on_more_public_data.py`,
+results in `results/public_more/`. Each dataset tests or calibrates one
+specific assumption, and none is mixed into the event training data.
+
+**1. Sri Lanka rainfall → which months are rainy (calibrated).** Data:
+Department of Meteorology rain gauges at Dehiwala, Ratmalana and Homagama,
+2012–2018, 7,638 station-days (Kaggle ivantha/sri-lanka-weather-dataset).
+The rule is that a month counts as rainy if it rains (≥ 1 mm) on more than
+half its days. The data says {May, Jun, **Sep**, Oct, Nov}; the original
+guess {May, Jun, Oct, Nov} missed September, which gets 264 mm a month
+against June's 210. `RAINY_MONTHS` now uses the data. A model-based
+weather dataset (rasulmah, Open-Meteo-style) has the same seasonal shape
+(r = 0.89) but reports rain on 77% of days against 40% at the gauges, so
+it serves only as a cross-check. Measured gauges beat model output.
+
+**2. Olist → real supplier lateness against a promise (tests the
+late-vendor classifier).** Data: 95,195 delivered single-seller orders
+from the Brazilian e-commerce marketplace Olist (Kaggle
+olistbr/brazilian-ecommerce), 6.9% delivered after the promised date.
+Seller history uses only outcomes *known* at purchase time: an earlier
+order counts only once it has been delivered.
+
+| Late delivery (held-out Jun–Aug 2018) | ROC-AUC | Avg precision |
+|---|---|---|
+| B0 base rate | 0.500 | 0.069 |
+| B1 seller's past late-rate | 0.539 | 0.078 |
+| B2 logistic regression | 0.704 | 0.161 |
+| **XGBoost** | **0.794** | **0.280** |
+
+The method transfers to real data. But this result **challenges an event
+generator assumption**: the seller's own history ranks only 8th of 15
+features. Season, promised lead time and destination dominate. The event
+generator assumes vendor history is the strongest signal. That's plausible
+for event vendors, who travel themselves, while Olist sellers hand parcels
+to a carrier, but it is unverified until partner data arrives. It is
+reported as an open question, not explained away.
+
+**3. SiP → real estimated vs actual durations (tests the duration model
+and the planning fallacy).** Data: 8,175 completed commercial software
+tasks, 2004–2014 (Jones & Cullum, github.com/Derek-Jones/SiP_dataset, CC
+BY-NC-ND 4.0, downloaded at run time and not redistributed). Columns
+computed from actual hours are excluded as leakage. The cleaned data
+reproduces the authors' published split exactly: **30% overrun, 37% exact,
+33% underrun**. That's independent evidence the cleaning is right. The
+mean actual/estimate ratio is 1.29 against a median of 1.00: a right-skewed
+overrun tail, the same shape the event generator assumes.
+
+| Actual hours (held-out 2012–2014) | MAE (h) | R² |
+|---|---|---|
+| B0 developer's estimate (today) | 4.99 | −1.27 |
+| B1 estimate × category median ratio | 4.99 | −1.27 |
+| B2 linear regression | 5.17 | 0.23 |
+| **XGBoost** | **4.24** | **0.42** |
+
+XGBoost cuts error 15% against the people's own estimates on real data. B1
+equals B0 because every category's median ratio is exactly 1.0. Software
+tasks are not event activities, so this tests the method and the shape of
+the assumption, not event-specific overrun sizes.
+
 ## Running it
 
 ```
@@ -409,4 +601,8 @@ python -m examples.run_simulation_example
 python -m examples.run_reoptimization_example
 python -m examples.validate_psplib --limit 30   # drop --limit for the full 480
 python -m examples.evaluate_disruption_handling --count 20   # drop --count for the full 200 x 3 configurations
+python -m examples.train_prediction_models    # ~20 s: data -> clean -> tune -> train -> evaluate -> figures
+python -m examples.run_prediction_example     # needs the models saved by the line above
+python -m examples.validate_on_public_data    # downloads the Kaggle data (~2 MB, no login), ~1 min
+python -m examples.validate_on_more_public_data  # rainfall + Olist + SiP (~45 MB first run), ~3 min
 ```

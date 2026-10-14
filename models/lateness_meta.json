@@ -1,0 +1,60 @@
+{
+  "name": "lateness",
+  "kind": "classification",
+  "categorical": [
+    "vendor_category"
+  ],
+  "numeric": [
+    "booked_arrival_hour",
+    "is_rush_hour",
+    "is_rainy_month",
+    "is_weekend",
+    "travel_distance_km",
+    "vendor_prior_jobs",
+    "vendor_prior_mean_lateness"
+  ],
+  "target": "late_beyond_tolerance",
+  "levels": {
+    "vendor_category": [
+      "av_vendor",
+      "band_dj",
+      "caterer",
+      "florist",
+      "photographer"
+    ]
+  },
+  "best_params": {
+    "max_depth": 3,
+    "learning_rate": 0.05,
+    "min_child_weight": 5
+  },
+  "n_trees": 116,
+  "cv_score": 0.153626549243927,
+  "test_metrics": {
+    "B0 no information (today's practice)": {
+      "ROC_AUC": 0.5,
+      "avg_precision": 0.2728155339805825,
+      "Brier": 0.19981596004282415
+    },
+    "B1 vendor's past late-rate": {
+      "ROC_AUC": 0.753015883574303,
+      "avg_precision": 0.5076521984410176,
+      "Brier": 0.1682392070295215
+    },
+    "B2 logistic regression": {
+      "ROC_AUC": 0.7349585924768018,
+      "avg_precision": 0.5228279806487175,
+      "Brier": 0.17617686416566083
+    },
+    "XGBoost": {
+      "ROC_AUC": 0.7617630149808284,
+      "avg_precision": 0.5376702410389631,
+      "Brier": 0.1665434493598842
+    },
+    "Oracle ceiling (knows hidden truth)": {
+      "ROC_AUC": 0.7751379062949888,
+      "avg_precision": 0.5468100388760746,
+      "Brier": 0.16161165754368934
+    }
+  }
+}

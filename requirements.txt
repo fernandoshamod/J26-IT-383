@@ -1,3 +1,9 @@
 ortools>=9.15
 simpy>=4.1
 pytest>=9.0
+xgboost>=3.0
+scikit-learn>=1.5
+pandas>=2.2
+numpy>=2.0
+matplotlib>=3.9
+kagglehub>=0.3

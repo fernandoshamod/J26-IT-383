@@ -1,0 +1,276 @@
+{
+  "cleaning": {
+    "activities": {
+      "rows_in": 8378,
+      "names_renamed": 2090,
+      "dropped_unknown_name": 0,
+      "dropped_impossible_duration": 29,
+      "missing_values_kept": {
+        "guest_count": 285
+      },
+      "rows_out": 8349
+    },
+    "arrivals": {
+      "rows_in": 4000,
+      "names_renamed": 991,
+      "dropped_unknown_name": 0,
+      "dropped_impossible_duration": 0,
+      "missing_values_kept": {
+        "travel_distance_km": 161,
+        "vendor_prior_mean_lateness": 40
+      },
+      "rows_out": 4000
+    }
+  },
+  "split": {
+    "test_from": "2025-01-01",
+    "train_events": 594,
+    "test_events": 206
+  },
+  "duration": {
+    "best_params": {
+      "max_depth": 5,
+      "learning_rate": 0.05,
+      "min_child_weight": 5
+    },
+    "n_trees": 275,
+    "cv_mae": 6.3221663475036625,
+    "test": {
+      "B0 planner estimate (today's practice)": {
+        "MAE": 11.228426395939087,
+        "RMSE": 15.44482715153055,
+        "R2": 0.6816451909153801,
+        "within_10_min_pct": 59.99077065066912
+      },
+      "B1 per-activity overrun ratio": {
+        "MAE": 8.896771810669263,
+        "RMSE": 12.279113433460367,
+        "R2": 0.7987762061862578,
+        "within_10_min_pct": 66.72819566220582
+      },
+      "B2 linear regression": {
+        "MAE": 8.110416725463084,
+        "RMSE": 10.882420552576193,
+        "R2": 0.8419493375024716,
+        "within_10_min_pct": 70.18920166128288
+      },
+      "XGBoost": {
+        "MAE": 6.409869189189775,
+        "RMSE": 8.75351733010634,
+        "R2": 0.8977388901484593,
+        "within_10_min_pct": 79.51084448546378
+      },
+      "Oracle ceiling (knows hidden truth)": {
+        "MAE": 5.938218735579142,
+        "RMSE": 8.180092800693947,
+        "R2": 0.9106978795160893,
+        "within_10_min_pct": 81.81818181818183
+      }
+    },
+    "shap_importance": {
+      "planned_duration_minutes": 11.18120002746582,
+      "activity_type": 8.89579963684082,
+      "guest_count": 3.51200008392334,
+      "crew_size": 1.9423999786376953,
+      "venue_type": 1.0234999656677246,
+      "is_rainy_month": 0.7681000232696533,
+      "vendor_prior_jobs": 0.6779000163078308,
+      "planned_start_hour": 0.31049999594688416,
+      "event_type": 0.16019999980926514,
+      "is_weekend": 0.06279999762773514
+    },
+    "grid": [
+      {
+        "max_depth": 3,
+        "learning_rate": 0.05,
+        "min_child_weight": 1,
+        "cv_score": 6.343938159942627,
+        "trees": 748
+      },
+      {
+        "max_depth": 3,
+        "learning_rate": 0.05,
+        "min_child_weight": 5,
+        "cv_score": 6.338110160827637,
+        "trees": 773
+      },
+      {
+        "max_depth": 3,
+        "learning_rate": 0.1,
+        "min_child_weight": 1,
+        "cv_score": 6.366740036010742,
+        "trees": 380
+      },
+      {
+        "max_depth": 3,
+        "learning_rate": 0.1,
+        "min_child_weight": 5,
+        "cv_score": 6.355899810791016,
+        "trees": 420
+      },
+      {
+        "max_depth": 5,
+        "learning_rate": 0.05,
+        "min_child_weight": 1,
+        "cv_score": 6.329590225219727,
+        "trees": 306
+      },
+      {
+        "max_depth": 5,
+        "learning_rate": 0.05,
+        "min_child_weight": 5,
+        "cv_score": 6.3221663475036625,
+        "trees": 275
+      },
+      {
+        "max_depth": 5,
+        "learning_rate": 0.1,
+        "min_child_weight": 1,
+        "cv_score": 6.348588562011718,
+        "trees": 152
+      },
+      {
+        "max_depth": 5,
+        "learning_rate": 0.1,
+        "min_child_weight": 5,
+        "cv_score": 6.353851795196533,
+        "trees": 156
+      }
+    ]
+  },
+  "lateness": {
+    "best_params": {
+      "max_depth": 3,
+      "learning_rate": 0.05,
+      "min_child_weight": 5
+    },
+    "n_trees": 116,
+    "cv_brier": 0.153626549243927,
+    "test": {
+      "B0 no information (today's practice)": {
+        "ROC_AUC": 0.5,
+        "avg_precision": 0.2728155339805825,
+        "Brier": 0.19981596004282415
+      },
+      "B1 vendor's past late-rate": {
+        "ROC_AUC": 0.753015883574303,
+        "avg_precision": 0.5076521984410176,
+        "Brier": 0.1682392070295215
+      },
+      "B2 logistic regression": {
+        "ROC_AUC": 0.7349585924768018,
+        "avg_precision": 0.5228279806487175,
+        "Brier": 0.17617686416566083
+      },
+      "XGBoost": {
+        "ROC_AUC": 0.7617630149808284,
+        "avg_precision": 0.5376702410389631,
+        "Brier": 0.1665434493598842
+      },
+      "Oracle ceiling (knows hidden truth)": {
+        "ROC_AUC": 0.7751379062949888,
+        "avg_precision": 0.5468100388760746,
+        "Brier": 0.16161165754368934
+      }
+    },
+    "shap_importance": {
+      "vendor_prior_mean_lateness": 0.7807000279426575,
+      "is_rainy_month": 0.22750000655651093,
+      "is_rush_hour": 0.1388999968767166,
+      "travel_distance_km": 0.09549999982118607,
+      "vendor_prior_jobs": 0.07460000365972519,
+      "booked_arrival_hour": 0.05689999833703041,
+      "vendor_category": 0.05090000107884407,
+      "is_weekend": 0.007499999832361937
+    },
+    "grid": [
+      {
+        "max_depth": 3,
+        "learning_rate": 0.05,
+        "min_child_weight": 1,
+        "cv_score": 0.15395157933235168,
+        "trees": 92
+      },
+      {
+        "max_depth": 3,
+        "learning_rate": 0.05,
+        "min_child_weight": 5,
+        "cv_score": 0.153626549243927,
+        "trees": 116
+      },
+      {
+        "max_depth": 3,
+        "learning_rate": 0.1,
+        "min_child_weight": 1,
+        "cv_score": 0.15395741164684296,
+        "trees": 58
+      },
+      {
+        "max_depth": 3,
+        "learning_rate": 0.1,
+        "min_child_weight": 5,
+        "cv_score": 0.1542823702096939,
+        "trees": 56
+      },
+      {
+        "max_depth": 5,
+        "learning_rate": 0.05,
+        "min_child_weight": 1,
+        "cv_score": 0.15512562096118926,
+        "trees": 67
+      },
+      {
+        "max_depth": 5,
+        "learning_rate": 0.05,
+        "min_child_weight": 5,
+        "cv_score": 0.1547203242778778,
+        "trees": 67
+      },
+      {
+        "max_depth": 5,
+        "learning_rate": 0.1,
+        "min_child_weight": 1,
+        "cv_score": 0.15565706193447112,
+        "trees": 36
+      },
+      {
+        "max_depth": 5,
+        "learning_rate": 0.1,
+        "min_child_weight": 5,
+        "cv_score": 0.15551867783069612,
+        "trees": 34
+      }
+    ]
+  },
+  "learning_curve": [
+    {
+      "training_events": 25,
+      "test_MAE": 7.842039869924892
+    },
+    {
+      "training_events": 50,
+      "test_MAE": 7.392539142443756
+    },
+    {
+      "training_events": 100,
+      "test_MAE": 6.977881232805756
+    },
+    {
+      "training_events": 200,
+      "test_MAE": 6.730003407397209
+    },
+    {
+      "training_events": 400,
+      "test_MAE": 6.434896420706347
+    },
+    {
+      "training_events": 594,
+      "test_MAE": 6.409869189189775
+    }
+  ],
+  "summary": {
+    "duration_mae_reduction_vs_planner_pct": 42.91391364057931,
+    "duration_gap_closed_to_oracle_pct": 91.08446238992171,
+    "lateness_auc_gap_closed_to_oracle_pct": 95.1388409200801
+  }
+}

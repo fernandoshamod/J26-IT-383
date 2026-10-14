@@ -1,0 +1,83 @@
+{
+  "name": "duration",
+  "kind": "regression",
+  "categorical": [
+    "activity_type",
+    "event_type",
+    "venue_type"
+  ],
+  "numeric": [
+    "planned_duration_minutes",
+    "guest_count",
+    "crew_size",
+    "is_rainy_month",
+    "is_weekend",
+    "planned_start_hour",
+    "vendor_prior_jobs"
+  ],
+  "target": "actual_duration_minutes",
+  "levels": {
+    "activity_type": [
+      "catering_load_in",
+      "ceremony",
+      "decor",
+      "dinner_service",
+      "entertainment",
+      "guest_arrival",
+      "photos",
+      "sound_check",
+      "speeches",
+      "strike",
+      "venue_setup"
+    ],
+    "event_type": [
+      "birthday",
+      "corporate",
+      "engagement",
+      "wedding"
+    ],
+    "venue_type": [
+      "indoor",
+      "outdoor"
+    ]
+  },
+  "best_params": {
+    "max_depth": 5,
+    "learning_rate": 0.05,
+    "min_child_weight": 5
+  },
+  "n_trees": 275,
+  "cv_score": 6.3221663475036625,
+  "test_metrics": {
+    "B0 planner estimate (today's practice)": {
+      "MAE": 11.228426395939087,
+      "RMSE": 15.44482715153055,
+      "R2": 0.6816451909153801,
+      "within_10_min_pct": 59.99077065066912
+    },
+    "B1 per-activity overrun ratio": {
+      "MAE": 8.896771810669263,
+      "RMSE": 12.279113433460367,
+      "R2": 0.7987762061862578,
+      "within_10_min_pct": 66.72819566220582
+    },
+    "B2 linear regression": {
+      "MAE": 8.110416725463084,
+      "RMSE": 10.882420552576193,
+      "R2": 0.8419493375024716,
+      "within_10_min_pct": 70.18920166128288
+    },
+    "XGBoost": {
+      "MAE": 6.409869189189775,
+      "RMSE": 8.75351733010634,
+      "R2": 0.8977388901484593,
+      "within_10_min_pct": 79.51084448546378
+    },
+    "Oracle ceiling (knows hidden truth)": {
+      "MAE": 5.938218735579142,
+      "RMSE": 8.180092800693947,
+      "R2": 0.9106978795160893,
+      "within_10_min_pct": 81.81818181818183
+    }
+  }
+}
