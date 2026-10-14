@@ -7,3 +7,6 @@ pandas>=2.2
 numpy>=2.0
 matplotlib>=3.9
 kagglehub>=0.3
+fastapi>=0.110
+uvicorn>=0.30
+httpx>=0.27

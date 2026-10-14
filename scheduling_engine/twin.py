@@ -119,6 +119,11 @@ class OperationalDigitalTwin:
     def tolerance_for(self, activity_id: str) -> int:
         return self._tolerance_overrides.get(activity_id, self._default_tolerance_minutes)
 
+    @property
+    def check_ins(self) -> tuple[CheckIn, ...]:
+        """Every check-in recorded so far, in arrival order (read-only)."""
+        return tuple(self._check_ins)
+
     def state_of(self, activity_id: str) -> ActivityTwinState:
         return self._states[activity_id]
 

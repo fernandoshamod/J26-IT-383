@@ -590,6 +590,60 @@ equals B0 because every category's median ratio is exactly 1.0. Software
 tasks are not event activities, so this tests the method and the shape of
 the assumption, not event-specific overrun sizes.
 
+## Live operations service and API (FR-07 to FR-16)
+
+`scheduling_engine/integration.py`, `scheduling_engine/operations.py`,
+`api/app.py`, `api/scenario.py`; tests in `tests/test_operations.py`.
+
+`EventOperations` runs the execution-phase loop of Section 4.2.2 as one
+service:
+
+check-in (FR-08) → digital twin (FR-09) → divergence (FR-10) → simulate
+the do-nothing cascade (FR-11) → re-optimise (FR-12, locks respected) →
+**proposal shown to the planner** (FR-13) → on confirmation: revised plan
+written back into the twin, cost signal published (FR-14), affected staff
+and vendors notified (FR-15). Every step goes into an append-only,
+timestamped audit log (FR-16), which is also written to `logs/audit.jsonl`.
+
+Integration follows Section 4.3: Component 3 publishes on an event bus
+(`schedule.planned`, `disruption.detected`, `proposal.created`,
+`schedule.changed`, `cost_signal.issued`, …). It never calls other
+components directly. `Component4Stub` subscribes to `cost_signal.issued`,
+and the real Component 4 replaces it by subscribing to the same topic.
+
+Design rules, each one found by a failing test or a live run:
+
+- **Nothing changes without the planner** (FR-13). The system proposes;
+  a person accountable to the client decides.
+- **Absorbed disruptions don't interrupt.** If the simulation shows slack
+  absorbs a delay (e.g. catering 40 min late before the fixed 14:00 guest
+  arrival), it is logged as `disruption.absorbed` and no proposal is
+  raised.
+- **Stale proposals are superseded.** A proposal is valid only for the
+  state it was computed from. Any new check-in supersedes it and the
+  system recomputes, because confirming an outdated plan could undo what
+  just happened.
+- **Rejections are remembered by size.** A rejected "dinner 20 min late"
+  is not re-raised at 21 minutes, but is raised again once it grows past
+  the tolerance (e.g. 80 minutes).
+- **Confirmed plans become the new reference.** The twin is rebuilt from
+  the revised schedule and every check-in is replayed, so no observed fact
+  is lost (NFR-03). Acknowledgements reset, so overrunning even the
+  *revised* plan triggers again.
+- **Only what's still ahead is a "change".** Completed activities are
+  recorded facts and are not re-notified.
+
+Demo story on the proposal's wedding plus a concurrent corporate launch:
+catering is 40 min late (absorbed, no interruption); the photographer
+never confirms completion and is detected at 16:05 from silence alone;
+the system re-optimises in about 0.01 s against the 5 s target, moving 5
+activities; the planner confirms; Component 4 receives 80 delay-minutes
+and 6 crews on overtime; 7 staff and vendor notifications go out.
+
+```
+python -m uvicorn api.app:app        # then http://127.0.0.1:8000/docs
+```
+
 ## Running it
 
 ```
