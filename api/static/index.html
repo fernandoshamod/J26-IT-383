@@ -456,6 +456,10 @@ input[type=range]{flex:1;accent-color:var(--alarm);background:transparent}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
           <span class="nav-label">Resources</span>
         </button>
+        <button class="nav-item" data-go="ml">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg>
+          <span class="nav-label">ML forecasts</span>
+        </button>
       </div>
 
       <div class="nav-group">
@@ -654,11 +658,48 @@ input[type=range]{flex:1;accent-color:var(--alarm);background:transparent}
           <table>
             <thead><tr>
               <th>Resource</th><th style="width:98px">Type</th><th style="width:170px">Committed to</th>
-              <th style="width:118px">Window</th><th style="width:170px">Load</th><th style="width:140px">Status</th>
+              <th style="width:118px">Window</th><th style="width:170px">Load</th><th style="width:96px">Late risk</th><th style="width:140px">Status</th>
             </tr></thead>
             <tbody id="resTable"></tbody>
           </table>
         </div>
+      </div>
+    </section>
+
+    <!-- ========== ML FORECASTS ========== -->
+    <section class="page" id="page-ml">
+      <div class="page-head">
+        <div class="eyebrow">Plan · Machine learning (Section 4.2.1)</div>
+        <h1 class="page-title">ML forecasts</h1>
+        <p class="page-note">Two XGBoost models trained on historical event records. The duration model replaces planner guesses with learned estimates for the solver; the late-vendor model flags bookings likely to arrive later than the twin's tolerance — before the event day.</p>
+      </div>
+
+      <div class="grid g4" style="margin-bottom:14px">
+        <div class="card metric"><div class="metric-label">Planning with</div><div class="metric-val" style="font-size:22px" id="mlMode">–</div>
+          <div class="seg" style="margin-top:10px"><button class="btn btn-sm" data-mode="planner">Planner estimates</button><button class="btn btn-sm" data-mode="predicted">ML durations</button></div></div>
+        <div class="card metric"><div class="metric-label">Day ends</div><div class="metric-val" id="mlEnd">–</div><div class="metric-foot" id="mlEndFoot"></div></div>
+        <div class="card metric"><div class="metric-label">Duration model · test error</div><div class="metric-val" id="mlMae">–</div><div class="metric-foot" id="mlMaeFoot"></div></div>
+        <div class="card metric"><div class="metric-label">Late-vendor model · ROC-AUC</div><div class="metric-val" id="mlAuc">–</div><div class="metric-foot" id="mlAucFoot"></div></div>
+      </div>
+
+      <div class="split" style="margin-bottom:14px">
+        <div class="card">
+          <div class="card-head"><span class="card-title">Activity durations</span><span class="chip chip-mute" style="margin-left:auto">planner estimate vs model</span></div>
+          <div style="overflow-x:auto"><table>
+            <thead><tr><th>Activity</th><th style="width:78px">Planner</th><th style="width:78px">Model</th><th style="width:70px">Change</th><th>Why (vs a typical past event)</th></tr></thead>
+            <tbody id="mlTable"></tbody></table></div>
+          <div class="card-foot" style="font-size:11.5px;color:var(--ink-3)">Reasons are exact TreeSHAP contributions computed by XGBoost. The rest of the difference from the planner's estimate is the activity type's usual overrun learned from history. Activities the model was never trained on keep the planner's estimate.</div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="card-title">Vendor late-arrival risk</span></div>
+          <div class="card-body" id="mlRisk" style="display:flex;flex-direction:column;gap:12px"></div>
+          <div class="card-foot" style="font-size:11.5px;color:var(--ink-3)">P(more than the twin's 10-minute tolerance late), from the vendor's own track record, distance, arrival hour and month.</div>
+        </div>
+      </div>
+
+      <div class="note twin">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+        <div><b style="color:var(--twin)">Where the data comes from.</b> No public event-duration dataset exists, so the models train on 800 synthetic past events from a documented generator, calibrated and validated with four public datasets (Kaggle food delivery, Sri Lanka Met Department rain gauges, Olist e-commerce, SiP task estimates). The same pipeline retrains unchanged on the industry partner's records. Booking details for this demo day (guests, venue, vendor history) are declared inputs.</div>
       </div>
     </section>
 
@@ -998,6 +1039,7 @@ function renderResources(D){
     <td class="mono" style="color:var(--ink-2)">${x.mine.map(a=>'Cue '+D.cueNo[a.id]).join(', ')||'—'}</td>
     <td class="mono" style="color:var(--ink-3)">${x.win}</td>
     <td><div class="util"><div class="util-track"><div class="util-fill" style="width:${Math.min(x.load,100)}%;background:${UC[x.cls]}"></div></div><span class="util-num">${x.load}%</span></div></td>
+    <td>${riskChip(x.r.id)}</td>
     <td><span class="chip ${SC[x.cls]}">${esc(x.status)}</span></td></tr>`).join('');
   const byType = t => { const all=rows.filter(x=>x.r.type===t); return [all.filter(x=>x.mine.length).length, all.length]; };
   const [sU,sT]=byType('staff'), [vU,vT]=byType('vendor');
@@ -1160,6 +1202,45 @@ function renderReopt(D){
   $('protectList').innerHTML = items.join('');
 }
 
+/* ---------- ML forecasts ---------- */
+function riskChip(rid){
+  const v = (S.ml?.vendor_risk || []).find(r=>r.resource_id===rid);
+  if(!v) return '<span style="color:var(--ink-3)">—</span>';
+  const pct = Math.round(v.probability*100);
+  return `<span class="chip ${pct>=50?'chip-alarm':pct>=25?'chip-live':'chip-go'}">${pct}%</span>`;
+}
+function renderML(D){
+  const ml = S.ml; if(!ml) return;
+  $('mlMode').textContent = ml.mode==='predicted' ? 'ML durations' : 'Planner estimates';
+  document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('btn-twin', b.dataset.mode===ml.mode));
+  $('mlEnd').textContent = hhmm(ml.plan_end);
+  $('mlEndFoot').textContent = ml.mode==='predicted'
+    ? `planner estimates would end ${hhmm(ml.planner_end)} (+${ml.plan_end-ml.planner_end} min hidden)`
+    : 'switch to ML durations to see the realistic end';
+  const c = ml.card;
+  $('mlMae').innerHTML = `${c.duration.mae.toFixed(1)}<small> min</small>`;
+  $('mlMaeFoot').textContent = `planner estimates: ${c.duration.planner_mae.toFixed(1)} min · ${Math.round(100*(1-c.duration.mae/c.duration.planner_mae))}% less error`;
+  $('mlAuc').textContent = c.lateness.auc.toFixed(3);
+  $('mlAucFoot').textContent = c.lateness.oracle_auc ? `theoretical best ${c.lateness.oracle_auc.toFixed(3)} · chance 0.5` : 'chance 0.5';
+  $('mlTable').innerHTML = ml.durations.map(d=>{
+    const delta = d.predicted==null ? null : d.predicted - d.planner;
+    const why = d.predicted==null ? '<span style="color:var(--ink-3)">not a trained activity type — planner estimate kept</span>'
+      : d.reasons.map(r=>`<span class="chip ${r.minutes>0?'chip-live':'chip-go'}" style="margin:0 4px 3px 0">${esc(r.feature)} ${r.minutes>0?'+':''}${r.minutes}m</span>`).join('');
+    return `<tr><td>${esc(d.name)}${d.event_id!==S.events[0].id?' <span class="lane-evt">'+esc(d.event_id.split('_')[0].toUpperCase())+'</span>':''}</td>
+      <td class="mono">${d.planner}m</td><td class="mono">${d.predicted==null?'—':d.predicted+'m'}</td>
+      <td class="mono" style="color:${delta>0?'var(--tungsten)':delta<0?'var(--go)':'var(--ink-3)'}">${delta==null?'—':(delta>0?'+':'')+delta+'m'}</td>
+      <td>${why}</td></tr>`;
+  }).join('');
+  $('mlRisk').innerHTML = ml.vendor_risk.map(v=>{
+    const pct = Math.round(v.probability*100), col = pct>=50?'var(--alarm)':pct>=25?'var(--tungsten)':'var(--go)';
+    return `<div><div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">
+        <b>${esc(v.vendor)}</b><span class="mono" style="color:${col};font-size:18px">${pct}%</span></div>
+      <div class="util" style="margin:6px 0"><div class="util-track"><div class="util-fill" style="width:${pct}%;background:${col}"></div></div></div>
+      <div style="font-size:11.5px;color:var(--ink-3)">arrives ${hhmm(v.arrival)} · ${v.distance_km} km · ${v.prior_jobs} past jobs · ${v.prior_mean_lateness==null?'no lateness history':'avg '+v.prior_mean_lateness+' min late'}</div>
+      ${pct>=50?'<div style="font-size:12px;color:var(--alarm);margin-top:4px">Confirm arrival the day before</div>':''}</div>`;
+  }).join('');
+}
+
 /* ---------- log ---------- */
 const TAG = k => k.startsWith('disruption') ? ['detect','d'] : k.startsWith('proposal') ? ['propose','r']
   : k==='schedule.changed' ? ['re-cue','r'] : k.startsWith('cost') ? ['cost','c'] : k.startsWith('checkin') ? ['check-in','t']
@@ -1174,7 +1255,7 @@ function renderLog(){
 function render(){
   if(!S) return;
   const D = derive();
-  renderTop(D); renderBoard(D); renderOrder(D); renderResources(D); renderConflicts(D); renderConsole(D); renderReopt(D); renderLog();
+  renderTop(D); renderBoard(D); renderOrder(D); renderResources(D); renderConflicts(D); renderConsole(D); renderReopt(D); renderML(D); renderLog();
 }
 
 /* ---------- nav + controls ---------- */
@@ -1189,6 +1270,8 @@ document.addEventListener('click', e=>{
   const adv = e.target.closest('[data-adv]'); if(adv){ act('/api/clock', {advance_minutes:+adv.dataset.adv}); return; }
   const ci = e.target.closest('[data-ci]');
   if(ci){ const a=$('ciAct').value; if(a) act('/api/checkins', {activity_id:a, type:ci.dataset.ci}, `Check-in recorded: ${ci.dataset.ci}`); return; }
+  const md = e.target.closest('[data-mode]');
+  if(md){ stopRun(); animatedProposal=null; act('/api/plan/mode', {mode:md.dataset.mode}, md.dataset.mode==='predicted'?'Re-planned with ML-predicted durations':'Re-planned with planner estimates'); return; }
   const sc = e.target.closest('[data-scn]');
   if(sc){ stopRun(); animatedProposal=null; act(`/api/demo/scenario/${sc.dataset.scn}`, {}, 'Scenario played — check-ins replayed in time order'); return; }
 });

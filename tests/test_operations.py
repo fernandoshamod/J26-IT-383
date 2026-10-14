@@ -210,3 +210,25 @@ def test_dashboard_and_scenarios_are_served(monkeypatch, tmp_path):
     for name in ("late_catering", "setup_overrun", "silent_photographer"):
         assert client.post(f"/api/demo/scenario/{name}").status_code == 200
     assert client.post("/api/demo/scenario/nope").status_code == 404
+
+
+def test_ml_planning_mode_uses_predicted_durations(monkeypatch, tmp_path):
+    """Section 4.2.1: in "predicted" mode the solver plans with the duration
+    model's estimates; the forecast is always available for the dashboard."""
+    monkeypatch.setattr(api_module, "AUDIT_PATH", tmp_path / "audit.jsonl")
+    client = TestClient(api_module.app)
+    planner = client.post("/api/plan/mode", json={"mode": "planner"}).json()
+    predicted = client.post("/api/plan/mode", json={"mode": "predicted"}).json()
+    try:
+        assert predicted["ml"]["mode"] == "predicted"
+        setup = next(a for a in predicted["activities"] if a["id"] == "venue_setup")
+        forecast = next(d for d in predicted["ml"]["durations"] if d["id"] == "venue_setup")
+        assert setup["planned_end"] - setup["planned_start"] == forecast["predicted"]
+        assert predicted["ml"]["plan_end"] > planner["ml"]["plan_end"]  # planners underestimate
+        assert predicted["conflicts"] == []                            # still conflict-free
+        launch = next(d for d in predicted["ml"]["durations"] if d["id"] == "corp_event")
+        assert launch["predicted"] is None                             # untrained type: no guess
+        assert all(0 <= v["probability"] <= 1 for v in predicted["ml"]["vendor_risk"])
+        assert client.post("/api/plan/mode", json={"mode": "nope"}).status_code == 422
+    finally:
+        client.post("/api/plan/mode", json={"mode": "planner"})

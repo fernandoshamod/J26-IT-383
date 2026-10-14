@@ -681,6 +681,14 @@ Three one-click demo scenarios:
   corporate launch at 10:40, because the AV crew is shared.
   Re-optimisation keeps the launch at 10:30 and moves the wedding sound
   check to 12:40, still before 14:00.
+- **ML forecasts screen.** It switches planning between the planner's
+  estimates and the duration model's predictions, so the solver re-plans
+  either way: the realistic day ends 21:30, not 19:45. Each prediction
+  shows its TreeSHAP reasons and the model's test accuracy, and each
+  vendor booking shows a late-arrival risk (caterer 64%: confirm the day
+  before). In ML mode, scenario B needs no decision, because the
+  realistic plan already allows enough setup time. Code:
+  `api/forecast.py`, with declared demo booking inputs.
 - **C: photographer goes silent.** Detected from the missing completion
   check-in alone. The cascade pushes dinner, speeches, entertainment and
   strike back by 20 min.

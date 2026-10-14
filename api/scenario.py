@@ -10,7 +10,10 @@ from dataclasses import replace
 from pathlib import Path
 
 from examples.run_example import build_concurrent_corporate_event, build_resources, build_wedding
+from api.forecast import forecast
+from scheduling_engine.duration_prediction import with_predicted_durations
 from scheduling_engine.models import Event
+from scheduling_engine.solver import solve_planning_phase
 from scheduling_engine.operations import EventOperations
 from scheduling_engine.twin import ActivityState, CheckInType
 
@@ -35,11 +38,39 @@ def build_demo_events() -> list[Event]:
     return [wedding, corporate]
 
 
-def new_operations(audit_path: Path | None = None) -> EventOperations:
-    ops = EventOperations(build_demo_events(), build_resources(), tolerance_minutes=10,
+PLANNING_MODES = ("planner", "predicted")
+
+
+def new_operations(audit_path: Path | None = None, mode: str = "planner") -> EventOperations:
+    """Plan the demo day. mode="planner" uses the planner's own durations;
+    mode="predicted" uses the ML duration model's predictions (Section
+    4.2.1). The forecast is computed either way, so the dashboard can
+    always show both side by side."""
+    if mode not in PLANNING_MODES:
+        raise ValueError(f"unknown planning mode {mode!r}")
+    events = build_demo_events()
+    resources = build_resources()
+    planner_schedule = solve_planning_phase(events, resources)
+    fc = forecast(events, planner_schedule)
+    if mode == "predicted":
+        events = [with_predicted_durations(e, fc.predicted) for e in events]
+    ops = EventOperations(events, resources, tolerance_minutes=10,
                           tolerance_by_activity=TOLERANCE_BY_ACTIVITY, audit_path=audit_path)
     ops.plan()
+    ops.mode = mode
+    ops.forecast = fc
+    ops.planner_end = max(s.end_minutes for s in planner_schedule.activities.values())
+    if mode == "predicted":
+        changed = sum(1 for d in fc.durations if d["predicted"] is not None and d["predicted"] != d["planner"])
+        ops.audit.record(ops.now, "schedule.planned", "system",
+                         f"Planned with ML-predicted durations: {changed} activities re-estimated by the "
+                         f"duration model; day ends {_hhmm(max(s.end_minutes for s in ops.schedule.activities.values()))} "
+                         f"vs {_hhmm(ops.planner_end)} with planner estimates")
     return ops
+
+
+def _hhmm(m: int) -> str:
+    return f"{m // 60:02d}:{m % 60:02d}"
 
 
 def play_on_time(ops: EventOperations, until: int, silent: set[str] = frozenset(),

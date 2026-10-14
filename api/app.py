@@ -18,7 +18,8 @@ from fastapi.responses import FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from api.scenario import new_operations, play_on_time, scenario_kwargs
+from api.forecast import model_card
+from api.scenario import PLANNING_MODES, new_operations, play_on_time, scenario_kwargs
 from scheduling_engine.conflict_detection import verify_schedule
 from scheduling_engine.integration import to_jsonable
 from scheduling_engine.operations import EventOperations, OperationsError
@@ -31,7 +32,8 @@ AUDIT_PATH = ROOT / "logs" / "audit.jsonl"
 app = FastAPI(title="Component 3 — Event Planning and Dynamic Resource Optimization",
               description="Live scheduling, digital twin, disruption simulation and re-optimisation "
                           "(J26-IT-383, Component 3).")
-ops: EventOperations = new_operations(AUDIT_PATH)
+MODE = "planner"
+ops: EventOperations = new_operations(AUDIT_PATH, MODE)
 
 
 class CheckInRequest(BaseModel):
@@ -53,6 +55,10 @@ class DecisionRequest(BaseModel):
 class LockRequest(BaseModel):
     start_minutes: int | None = Field(None, description="defaults to its current planned start")
     planner: str = "planner"
+
+
+class ModeRequest(BaseModel):
+    mode: str = Field(description='"planner" (planner estimates) or "predicted" (ML durations)')
 
 
 class PlayRequest(BaseModel):
@@ -104,6 +110,9 @@ def snapshot() -> dict:
         last_confirmed=_proposal_view(confirmed[-1]) if confirmed else None,
         conflicts=to_jsonable(verify_schedule(ops.activities, ops.resources, ops.schedule.activities)),
         shared_resources=sorted(r for r, evs in events_by_resource.items() if len(evs) > 1),
+        ml=dict(mode=ops.mode, card=model_card(), durations=ops.forecast.durations,
+                vendor_risk=ops.forecast.vendor_risk, planner_end=ops.planner_end,
+                plan_end=max(s.end_minutes for s in ops.schedule.activities.values())),
         proposals=[dict(id=p.id, status=p.status, created_at_minute=p.created_at_minute,
                         decided_by=p.decided_by) for p in ops.proposals],
         notifications=to_jsonable(ops.notifications.outbox[-50:]),
@@ -129,7 +138,18 @@ def get_state() -> dict:
 @app.post("/api/reset")
 def reset() -> dict:
     global ops
-    ops = new_operations(AUDIT_PATH)
+    ops = new_operations(AUDIT_PATH, MODE)
+    return snapshot()
+
+
+@app.post("/api/plan/mode")
+def set_mode(req: ModeRequest) -> dict:
+    """Re-plan the day with planner estimates or ML-predicted durations."""
+    global ops, MODE
+    if req.mode not in PLANNING_MODES:
+        raise HTTPException(status_code=422, detail=f"mode must be one of {PLANNING_MODES}")
+    MODE = req.mode
+    ops = new_operations(AUDIT_PATH, MODE)
     return snapshot()
 
 
@@ -179,7 +199,7 @@ def demo_play(req: PlayRequest) -> dict:
 def demo_scenario(name: str) -> dict:
     """Reset, then play one of the scripted demo scenarios (see api/scenario.py)."""
     global ops
-    ops = new_operations(AUDIT_PATH)
+    ops = new_operations(AUDIT_PATH, MODE)
     try:
         kwargs = scenario_kwargs(name, ops)
     except ValueError as e:
