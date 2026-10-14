@@ -719,6 +719,49 @@ To check in from a real phone, put the laptop and phone on the same
 network (e.g. the phone's hotspot) and allow Python through the Windows
 firewall for private networks when prompted.
 
+## Scalability (NFR-04)
+
+`scheduling_engine/scale_generation.py`, `examples/scalability_test.py`,
+results in `results/scalability/`.
+
+NFR-04 requires at least five concurrent events, each with up to 30
+activities and 40 resources, within NFR-01's 5-second limit for detection
+plus re-optimisation. Each generated event has 30 of its own resources and
+competes with every other event for a shared pool of 10 (AV crews,
+florists, photographers, bands). Events overlap on one day. Each disruption
+is a random activity overrunning by 15–60 minutes with no completion
+check-in. It goes through the live `EventOperations` service, and the
+timed clock tick includes detection, the do-nothing simulation and the
+CP-SAT re-optimisation. Every revised plan is verified independently.
+
+| Concurrent events | Activities | Resources | Plan (s) | Disruptions | Median (s) | Worst (s) | Within 5 s | Conflicts |
+|---|---|---|---|---|---|---|---|---|
+| 1 | 30 | 40 | 0.09 | 20 | 0.015 | 0.047 | 100% | 0 |
+| 3 | 90 | 100 | 0.24 | 20 | 0.058 | 0.093 | 100% | 0 |
+| **5 (NFR-04)** | **150** | **160** | **0.43** | **60** | **0.101** | **0.215** | **100%** | **0** |
+| 6 | 180 | 190 | 0.52 | 20 | 0.120 | 0.292 | 100% | 0 |
+| 8 | 240 | 250 | 1.25 | 20 | 0.148 | 3.510 | 100% | 0 |
+
+**Verdict: PASS.** At the NFR-04 size, all 60 disruptions were fully
+re-planned (no locks), the worst in 0.215 s, about 23× under the limit,
+with 0 conflicts. With one planner-locked activity per event, 52 of 60
+disruptions had no valid re-plan that keeps the lock, because the plans
+are packed with no slack. CP-SAT proved this in under 0.09 s and named the
+lock rather than returning a broken plan. Latency rises sharply only at 8
+events (worst 3.5 s), which marks the practical ceiling of this
+configuration.
+
+The test also exposed a bug in the demo replay helper (`play_on_time`).
+It checked in the next job of a crew that was still busy on an overrunning
+activity, telling the engine one crew was in two places at once, and the
+engine correctly answered "infeasible". The helper now holds back any
+activity waiting for a busy resource, as well as its successors. A
+regression test covers it.
+
+```
+python -m examples.scalability_test     # ~1-2 min; --quick for a smoke run
+```
+
 ## Running it
 
 ```

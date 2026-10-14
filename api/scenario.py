@@ -82,8 +82,9 @@ def play_on_time(ops: EventOperations, until: int, silent: set[str] = frozenset(
     and `late_start` (confirms N minutes late: the known-delay case).
     Check-ins are replayed in time order, as they'd arrive on the day."""
     late_start = late_start or {}
-    # Anything downstream of an unconfirmed activity can't have started.
-    blocked = _descendants(ops, set(silent) | set(no_completion))
+    # Anything that can't have started yet: downstream of an unconfirmed
+    # activity, OR waiting for a crew/vendor that is still busy on one.
+    blocked = _blocked(ops, set(silent) | set(no_completion))
     pending: list[tuple[int, str, CheckInType]] = []
     for aid, s in ops.schedule.activities.items():
         state = ops.twin.state_of(aid).state
@@ -100,6 +101,27 @@ def play_on_time(ops: EventOperations, until: int, silent: set[str] = frozenset(
     for at, aid, kind in sorted(pending, key=lambda x: (x[0], x[2] is CheckInType.STARTED)):
         ops.check_in(aid, kind, at)
     ops.tick(until)
+
+
+def _blocked(ops: EventOperations, held: set[str]) -> set[str]:
+    """Activities that can't have started while `held` activities are
+    unconfirmed: their precedence descendants, and anything planned to use
+    the same resource after them (the resource is still busy). Repeated
+    until nothing new is added, since a blocked activity blocks its own
+    successors and resources in turn."""
+    blocked: set[str] = set()
+    frontier = set(held)
+    while frontier:
+        new = _descendants(ops, frontier)
+        for h in frontier:
+            hs = ops.schedule.activities[h]
+            for aid, s in ops.schedule.activities.items():
+                if (aid != h and s.start_minutes >= hs.start_minutes
+                        and set(s.assigned_resource_ids) & set(hs.assigned_resource_ids)):
+                    new.add(aid)
+        frontier = new - blocked - held
+        blocked |= new
+    return blocked - held
 
 
 def _descendants(ops: EventOperations, roots: set[str]) -> set[str]:

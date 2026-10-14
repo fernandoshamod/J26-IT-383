@@ -1,0 +1,2576 @@
+{
+  "limit_seconds": 5.0,
+  "nfr04_verdict": "PASS",
+  "rows": [
+    {
+      "events": 1,
+      "locks": false,
+      "activities": 30,
+      "resources": 40,
+      "replans": 20,
+      "replan_latency_max": 0.04660399991553277,
+      "plan_seconds_max": 0.08941319992300123,
+      "plan_conflicts": 0,
+      "trials": 20,
+      "latency_median": 0.014897350047249347,
+      "latency_p95": 0.032176499953493476,
+      "latency_max": 0.04660399991553277,
+      "within_limit_pct": 100.0,
+      "proposals": 20,
+      "absorbed": 0,
+      "infeasible": 0,
+      "revised_conflicts": 0
+    },
+    {
+      "events": 2,
+      "locks": false,
+      "activities": 60,
+      "resources": 70,
+      "replans": 20,
+      "replan_latency_max": 0.06284589995630085,
+      "plan_seconds_max": 0.1428157000336796,
+      "plan_conflicts": 0,
+      "trials": 20,
+      "latency_median": 0.04606345004867762,
+      "latency_p95": 0.06261570006608963,
+      "latency_max": 0.06284589995630085,
+      "within_limit_pct": 100.0,
+      "proposals": 20,
+      "absorbed": 0,
+      "infeasible": 0,
+      "revised_conflicts": 0
+    },
+    {
+      "events": 3,
+      "locks": false,
+      "activities": 90,
+      "resources": 100,
+      "replans": 20,
+      "replan_latency_max": 0.09292160009499639,
+      "plan_seconds_max": 0.23921389994211495,
+      "plan_conflicts": 0,
+      "trials": 20,
+      "latency_median": 0.05793270003050566,
+      "latency_p95": 0.08904569991864264,
+      "latency_max": 0.09292160009499639,
+      "within_limit_pct": 100.0,
+      "proposals": 20,
+      "absorbed": 0,
+      "infeasible": 0,
+      "revised_conflicts": 0
+    },
+    {
+      "events": 4,
+      "locks": false,
+      "activities": 120,
+      "resources": 130,
+      "replans": 20,
+      "replan_latency_max": 0.15674590005073696,
+      "plan_seconds_max": 0.3523610000265762,
+      "plan_conflicts": 0,
+      "trials": 20,
+      "latency_median": 0.07169155002338812,
+      "latency_p95": 0.14433369995094836,
+      "latency_max": 0.15674590005073696,
+      "within_limit_pct": 100.0,
+      "proposals": 20,
+      "absorbed": 0,
+      "infeasible": 0,
+      "revised_conflicts": 0
+    },
+    {
+      "events": 5,
+      "locks": false,
+      "activities": 150,
+      "resources": 160,
+      "replans": 60,
+      "replan_latency_max": 0.21496290003415197,
+      "plan_seconds_max": 0.428772300016135,
+      "plan_conflicts": 0,
+      "trials": 60,
+      "latency_median": 0.1011616499745287,
+      "latency_p95": 0.17306890001054853,
+      "latency_max": 0.21496290003415197,
+      "within_limit_pct": 100.0,
+      "proposals": 60,
+      "absorbed": 0,
+      "infeasible": 0,
+      "revised_conflicts": 0
+    },
+    {
+      "events": 6,
+      "locks": false,
+      "activities": 180,
+      "resources": 190,
+      "replans": 20,
+      "replan_latency_max": 0.2924689999781549,
+      "plan_seconds_max": 0.5199394000228494,
+      "plan_conflicts": 0,
+      "trials": 20,
+      "latency_median": 0.11988735001068562,
+      "latency_p95": 0.28334810002706945,
+      "latency_max": 0.2924689999781549,
+      "within_limit_pct": 100.0,
+      "proposals": 20,
+      "absorbed": 0,
+      "infeasible": 0,
+      "revised_conflicts": 0
+    },
+    {
+      "events": 8,
+      "locks": false,
+      "activities": 240,
+      "resources": 250,
+      "replans": 20,
+      "replan_latency_max": 3.509647800005041,
+      "plan_seconds_max": 1.2535814000293612,
+      "plan_conflicts": 0,
+      "trials": 20,
+      "latency_median": 0.1484364999923855,
+      "latency_p95": 0.9335131000261754,
+      "latency_max": 3.509647800005041,
+      "within_limit_pct": 100.0,
+      "proposals": 20,
+      "absorbed": 0,
+      "infeasible": 0,
+      "revised_conflicts": 0
+    },
+    {
+      "events": 5,
+      "locks": true,
+      "activities": 150,
+      "resources": 160,
+      "replans": 8,
+      "replan_latency_max": 0.08945410000160336,
+      "plan_seconds_max": 0.35513739997986704,
+      "plan_conflicts": 0,
+      "trials": 60,
+      "latency_median": 0.018733750039245933,
+      "latency_p95": 0.04523279995191842,
+      "latency_max": 0.08945410000160336,
+      "within_limit_pct": 100.0,
+      "proposals": 60,
+      "absorbed": 0,
+      "infeasible": 52,
+      "revised_conflicts": 0
+    }
+  ],
+  "trials": {
+    "1_events_locks_off": [
+      {
+        "n_activities": 30,
+        "activity": "ev1-a19",
+        "overrun": 57,
+        "latency_seconds": 0.02967219997663051,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.027946999995037913
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a03",
+        "overrun": 40,
+        "latency_seconds": 0.0305491000181064,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.029511599917896092
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a16",
+        "overrun": 19,
+        "latency_seconds": 0.013623900013044477,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.012800699914805591
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a20",
+        "overrun": 25,
+        "latency_seconds": 0.013651299988850951,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.012830699910409749
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a25",
+        "overrun": 42,
+        "latency_seconds": 0.014618300017900765,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.013892600079998374
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a04",
+        "overrun": 29,
+        "latency_seconds": 0.031754600000567734,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.03071219997946173
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a09",
+        "overrun": 38,
+        "latency_seconds": 0.02995830005966127,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.02884389995597303
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a21",
+        "overrun": 27,
+        "latency_seconds": 0.013745300006121397,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.012578399968333542
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a16",
+        "overrun": 29,
+        "latency_seconds": 0.01447359996382147,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.01366479997523129
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a20",
+        "overrun": 26,
+        "latency_seconds": 0.014191700029186904,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.013308400055393577
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a01",
+        "overrun": 27,
+        "latency_seconds": 0.031677499995566905,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.030512699973769486
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a02",
+        "overrun": 50,
+        "latency_seconds": 0.04660399991553277,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.04534559999592602
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a17",
+        "overrun": 25,
+        "latency_seconds": 0.028735100058838725,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.027771399938501418
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a19",
+        "overrun": 38,
+        "latency_seconds": 0.014824000070802867,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.013421899988316
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a26",
+        "overrun": 56,
+        "latency_seconds": 0.014181299949996173,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.01338469993788749
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a17",
+        "overrun": 51,
+        "latency_seconds": 0.014970700023695827,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.013934300048276782
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a11",
+        "overrun": 53,
+        "latency_seconds": 0.0312308999709785,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.03010330011602491
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a01",
+        "overrun": 16,
+        "latency_seconds": 0.032176499953493476,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.029909800039604306
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a22",
+        "overrun": 60,
+        "latency_seconds": 0.013081700075417757,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.012048700009472668
+      },
+      {
+        "n_activities": 30,
+        "activity": "ev1-a27",
+        "overrun": 27,
+        "latency_seconds": 0.014793300069868565,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.013910200097598135
+      }
+    ],
+    "2_events_locks_off": [
+      {
+        "n_activities": 60,
+        "activity": "ev2-a10",
+        "overrun": 57,
+        "latency_seconds": 0.04234120005276054,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.040692799957469106
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev1-a07",
+        "overrun": 40,
+        "latency_seconds": 0.04613090003840625,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.0437961999559775
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev2-a03",
+        "overrun": 19,
+        "latency_seconds": 0.061219400027766824,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.0594443998998031
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev2-a13",
+        "overrun": 25,
+        "latency_seconds": 0.0621538000414148,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.06009579997044057
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev2-a18",
+        "overrun": 42,
+        "latency_seconds": 0.045521500054746866,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.04382109991274774
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev1-a10",
+        "overrun": 29,
+        "latency_seconds": 0.03922130004502833,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.03497269994113594
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev1-a21",
+        "overrun": 38,
+        "latency_seconds": 0.011416199966333807,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.009983800002373755
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev2-a15",
+        "overrun": 27,
+        "latency_seconds": 0.04705149994697422,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.045054999995045364
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev2-a05",
+        "overrun": 29,
+        "latency_seconds": 0.045996000058948994,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.04434560006484389
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev2-a13",
+        "overrun": 26,
+        "latency_seconds": 0.06261570006608963,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.060143699985928833
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev1-a05",
+        "overrun": 27,
+        "latency_seconds": 0.059701799997128546,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.05777950002811849
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev1-a09",
+        "overrun": 50,
+        "latency_seconds": 0.06072309997398406,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.057527099968865514
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev2-a05",
+        "overrun": 25,
+        "latency_seconds": 0.05949999997392297,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.05764719995204359
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev2-a09",
+        "overrun": 38,
+        "latency_seconds": 0.042404500069096684,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.04024909995496273
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev2-a24",
+        "overrun": 56,
+        "latency_seconds": 0.02809859998524189,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.02624959999229759
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev2-a07",
+        "overrun": 51,
+        "latency_seconds": 0.047008999972604215,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.04457869997713715
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev1-a17",
+        "overrun": 53,
+        "latency_seconds": 0.028782399953342974,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.026990200043655932
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev1-a05",
+        "overrun": 16,
+        "latency_seconds": 0.06284589995630085,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.06099499994888902
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev2-a16",
+        "overrun": 60,
+        "latency_seconds": 0.027721700025722384,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.02467200008686632
+      },
+      {
+        "n_activities": 60,
+        "activity": "ev1-a17",
+        "overrun": 47,
+        "latency_seconds": 0.02844070002902299,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.026579499943181872
+      }
+    ],
+    "3_events_locks_off": [
+      {
+        "n_activities": 90,
+        "activity": "ev3-a10",
+        "overrun": 42,
+        "latency_seconds": 0.08904569991864264,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.08563029998913407
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev3-a00",
+        "overrun": 21,
+        "latency_seconds": 0.09292160009499639,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.09024910000152886
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev2-a08",
+        "overrun": 37,
+        "latency_seconds": 0.07392349990550429,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.07000350009184331
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev1-a04",
+        "overrun": 44,
+        "latency_seconds": 0.07823889993596822,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.07477159996051341
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev1-a15",
+        "overrun": 49,
+        "latency_seconds": 0.040129299974069,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.037060000002384186
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev2-a10",
+        "overrun": 23,
+        "latency_seconds": 0.061028200085274875,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.05838990001939237
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev1-a20",
+        "overrun": 57,
+        "latency_seconds": 0.021672099945135415,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.019384099985472858
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev1-a21",
+        "overrun": 38,
+        "latency_seconds": 0.00859630003105849,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.006584399961866438
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev3-a01",
+        "overrun": 46,
+        "latency_seconds": 0.08166870009154081,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.07755519996862859
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev1-a17",
+        "overrun": 58,
+        "latency_seconds": 0.020666200085543096,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.018140199943445623
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev3-a13",
+        "overrun": 18,
+        "latency_seconds": 0.056678200024180114,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.05375820002518594
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev3-a10",
+        "overrun": 27,
+        "latency_seconds": 0.0591872000368312,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.056316199945285916
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev3-a19",
+        "overrun": 20,
+        "latency_seconds": 0.026027599931694567,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.023632199969142675
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev2-a22",
+        "overrun": 39,
+        "latency_seconds": 0.026409100042656064,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.02302560000680387
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev3-a13",
+        "overrun": 25,
+        "latency_seconds": 0.04422660009004176,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.04190599999856204
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev2-a09",
+        "overrun": 38,
+        "latency_seconds": 0.0747622000053525,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.07170170010067523
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev2-a24",
+        "overrun": 56,
+        "latency_seconds": 0.04153980000410229,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.03888220002409071
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev3-a11",
+        "overrun": 40,
+        "latency_seconds": 0.06056749995332211,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.057199800037778914
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev3-a11",
+        "overrun": 51,
+        "latency_seconds": 0.05925719998776913,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.055898699909448624
+      },
+      {
+        "n_activities": 90,
+        "activity": "ev1-a17",
+        "overrun": 53,
+        "latency_seconds": 0.023857699939981103,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.021090000052936375
+      }
+    ],
+    "4_events_locks_off": [
+      {
+        "n_activities": 120,
+        "activity": "ev3-a18",
+        "overrun": 57,
+        "latency_seconds": 0.0523644998902455,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.04814970004372299
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev1-a17",
+        "overrun": 40,
+        "latency_seconds": 0.02050840004812926,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.0174237999599427
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev3-a05",
+        "overrun": 19,
+        "latency_seconds": 0.10985610005445778,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.10534679994452745
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev3-a24",
+        "overrun": 25,
+        "latency_seconds": 0.03385310003068298,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.030742899980396032
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev4-a10",
+        "overrun": 42,
+        "latency_seconds": 0.10825120005756617,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.10060129989869893
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev1-a23",
+        "overrun": 29,
+        "latency_seconds": 0.019011100055649877,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.015932600013911724
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev2-a14",
+        "overrun": 38,
+        "latency_seconds": 0.038861499982886016,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.03601139993406832
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev4-a01",
+        "overrun": 27,
+        "latency_seconds": 0.14433369995094836,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.1398507000412792
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev3-a06",
+        "overrun": 29,
+        "latency_seconds": 0.10432649997528642,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.10015770001336932
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev3-a23",
+        "overrun": 26,
+        "latency_seconds": 0.03358090005349368,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.030711099971085787
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev1-a12",
+        "overrun": 27,
+        "latency_seconds": 0.0865757999708876,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.08250969997607172
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev1-a16",
+        "overrun": 50,
+        "latency_seconds": 0.07276470004580915,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.06863550003618002
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev3-a10",
+        "overrun": 25,
+        "latency_seconds": 0.07061840000096709,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.06695599993690848
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev3-a15",
+        "overrun": 38,
+        "latency_seconds": 0.05474639998283237,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.05063860001973808
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev4-a10",
+        "overrun": 56,
+        "latency_seconds": 0.10795730003155768,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.10349999996833503
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev3-a14",
+        "overrun": 51,
+        "latency_seconds": 0.035488000023178756,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.03096250002272427
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev2-a07",
+        "overrun": 53,
+        "latency_seconds": 0.10865910002030432,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.10370069998316467
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev1-a11",
+        "overrun": 16,
+        "latency_seconds": 0.08910430001560599,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.08520520001184195
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev4-a01",
+        "overrun": 60,
+        "latency_seconds": 0.15674590005073696,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.15128260001074523
+      },
+      {
+        "n_activities": 120,
+        "activity": "ev4-a22",
+        "overrun": 54,
+        "latency_seconds": 0.03147769998759031,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.02776809991337359
+      }
+    ],
+    "5_events_locks_off": [
+      {
+        "n_activities": 150,
+        "activity": "ev5-a22",
+        "overrun": 42,
+        "latency_seconds": 0.1161560999462381,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.11135429993737489
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a04",
+        "overrun": 21,
+        "latency_seconds": 0.16978009999729693,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.16264070000033826
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a12",
+        "overrun": 37,
+        "latency_seconds": 0.09810820000711828,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.09277220000512898
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a10",
+        "overrun": 44,
+        "latency_seconds": 0.04854160000104457,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.043842999963089824
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a02",
+        "overrun": 49,
+        "latency_seconds": 0.11974729993380606,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.11380980000831187
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a19",
+        "overrun": 23,
+        "latency_seconds": 0.04567939997650683,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.040277799940668046
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a11",
+        "overrun": 57,
+        "latency_seconds": 0.08510440005920827,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.07903769996482879
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a14",
+        "overrun": 38,
+        "latency_seconds": 0.06424929993227124,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.059111100039444864
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a05",
+        "overrun": 46,
+        "latency_seconds": 0.18320879992097616,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.17625899997074157
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a08",
+        "overrun": 58,
+        "latency_seconds": 0.1309368999209255,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.12384530005510896
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a04",
+        "overrun": 38,
+        "latency_seconds": 0.21496290003415197,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.2069274999666959
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a13",
+        "overrun": 44,
+        "latency_seconds": 0.09884039999451488,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.09279290004633367
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a05",
+        "overrun": 17,
+        "latency_seconds": 0.10149149992503226,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.09657089994288981
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a05",
+        "overrun": 46,
+        "latency_seconds": 0.17306890001054853,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.16604140005074441
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a26",
+        "overrun": 44,
+        "latency_seconds": 0.020906199933961034,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.016096899984404445
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a12",
+        "overrun": 60,
+        "latency_seconds": 0.14115030004177243,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.13457709993235767
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a16",
+        "overrun": 59,
+        "latency_seconds": 0.046575200045481324,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.04175510001368821
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a08",
+        "overrun": 16,
+        "latency_seconds": 0.1386296000564471,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.13301759993191808
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a20",
+        "overrun": 49,
+        "latency_seconds": 0.07865600008517504,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.07327409996651113
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a24",
+        "overrun": 60,
+        "latency_seconds": 0.03275999997276813,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.02864699997007847
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a22",
+        "overrun": 18,
+        "latency_seconds": 0.10083180002402514,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.09681170003022999
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a15",
+        "overrun": 27,
+        "latency_seconds": 0.1207578000612557,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.11376790003851056
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a16",
+        "overrun": 50,
+        "latency_seconds": 0.07992950000334531,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.07498429995030165
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a10",
+        "overrun": 25,
+        "latency_seconds": 0.05520269996486604,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.05145759996958077
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a15",
+        "overrun": 38,
+        "latency_seconds": 0.09248789993580431,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.08643589995335788
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a10",
+        "overrun": 56,
+        "latency_seconds": 0.1207564000505954,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.1145435000071302
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a18",
+        "overrun": 40,
+        "latency_seconds": 0.09951499989256263,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.09348519996274263
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a18",
+        "overrun": 51,
+        "latency_seconds": 0.10533390007913113,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.09931640001013875
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a07",
+        "overrun": 53,
+        "latency_seconds": 0.11649810010567307,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.11011199990753084
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a11",
+        "overrun": 16,
+        "latency_seconds": 0.09938030003104359,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.09465449990238994
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a10",
+        "overrun": 60,
+        "latency_seconds": 0.14118289994075894,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.13303839997388422
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a12",
+        "overrun": 46,
+        "latency_seconds": 0.11360749998129904,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.10793239995837212
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a06",
+        "overrun": 59,
+        "latency_seconds": 0.21274019998963922,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.2035030999686569
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a22",
+        "overrun": 54,
+        "latency_seconds": 0.02950329997111112,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.02482869999948889
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a10",
+        "overrun": 27,
+        "latency_seconds": 0.12282609997782856,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.11651610000990331
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a02",
+        "overrun": 54,
+        "latency_seconds": 0.13765220006462187,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.13085010007489473
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a27",
+        "overrun": 16,
+        "latency_seconds": 0.02662470005452633,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.022723499918356538
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a10",
+        "overrun": 21,
+        "latency_seconds": 0.1405875999480486,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.1353754000738263
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a20",
+        "overrun": 41,
+        "latency_seconds": 0.04597019997891039,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.04207040008623153
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a27",
+        "overrun": 23,
+        "latency_seconds": 0.08103919995483011,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.03125869994983077
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a00",
+        "overrun": 53,
+        "latency_seconds": 0.1690744999796152,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.16240389994345605
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a06",
+        "overrun": 29,
+        "latency_seconds": 0.11462109989952296,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.1092501999810338
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a20",
+        "overrun": 23,
+        "latency_seconds": 0.029437100049108267,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.02558760007377714
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a15",
+        "overrun": 45,
+        "latency_seconds": 0.08918100001756102,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.08344429999124259
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a18",
+        "overrun": 55,
+        "latency_seconds": 0.03283099993132055,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.02825989993289113
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a09",
+        "overrun": 54,
+        "latency_seconds": 0.13831680000294,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.13076350011397153
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a13",
+        "overrun": 60,
+        "latency_seconds": 0.04912600002717227,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.04265810002107173
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a09",
+        "overrun": 47,
+        "latency_seconds": 0.1552342000650242,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.14883129997178912
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a08",
+        "overrun": 30,
+        "latency_seconds": 0.11435119993984699,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.10988280002493411
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a06",
+        "overrun": 17,
+        "latency_seconds": 0.11946069996338338,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.11497140000574291
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a06",
+        "overrun": 16,
+        "latency_seconds": 0.1053237000014633,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.10012199997436255
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a07",
+        "overrun": 50,
+        "latency_seconds": 0.11677840002812445,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.11051270004827529
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a24",
+        "overrun": 23,
+        "latency_seconds": 0.027496700058691204,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.023885799921117723
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a11",
+        "overrun": 52,
+        "latency_seconds": 0.1222935999976471,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.11627340002451092
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a24",
+        "overrun": 34,
+        "latency_seconds": 0.027940599946305156,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.023350900039076805
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a15",
+        "overrun": 56,
+        "latency_seconds": 0.09018629998899996,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.08405750000383705
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a15",
+        "overrun": 56,
+        "latency_seconds": 0.06710779992863536,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.0612039000261575
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a15",
+        "overrun": 20,
+        "latency_seconds": 0.08525390003342181,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.0801644999301061
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a28",
+        "overrun": 48,
+        "latency_seconds": 0.013944000005722046,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.010551700019277632
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a09",
+        "overrun": 56,
+        "latency_seconds": 0.1403438999550417,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.1343643000582233
+      }
+    ],
+    "6_events_locks_off": [
+      {
+        "n_activities": 180,
+        "activity": "ev5-a22",
+        "overrun": 42,
+        "latency_seconds": 0.14568239997606725,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.13884439994581044
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev5-a04",
+        "overrun": 21,
+        "latency_seconds": 0.28334810002706945,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.2745567000238225
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev3-a12",
+        "overrun": 37,
+        "latency_seconds": 0.1260372999822721,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.11861129989847541
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev1-a10",
+        "overrun": 44,
+        "latency_seconds": 0.060001500067301095,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.052833199966698885
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev2-a02",
+        "overrun": 49,
+        "latency_seconds": 0.1521336999721825,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.14496999990660697
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev6-a26",
+        "overrun": 42,
+        "latency_seconds": 0.02128919993992895,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.01638700009789318
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev1-a23",
+        "overrun": 29,
+        "latency_seconds": 0.02653430006466806,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.022565199993550777
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev5-a04",
+        "overrun": 30,
+        "latency_seconds": 0.2554913000203669,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.2458052000729367
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev3-a06",
+        "overrun": 58,
+        "latency_seconds": 0.2065577000612393,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.1975989000638947
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev4-a01",
+        "overrun": 27,
+        "latency_seconds": 0.2924689999781549,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.28413739998359233
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev1-a22",
+        "overrun": 27,
+        "latency_seconds": 0.037665799958631396,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.03254889999516308
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev2-a04",
+        "overrun": 50,
+        "latency_seconds": 0.1561585000017658,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.1476014000363648
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev5-a14",
+        "overrun": 25,
+        "latency_seconds": 0.13007489999290556,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.12304930004756898
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev5-a25",
+        "overrun": 38,
+        "latency_seconds": 0.11373740003909916,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.10626739996951073
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev5-a23",
+        "overrun": 51,
+        "latency_seconds": 0.13027589989360422,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.12286709994077682
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev3-a13",
+        "overrun": 53,
+        "latency_seconds": 0.07779250002931803,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.06737710000015795
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev1-a17",
+        "overrun": 16,
+        "latency_seconds": 0.0443013000767678,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.03903620003256947
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev6-a20",
+        "overrun": 60,
+        "latency_seconds": 0.04567199992015958,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.04060469998512417
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev3-a10",
+        "overrun": 47,
+        "latency_seconds": 0.09906989999581128,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.0919983999338001
+      },
+      {
+        "n_activities": 180,
+        "activity": "ev2-a26",
+        "overrun": 16,
+        "latency_seconds": 0.0430761999450624,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.038485299912281334
+      }
+    ],
+    "8_events_locks_off": [
+      {
+        "n_activities": 240,
+        "activity": "ev6-a06",
+        "overrun": 57,
+        "latency_seconds": 0.9335131000261754,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.92106690001674
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev2-a08",
+        "overrun": 40,
+        "latency_seconds": 0.48262060002889484,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.46686149993911386
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev5-a11",
+        "overrun": 19,
+        "latency_seconds": 0.3500447999686003,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.3381641000742093
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev6-a17",
+        "overrun": 25,
+        "latency_seconds": 0.07206959999166429,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.06596190005075186
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev7-a10",
+        "overrun": 42,
+        "latency_seconds": 0.20423979999031872,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.19421370001509786
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev2-a17",
+        "overrun": 29,
+        "latency_seconds": 0.16636939998716116,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.15600740001536906
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev4-a00",
+        "overrun": 38,
+        "latency_seconds": 3.509647800005041,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 3.4913353000301868
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev6-a26",
+        "overrun": 27,
+        "latency_seconds": 0.03595569997560233,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.0311018000356853
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev8-a26",
+        "overrun": 38,
+        "latency_seconds": 0.026612899964675307,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.02174260001629591
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev3-a23",
+        "overrun": 44,
+        "latency_seconds": 0.06879069993738085,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.06261540006380528
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev1-a22",
+        "overrun": 27,
+        "latency_seconds": 0.03806060005445033,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.03180280001834035
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev2-a04",
+        "overrun": 50,
+        "latency_seconds": 0.24711980007123202,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.234343699994497
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev5-a14",
+        "overrun": 25,
+        "latency_seconds": 0.19053759996313602,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.18044120003469288
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev5-a25",
+        "overrun": 38,
+        "latency_seconds": 0.11516950000077486,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.10465450002811849
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev7-a12",
+        "overrun": 56,
+        "latency_seconds": 0.2692932999925688,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.25800510006956756
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev5-a23",
+        "overrun": 51,
+        "latency_seconds": 0.13050359999760985,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.12034879997372627
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev3-a13",
+        "overrun": 53,
+        "latency_seconds": 0.082240300020203,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.07388330006506294
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev1-a17",
+        "overrun": 16,
+        "latency_seconds": 0.0650724999140948,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.05833220004569739
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev6-a20",
+        "overrun": 60,
+        "latency_seconds": 0.04471279995050281,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.03866389999166131
+      },
+      {
+        "n_activities": 240,
+        "activity": "ev8-a12",
+        "overrun": 54,
+        "latency_seconds": 0.17385010002180934,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.16266510006971657
+      }
+    ],
+    "5_events_locks_on": [
+      {
+        "n_activities": 150,
+        "activity": "ev5-a24",
+        "overrun": 42,
+        "latency_seconds": 0.015359899960458279,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.010501999990083277
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a07",
+        "overrun": 21,
+        "latency_seconds": 0.02527019998524338,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.020158299943432212
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a15",
+        "overrun": 37,
+        "latency_seconds": 0.01457150001078844,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.009518999955616891
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a10",
+        "overrun": 44,
+        "latency_seconds": 0.011803400004282594,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.007499999948777258
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a03",
+        "overrun": 49,
+        "latency_seconds": 0.025813600048422813,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.019782200106419623
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a22",
+        "overrun": 23,
+        "latency_seconds": 0.01128400000743568,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.005863300058990717
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a13",
+        "overrun": 57,
+        "latency_seconds": 0.015610700007528067,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.010605699964798987
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a15",
+        "overrun": 38,
+        "latency_seconds": 0.013272800017148256,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.008574799983762205
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a08",
+        "overrun": 46,
+        "latency_seconds": 0.020956600084900856,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.01563389995135367
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a09",
+        "overrun": 58,
+        "latency_seconds": 0.017471299972385168,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.012097800034098327
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a07",
+        "overrun": 38,
+        "latency_seconds": 0.026973400032147765,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.021398399956524372
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a14",
+        "overrun": 44,
+        "latency_seconds": 0.012474599992856383,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.007895799935795367
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a07",
+        "overrun": 17,
+        "latency_seconds": 0.02047890005633235,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.015202500042505562
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a08",
+        "overrun": 46,
+        "latency_seconds": 0.02087000000756234,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.015081900055520236
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a00",
+        "overrun": 44,
+        "latency_seconds": 0.027482799952849746,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.02087290002964437
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a15",
+        "overrun": 60,
+        "latency_seconds": 0.014932699967175722,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.00945989997126162
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a19",
+        "overrun": 59,
+        "latency_seconds": 0.010029299999587238,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.005856700008735061
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a09",
+        "overrun": 16,
+        "latency_seconds": 0.017119399970397353,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.013193999999202788
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a22",
+        "overrun": 49,
+        "latency_seconds": 0.021562600042670965,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.016601799987256527
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a00",
+        "overrun": 60,
+        "latency_seconds": 0.0309463000157848,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.022983200033195317
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a24",
+        "overrun": 18,
+        "latency_seconds": 0.016467000008560717,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.01186179998330772
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a18",
+        "overrun": 27,
+        "latency_seconds": 0.014395999955013394,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.009637399925850332
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a16",
+        "overrun": 50,
+        "latency_seconds": 0.016604700009338558,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.010167300002649426
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a10",
+        "overrun": 25,
+        "latency_seconds": 0.03871770005207509,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.034925400046631694
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a16",
+        "overrun": 38,
+        "latency_seconds": 0.04523279995191842,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.04066870000679046
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a11",
+        "overrun": 56,
+        "latency_seconds": 0.017615600023418665,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.012436599936336279
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a22",
+        "overrun": 40,
+        "latency_seconds": 0.013639900018461049,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.009325899998657405
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a22",
+        "overrun": 51,
+        "latency_seconds": 0.01889659999869764,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.009383199969306588
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a07",
+        "overrun": 53,
+        "latency_seconds": 0.01918689999729395,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.013709200080484152
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a11",
+        "overrun": 16,
+        "latency_seconds": 0.01801770005840808,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.012825699988752604
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a14",
+        "overrun": 60,
+        "latency_seconds": 0.020316700101830065,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.013859300059266388
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a15",
+        "overrun": 46,
+        "latency_seconds": 0.02211000001989305,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.015885300002992153
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a09",
+        "overrun": 59,
+        "latency_seconds": 0.021691499976441264,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.015607599983923137
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a24",
+        "overrun": 54,
+        "latency_seconds": 0.009167700074613094,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.004941500024870038
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a14",
+        "overrun": 27,
+        "latency_seconds": 0.018426899914629757,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.013441699906252325
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a03",
+        "overrun": 54,
+        "latency_seconds": 0.025129699963144958,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.019233700004406273
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a27",
+        "overrun": 16,
+        "latency_seconds": 0.0073630999540910125,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.0037374000530689955
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a11",
+        "overrun": 21,
+        "latency_seconds": 0.01745179994031787,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.01259049994405359
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a22",
+        "overrun": 41,
+        "latency_seconds": 0.006298799999058247,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.002633000025525689
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a04",
+        "overrun": 23,
+        "latency_seconds": 0.028053099988028407,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.021325399982742965
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a03",
+        "overrun": 53,
+        "latency_seconds": 0.025906599941663444,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.019494300009682775
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a09",
+        "overrun": 29,
+        "latency_seconds": 0.07459400000516325,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.06917529995553195
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a23",
+        "overrun": 23,
+        "latency_seconds": 0.01916869997512549,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.014877100009471178
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a16",
+        "overrun": 45,
+        "latency_seconds": 0.017719199997372925,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.012185800005681813
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a19",
+        "overrun": 55,
+        "latency_seconds": 0.03181259997654706,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.027195499977096915
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a11",
+        "overrun": 54,
+        "latency_seconds": 0.01885370002128184,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.013571799965575337
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a13",
+        "overrun": 60,
+        "latency_seconds": 0.014396300073713064,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.009106600075028837
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a12",
+        "overrun": 47,
+        "latency_seconds": 0.022419799934141338,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.016890999977476895
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a08",
+        "overrun": 30,
+        "latency_seconds": 0.02172950003296137,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.015770699945278466
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a07",
+        "overrun": 17,
+        "latency_seconds": 0.020190299954265356,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.015311700059100986
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a09",
+        "overrun": 16,
+        "latency_seconds": 0.07327699998859316,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.0683825999731198
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a09",
+        "overrun": 50,
+        "latency_seconds": 0.02084500005003065,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.015333399991504848
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a01",
+        "overrun": 23,
+        "latency_seconds": 0.08945410000160336,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.08354299992788583
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a14",
+        "overrun": 52,
+        "latency_seconds": 0.015407599974423647,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.010530599975027144
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev1-a25",
+        "overrun": 34,
+        "latency_seconds": 0.00645240000449121,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.002976299962028861
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev3-a18",
+        "overrun": 56,
+        "latency_seconds": 0.016022700001485646,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.011119200033135712
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a21",
+        "overrun": 56,
+        "latency_seconds": 0.013673899928107858,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.009232199983671308
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev2-a16",
+        "overrun": 20,
+        "latency_seconds": 0.016894100001081824,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.011577000026591122
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev5-a27",
+        "overrun": 48,
+        "latency_seconds": 0.024064700002782047,
+        "outcome": "proposal",
+        "feasible": true,
+        "revised_conflicts": 0,
+        "reopt_seconds": 0.01946390001103282
+      },
+      {
+        "n_activities": 150,
+        "activity": "ev4-a11",
+        "overrun": 56,
+        "latency_seconds": 0.018613800057210028,
+        "outcome": "proposal",
+        "feasible": false,
+        "revised_conflicts": null,
+        "reopt_seconds": 0.012999000027775764
+      }
+    ]
+  }
+}

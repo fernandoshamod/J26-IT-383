@@ -265,3 +265,20 @@ def test_phone_endpoints(monkeypatch, tmp_path):
     body = {"activity_id": "venue_setup", "type": "started", "by": "setup-1", "client_id": "k1"}
     assert client.post("/api/checkins", json=body).status_code == 200
     assert client.post("/api/checkins", json=body).status_code == 200  # safe retry
+
+
+def test_replay_never_starts_work_for_a_crew_that_is_still_busy():
+    """Regression (found by the scalability test): replaying "everyone on
+    time" checked in the next job of a crew still busy on an overrunning
+    activity, telling the engine one crew was in two places at once."""
+    from examples.scalability_test import fork, plan_day
+    base, _, _ = plan_day(1, 5, False)
+    ops = fork(base)
+    target = "ev3-a10"
+    play_on_time(ops, ops.schedule.activities[target].end_minutes, no_completion={target})
+    busy = set(ops.schedule.activities[target].assigned_resource_ids)
+    start = ops.schedule.activities[target].start_minutes
+    for a in ops.activities:
+        s = ops.schedule.activities[a.id]
+        if a.id != target and s.start_minutes >= start and busy & set(s.assigned_resource_ids):
+            assert ops.twin.state_of(a.id).state.value == "not_started", a.id
