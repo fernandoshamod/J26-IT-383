@@ -232,3 +232,36 @@ def test_ml_planning_mode_uses_predicted_durations(monkeypatch, tmp_path):
         assert client.post("/api/plan/mode", json={"mode": "nope"}).status_code == 422
     finally:
         client.post("/api/plan/mode", json={"mode": "planner"})
+
+
+def test_retried_check_in_with_same_client_id_counts_once(ops):
+    """NFR-07: a phone that never got the reply sends again; no double count, no error."""
+    ops.check_in("venue_setup", CheckInType.STARTED, client_id="abc")
+    ops.check_in("venue_setup", CheckInType.STARTED, client_id="abc")  # retry: ignored
+    assert [e.kind for e in ops.audit.entries].count("checkin.received") == 1
+    with pytest.raises(OperationsError):  # a genuinely NEW duplicate is still refused
+        ops.check_in("venue_setup", CheckInType.STARTED, client_id="xyz")
+
+
+def test_offline_check_in_keeps_tap_time_and_is_marked(ops):
+    """The recorded time is when it was tapped, not when it arrived."""
+    start = ops.schedule.activities["venue_setup"].start_minutes
+    ops.tick(start + 30)  # signal came back 30 min later
+    ops.check_in("venue_setup", CheckInType.STARTED, at_minutes=start, by="setup-1", queued_offline=True)
+    assert ops.twin.state_of("venue_setup").actual_start_minutes == start
+    entry = [e for e in ops.audit.entries if e.kind == "checkin.received"][-1]
+    assert entry.actor == "checkin:setup-1" and "queued offline" in entry.summary
+
+
+def test_phone_endpoints(monkeypatch, tmp_path):
+    monkeypatch.setattr(api_module, "AUDIT_PATH", tmp_path / "audit.jsonl")
+    client = TestClient(api_module.app)
+    client.post("/api/reset")
+    assert client.get("/checkin").status_code == 200
+    assert any(p["id"] == "photographer-1" for p in client.get("/api/people").json())
+    mine = client.get("/api/my-tasks/photographer-1").json()
+    assert [t["id"] for t in mine["tasks"]] == ["ceremony", "photos"]  # only this person's tasks
+    assert client.get("/api/my-tasks/nobody").status_code == 404
+    body = {"activity_id": "venue_setup", "type": "started", "by": "setup-1", "client_id": "k1"}
+    assert client.post("/api/checkins", json=body).status_code == 200
+    assert client.post("/api/checkins", json=body).status_code == 200  # safe retry

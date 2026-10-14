@@ -693,9 +693,31 @@ Three one-click demo scenarios:
   check-in alone. The cascade pushes dinner, speeches, entertainment and
   strike back by 20 min.
 
+**Vendor and staff check-in page** (`api/static/checkin.html`, at
+`/checkin`; FR-08, NFR-05, NFR-07). It is phone-first:
+
+- Each person opens their own link (`/checkin?r=photographer-1`) and sees
+  only their tasks. A check-in is **one tap** on a big button ("I've
+  started" or "Done"), within NFR-05's two-interaction limit.
+- **Weak signal (NFR-07).** Each check-in is saved on the phone *first*,
+  with the time it was tapped, then sent. With no signal it waits in a
+  local queue and is sent automatically, in tap order, when signal
+  returns. The audit log marks it "queued offline, delivered at …".
+- **Safe retries.** Every check-in carries a unique `client_id`. If a send
+  arrived but the reply was lost, the retry is recognised and ignored, so
+  it is never double-counted and never errors.
+- A "Simulate no signal" switch demonstrates the queue live.
+- The queue logic is pure functions, tested in Node
+  (`node tests/js/test_checkin_queue.mjs`). It covers offline, a dropped
+  connection mid-send, ordering, server rejection, and corrupt storage.
+
 ```
-python -m uvicorn api.app:app        # dashboard: http://127.0.0.1:8000   API docs: /docs
+python -m uvicorn api.app:app --host 0.0.0.0   # dashboard http://127.0.0.1:8000 · phones: http://<laptop-ip>:8000/checkin
 ```
+
+To check in from a real phone, put the laptop and phone on the same
+network (e.g. the phone's hotspot) and allow Python through the Windows
+firewall for private networks when prompted.
 
 ## Running it
 

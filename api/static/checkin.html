@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0E1116">
+<title>Check-in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Vendor/staff check-in (FR-08). Built for event-day conditions: one hand,
+   divided attention, weak signal (NFR-05, NFR-07). Same palette as the
+   planner console. */
+:root{
+  --bg:#0E1116; --panel:#151A22; --raised:#222A34; --line:#28313D;
+  --ink:#E9EEF5; --ink-2:#AEB8C5; --ink-3:#6C7A8B;
+  --tungsten:#F2A93B; --twin:#4CC9F0; --alarm:#FF5C7A; --go:#5FD39B;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+body{min-height:100vh;padding:max(16px,env(safe-area-inset-top)) 16px 120px}
+.mono{font-family:"IBM Plex Mono",monospace}
+header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
+h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:28px;line-height:1.05;margin:0}
+.sub{color:var(--ink-3);font-size:13px;margin-top:3px}
+.clock{text-align:right}
+.clock b{font-family:"IBM Plex Mono",monospace;font-size:22px;display:block}
+.clock span{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.net{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:8px;margin-bottom:16px;font-size:13.5px;border:1px solid var(--line);background:var(--panel)}
+.net .dot{width:9px;height:9px;border-radius:50%;background:var(--go);flex:none}
+.net.off{border-color:var(--alarm);background:rgba(255,92,122,.1)}
+.net.off .dot{background:var(--alarm)}
+.task{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px}
+.task.now{border-color:var(--tungsten)}
+.task.late{border-color:var(--alarm)}
+.task.done{opacity:.55}
+.t-top{display:flex;justify-content:space-between;gap:4px 10px;align-items:baseline;flex-wrap:wrap}
+.t-name{font-size:18px;font-weight:600}
+.t-time{font-family:"IBM Plex Mono",monospace;color:var(--ink-2);font-size:14px;white-space:nowrap}
+.t-meta{color:var(--ink-3);font-size:12.5px;margin-top:4px}
+.warn{color:var(--alarm);font-size:13.5px;margin-top:8px;font-weight:500}
+.act{display:block;width:100%;margin-top:14px;min-height:60px;border:none;border-radius:10px;font:600 19px "IBM Plex Sans",sans-serif;cursor:pointer;color:#0E1116}
+.act.start{background:var(--twin)}
+.act.finish{background:var(--go)}
+.act:active{transform:scale(.98)}
+.state{margin-top:12px;font-size:14px;color:var(--ink-2)}
+.state.pending{color:var(--tungsten)}
+.who{display:block;width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:16px;margin-bottom:10px;font:500 17px "IBM Plex Sans",sans-serif;cursor:pointer}
+.who small{display:block;color:var(--ink-3);font-size:12px;margin-top:3px;text-transform:capitalize}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px max(12px,env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 35%);display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12.5px;color:var(--ink-3)}
+.foot label{display:flex;align-items:center;gap:8px;cursor:pointer}
+.foot a{color:var(--ink-3)}
+.toast{position:fixed;left:16px;right:16px;bottom:70px;background:var(--raised);border:1px solid var(--line);border-radius:10px;padding:13px 14px;font-size:14px;opacity:0;transform:translateY(8px);transition:.2s;pointer-events:none}
+.toast.on{opacity:1;transform:none}
+.empty{color:var(--ink-3);text-align:center;padding:40px 10px}
+</style>
+</head>
+<body>
+
+<div id="app"><p class="empty">Loading…</p></div>
+
+<div class="foot">
+  <label><input type="checkbox" id="simOffline"> Simulate no signal</label>
+  <a href="#" id="switchUser">Not you?</a>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------------------------------------------------------------------
+   Offline queue (NFR-07). Pure functions over a storage object so they
+   can be tested outside the browser. A check-in is saved FIRST, then
+   sent; it leaves the queue only when the server has accepted it (or
+   rejected it as invalid). Each has a client_id, so if a send arrives
+   but the reply is lost, the retry is recognised and ignored server-side.
+   --------------------------------------------------------------------- */
+// QUEUE-START
+const QUEUE_KEY = 'c3_checkin_queue';
+function readQueue(storage){ try { return JSON.parse(storage.getItem(QUEUE_KEY) || '[]'); } catch(e){ return []; } }
+function writeQueue(storage, q){ try { storage.setItem(QUEUE_KEY, JSON.stringify(q)); } catch(e){} }
+function enqueue(storage, item){ const q = readQueue(storage); q.push(item); writeQueue(storage, q); return q; }
+// Send queued items in order. `send(item)` resolves to 'ok' | 'rejected'
+// or throws on a network failure. Returns {sent, rejected, remaining}.
+async function flushQueue(storage, send, isOffline){
+  let q = readQueue(storage), sent = 0, rejected = [];
+  while(q.length){
+    if(isOffline()){ break; }
+    const item = q[0];
+    let outcome;
+    try { outcome = await send(item); }
+    catch(e){
+      // Network failure: keep everything, mark as delivered-late for the log.
+      q = q.map(x => ({...x, queued_offline: true})); writeQueue(storage, q); break;
+    }
+    q.shift(); writeQueue(storage, q);
+    if(outcome === 'ok') sent++; else rejected.push({item, reason: outcome.reason || 'rejected'});
+  }
+  return {sent, rejected, remaining: readQueue(storage).length};
+}
+// QUEUE-END
+
+/* ---------------------------------------------------------------------
+   Page
+   --------------------------------------------------------------------- */
+const $ = id => document.getElementById(id);
+const hhmm = m => String(Math.floor(m/60)).padStart(2,'0')+':'+String(((m%60)+60)%60).padStart(2,'0');
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const store = (()=>{ try { localStorage.setItem('_t','1'); localStorage.removeItem('_t'); return localStorage; }
+                    catch(e){ const m = {}; return {getItem:k=>m[k]??null, setItem:(k,v)=>{m[k]=String(v);}, removeItem:k=>{delete m[k];}}; } })();
+const params = new URLSearchParams(location.search);
+let me = params.get('r') || store.getItem('c3_me');
+let data = null;          // last /api/my-tasks response
+let lastClock = null;     // last event clock seen from the server
+let tHandle;
+
+function isOffline(){ return $('simOffline').checked || navigator.onLine === false; }
+function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('on'); clearTimeout(tHandle); tHandle=setTimeout(()=>t.classList.remove('on'), 3000); }
+function newId(){ return (crypto.randomUUID ? crypto.randomUUID() : Date.now()+'-'+Math.random().toString(16).slice(2)); }
+
+async function send(item){
+  const res = await fetch('/api/checkins', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(item)});
+  if(res.ok) return 'ok';
+  if(res.status === 409){ const d = await res.json().catch(()=>({})); return {reason: d.detail || 'not accepted'}; }
+  throw new Error('HTTP ' + res.status);   // server trouble: keep it queued
+}
+async function flush(){
+  const r = await flushQueue(store, send, isOffline);
+  if(r.sent) toast(r.sent === 1 ? 'Check-in delivered' : `${r.sent} check-ins delivered`);
+  r.rejected.forEach(x => toast('Not accepted: ' + x.reason));
+  render();
+  if(r.sent || r.rejected.length) load();
+}
+
+async function load(){
+  if(!me) return renderWho();
+  if(isOffline()){ render(); return; }
+  try{
+    const res = await fetch('/api/my-tasks/' + encodeURIComponent(me));
+    if(res.status === 404){ store.removeItem('c3_me'); me = null; return renderWho(); }
+    data = await res.json(); lastClock = data.clock.now;
+  }catch(e){ /* keep showing the last data; the banner says we're offline */ }
+  render();
+}
+
+async function renderWho(){
+  $('app').innerHTML = '<h1>Who are you?</h1><p class="sub" style="margin-bottom:16px">Pick your name once. Bookmark the next page — it is your check-in link.</p><div id="people"><p class="empty">Loading…</p></div>';
+  try{
+    const people = await (await fetch('/api/people')).json();
+    $('people').innerHTML = people.map(p=>`<button class="who" data-me="${esc(p.id)}">${esc(p.name)}<small>${esc(p.type)}</small></button>`).join('');
+  }catch(e){ $('people').innerHTML = '<p class="empty">No signal — try again when connected.</p>'; }
+}
+
+function localState(task){
+  // What the person has tapped but the server hasn't confirmed yet.
+  const mine = readQueue(store).filter(q => q.activity_id === task.id);
+  if(mine.some(q => q.type === 'completed')) return {state:'completed', pending:true};
+  if(mine.some(q => q.type === 'started')) return {state:'in_progress', pending:true};
+  return {state: task.state, pending:false};
+}
+
+function render(){
+  if(!me) return;
+  if(!data){ $('app').innerHTML = '<p class="empty">Waiting for signal to load your tasks…</p>'; return; }
+  const queued = readQueue(store).length;
+  const off = isOffline();
+  const banner = off
+    ? `<div class="net off"><span class="dot"></span><span><b>No signal.</b> ${queued ? queued + ' check-in' + (queued>1?'s':'') + ' saved on this phone — sent automatically when signal returns.' : 'Check-ins will be saved on this phone.'}</span></div>`
+    : `<div class="net"><span class="dot"></span><span>${queued ? 'Sending ' + queued + ' saved check-in' + (queued>1?'s':'') + '…' : 'Connected · schedule v' + data.clock.schedule_version}</span></div>`;
+  const tasks = data.tasks.map(t => {
+    const ls = localState(t);
+    const now = lastClock ?? data.clock.now;
+    const isNow = ls.state !== 'completed' && t.planned_start <= now + 15;
+    let cls = 'task' + (ls.state === 'completed' ? ' done' : t.overdue_minutes ? ' late' : isNow ? ' now' : '');
+    let body;
+    if(ls.state === 'not_started') body = `<button class="act start" data-ci="started" data-a="${esc(t.id)}">I've started</button>`;
+    else if(ls.state === 'in_progress') body = (ls.pending ? `<div class="state pending">Started — saved, sending…</div>` : `<div class="state">Started ${t.actual_start!=null?hhmm(t.actual_start):''}</div>`)
+                                              + `<button class="act finish" data-ci="completed" data-a="${esc(t.id)}">Done</button>`;
+    else body = ls.pending ? `<div class="state pending">Done — saved, sending…</div>` : `<div class="state">✓ Done ${t.actual_end!=null?hhmm(t.actual_end):''}</div>`;
+    const warn = t.overdue_minutes && !ls.pending
+      ? `<div class="warn">${t.state==='not_started' ? 'Planned to start ' + t.overdue_minutes + ' min ago — please tap when you start.' : 'Running ' + t.overdue_minutes + ' min past planned finish — tap Done when finished.'}</div>` : '';
+    return `<div class="${cls}"><div class="t-top"><span class="t-name">${esc(t.name)}</span>
+      <span class="t-time">${hhmm(t.planned_start)}–${hhmm(t.planned_end)}</span></div>
+      <div class="t-meta">${esc(t.event)}${t.fixed?' · fixed time':''}</div>${warn}${body}</div>`;
+  }).join('') || '<p class="empty">No tasks assigned to you today.</p>';
+  $('app').innerHTML = `<header><div><h1>${esc(data.resource.name)}</h1><div class="sub">Your tasks today</div></div>
+    <div class="clock"><b>${hhmm(lastClock ?? data.clock.now)}</b><span>event clock</span></div></header>${banner}${tasks}`;
+}
+
+document.addEventListener('click', e => {
+  const who = e.target.closest('[data-me]');
+  if(who){ me = who.dataset.me; store.setItem('c3_me', me); history.replaceState(null, '', '?r=' + encodeURIComponent(me)); data = null; load(); return; }
+  const ci = e.target.closest('[data-ci]');
+  if(ci){
+    // ONE tap = one check-in (NFR-05). Saved first, then sent.
+    // The time recorded is when it was TAPPED (the last event clock this
+    // phone saw), not when it eventually arrives.
+    enqueue(store, {client_id:newId(), activity_id:ci.dataset.a, type:ci.dataset.ci,
+                    at_minutes: lastClock ?? data.clock.now, by: me, queued_offline: isOffline()});
+    if(navigator.vibrate) navigator.vibrate(30);
+    render(); flush();
+  }
+});
+$('switchUser').onclick = e => { e.preventDefault(); store.removeItem('c3_me'); me = null; data = null; history.replaceState(null,'','/checkin'); renderWho(); };
+$('simOffline').onchange = () => { render(); if(!isOffline()) flush(); };
+window.addEventListener('online', flush);
+
+if(me) history.replaceState(null, '', '?r=' + encodeURIComponent(me));
+load();
+setInterval(() => { if(!isOffline()){ flush(); load(); } }, 4000);
+</script>
+</body>
+</html>

@@ -132,6 +132,7 @@ class EventOperations:
         self.twin: OperationalDigitalTwin | None = None
         self.now: int = 0
         self.schedule_version = 0
+        self._seen_client_ids: set[str] = set()
 
     # --- lookups ----------------------------------------------------------
 
@@ -193,9 +194,18 @@ class EventOperations:
 
     # --- execution phase --------------------------------------------------
 
-    def check_in(self, activity_id: str, kind: CheckInType, at_minutes: int | None = None) -> list[Divergence]:
-        """FR-08: a vendor/staff confirmation. Returns current divergences."""
+    def check_in(self, activity_id: str, kind: CheckInType, at_minutes: int | None = None, by: str | None = None,
+                 client_id: str | None = None, queued_offline: bool = False) -> list[Divergence]:
+        """FR-08: a vendor/staff confirmation. Returns current divergences.
+
+        NFR-07 (intermittent connectivity): a phone that loses signal keeps
+        the check-in with the time it was TAPPED (`at_minutes`) and sends
+        it later (`queued_offline`). If a send reached us but the reply was
+        lost, the phone sends it again: the same `client_id` is accepted
+        once and ignored after, so a retry can never double-count."""
         self._require_plan()
+        if client_id is not None and client_id in self._seen_client_ids:
+            return self.twin.detect_divergence(self.now)
         a = self.activity(activity_id)
         at = self.now if at_minutes is None else at_minutes
         state = self.twin.state_of(activity_id).state
@@ -204,7 +214,11 @@ class EventOperations:
         if kind is CheckInType.COMPLETED and state is not ActivityState.IN_PROGRESS:
             raise OperationsError(f"{a.name} can't complete: it hasn't started")
         self.twin.record_check_in(CheckIn(activity_id, kind, at))
-        self.audit.record(at, TOPIC_CHECK_IN, f"checkin:{activity_id}", f"{a.name} {kind.value} at {_hhmm(at)}")
+        if client_id is not None:
+            self._seen_client_ids.add(client_id)
+        self.audit.record(at, TOPIC_CHECK_IN, f"checkin:{by or activity_id}",
+                          f"{a.name} {kind.value} at {_hhmm(at)}"
+                          + (f" (queued offline, delivered at {_hhmm(self.now)})" if queued_offline else ""))
         self.bus.publish(TOPIC_CHECK_IN, {"activity_id": activity_id, "type": kind, "at": at})
         # A proposal is only valid for the state it was computed from. New
         # facts make it stale: confirming it could undo what just happened.

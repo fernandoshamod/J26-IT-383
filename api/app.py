@@ -39,7 +39,10 @@ ops: EventOperations = new_operations(AUDIT_PATH, MODE)
 class CheckInRequest(BaseModel):
     activity_id: str
     type: CheckInType
-    at_minutes: int | None = Field(None, description="defaults to the current clock")
+    at_minutes: int | None = Field(None, description="when it was tapped; defaults to the current clock")
+    by: str | None = Field(None, description="resource id of the person checking in")
+    client_id: str | None = Field(None, description="unique per check-in; repeats are ignored (safe retries)")
+    queued_offline: bool = False
 
 
 class ClockRequest(BaseModel):
@@ -155,7 +158,40 @@ def set_mode(req: ModeRequest) -> dict:
 
 @app.post("/api/checkins")
 def post_check_in(req: CheckInRequest) -> dict:
-    return _apply(lambda: ops.check_in(req.activity_id, req.type, req.at_minutes))
+    return _apply(lambda: ops.check_in(req.activity_id, req.type, req.at_minutes, req.by,
+                                       req.client_id, req.queued_offline))
+
+
+@app.get("/api/my-tasks/{resource_id}")
+def my_tasks(resource_id: str) -> dict:
+    """Small payload for the vendor/staff phone page: just this person's
+    tasks and the clock (kept light for weak mobile signal)."""
+    resource = next((r for r in ops.resources if r.id == resource_id), None)
+    if resource is None:
+        raise HTTPException(status_code=404, detail=f"unknown resource {resource_id!r}")
+    divergence = {d.activity_id: d for d in ops.twin.detect_divergence(ops.now) if d.delta_minutes > 0}
+    tasks = []
+    for a in ops.activities:
+        planned = ops.schedule.activities[a.id]
+        if resource_id not in planned.assigned_resource_ids:
+            continue
+        state = ops.twin.state_of(a.id)
+        d = divergence.get(a.id)
+        tasks.append(dict(id=a.id, name=a.name, event=next(e.name for e in ops.events if e.id == a.event_id),
+                          planned_start=planned.start_minutes, planned_end=planned.end_minutes,
+                          state=state.state.value, actual_start=state.actual_start_minutes,
+                          actual_end=state.actual_end_minutes,
+                          overdue_minutes=d.delta_minutes if d else 0, fixed=a.pinned_start_minutes() is not None))
+    tasks.sort(key=lambda t: t["planned_start"])
+    return dict(resource=dict(id=resource.id, name=resource.name, role=resource.role),
+                clock=dict(now=ops.now, now_hhmm=_hhmm(ops.now), schedule_version=ops.schedule_version),
+                tasks=tasks)
+
+
+@app.get("/api/people")
+def people() -> list[dict]:
+    """Who can check in (for the phone page's sign-in list)."""
+    return [dict(id=r.id, name=r.name, type=r.type.value) for r in ops.resources]
 
 
 @app.post("/api/clock")
@@ -209,6 +245,11 @@ def demo_scenario(name: str) -> dict:
 
 if STATIC_DIR.exists():
     app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+
+
+@app.get("/checkin", include_in_schema=False)
+def checkin_page():
+    return FileResponse(STATIC_DIR / "checkin.html")
 
 
 @app.get("/", include_in_schema=False)
