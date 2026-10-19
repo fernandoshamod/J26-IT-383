@@ -30,6 +30,7 @@ class ConflictType(str, Enum):
     LOCKED_ACTIVITY_MOVED = "locked_activity_moved"
     RESOURCE_OVERCOMMIT = "resource_overcommit"
     TURNAROUND_VIOLATION = "turnaround_violation"
+    WRONG_ASSIGNMENT = "wrong_assignment"
 
 
 @dataclass(frozen=True)
@@ -57,6 +58,44 @@ def verify_schedule(
     conflicts.extend(_check_precedence(activity_by_id, scheduled))
     conflicts.extend(_check_pinned_times(activity_by_id, scheduled))
     conflicts.extend(_check_resource_capacity(activity_by_id, resources, scheduled))
+    conflicts.extend(_check_assignments(activity_by_id, resources, scheduled))
+    return conflicts
+
+
+def _check_assignments(
+    activity_by_id: dict[str, Activity],
+    resources: list[Resource],
+    scheduled: dict[str, ScheduledActivity],
+) -> list[Conflict]:
+    """FR-05: the RIGHT resources were allocated — each requirement ("2 x
+    catering_crew") is met by that many distinct resources of that role,
+    and nothing unknown or unneeded is assigned. Added after a
+    hand-edited schedule giving speeches to the photographer passed
+    unnoticed: the solver never makes this mistake, but a verifier that
+    is meant not to trust the solver must check it too.
+    """
+    conflicts: list[Conflict] = []
+    resource_by_id = {r.id: r for r in resources}
+    for a in activity_by_id.values():
+        s = scheduled.get(a.id)
+        if s is None:
+            continue
+        assigned = list(dict.fromkeys(s.assigned_resource_ids))
+        unknown = [rid for rid in assigned if rid not in resource_by_id]
+        for rid in unknown:
+            conflicts.append(Conflict(ConflictType.WRONG_ASSIGNMENT,
+                                      f"{a.id} is assigned unknown resource {rid}", (a.id,)))
+        roles_needed = {req.role for req in a.requirements}
+        for req in a.requirements:
+            have = sum(1 for rid in assigned if rid in resource_by_id and resource_by_id[rid].role == req.role)
+            if have < req.count:
+                conflicts.append(Conflict(ConflictType.WRONG_ASSIGNMENT,
+                                          f"{a.id} needs {req.count} x {req.role} but has {have}", (a.id,)))
+        for rid in assigned:
+            if rid in resource_by_id and resource_by_id[rid].role not in roles_needed:
+                conflicts.append(Conflict(ConflictType.WRONG_ASSIGNMENT,
+                                          f"{a.id} is assigned {rid} ({resource_by_id[rid].role}), "
+                                          f"a role it does not need", (a.id,)))
     return conflicts
 
 

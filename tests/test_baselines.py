@@ -1,6 +1,8 @@
 from scheduling_engine.baselines import naive_forward_shift, no_reschedule
 from scheduling_engine.conflict_detection import ConflictType, verify_schedule
-from scheduling_engine.models import Activity, ResourceRequirement, Schedule, ScheduledActivity
+from scheduling_engine.models import Activity, Resource, ResourceRequirement, ResourceType, Schedule, ScheduledActivity
+
+CREW = [Resource("crew-1", "Crew 1", ResourceType.STAFF, "crew")]
 
 
 def test_no_reschedule_only_touches_the_disrupted_activity_and_conflicts():
@@ -41,7 +43,7 @@ def test_naive_forward_shift_moves_everything_from_the_disruption_onward():
     assert revised.activities["a"].end_minutes == 100
     assert revised.activities["b"].start_minutes == 100
     assert revised.activities["c"].start_minutes == 130
-    assert verify_schedule([a, b, c], [], revised.activities) == []
+    assert verify_schedule([a, b, c], CREW, revised.activities) == []
 
 
 def test_naive_forward_shift_ignores_a_lock_and_that_shows_up_as_a_conflict():

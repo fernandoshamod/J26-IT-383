@@ -181,3 +181,23 @@ def test_independent_verification_catches_a_manually_broken_schedule():
 
     assert len(conflicts) == 1
     assert conflicts[0].type == ConflictType.RESOURCE_OVERCOMMIT
+
+
+
+def test_verifier_catches_wrong_resource_assignment():
+    """FR-05: the verifier checks the RIGHT resources were allocated, not
+    only that none is double-booked (regression: a hand-edited schedule
+    giving one activity the wrong role used to pass)."""
+    from scheduling_engine.models import ScheduledActivity
+    from scheduling_engine.conflict_detection import ConflictType
+    resources = [Resource("p1", "Photographer", ResourceType.VENDOR, "photographer"),
+                 Resource("c1", "Crew A", ResourceType.STAFF, "crew"),
+                 Resource("c2", "Crew B", ResourceType.STAFF, "crew")]
+    acts = [Activity("setup", "e", "Setup", 30, requirements=[ResourceRequirement("crew", count=2)])]
+    ok = {"setup": ScheduledActivity("setup", 0, 30, ["c1", "c2"])}
+    assert verify_schedule(acts, resources, ok) == []
+    wrong = {"setup": ScheduledActivity("setup", 0, 30, ["c1", "p1"])}   # one crew short, photographer not needed
+    kinds = [c.type for c in verify_schedule(acts, resources, wrong)]
+    assert kinds.count(ConflictType.WRONG_ASSIGNMENT) == 2
+    unknown = {"setup": ScheduledActivity("setup", 0, 30, ["c1", "c2", "zz"])}
+    assert any("unknown" in c.message for c in verify_schedule(acts, resources, unknown))

@@ -779,6 +779,22 @@ real data files. Open it in VS Code and run the cells in order. Cells marked
 It also has "what if" predictions and a warning-threshold comparison: at 0.3
 the late-vendor model catches 53% of late vendors, against 20% at 0.5.
 
+## Checking the other parts yourself
+
+`notebooks/engine_walkthrough.ipynb` does the same for everything except the
+ML, with 21 checks. It verifies every planning rule by hand on the wedding,
+shows impossible fixed times refused and named, and catches a hand-broken
+schedule. It also covers the twin's late and missing check-ins, the
+simulation cascade, re-optimisation (including the shared AV crew and an
+impossible lock), 30 evaluation scenarios with delay absorbed computed by
+hand, the live service's proposal flow, and a 5-event scalability run.
+
+The notebook found a gap in `verify_schedule`: a hand-edited schedule giving
+the speeches to the photographer (the wrong role) passed, because only timing
+and double-booking were checked. It now also checks that each requirement
+gets the right number of resources of the right role (`WRONG_ASSIGNMENT`).
+The PSPLIB and evaluation results are unchanged.
+
 ## Running it on another computer or in Google Colab
 
 The repository is public, so the ML walkthrough runs anywhere:
