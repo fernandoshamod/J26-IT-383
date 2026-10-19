@@ -779,6 +779,28 @@ real data files. Open it in VS Code and run the cells in order. Cells marked
 It also has "what if" predictions and a warning-threshold comparison: at 0.3
 the late-vendor model catches 53% of late vendors, against 20% at 0.5.
 
+## Running it on another computer or in Google Colab
+
+The repository is public, so the ML walkthrough runs anywhere:
+
+- **Google Colab:** upload `notebooks/ml_walkthrough.ipynb` at
+  colab.research.google.com (File → Upload notebook) and run the Setup cell.
+  It clones this branch, installs the libraries (with the XGBoost and
+  scikit-learn versions the models were trained with) and restarts once.
+  Run Setup again, then Runtime → Run all.
+- **Another computer** (Python 3.11+ and Git):
+
+```
+git clone -b event-planning-dynamic-resource-optimization/dinuja https://github.com/fernandoshamod/J26-IT-383.git
+cd J26-IT-383
+python -m venv venv
+venv\Scripts\activate          # Mac/Linux: source venv/bin/activate
+pip install -r requirements.txt
+```
+
+  Then open `notebooks/ml_walkthrough.ipynb` in VS Code (Python and Jupyter
+  extensions, kernel = venv), or run `pip install notebook` and `jupyter notebook`.
+
 ## Running it
 
 ```
