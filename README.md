@@ -762,6 +762,23 @@ regression test covers it.
 python -m examples.scalability_test     # ~1-2 min; --quick for a smoke run
 ```
 
+## Checking the ML yourself
+
+`notebooks/ml_walkthrough.ipynb` walks through the ML step by step on the
+real data files. Open it in VS Code and run the cells in order. Cells marked
+✅ stop with an error if anything is wrong. It checks:
+
+- cleaning removed exactly the bad rows counted by hand;
+- vendor history uses only earlier events;
+- the train and test sets don't overlap;
+- retraining reproduces the saved model;
+- MAE and AUC computed by hand equal the official results;
+- each SHAP explanation adds up to its prediction;
+- the data regenerates identically from seed 42.
+
+It also has "what if" predictions and a warning-threshold comparison: at 0.3
+the late-vendor model catches 53% of late vendors, against 20% at 0.5.
+
 ## Running it
 
 ```

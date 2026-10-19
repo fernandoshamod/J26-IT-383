@@ -10,3 +10,6 @@ kagglehub>=0.3
 fastapi>=0.110
 uvicorn>=0.30
 httpx>=0.27
+ipykernel>=6.29
+nbformat>=5.10
+nbclient>=0.10
