@@ -779,6 +779,25 @@ real data files. Open it in VS Code and run the cells in order. Cells marked
 It also has "what if" predictions and a warning-threshold comparison: at 0.3
 the late-vendor model catches 53% of late vendors, against 20% at 0.5.
 
+## Typing in your own event
+
+The dashboard's **Build event** screen, a prototype UI, lets a person enter
+their own event: name, when the venue opens, and activities. Each activity
+has minutes, "after" row numbers, one or two needed roles with counts, and an
+optional fixed time. Staff, vendors and equipment are entered with role, type
+and turnaround. Optionally the event is kept alongside the demo day, sharing
+staff with it. **Load example** fills in a birthday party.
+
+`POST /api/plan/custom` (`api/custom_event.py`) does all the checking, so a
+future UI can reuse it. Each problem is explained in plain words: a missing
+name, a duration outside 1–1440 min, an "after" row that doesn't exist, a
+loop ("Hall setup → Clean-up → … → Hall setup"), a role with too few people,
+a bad time, or a fixed time before opening. If the event is valid but
+impossible, the solver names the clashing fixed times ("Guests arrive
+(16:00), Party and music (15:30)"). The planned event then works with
+everything else: the clock, check-ins, the phone page, disruption detection,
+re-optimisation and the audit log. Tests: `tests/test_custom_event.py`.
+
 ## Checking the other parts yourself
 
 `notebooks/engine_walkthrough.ipynb` does the same for everything except the

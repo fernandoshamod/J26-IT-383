@@ -410,6 +410,9 @@ input[type=range]{flex:1;accent-color:var(--alarm);background:transparent}
 /* Additions for the live console (the rest is the prototype's stylesheet). */
 .split>*,.grid>*{min-width:0}
 .split .ro-inner{min-width:620px}  /* let grid columns shrink; the timeline scrolls inside its card */
+.bin{width:100%;min-width:56px;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:var(--r);padding:7px 9px;font:inherit;font-size:13px}
+.bin:focus-visible{outline:2px solid var(--twin);outline-offset:1px}
+.btable td{padding:6px 8px;vertical-align:middle}
 .seg{display:flex;gap:6px;flex-wrap:wrap}
 .seg .btn{flex:1;justify-content:center}
 .scn{display:flex;flex-direction:column;gap:7px}
@@ -459,6 +462,10 @@ input[type=range]{flex:1;accent-color:var(--alarm);background:transparent}
         <button class="nav-item" data-go="ml">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg>
           <span class="nav-label">ML forecasts</span>
+        </button>
+        <button class="nav-item" data-go="build">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span class="nav-label">Build event</span>
         </button>
       </div>
 
@@ -664,6 +671,62 @@ input[type=range]{flex:1;accent-color:var(--alarm);background:transparent}
           </table>
         </div>
       </div>
+    </section>
+
+    <!-- ========== BUILD EVENT ========== -->
+    <section class="page" id="page-build">
+      <div class="page-head">
+        <div class="eyebrow">Plan · Your own event</div>
+        <h1 class="page-title">Build event</h1>
+        <p class="page-note">Type an event, then press Plan. The CP-SAT solver plans it under every rule; if it can’t, it says exactly what to change. Afterwards, test it with the clock, check-ins, the phone page and the disruption console like the demo day.</p>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-head">
+          <span class="card-title">Event</span>
+          <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-sm btn-ghost" id="bExample">Load example: birthday party</button>
+            <button class="btn btn-sm btn-ghost" id="bClear">Clear form</button>
+          </div>
+        </div>
+        <div class="card-body" style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end">
+          <div class="field" style="flex:2;min-width:220px;margin:0"><label for="bName">Event name</label><input id="bName" class="bin" placeholder="e.g. Nimal’s birthday party"></div>
+          <div class="field" style="flex:1;min-width:140px;margin:0"><label for="bOpens">Venue opens</label><input id="bOpens" class="bin" type="time" value="08:00"></div>
+          <label style="display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink-2);min-width:240px"><input type="checkbox" id="bKeep"> Also keep today’s demo events (they share staff with mine)</label>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-head"><span class="card-title">Activities</span><span class="chip chip-mute" style="margin-left:auto">in any order · “after” uses row numbers</span></div>
+        <div style="overflow-x:auto">
+          <table class="btable">
+            <thead><tr><th style="width:36px">#</th><th>Activity</th><th style="width:90px">Minutes</th><th style="width:110px">After rows</th><th style="width:170px">Needs role</th><th style="width:70px">How many</th><th style="width:150px">Also needs</th><th style="width:110px">Fixed time</th><th style="width:44px"></th></tr></thead>
+            <tbody id="bActs"></tbody>
+          </table>
+        </div>
+        <div class="card-foot"><button class="btn btn-sm" id="bAddAct">+ Add activity</button></div>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-head">
+          <span class="card-title">Staff, vendors and equipment</span>
+          <button class="btn btn-sm btn-ghost" id="bUseStaff" style="margin-left:auto">Copy today’s staff list</button>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="btable">
+            <thead><tr><th style="width:36px">#</th><th>Name</th><th style="width:190px">Role</th><th style="width:130px">Type</th><th style="width:130px">Turnaround (min)</th><th style="width:44px"></th></tr></thead>
+            <tbody id="bRes"></tbody>
+          </table>
+        </div>
+        <div class="card-foot"><button class="btn btn-sm" id="bAddRes">+ Add resource</button></div>
+      </div>
+
+      <div id="bMsg"></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <button class="btn btn-go" id="bPlan">Plan event</button>
+        <span style="font-size:12.5px;color:var(--ink-3)">Demo scenario buttons and “Reset” go back to the demo day; your form stays filled in.</span>
+      </div>
+      <datalist id="bRoles"></datalist>
     </section>
 
     <!-- ========== ML FORECASTS ========== -->
@@ -1241,6 +1304,121 @@ function renderML(D){
   }).join('');
 }
 
+/* ---------- build event (planner-entered events) ---------- */
+// The form only collects what the person types; all checking happens in the
+// engine (api/custom_event.py), which explains any problem in plain words.
+const B_KEY = 'c3_builder_v1';
+const bBlankAct = () => ({name:'', minutes:30, after:'', role1:'', count1:1, role2:'', fixed:''});
+const bBlankRes = () => ({name:'', role:'', type:'staff', turnaround:0});
+const B_EXAMPLE = {
+  name: 'Nimal’s birthday party', opens: '13:00', keep: false,
+  acts: [
+    {name:'Hall setup', minutes:60, after:'', role1:'setup crew', count1:2, role2:'', fixed:''},
+    {name:'Decorations', minutes:45, after:'1', role1:'decorator', count1:1, role2:'', fixed:''},
+    {name:'Sound check', minutes:20, after:'1', role1:'dj', count1:1, role2:'', fixed:''},
+    {name:'Guests arrive', minutes:30, after:'2, 3', role1:'host', count1:1, role2:'', fixed:'16:00'},
+    {name:'Cake and speeches', minutes:30, after:'4', role1:'host', count1:1, role2:'dj', fixed:''},
+    {name:'Party and music', minutes:90, after:'5', role1:'dj', count1:1, role2:'', fixed:''},
+    {name:'Clean-up', minutes:45, after:'6', role1:'setup crew', count1:2, role2:'', fixed:''},
+  ],
+  res: [
+    {name:'Crew Kasun', role:'setup crew', type:'staff', turnaround:0},
+    {name:'Crew Ruwan', role:'setup crew', type:'staff', turnaround:0},
+    {name:'Decor by Dilini', role:'decorator', type:'vendor', turnaround:0},
+    {name:'DJ Shan', role:'dj', type:'vendor', turnaround:10},
+    {name:'Host Amaya', role:'host', type:'staff', turnaround:0},
+  ],
+};
+let builder = (()=>{ try { const s = JSON.parse(localStorage.getItem(B_KEY)); if(s && s.acts) return s; } catch(e){}
+  return {name:'', opens:'08:00', keep:false, acts:[bBlankAct()], res:[bBlankRes()]}; })();
+function bSave(){ try { localStorage.setItem(B_KEY, JSON.stringify(builder)); } catch(e){} }
+
+function bRender(){
+  $('bName').value = builder.name; $('bOpens').value = builder.opens; $('bKeep').checked = builder.keep;
+  const roles = [...new Set(builder.res.map(r=>r.role.trim()).filter(Boolean))];
+  $('bRoles').innerHTML = roles.map(r=>`<option value="${esc(r)}">`).join('');
+  const roleSelect = (i, k, val, allowNone) => `<select class="bin" data-a="${i}" data-k="${k}">`
+    + (allowNone ? '<option value="">—</option>' : '<option value="">choose…</option>')
+    + roles.map(r=>`<option value="${esc(r)}"${r===val?' selected':''}>${esc(r)}</option>`).join('')
+    + (val && !roles.includes(val) ? `<option value="${esc(val)}" selected>${esc(val)} (no resource)</option>` : '')
+    + '</select>';
+  $('bActs').innerHTML = builder.acts.map((a,i)=>`<tr>
+    <td class="mono">${i+1}</td>
+    <td><input class="bin" data-a="${i}" data-k="name" value="${esc(a.name)}" placeholder="e.g. Hall setup"></td>
+    <td><input class="bin" data-a="${i}" data-k="minutes" type="number" min="1" max="1440" value="${esc(a.minutes)}"></td>
+    <td><input class="bin" data-a="${i}" data-k="after" value="${esc(a.after)}" placeholder="e.g. 1, 2"></td>
+    <td>${roleSelect(i,'role1',a.role1,false)}</td>
+    <td><input class="bin" data-a="${i}" data-k="count1" type="number" min="1" value="${esc(a.count1)}"></td>
+    <td>${roleSelect(i,'role2',a.role2,true)}</td>
+    <td><input class="bin" data-a="${i}" data-k="fixed" type="time" value="${esc(a.fixed)}"></td>
+    <td><button class="btn btn-sm btn-ghost" data-del-a="${i}" aria-label="Remove activity ${i+1}">×</button></td></tr>`).join('');
+  $('bRes').innerHTML = builder.res.map((r,i)=>`<tr>
+    <td class="mono">${i+1}</td>
+    <td><input class="bin" data-r="${i}" data-k="name" value="${esc(r.name)}" placeholder="e.g. Crew Kasun"></td>
+    <td><input class="bin" data-r="${i}" data-k="role" value="${esc(r.role)}" list="bRoles" placeholder="e.g. setup crew"></td>
+    <td><select class="bin" data-r="${i}" data-k="type">${['staff','vendor','equipment'].map(t=>`<option${t===r.type?' selected':''}>${t}</option>`).join('')}</select></td>
+    <td><input class="bin" data-r="${i}" data-k="turnaround" type="number" min="0" max="240" value="${esc(r.turnaround)}"></td>
+    <td><button class="btn btn-sm btn-ghost" data-del-r="${i}" aria-label="Remove resource ${i+1}">×</button></td></tr>`).join('');
+}
+function bMessage(kind, text){
+  $('bMsg').innerHTML = !text ? '' : `<div class="note ${kind==='err'?'warn':'twin'}" style="margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16" x2="12" y2="16"/></svg><div>${esc(text)}</div></div>`;
+}
+document.addEventListener('input', e=>{
+  const t = e.target;
+  if(t.id==='bName'){ builder.name = t.value; bSave(); return; }
+  if(t.id==='bOpens'){ builder.opens = t.value; bSave(); return; }
+  if(t.dataset.a!==undefined){ builder.acts[+t.dataset.a][t.dataset.k] = t.value; bSave(); return; }
+  if(t.dataset.r!==undefined){ builder.res[+t.dataset.r][t.dataset.k] = t.value; bSave();
+    if(t.dataset.k==='role'){ clearTimeout(bRender._t); bRender._t = setTimeout(()=>{ const f = document.activeElement; const at = f && f.dataset ? [f.dataset.r, f.dataset.k] : null; bRender(); if(at && at[0]!==undefined){ const el = document.querySelector(`[data-r="${at[0]}"][data-k="${at[1]}"]`); if(el){ el.focus(); el.setSelectionRange && el.setSelectionRange(el.value.length, el.value.length); } } }, 600); } }
+});
+document.addEventListener('change', e=>{
+  const t = e.target;
+  if(t.id==='bKeep'){ builder.keep = t.checked; bSave(); return; }
+  if(t.tagName==='SELECT' && t.dataset.a!==undefined){ builder.acts[+t.dataset.a][t.dataset.k] = t.value; bSave(); }
+  if(t.tagName==='SELECT' && t.dataset.r!==undefined){ builder.res[+t.dataset.r][t.dataset.k] = t.value; bSave(); }
+});
+document.addEventListener('click', e=>{
+  const da = e.target.closest('[data-del-a]'); if(da){ builder.acts.splice(+da.dataset.delA,1); if(!builder.acts.length) builder.acts.push(bBlankAct()); bSave(); bRender(); return; }
+  const dr = e.target.closest('[data-del-r]'); if(dr){ builder.res.splice(+dr.dataset.delR,1); if(!builder.res.length) builder.res.push(bBlankRes()); bSave(); bRender(); return; }
+});
+$('bAddAct').onclick = ()=>{ builder.acts.push(bBlankAct()); bSave(); bRender(); };
+$('bAddRes').onclick = ()=>{ builder.res.push(bBlankRes()); bSave(); bRender(); };
+$('bExample').onclick = ()=>{ builder = JSON.parse(JSON.stringify(B_EXAMPLE)); bSave(); bRender(); bMessage('ok', 'Example loaded — press Plan event, or change anything first.'); };
+$('bClear').onclick = ()=>{ builder = {name:'', opens:'08:00', keep:false, acts:[bBlankAct()], res:[bBlankRes()]}; bSave(); bRender(); bMessage('', ''); };
+$('bUseStaff').onclick = ()=>{
+  if(!S) return;
+  builder.res = S.resources.map(r=>({name:r.name, role:r.role.replace(/_/g,' '), type:r.type, turnaround:r.turnaround||0}));
+  bSave(); bRender(); bMessage('ok', `Copied ${S.resources.length} people and items from today’s list.`);
+};
+$('bPlan').onclick = async ()=>{
+  const toRows = txt => String(txt||'').split(/[^0-9]+/).filter(Boolean).map(Number);
+  const payload = {
+    name: builder.name, opens_at: builder.opens || '08:00', keep_demo_events: !!builder.keep,
+    activities: builder.acts.filter(a=>a.name.trim() || a.role1).map(a=>({
+      name: a.name, duration_minutes: parseInt(a.minutes, 10) || 0, after: toRows(a.after),
+      needs: [a.role1 ? {role:a.role1, count: parseInt(a.count1, 10) || 1} : null, a.role2 ? {role:a.role2, count:1} : null].filter(Boolean),
+      fixed_time: a.fixed || null })),
+    resources: builder.res.filter(r=>r.name.trim() || r.role.trim()).map(r=>({
+      name: r.name, role: r.role, type: r.type, turnaround_minutes: parseInt(r.turnaround, 10) || 0 })),
+  };
+  $('bPlan').disabled = true; bMessage('ok', 'Planning…');
+  try{
+    const res = await fetch('/api/plan/custom', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+    const data = await res.json().catch(()=>({}));
+    if(!res.ok){
+      const d = data.detail;
+      bMessage('err', typeof d === 'string' ? d : 'Some fields are missing or not numbers: check minutes, how many and turnaround.');
+      return;
+    }
+    S = data; animatedProposal = null; render();
+    bMessage('ok', `Planned “${builder.name}”: ${S.activities.length} activities, ${S.conflicts.length} conflicts. Open Running order to see it, then test it from the Disruption console or the phone page.`);
+    toast('Event planned by the solver');
+    go('order');
+  }catch(e){ bMessage('err', 'Could not reach the engine. Is the server running?'); }
+  finally{ $('bPlan').disabled = false; }
+};
+bRender();
+
 /* ---------- log ---------- */
 const TAG = k => k.startsWith('disruption') ? ['detect','d'] : k.startsWith('proposal') ? ['propose','r']
   : k==='schedule.changed' ? ['re-cue','r'] : k.startsWith('cost') ? ['cost','c'] : k.startsWith('checkin') ? ['check-in','t']
@@ -1276,7 +1454,10 @@ document.addEventListener('click', e=>{
   if(sc){ stopRun(); animatedProposal=null; act(`/api/demo/scenario/${sc.dataset.scn}`, {}, 'Scenario played — check-ins replayed in time order'); return; }
 });
 $('btnReset').onclick = ()=>{ stopRun(); animatedProposal=null; act('/api/reset', {}, 'Reset to the planned day'); };
-$('btnRegen').onclick = ()=>{ stopRun(); animatedProposal=null; act('/api/reset', {}, 'Running order re-planned by the solver'); };
+$('btnRegen').onclick = ()=>{ stopRun(); animatedProposal=null;
+  // Your own event: re-plan it from the Build event form; otherwise the demo day.
+  if(S && S.ml && S.ml.mode === 'custom'){ $('bPlan').click(); return; }
+  act('/api/reset', {}, 'Running order re-planned by the solver'); };
 function stopRun(){ if(runTimer){ clearInterval(runTimer); runTimer=null; $('btnRun').innerHTML='&#9654; Run clock (+5m every 2s)'; } }
 $('btnRun').onclick = ()=>{
   if(runTimer){ stopRun(); return; }

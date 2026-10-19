@@ -18,8 +18,10 @@ from fastapi.responses import FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
+from api.custom_event import ActivitySpec, EventSpec, RequirementSpec, ResourceSpec, plan_custom
 from api.forecast import model_card
-from api.scenario import PLANNING_MODES, new_operations, play_on_time, scenario_kwargs
+from examples.run_example import build_resources
+from api.scenario import PLANNING_MODES, build_demo_events, new_operations, play_on_time, scenario_kwargs
 from scheduling_engine.conflict_detection import verify_schedule
 from scheduling_engine.integration import to_jsonable
 from scheduling_engine.operations import EventOperations, OperationsError
@@ -62,6 +64,34 @@ class LockRequest(BaseModel):
 
 class ModeRequest(BaseModel):
     mode: str = Field(description='"planner" (planner estimates) or "predicted" (ML durations)')
+
+
+class NeedIn(BaseModel):
+    role: str
+    count: int = 1
+
+
+class ActivityIn(BaseModel):
+    name: str
+    duration_minutes: int
+    after: list[int] = Field(default_factory=list, description="row numbers (1-based) of earlier activities")
+    needs: list[NeedIn] = Field(default_factory=list)
+    fixed_time: str | None = Field(None, description="HH:MM, optional")
+
+
+class ResourceIn(BaseModel):
+    name: str
+    role: str
+    type: str = "staff"
+    turnaround_minutes: int = 0
+
+
+class CustomEventRequest(BaseModel):
+    name: str
+    opens_at: str = "08:00"
+    activities: list[ActivityIn]
+    resources: list[ResourceIn]
+    keep_demo_events: bool = Field(False, description="plan alongside today's demo events, sharing staff")
 
 
 class PlayRequest(BaseModel):
@@ -153,6 +183,24 @@ def set_mode(req: ModeRequest) -> dict:
         raise HTTPException(status_code=422, detail=f"mode must be one of {PLANNING_MODES}")
     MODE = req.mode
     ops = new_operations(AUDIT_PATH, MODE)
+    return snapshot()
+
+
+@app.post("/api/plan/custom")
+def plan_custom_event(req: CustomEventRequest) -> dict:
+    """Plan an event typed into the dashboard's Build event form. Invalid
+    input or an impossible plan comes back as a 409 with a plain-language
+    message saying what to fix."""
+    global ops
+    spec = EventSpec(req.name, req.opens_at, [
+        ActivitySpec(a.name, a.duration_minutes, a.after, [RequirementSpec(n.role, n.count) for n in a.needs],
+                     a.fixed_time or None) for a in req.activities])
+    resources = [ResourceSpec(r.name, r.role, r.type, r.turnaround_minutes) for r in req.resources]
+    with_events, with_resources = (build_demo_events(), build_resources()) if req.keep_demo_events else ([], [])
+    try:
+        ops = plan_custom(spec, resources, with_events, with_resources, AUDIT_PATH)
+    except OperationsError as e:
+        raise HTTPException(status_code=409, detail=str(e))
     return snapshot()
 
 
