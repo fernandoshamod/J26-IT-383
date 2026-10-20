@@ -354,7 +354,9 @@ input[type=checkbox]{accent-color:var(--brand);width:16px;height:16px}
 
 /* ---------------- build-event form ---------------- */
 .bin{width:100%;min-width:56px}
-.btable td{padding:7px 8px;vertical-align:middle}
+.btable td{padding:7px 8px;vertical-align:top}
+.bhint{font-size:11.5px;color:var(--ink-3);margin-top:4px;line-height:1.35}
+.bhint.bad{color:var(--alarm);font-weight:600}
 
 /* ---------------- toast ---------------- */
 .toast{
@@ -1297,6 +1299,25 @@ let builder = (()=>{ try { const s = JSON.parse(localStorage.getItem(B_KEY)); if
   return {name:'', opens:'08:00', keep:false, acts:[bBlankAct()], res:[bBlankRes()]}; })();
 function bSave(){ try { localStorage.setItem(B_KEY, JSON.stringify(builder)); } catch(e){} }
 
+const bRows = txt => String(txt||'').split(/[^0-9]+/).filter(Boolean).map(Number);
+const bIsEmpty = a => !a.name.trim() && !a.role1 && !String(a.after||'').trim() && !a.fixed;
+// What each "After rows" entry points to, in words; red when a number is wrong.
+function bHints(){
+  builder.acts.forEach((a, i) => {
+    const el = document.getElementById('bh' + i); if(!el) return;
+    const rows = bRows(a.after);
+    if(!rows.length){ el.textContent = String(a.after||'').trim() ? '' : 'starts first (after nothing)'; el.className = 'bhint'; return; }
+    const problems = [], names = [];
+    rows.forEach(r => {
+      if(r === i + 1) problems.push(`${r} is this row itself`);
+      else if(r < 1 || r > builder.acts.length) problems.push(`there is no row ${r}`);
+      else if(bIsEmpty(builder.acts[r - 1])) problems.push(`row ${r} is empty`);
+      else names.push(builder.acts[r - 1].name.trim() || `row ${r} (no name yet)`);
+    });
+    el.className = 'bhint' + (problems.length ? ' bad' : '');
+    el.textContent = problems.length ? '⚠ ' + problems.join(', ') : '→ after ' + names.join(', ');
+  });
+}
 function bRender(){
   $('bName').value = builder.name; $('bOpens').value = builder.opens; $('bKeep').checked = builder.keep;
   const roles = [...new Set(builder.res.map(r=>r.role.trim()).filter(Boolean))];
@@ -1310,7 +1331,7 @@ function bRender(){
     <td class="mono">${i+1}</td>
     <td><input class="bin" data-a="${i}" data-k="name" value="${esc(a.name)}" placeholder="e.g. Hall setup"></td>
     <td><input class="bin" data-a="${i}" data-k="minutes" type="number" min="1" max="1440" value="${esc(a.minutes)}"></td>
-    <td><input class="bin" data-a="${i}" data-k="after" value="${esc(a.after)}" placeholder="e.g. 1, 2"></td>
+    <td><input class="bin" data-a="${i}" data-k="after" value="${esc(a.after)}" placeholder="e.g. 1, 2"><div class="bhint" id="bh${i}"></div></td>
     <td>${roleSelect(i,'role1',a.role1,false)}</td>
     <td><input class="bin" data-a="${i}" data-k="count1" type="number" min="1" value="${esc(a.count1)}"></td>
     <td>${roleSelect(i,'role2',a.role2,true)}</td>
@@ -1323,6 +1344,7 @@ function bRender(){
     <td><select class="bin" data-r="${i}" data-k="type">${['staff','vendor','equipment'].map(t=>`<option${t===r.type?' selected':''}>${t}</option>`).join('')}</select></td>
     <td><input class="bin" data-r="${i}" data-k="turnaround" type="number" min="0" max="240" value="${esc(r.turnaround)}"></td>
     <td><button class="btn btn-sm btn-ghost" data-del-r="${i}" aria-label="Remove resource ${i+1}">×</button></td></tr>`).join('');
+  bHints();
 }
 function bMessage(kind, text){
   $('bMsg').innerHTML = !text ? '' : `<div class="note ${kind==='err'?'warn':'twin'}" style="margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16" x2="12" y2="16"/></svg><div>${esc(text)}</div></div>`;
@@ -1331,14 +1353,14 @@ document.addEventListener('input', e=>{
   const t = e.target;
   if(t.id==='bName'){ builder.name = t.value; bSave(); return; }
   if(t.id==='bOpens'){ builder.opens = t.value; bSave(); return; }
-  if(t.dataset.a!==undefined){ builder.acts[+t.dataset.a][t.dataset.k] = t.value; bSave(); return; }
+  if(t.dataset.a!==undefined){ builder.acts[+t.dataset.a][t.dataset.k] = t.value; bSave(); bHints(); return; }
   if(t.dataset.r!==undefined){ builder.res[+t.dataset.r][t.dataset.k] = t.value; bSave();
     if(t.dataset.k==='role'){ clearTimeout(bRender._t); bRender._t = setTimeout(()=>{ const f = document.activeElement; const at = f && f.dataset ? [f.dataset.r, f.dataset.k] : null; bRender(); if(at && at[0]!==undefined){ const el = document.querySelector(`[data-r="${at[0]}"][data-k="${at[1]}"]`); if(el){ el.focus(); el.setSelectionRange && el.setSelectionRange(el.value.length, el.value.length); } } }, 600); } }
 });
 document.addEventListener('change', e=>{
   const t = e.target;
   if(t.id==='bKeep'){ builder.keep = t.checked; bSave(); return; }
-  if(t.tagName==='SELECT' && t.dataset.a!==undefined){ builder.acts[+t.dataset.a][t.dataset.k] = t.value; bSave(); }
+  if(t.tagName==='SELECT' && t.dataset.a!==undefined){ builder.acts[+t.dataset.a][t.dataset.k] = t.value; bSave(); bHints(); }
   if(t.tagName==='SELECT' && t.dataset.r!==undefined){ builder.res[+t.dataset.r][t.dataset.k] = t.value; bSave(); }
 });
 document.addEventListener('click', e=>{
@@ -1355,10 +1377,14 @@ $('bUseStaff').onclick = ()=>{
   bSave(); bRender(); bMessage('ok', `Copied ${S.resources.length} people and items from today’s list.`);
 };
 $('bPlan').onclick = async ()=>{
-  const toRows = txt => String(txt||'').split(/[^0-9]+/).filter(Boolean).map(Number);
+  const toRows = bRows;
+  let acts = builder.acts.slice();
+  while(acts.length && bIsEmpty(acts[acts.length - 1])) acts.pop();   // trailing blank rows only
+  const blank = acts.findIndex(bIsEmpty);
+  if(blank >= 0){ bMessage('err', `Row ${blank + 1} is empty. Fill it in or remove it with ×, so the row numbers in “After rows” stay correct.`); return; }
   const payload = {
     name: builder.name, opens_at: builder.opens || '08:00', keep_demo_events: !!builder.keep,
-    activities: builder.acts.filter(a=>a.name.trim() || a.role1).map(a=>({
+    activities: acts.map(a=>({
       name: a.name, duration_minutes: parseInt(a.minutes, 10) || 0, after: toRows(a.after),
       needs: [a.role1 ? {role:a.role1, count: parseInt(a.count1, 10) || 1} : null, a.role2 ? {role:a.role2, count:1} : null].filter(Boolean),
       fixed_time: a.fixed || null })),

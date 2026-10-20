@@ -123,16 +123,16 @@ def build(event_spec: EventSpec, resource_specs: list[ResourceSpec],
     ids = [f"{event_id}-{i:02d}-{_slug(a.name)}"[:64] for i, a in enumerate(event_spec.activities, start=1)]
     activities: list[Activity] = []
     for i, (a, aid) in enumerate(zip(event_spec.activities, ids), start=1):
-        label = f"Activity {i} ({a.name.strip() or 'no name'})"
+        label = f"Row {i} ({a.name.strip() or 'no name'})"
         if not a.name.strip():
-            raise OperationsError(f"Activity {i}: give it a name.")
+            raise OperationsError(f"Row {i}: give the activity a name.")
         if not 1 <= a.duration_minutes <= 1440:
             raise OperationsError(f"{label}: duration must be 1–1440 minutes.")
         for row in a.after:
             if not 1 <= row <= n:
-                raise OperationsError(f"{label}: “comes after” row {row} doesn’t exist (rows are 1–{n}).")
+                raise OperationsError(f"{label}: “after” row {row} doesn’t exist (your activity rows are 1–{n}).")
             if row == i:
-                raise OperationsError(f"{label} can’t come after itself.")
+                raise OperationsError(f"{label} can’t come after itself — its “After rows” contains {i}, its own row number.")
         if not a.needs:
             raise OperationsError(f"{label}: choose at least one role it needs.")
         reqs = []
