@@ -295,6 +295,17 @@ if STATIC_DIR.exists():
     app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 
+@app.get("/classic", include_in_schema=False)
+def classic_page():
+    """The original dark prototype design, kept as a fallback."""
+    return FileResponse(STATIC_DIR / "classic.html")
+
+
+@app.get("/checkin/classic", include_in_schema=False)
+def checkin_classic_page():
+    return FileResponse(STATIC_DIR / "checkin_classic.html")
+
+
 @app.get("/checkin", include_in_schema=False)
 def checkin_page():
     return FileResponse(STATIC_DIR / "checkin.html")

@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Running Order — Event Operations Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOKENS — theatrical gels on a blacked-out backstage
+   ============================================================ */
+:root{
+  --bg:#0E1116;
+  --panel:#151A22;
+  --panel-2:#1B2129;
+  --raised:#222A34;
+  --line:#28313D;
+  --line-soft:#1F2731;
+
+  --ink:#E9EEF5;
+  --ink-2:#A7B4C4;
+  --ink-3:#6C7A8B;
+
+  /* tungsten = the physical / live world */
+  --tungsten:#F2A93B;
+  --tungsten-dim:rgba(242,169,59,.14);
+  /* gel cyan = the digital twin / virtual world */
+  --twin:#4CC9F0;
+  --twin-dim:rgba(76,201,240,.13);
+  /* gel magenta = disruption */
+  --alarm:#FF5C7A;
+  --alarm-dim:rgba(255,92,122,.13);
+  /* practical green = clear / go */
+  --go:#5FD39B;
+  --go-dim:rgba(95,211,155,.13);
+
+  --r:4px;
+  --shadow:0 1px 0 rgba(255,255,255,.03) inset, 0 8px 28px -12px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,sans-serif;
+  font-size:14px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+/* faint scanline atmosphere — the gallery monitor */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background:repeating-linear-gradient(180deg,rgba(255,255,255,.012) 0 1px,transparent 1px 3px);
+}
+button{font-family:inherit;font-size:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--twin);outline-offset:2px}
+
+.mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-3);
+}
+
+/* ============================================================
+   SHELL
+   ============================================================ */
+.shell{display:grid;grid-template-columns:212px 1fr;min-height:100vh}
+
+/* ---- left rail ---- */
+.rail{
+  background:var(--panel);border-right:1px solid var(--line);
+  display:flex;flex-direction:column;position:sticky;top:0;height:100vh;
+}
+.brand{padding:18px 18px 16px;border-bottom:1px solid var(--line)}
+.brand-mark{display:flex;align-items:center;gap:9px}
+.brand-dot{
+  width:9px;height:9px;border-radius:50%;background:var(--tungsten);
+  box-shadow:0 0 0 3px var(--tungsten-dim);flex:none;
+}
+.brand-name{
+  font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:19px;
+  letter-spacing:.04em;text-transform:uppercase;line-height:1;
+}
+.brand-sub{margin-top:7px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;color:var(--ink-3);text-transform:uppercase}
+
+.nav{padding:12px 8px;flex:1;overflow-y:auto}
+.nav-group{margin-bottom:16px}
+.nav-group > .eyebrow{padding:0 10px 7px}
+.nav-item{
+  display:flex;align-items:center;gap:10px;width:100%;text-align:left;
+  padding:8px 10px;border-radius:var(--r);color:var(--ink-2);
+  border-left:2px solid transparent;transition:background .12s,color .12s;
+}
+.nav-item:hover{background:var(--panel-2);color:var(--ink)}
+.nav-item[aria-current="true"]{background:var(--panel-2);color:var(--ink);border-left-color:var(--tungsten)}
+.nav-item svg{width:15px;height:15px;flex:none;stroke-width:1.7}
+.nav-label{font-size:13px}
+.nav-badge{
+  margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:10px;
+  padding:1px 5px;border-radius:2px;background:var(--alarm-dim);color:var(--alarm);
+}
+
+.rail-foot{padding:12px 16px;border-top:1px solid var(--line)}
+.twin-state{display:flex;align-items:center;gap:8px}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--twin);flex:none;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 var(--twin-dim)}50%{opacity:.5;box-shadow:0 0 0 5px transparent}}
+.twin-label{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--twin)}
+.twin-meta{margin-top:5px;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-3)}
+
+/* ---- top bar ---- */
+.main{min-width:0;display:flex;flex-direction:column}
+.topbar{
+  display:flex;align-items:center;gap:18px;padding:0 24px;height:56px;
+  border-bottom:1px solid var(--line);background:rgba(14,17,22,.86);
+  backdrop-filter:blur(8px);position:sticky;top:0;z-index:40;
+}
+.evt{min-width:0}
+.evt-name{font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.evt-meta{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3);margin-top:1px}
+.topbar-sep{width:1px;height:26px;background:var(--line);flex:none}
+.clock{margin-left:auto;text-align:right;flex:none}
+.clock-time{font-family:"IBM Plex Mono",monospace;font-size:19px;font-weight:500;letter-spacing:.02em;line-height:1}
+.clock-label{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
+
+.chip{
+  display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:2px;
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;
+  border:1px solid;white-space:nowrap;
+}
+.chip-live{color:var(--tungsten);border-color:rgba(242,169,59,.34);background:var(--tungsten-dim)}
+.chip-go{color:var(--go);border-color:rgba(95,211,155,.32);background:var(--go-dim)}
+.chip-alarm{color:var(--alarm);border-color:rgba(255,92,122,.34);background:var(--alarm-dim)}
+.chip-twin{color:var(--twin);border-color:rgba(76,201,240,.32);background:var(--twin-dim)}
+.chip-mute{color:var(--ink-3);border-color:var(--line);background:transparent}
+.chip .dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex:none}
+
+/* ---- pages ---- */
+.page{padding:24px;display:none;animation:rise .22s ease-out}
+.page.on{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+.page-head{margin-bottom:20px}
+.page-title{
+  font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:30px;
+  letter-spacing:.01em;line-height:1.05;margin:5px 0 0;
+}
+.page-note{color:var(--ink-2);font-size:13px;margin-top:6px;max-width:74ch}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.card-head{
+  display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--line-soft);
+}
+.card-title{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:16px;letter-spacing:.03em;text-transform:uppercase}
+.card-body{padding:16px}
+.card-foot{padding:11px 16px;border-top:1px solid var(--line-soft);display:flex;align-items:center;gap:12px}
+
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.split{display:grid;grid-template-columns:1.55fr 1fr;gap:14px}
+
+/* ---- metric ---- */
+.metric{padding:15px 16px}
+.metric-label{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+.metric-val{font-family:"IBM Plex Mono",monospace;font-size:31px;font-weight:500;line-height:1;margin-top:11px;letter-spacing:-.01em}
+.metric-val small{font-size:14px;color:var(--ink-3);font-weight:400;margin-left:2px}
+.metric-foot{margin-top:9px;font-size:11.5px;color:var(--ink-3);display:flex;align-items:center;gap:6px}
+.spark{display:flex;align-items:flex-end;gap:2px;height:20px;margin-top:10px}
+.spark i{flex:1;background:var(--line);border-radius:1px;min-height:2px}
+.spark i.hot{background:var(--tungsten)}
+
+/* ---- buttons ---- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  padding:8px 14px;border-radius:var(--r);border:1px solid var(--line);
+  background:var(--raised);font-size:13px;font-weight:500;
+  transition:border-color .12s,background .12s,transform .06s;
+}
+.btn:hover{border-color:var(--ink-3);background:#2A333F}
+.btn:active{transform:translateY(1px)}
+.btn svg{width:14px;height:14px;stroke-width:1.9}
+.btn-go{background:var(--tungsten);border-color:var(--tungsten);color:#20160A;font-weight:600}
+.btn-go:hover{background:#FFBB4E;border-color:#FFBB4E}
+.btn-twin{background:transparent;border-color:rgba(76,201,240,.4);color:var(--twin)}
+.btn-twin:hover{background:var(--twin-dim);border-color:var(--twin)}
+.btn-ghost{background:transparent}
+.btn-sm{padding:5px 10px;font-size:12px}
+.btn:disabled{opacity:.42;cursor:not-allowed;transform:none}
+
+/* ============================================================
+   RUNNING ORDER TIMELINE — the callboard
+   ============================================================ */
+.ro{overflow-x:auto}
+.ro-inner{min-width:940px;position:relative}
+.ro-axis{
+  display:flex;border-bottom:1px solid var(--line);margin-left:var(--gut);
+  position:relative;height:26px;
+}
+:root{--gut:196px}
+.ro-tick{
+  flex:1;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-3);
+  padding-left:6px;border-left:1px solid var(--line-soft);
+}
+.ro-rows{position:relative;margin-left:var(--gut)}
+.ro-grid{position:absolute;inset:0;display:flex;pointer-events:none}
+.ro-grid i{flex:1;border-left:1px solid var(--line-soft)}
+
+.ro-row{position:relative;height:42px;border-bottom:1px solid var(--line-soft)}
+.ro-lane{position:absolute;left:calc(-1 * var(--gut));width:var(--gut);top:0;height:42px;
+  display:flex;align-items:center;gap:9px;padding-right:12px}
+.ro-cue{
+  font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-3);
+  width:24px;flex:none;text-align:right;
+}
+.ro-name{font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.bar{
+  position:absolute;top:7px;height:28px;border-radius:3px;
+  display:flex;align-items:center;padding:0 9px;gap:7px;overflow:hidden;
+  border:1px solid;cursor:pointer;
+  transition:left .55s cubic-bezier(.4,0,.2,1),width .55s cubic-bezier(.4,0,.2,1),background .2s;
+}
+.bar:hover{filter:brightness(1.18)}
+.bar-time{font-family:"IBM Plex Mono",monospace;font-size:10px;opacity:.82;white-space:nowrap}
+.bar-res{font-size:10.5px;opacity:.68;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar.done{background:rgba(108,122,139,.16);border-color:rgba(108,122,139,.34);color:var(--ink-2)}
+.bar.live{background:var(--tungsten-dim);border-color:var(--tungsten);color:var(--tungsten)}
+.bar.next{background:rgba(76,201,240,.09);border-color:rgba(76,201,240,.38);color:var(--twin)}
+.bar.held{background:var(--alarm-dim);border-color:var(--alarm);color:var(--alarm)}
+.bar.recued{background:var(--go-dim);border-color:var(--go);color:var(--go)}
+.bar.ghost{
+  background:transparent;border-style:dashed;border-color:var(--ink-3);color:var(--ink-3);
+  top:9px;height:24px;opacity:.5;
+}
+
+.playhead{position:absolute;top:-26px;bottom:0;width:1px;background:var(--tungsten);z-index:5;pointer-events:none}
+.playhead::before{
+  content:attr(data-t);position:absolute;top:-2px;left:5px;
+  font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:#20160A;
+  background:var(--tungsten);padding:1px 4px;border-radius:2px;white-space:nowrap;
+}
+.playhead::after{content:"";position:absolute;top:22px;left:-3px;width:7px;height:7px;border-radius:50%;background:var(--tungsten)}
+
+.legend{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.lg{display:flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.lg i{width:16px;height:8px;border-radius:2px;border:1px solid;flex:none}
+
+/* ============================================================
+   TABLES
+   ============================================================ */
+table{width:100%;border-collapse:collapse}
+th{
+  font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-3);text-align:left;padding:9px 14px;border-bottom:1px solid var(--line);font-weight:500;
+}
+td{padding:11px 14px;border-bottom:1px solid var(--line-soft);font-size:13px;vertical-align:middle}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--panel-2)}
+td.mono{font-family:"IBM Plex Mono",monospace;font-size:12px}
+
+/* utilisation bar */
+.util{display:flex;align-items:center;gap:9px}
+.util-track{flex:1;height:5px;background:var(--raised);border-radius:3px;overflow:hidden;min-width:70px}
+.util-fill{height:100%;border-radius:3px;transition:width .5s}
+.util-num{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-2);width:34px;text-align:right;flex:none}
+
+/* ============================================================
+   CONFLICTS
+   ============================================================ */
+.cf{display:flex;gap:14px;padding:14px 16px;border-bottom:1px solid var(--line-soft);align-items:flex-start}
+.cf:last-child{border-bottom:none}
+.cf-sev{width:3px;border-radius:2px;flex:none;align-self:stretch;min-height:44px}
+.cf-sev.crit{background:var(--alarm)}
+.cf-sev.warn{background:var(--tungsten)}
+.cf-sev.ok{background:var(--go)}
+.cf-main{flex:1;min-width:0}
+.cf-top{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.cf-title{font-weight:600;font-size:13.5px}
+.cf-why{color:var(--ink-2);font-size:12.5px;margin-top:5px}
+.cf-ev{
+  margin-top:8px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);
+  display:flex;flex-wrap:wrap;gap:5px 16px;
+}
+.cf-act{display:flex;gap:7px;flex:none;padding-top:2px}
+
+/* ============================================================
+   DISRUPTION CONSOLE — the signature
+   ============================================================ */
+.console{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.console-head{
+  padding:14px 18px;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  background:linear-gradient(180deg,rgba(255,92,122,.05),transparent);
+}
+.console-body{display:grid;grid-template-columns:300px 1fr;min-height:340px}
+.inject{padding:18px;border-right:1px solid var(--line-soft)}
+.field{margin-bottom:15px}
+.field label{display:block;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px}
+select,input[type=text]{
+  width:100%;padding:9px 11px;background:var(--bg);border:1px solid var(--line);
+  border-radius:var(--r);color:var(--ink);font-family:inherit;font-size:13px;
+}
+select:focus,input:focus{border-color:var(--twin);outline:none}
+.range-row{display:flex;align-items:center;gap:12px}
+input[type=range]{flex:1;accent-color:var(--alarm);background:transparent}
+.range-val{font-family:"IBM Plex Mono",monospace;font-size:16px;width:56px;text-align:right;color:var(--alarm);flex:none}
+
+.sim{padding:18px;min-width:0;display:flex;flex-direction:column}
+.sim-idle{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;gap:11px;color:var(--ink-3);padding:26px;
+}
+.sim-idle svg{width:34px;height:34px;stroke-width:1.3;opacity:.5}
+.sim-idle p{max-width:42ch;font-size:12.5px;margin:0;line-height:1.65}
+
+.trace{font-family:"IBM Plex Mono",monospace;font-size:11.5px;display:flex;flex-direction:column;gap:0}
+.tr{display:flex;gap:11px;padding:6px 0;border-bottom:1px solid var(--line-soft);align-items:baseline;opacity:0;animation:trIn .26s ease-out forwards}
+@keyframes trIn{from{opacity:0;transform:translateX(-5px)}to{opacity:1;transform:none}}
+.tr-t{color:var(--ink-3);flex:none;width:52px}
+.tr-b{flex:1;color:var(--ink-2)}
+.tr-b b{color:var(--ink);font-weight:600}
+.tr.hit .tr-b{color:var(--alarm)}
+.tr.fix .tr-b{color:var(--go)}
+.tr.twin .tr-b{color:var(--twin)}
+
+.impact{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.imp{padding:12px 13px;border:1px solid var(--line);border-radius:var(--r);background:var(--bg)}
+.imp-l{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3)}
+.imp-v{font-family:"IBM Plex Mono",monospace;font-size:20px;margin-top:7px;line-height:1}
+.imp.bad .imp-v{color:var(--alarm)}
+.imp.good .imp-v{color:var(--go)}
+.imp.twin .imp-v{color:var(--twin)}
+
+.bar-load{height:2px;background:var(--raised);border-radius:2px;overflow:hidden;margin:14px 0 4px}
+.bar-load i{display:block;height:100%;background:var(--alarm);width:0;transition:width .3s linear}
+
+/* diff */
+.diff-row{padding:13px 16px;border-bottom:1px solid var(--line-soft)}
+.diff-row:last-child{border-bottom:none}
+.diff-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:9px}
+.diff-name{font-size:13px;font-weight:500}
+.diff-arrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3)}
+.diff-arrow s{color:var(--ink-3);text-decoration-color:var(--alarm)}
+.diff-arrow b{color:var(--go);font-weight:600}
+.diff-track{position:relative;height:16px;background:var(--bg);border-radius:2px;overflow:hidden}
+.diff-was{position:absolute;top:3px;height:10px;border-radius:2px;background:rgba(108,122,139,.3);border:1px dashed rgba(108,122,139,.5)}
+.diff-now{position:absolute;top:3px;height:10px;border-radius:2px;background:var(--go-dim);border:1px solid var(--go)}
+
+.note{
+  display:flex;gap:11px;padding:13px 15px;border:1px solid var(--line);border-radius:var(--r);
+  background:var(--panel-2);font-size:12.5px;color:var(--ink-2);line-height:1.6;
+}
+.note svg{width:15px;height:15px;flex:none;margin-top:2px;stroke-width:1.8}
+.note.twin{border-color:rgba(76,201,240,.3);background:var(--twin-dim)}
+.note.twin svg{color:var(--twin)}
+.note.warn{border-color:rgba(242,169,59,.3);background:var(--tungsten-dim)}
+.note.warn svg{color:var(--tungsten)}
+
+/* log */
+.log{font-family:"IBM Plex Mono",monospace;font-size:12px}
+.log-row{display:flex;gap:14px;padding:10px 16px;border-bottom:1px solid var(--line-soft);align-items:baseline}
+.log-row:last-child{border-bottom:none}
+.log-t{color:var(--ink-3);flex:none;width:58px}
+.log-tag{flex:none;width:88px;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase}
+.log-tag.d{color:var(--alarm)}
+.log-tag.r{color:var(--go)}
+.log-tag.t{color:var(--twin)}
+.log-tag.c{color:var(--tungsten)}
+.log-b{flex:1;color:var(--ink-2);font-family:"IBM Plex Sans",sans-serif;font-size:12.5px}
+.log-b b{color:var(--ink);font-weight:600}
+
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translate(-50%,80px);
+  background:var(--raised);border:1px solid var(--line);border-radius:var(--r);
+  padding:12px 18px;display:flex;align-items:center;gap:11px;z-index:200;
+  box-shadow:0 18px 40px -14px rgba(0,0,0,.85);opacity:0;
+  transition:transform .3s cubic-bezier(.2,.9,.3,1),opacity .3s;font-size:13px;
+}
+.toast.on{transform:translate(-50%,0);opacity:1}
+.toast svg{width:16px;height:16px;color:var(--go);stroke-width:2}
+
+@media (max-width:1080px){
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .split,.g3,.g2{grid-template-columns:1fr}
+  .console-body{grid-template-columns:1fr}
+  .inject{border-right:none;border-bottom:1px solid var(--line-soft)}
+}
+@media (max-width:760px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;flex-direction:column}
+  .nav{display:flex;gap:6px;overflow-x:auto;padding:10px}
+  .nav-group{margin:0;display:flex;gap:6px}
+  .nav-group > .eyebrow{display:none}
+  .nav-item{white-space:nowrap;border-left:none;border-bottom:2px solid transparent}
+  .nav-item[aria-current=true]{border-left-color:transparent;border-bottom-color:var(--tungsten)}
+  .rail-foot{display:none}
+  .g4{grid-template-columns:1fr}
+  .impact{grid-template-columns:1fr}
+  .page{padding:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+</style>
+<style>
+/* Additions for the live console (the rest is the prototype's stylesheet). */
+.split>*,.grid>*{min-width:0}
+.split .ro-inner{min-width:620px}  /* let grid columns shrink; the timeline scrolls inside its card */
+.bin{width:100%;min-width:56px;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:var(--r);padding:7px 9px;font:inherit;font-size:13px}
+.bin:focus-visible{outline:2px solid var(--twin);outline-offset:1px}
+.btable td{padding:6px 8px;vertical-align:middle}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg .btn{flex:1;justify-content:center}
+.scn{display:flex;flex-direction:column;gap:7px}
+.scn .btn{justify-content:flex-start;text-align:left;width:100%}
+.scn small{display:block;color:var(--ink-3);font-size:10.5px;margin-top:2px;font-weight:400}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.cmp-col{border:1px solid var(--line);border-radius:var(--r);padding:12px 13px;background:var(--bg)}
+.cmp-col h4{margin:0 0 8px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase}
+.cmp-col.bad h4{color:var(--alarm)} .cmp-col.good h4{color:var(--go)}
+.cmp-col ul{margin:0;padding-left:16px;font-size:12px;line-height:1.7;color:var(--ink-2)}
+.decide{display:flex;gap:9px;margin-top:16px;flex-wrap:wrap;align-items:center}
+.decide input{flex:1;min-width:160px;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:var(--r);padding:8px 10px;font:inherit;font-size:12.5px}
+.lane-evt{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.08em;color:var(--ink-3);margin-left:6px}
+.offline{color:var(--alarm)!important}
+@media (max-width:900px){.cmp{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ================= RAIL ================= -->
+  <aside class="rail">
+    <div class="brand">
+      <div class="brand-mark">
+        <span class="brand-dot"></span>
+        <span class="brand-name">Running&nbsp;Order</span>
+      </div>
+      <div class="brand-sub">Event Ops Console</div>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-group">
+        <div class="eyebrow">Plan</div>
+        <button class="nav-item" data-go="board" aria-current="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+          <span class="nav-label">Ops board</span>
+        </button>
+        <button class="nav-item" data-go="order">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg>
+          <span class="nav-label">Running order</span>
+        </button>
+        <button class="nav-item" data-go="res">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+          <span class="nav-label">Resources</span>
+        </button>
+        <button class="nav-item" data-go="ml">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg>
+          <span class="nav-label">ML forecasts</span>
+        </button>
+        <button class="nav-item" data-go="build">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span class="nav-label">Build event</span>
+        </button>
+      </div>
+
+      <div class="nav-group">
+        <div class="eyebrow">Live</div>
+        <button class="nav-item" data-go="conflicts">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12" y2="17"/></svg>
+          <span class="nav-label">Conflicts</span>
+          <span class="nav-badge" id="cfBadge">0</span>
+        </button>
+        <button class="nav-item" data-go="disrupt">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span class="nav-label">Disruption</span>
+        </button>
+        <button class="nav-item" data-go="reopt">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.5 9a9 9 0 0 1 14.9-3.4L23 10M1 14l4.6 4.4A9 9 0 0 0 20.5 15"/></svg>
+          <span class="nav-label">Re-optimisation</span>
+        </button>
+      </div>
+
+      <div class="nav-group">
+        <div class="eyebrow">Record</div>
+        <button class="nav-item" data-go="log">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg>
+          <span class="nav-label">Event log</span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="rail-foot">
+      <div class="twin-state">
+        <span class="pulse"></span>
+        <span class="twin-label" id="twinLabel">Connecting…</span>
+      </div>
+      <div class="twin-meta" id="twinMeta">waiting for engine</div>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN ================= -->
+  <div class="main">
+
+    <header class="topbar">
+      <div class="evt">
+        <div class="evt-name" id="evtName">Loading…</div>
+        <div class="evt-meta" id="evtMeta">connecting to the scheduling engine</div>
+      </div>
+      <div class="topbar-sep"></div>
+      <span class="chip chip-live" id="stateChip"><span class="dot"></span> Connecting</span>
+      <div class="clock">
+        <div class="clock-time mono" id="clock">--:--</div>
+        <div class="clock-label">Event clock</div>
+      </div>
+    </header>
+
+    <!-- ========== 1. OPS BOARD ========== -->
+    <section class="page on" id="page-board">
+      <div class="page-head">
+        <div class="eyebrow">Component 03 · Live operations</div>
+        <h1 class="page-title">Ops board</h1>
+        <p class="page-note">One live read of the event as it actually stands right now — not as it was planned this morning. Every figure here comes from the operational digital twin and the scheduling engine.</p>
+      </div>
+
+      <div class="grid g4" style="margin-bottom:14px">
+        <div class="card metric">
+          <div class="metric-label">Cues on track</div>
+          <div class="metric-val" id="mCues">–</div>
+          <div class="metric-foot" id="mCuesFoot"></div>
+        </div>
+        <div class="card metric">
+          <div class="metric-label">Resource utilisation</div>
+          <div class="metric-val" id="mUtil">–</div>
+          <div class="metric-foot" id="mUtilFoot"></div>
+        </div>
+        <div class="card metric">
+          <div class="metric-label">Needs a decision</div>
+          <div class="metric-val" id="mConf">–</div>
+          <div class="metric-foot" id="mConfFoot"></div>
+        </div>
+        <div class="card metric">
+          <div class="metric-label">Last re-optimisation</div>
+          <div class="metric-val" id="mReopt">–</div>
+          <div class="metric-foot" id="mReoptFoot">target: under 5 s</div>
+        </div>
+      </div>
+
+      <div class="split" style="margin-bottom:14px">
+        <div class="card">
+          <div class="card-head">
+            <span class="card-title">Running order</span>
+            <span class="chip chip-mute" id="miniState"></span>
+            <button class="btn btn-sm btn-ghost" data-go="order" style="margin-left:auto">Open full view</button>
+          </div>
+          <div class="card-body ro">
+            <div class="ro-inner">
+              <div class="ro-axis" id="axisMini"></div>
+              <div class="ro-rows" id="rowsMini"><div class="ro-grid" id="gridMini"></div></div>
+            </div>
+          </div>
+          <div class="card-foot">
+            <div class="legend">
+              <span class="lg"><i style="background:rgba(108,122,139,.16);border-color:rgba(108,122,139,.34)"></i>Complete</span>
+              <span class="lg"><i style="background:var(--tungsten-dim);border-color:var(--tungsten)"></i>Live</span>
+              <span class="lg"><i style="background:rgba(76,201,240,.09);border-color:rgba(76,201,240,.38)"></i>Standby</span>
+              <span class="lg"><i style="background:var(--alarm-dim);border-color:var(--alarm)"></i>Diverging</span>
+              <span class="lg"><i style="background:var(--go-dim);border-color:var(--go)"></i>Re-cued</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><span class="card-title">Needs a call</span></div>
+          <div id="boardConflicts"></div>
+          <div class="card-foot">
+            <button class="btn btn-sm" data-go="disrupt">Open disruption console</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="note twin">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+        <div><b style="color:var(--twin)">Operational digital twin is live.</b> It mirrors staff and vendor check-ins against the planned running order. When the two diverge past tolerance — including when an expected check-in simply never arrives — a disruption is raised automatically. No sensors, and no one has to notice it first.</div>
+      </div>
+    </section>
+
+    <!-- ========== 2. RUNNING ORDER ========== -->
+    <section class="page" id="page-order">
+      <div class="page-head">
+        <div class="eyebrow">Plan · Schedule</div>
+        <h1 class="page-title">Running order</h1>
+        <p class="page-note">The master itinerary, generated by the CP-SAT solver under precedence, resource exclusivity, minimum turnaround and fixed-time constraints — across both events at once — then kept honest against the twin as the day runs.</p>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-head">
+          <span class="card-title">Cue sheet</span>
+          <span class="chip chip-twin"><span class="dot"></span> Twin-tracked</span>
+          <div style="margin-left:auto;display:flex;gap:8px">
+            <button class="btn btn-sm btn-ghost" id="btnRegen">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 4 23 10 17 10"/><path d="M20.5 15A9 9 0 1 1 18.4 5.6L23 10"/></svg>
+              Re-plan from scratch
+            </button>
+            <button class="btn btn-sm btn-twin" data-go="disrupt">Open disruption console</button>
+          </div>
+        </div>
+        <div class="card-body ro">
+          <div class="ro-inner">
+            <div class="ro-axis" id="axisFull"></div>
+            <div class="ro-rows" id="rowsFull"><div class="ro-grid" id="gridFull"></div></div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <div class="legend">
+            <span class="lg"><i style="background:rgba(108,122,139,.16);border-color:rgba(108,122,139,.34)"></i>Complete</span>
+            <span class="lg"><i style="background:var(--tungsten-dim);border-color:var(--tungsten)"></i>Live now</span>
+            <span class="lg"><i style="background:rgba(76,201,240,.09);border-color:rgba(76,201,240,.38)"></i>Standby</span>
+            <span class="lg"><i style="background:var(--alarm-dim);border-color:var(--alarm)"></i>Diverging</span>
+            <span class="lg"><i style="background:var(--go-dim);border-color:var(--go)"></i>Re-cued</span>
+            <span class="lg"><i style="background:transparent;border-color:var(--ink-3);border-style:dashed"></i>Before last change</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="card-title">Cue detail</span></div>
+        <div style="overflow-x:auto">
+          <table>
+            <thead><tr>
+              <th style="width:44px">Cue</th><th>Activity</th><th style="width:120px">Window</th>
+              <th style="width:66px">Dur</th><th>Assigned</th><th style="width:96px">Depends on</th><th style="width:150px">State</th>
+            </tr></thead>
+            <tbody id="cueTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 3. RESOURCES ========== -->
+    <section class="page" id="page-res">
+      <div class="page-head">
+        <div class="eyebrow">Plan · Allocation</div>
+        <h1 class="page-title">Resources</h1>
+        <p class="page-note">Staff, equipment and vendors are finite. This is what each one is committed to, across every event in the calendar, and where a commitment is at risk.</p>
+      </div>
+
+      <div class="grid g3" style="margin-bottom:14px">
+        <div class="card metric"><div class="metric-label">Staff committed</div><div class="metric-val" id="resStaff">–</div><div class="metric-foot" id="resStaffFoot"></div></div>
+        <div class="card metric"><div class="metric-label">Vendors committed</div><div class="metric-val" id="resVendor">–</div><div class="metric-foot" id="resVendorFoot"></div></div>
+        <div class="card metric"><div class="metric-label">Shared across events</div><div class="metric-val" id="resShared">–</div><div class="metric-foot">conflicts checked across both events</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <span class="card-title">Allocation register</span>
+          <span class="chip chip-mute" style="margin-left:auto">Live from the twin</span>
+        </div>
+        <div style="overflow-x:auto">
+          <table>
+            <thead><tr>
+              <th>Resource</th><th style="width:98px">Type</th><th style="width:170px">Committed to</th>
+              <th style="width:118px">Window</th><th style="width:170px">Load</th><th style="width:96px">Late risk</th><th style="width:140px">Status</th>
+            </tr></thead>
+            <tbody id="resTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== BUILD EVENT ========== -->
+    <section class="page" id="page-build">
+      <div class="page-head">
+        <div class="eyebrow">Plan · Your own event</div>
+        <h1 class="page-title">Build event</h1>
+        <p class="page-note">Type an event, then press Plan. The CP-SAT solver plans it under every rule; if it can’t, it says exactly what to change. Afterwards, test it with the clock, check-ins, the phone page and the disruption console like the demo day.</p>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-head">
+          <span class="card-title">Event</span>
+          <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-sm btn-ghost" id="bExample">Load example: birthday party</button>
+            <button class="btn btn-sm btn-ghost" id="bClear">Clear form</button>
+          </div>
+        </div>
+        <div class="card-body" style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end">
+          <div class="field" style="flex:2;min-width:220px;margin:0"><label for="bName">Event name</label><input id="bName" class="bin" placeholder="e.g. Nimal’s birthday party"></div>
+          <div class="field" style="flex:1;min-width:140px;margin:0"><label for="bOpens">Venue opens</label><input id="bOpens" class="bin" type="time" value="08:00"></div>
+          <label style="display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink-2);min-width:240px"><input type="checkbox" id="bKeep"> Also keep today’s demo events (they share staff with mine)</label>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-head"><span class="card-title">Activities</span><span class="chip chip-mute" style="margin-left:auto">in any order · “after” uses row numbers</span></div>
+        <div style="overflow-x:auto">
+          <table class="btable">
+            <thead><tr><th style="width:36px">#</th><th>Activity</th><th style="width:90px">Minutes</th><th style="width:110px">After rows</th><th style="width:170px">Needs role</th><th style="width:70px">How many</th><th style="width:150px">Also needs</th><th style="width:110px">Fixed time</th><th style="width:44px"></th></tr></thead>
+            <tbody id="bActs"></tbody>
+          </table>
+        </div>
+        <div class="card-foot"><button class="btn btn-sm" id="bAddAct">+ Add activity</button></div>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-head">
+          <span class="card-title">Staff, vendors and equipment</span>
+          <button class="btn btn-sm btn-ghost" id="bUseStaff" style="margin-left:auto">Copy today’s staff list</button>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="btable">
+            <thead><tr><th style="width:36px">#</th><th>Name</th><th style="width:190px">Role</th><th style="width:130px">Type</th><th style="width:130px">Turnaround (min)</th><th style="width:44px"></th></tr></thead>
+            <tbody id="bRes"></tbody>
+          </table>
+        </div>
+        <div class="card-foot"><button class="btn btn-sm" id="bAddRes">+ Add resource</button></div>
+      </div>
+
+      <div id="bMsg"></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <button class="btn btn-go" id="bPlan">Plan event</button>
+        <span style="font-size:12.5px;color:var(--ink-3)">Demo scenario buttons and “Reset” go back to the demo day; your form stays filled in.</span>
+      </div>
+      <datalist id="bRoles"></datalist>
+    </section>
+
+    <!-- ========== ML FORECASTS ========== -->
+    <section class="page" id="page-ml">
+      <div class="page-head">
+        <div class="eyebrow">Plan · Machine learning (Section 4.2.1)</div>
+        <h1 class="page-title">ML forecasts</h1>
+        <p class="page-note">Two XGBoost models trained on historical event records. The duration model replaces planner guesses with learned estimates for the solver; the late-vendor model flags bookings likely to arrive later than the twin's tolerance — before the event day.</p>
+      </div>
+
+      <div class="grid g4" style="margin-bottom:14px">
+        <div class="card metric"><div class="metric-label">Planning with</div><div class="metric-val" style="font-size:22px" id="mlMode">–</div>
+          <div class="seg" style="margin-top:10px"><button class="btn btn-sm" data-mode="planner">Planner estimates</button><button class="btn btn-sm" data-mode="predicted">ML durations</button></div></div>
+        <div class="card metric"><div class="metric-label">Day ends</div><div class="metric-val" id="mlEnd">–</div><div class="metric-foot" id="mlEndFoot"></div></div>
+        <div class="card metric"><div class="metric-label">Duration model · test error</div><div class="metric-val" id="mlMae">–</div><div class="metric-foot" id="mlMaeFoot"></div></div>
+        <div class="card metric"><div class="metric-label">Late-vendor model · ROC-AUC</div><div class="metric-val" id="mlAuc">–</div><div class="metric-foot" id="mlAucFoot"></div></div>
+      </div>
+
+      <div class="split" style="margin-bottom:14px">
+        <div class="card">
+          <div class="card-head"><span class="card-title">Activity durations</span><span class="chip chip-mute" style="margin-left:auto">planner estimate vs model</span></div>
+          <div style="overflow-x:auto"><table>
+            <thead><tr><th>Activity</th><th style="width:78px">Planner</th><th style="width:78px">Model</th><th style="width:70px">Change</th><th>Why (vs a typical past event)</th></tr></thead>
+            <tbody id="mlTable"></tbody></table></div>
+          <div class="card-foot" style="font-size:11.5px;color:var(--ink-3)">Reasons are exact TreeSHAP contributions computed by XGBoost. The rest of the difference from the planner's estimate is the activity type's usual overrun learned from history. Activities the model was never trained on keep the planner's estimate.</div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="card-title">Vendor late-arrival risk</span></div>
+          <div class="card-body" id="mlRisk" style="display:flex;flex-direction:column;gap:12px"></div>
+          <div class="card-foot" style="font-size:11.5px;color:var(--ink-3)">P(more than the twin's 10-minute tolerance late), from the vendor's own track record, distance, arrival hour and month.</div>
+        </div>
+      </div>
+
+      <div class="note twin">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+        <div><b style="color:var(--twin)">Where the data comes from.</b> No public event-duration dataset exists, so the models train on 800 synthetic past events from a documented generator, calibrated and validated with four public datasets (Kaggle food delivery, Sri Lanka Met Department rain gauges, Olist e-commerce, SiP task estimates). The same pipeline retrains unchanged on the industry partner's records. Booking details for this demo day (guests, venue, vendor history) are declared inputs.</div>
+      </div>
+    </section>
+
+    <!-- ========== 4. CONFLICTS ========== -->
+    <section class="page" id="page-conflicts">
+      <div class="page-head">
+        <div class="eyebrow">Live · Constraint checks</div>
+        <h1 class="page-title">Conflicts</h1>
+        <p class="page-note">The current plan re-checked by an independent verifier (not the solver that made it), plus every live divergence between plan and reality. Nothing is changed without a call from you.</p>
+      </div>
+      <div class="card"><div id="conflictList"></div></div>
+      <div class="note warn" style="margin-top:14px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12" y2="17"/></svg>
+        <div><b>Cross-event checks are on.</b> Resources are scheduled on one shared timeline for every event in the calendar, so a crew or vendor booked by two events can never be double-booked — the solver sees both at once.</div>
+      </div>
+    </section>
+
+    <!-- ========== 5. DISRUPTION CONSOLE ========== -->
+    <section class="page" id="page-disrupt">
+      <div class="page-head">
+        <div class="eyebrow">Live · Signature capability</div>
+        <h1 class="page-title">Disruption console</h1>
+        <p class="page-note">Disruptions are detected, not typed in: from late check-ins and from check-ins that never arrive. The twin then simulates the knock-on effect of doing nothing and re-optimises the rest of the day — so you see the damage, and the fix, before you make the call.</p>
+      </div>
+
+      <div class="console">
+        <div class="console-head">
+          <span class="chip chip-twin" id="simChip"><span class="dot"></span> Watching</span>
+          <span class="eyebrow" style="letter-spacing:.1em">Every figure below is computed live by the engine</span>
+        </div>
+        <div class="console-body">
+          <div class="inject">
+            <div class="field">
+              <label>Event clock</label>
+              <div class="seg">
+                <button class="btn btn-sm" data-adv="5">+5m</button>
+                <button class="btn btn-sm" data-adv="15">+15m</button>
+                <button class="btn btn-sm" data-adv="30">+30m</button>
+              </div>
+              <button class="btn btn-sm btn-ghost" id="btnRun" style="width:100%;margin-top:7px">&#9654; Run clock (+5m every 2s)</button>
+            </div>
+            <div class="field">
+              <label for="ciAct">Check-in, as vendor or staff · <a href="/checkin" target="_blank" style="color:var(--twin)">phone page ↗</a></label>
+              <select id="ciAct"></select>
+              <div class="seg" style="margin-top:7px">
+                <button class="btn btn-sm btn-twin" data-ci="started">Started</button>
+                <button class="btn btn-sm btn-go" data-ci="completed">Completed</button>
+              </div>
+            </div>
+            <div class="field">
+              <label>Demo scenarios</label>
+              <div class="scn">
+                <button class="btn btn-sm btn-ghost" data-scn="late_catering">A · Catering 40 min late<small>Known delay — absorbed by slack</small></button>
+                <button class="btn btn-sm btn-ghost" data-scn="setup_overrun">B · Setup crew overruns<small>Shared AV crew vs the corporate launch</small></button>
+                <button class="btn btn-sm btn-ghost" data-scn="silent_photographer">C · Photographer goes silent<small>Detected from a missing check-in</small></button>
+              </div>
+            </div>
+            <button class="btn btn-ghost btn-sm" id="btnReset" style="width:100%">Reset to the planned day</button>
+          </div>
+
+          <div class="sim" id="simPane"></div>
+        </div>
+      </div>
+
+      <div class="note twin" style="margin-top:14px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+        <div><b style="color:var(--twin)">Why simulate before re-cueing?</b> A delay does not stay where it lands. It propagates along dependencies and competes for the same staff and kit. The discrete-event simulation shows what doing nothing would cost; the CP-SAT re-optimiser shows the best alternative; you decide.</div>
+      </div>
+    </section>
+
+    <!-- ========== 6. RE-OPTIMISATION ========== -->
+    <section class="page" id="page-reopt">
+      <div class="page-head">
+        <div class="eyebrow">Live · Adaptive master itinerary</div>
+        <h1 class="page-title">Re-optimisation</h1>
+        <p class="page-note">The last change you confirmed: what the solver moved, what it protected, and the operational cost signal published to the financial component.</p>
+      </div>
+
+      <div id="reoptEmpty">
+        <div class="card"><div class="card-body">
+          <div class="sim-idle" style="padding:40px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 4 23 10 17 10"/><path d="M20.5 15A9 9 0 1 1 18.4 5.6L23 10"/></svg>
+            <p>Nothing has been re-cued yet. When a disruption needs a decision, confirm the proposed running order in the console to see the diff here.</p>
+            <button class="btn btn-twin btn-sm" data-go="disrupt">Open disruption console</button>
+          </div>
+        </div></div>
+      </div>
+
+      <div id="reoptFull" style="display:none">
+        <div class="grid g4" style="margin-bottom:14px">
+          <div class="card metric"><div class="metric-label">Solve time</div><div class="metric-val" style="color:var(--go)" id="roSolve">–</div><div class="metric-foot" id="roMoved"></div></div>
+          <div class="card metric"><div class="metric-label">Rule breaks avoided</div><div class="metric-val" id="roAvoided">–</div><div class="metric-foot">vs doing nothing</div></div>
+          <div class="card metric"><div class="metric-label">Finish time</div><div class="metric-val" id="roFinish">–</div><div class="metric-foot" id="roFinishFoot"></div></div>
+          <div class="card metric"><div class="metric-label">Cost signal</div><div class="metric-val" style="color:var(--tungsten);font-size:24px" id="roCost">–</div><div class="metric-foot">sent to Component 4, which prices it</div></div>
+        </div>
+
+        <div class="split">
+          <div class="card">
+            <div class="card-head">
+              <span class="card-title">Cue changes</span>
+              <span class="chip chip-go" style="margin-left:auto" id="roVersion"><span class="dot"></span> Applied</span>
+            </div>
+            <div id="diffList"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><span class="card-title">What was protected</span></div>
+            <div class="card-body" style="display:flex;flex-direction:column;gap:11px" id="protectList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 7. LOG ========== -->
+    <section class="page" id="page-log">
+      <div class="page-head">
+        <div class="eyebrow">Record · Audit trail (FR-16)</div>
+        <h1 class="page-title">Event log</h1>
+        <p class="page-note">Every check-in, detection, simulation, proposal and decision, in order, with who did it. Append-only: entries are never edited or removed.</p>
+      </div>
+      <div class="card"><div class="log" id="logList"></div></div>
+    </section>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg><span id="toastMsg"></span></div>
+<script>
+/* ============================================================
+   Live console for Component 3. Every value on screen comes from
+   GET /api/state (scheduling_engine.operations via api/app.py);
+   every button calls the engine. Nothing here is simulated in JS.
+   ============================================================ */
+const API = '';
+let S = null;                 // latest snapshot
+let animatedProposal = null;  // id of the proposal whose trace has been animated
+let runTimer = null;
+
+const hhmm = m => String(Math.floor(m/60)).padStart(2,'0')+':'+String(((m%60)+60)%60).padStart(2,'0');
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $ = id => document.getElementById(id);
+// Engine messages use activity ids and minutes-since-midnight; show names and clock times.
+function human(msg){
+  let out = String(msg).replace(/(start of |scheduled at |starts at |ends at |at |by )(\d{2,4})\b/g, (m,p,n)=>p+hhmm(+n));
+  (S?.activities||[]).forEach(a=>{ out = out.replace(new RegExp("(^|[^a-z_])"+a.id+"(?![a-z_])","g"), (m,pre)=>pre+a.name); });
+  return out;
+}
+// A change to an in-progress activity often moves only its end.
+const moveText = c => c.old_start===c.new_start
+  ? `ends ${hhmm(c.old_end)} → <b>${hhmm(c.new_end)}</b>`
+  : `${hhmm(c.old_start)} → <b>${hhmm(c.new_start)}</b>`;
+
+/* ---------- API ---------- */
+async function api(path, body){
+  const res = await fetch(API + path, body === undefined ? {} :
+    {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+  const data = await res.json().catch(()=>({}));
+  if(!res.ok) throw new Error(data.detail || ('HTTP '+res.status));
+  return data;
+}
+async function act(path, body, okMsg){
+  try{ S = await api(path, body); render(); if(okMsg) toast(okMsg); return true; }
+  catch(e){ toast('Not applied: ' + e.message); return false; }
+}
+async function poll(){
+  try{
+    S = await api('/api/state'); render();
+    $('twinLabel').textContent = 'Twin synced'; $('twinLabel').classList.remove('offline');
+    $('twinMeta').textContent = 'last sync ' + new Date().toLocaleTimeString();
+  }catch(e){
+    $('twinLabel').textContent = 'Engine offline'; $('twinLabel').classList.add('offline');
+    $('twinMeta').textContent = 'start: python -m uvicorn api.app:app';
+  }
+}
+
+/* ---------- derived data ---------- */
+function derive(){
+  const acts = S.activities;
+  const cueNo = {}; acts.forEach((a,i)=> cueNo[a.id] = i+1);
+  const resName = Object.fromEntries(S.resources.map(r=>[r.id, r.name]));
+  const diverging = new Set(S.divergences.filter(d=>d.delta_minutes>0).map(d=>d.activity_id));
+  const recued = new Set((S.last_confirmed?.changes || []).map(c=>c.activity_id));
+  const before = Object.fromEntries((S.last_confirmed?.changes || []).map(c=>[c.activity_id, c]));
+  const evName = Object.fromEntries(S.events.map(e=>[e.id, e.name]));
+  const starts = acts.map(a=>a.actual_start ?? a.planned_start), ends = acts.map(a=>Math.max(a.actual_end ?? a.planned_end, a.planned_end));
+  const T0 = Math.floor(Math.min(...starts, S.clock.now)/60)*60;
+  const T1 = Math.ceil(Math.max(...ends, S.clock.now)/60)*60;
+  return {acts, cueNo, resName, diverging, recued, before, evName, T0, T1};
+}
+function barState(a, D){
+  if(a.state==='completed') return 'done';
+  if(D.diverging.has(a.id)) return 'held';
+  if(a.state==='in_progress') return 'live';
+  if(D.recued.has(a.id)) return 'recued';
+  return 'next';
+}
+// Where to draw: actual times for what has happened, plan for the rest.
+function window_(a){
+  const s = a.actual_start ?? a.planned_start;
+  let e = a.actual_end ?? a.planned_end;
+  if(a.state==='in_progress') e = Math.max(a.planned_end, S.clock.now, s + 5);
+  return [s, e];
+}
+
+/* ---------- timeline ---------- */
+function drawTimeline(axisId, gridId, rowsId, D, showRes){
+  const span = D.T1 - D.T0, L = m => (m-D.T0)/span*100, W = d => d/span*100;
+  const axisEl = $(axisId); axisEl.innerHTML = '';
+  for(let h=D.T0; h<D.T1; h+=60){ const t=document.createElement('div'); t.className='ro-tick'; t.textContent=hhmm(h); axisEl.appendChild(t); }
+  const host = $(rowsId), grid = $(gridId);
+  grid.innerHTML = ''; for(let h=D.T0; h<D.T1; h+=60) grid.appendChild(document.createElement('i'));
+  host.innerHTML = ''; host.appendChild(grid);
+  D.acts.forEach(a=>{
+    const row = document.createElement('div'); row.className='ro-row';
+    const evTag = a.event_id === S.events[0].id ? '' : `<span class="lane-evt">${esc(a.event_id.split('_')[0].toUpperCase())}</span>`;
+    row.innerHTML = `<div class="ro-lane"><span class="ro-cue">${String(D.cueNo[a.id]).padStart(2,'0')}</span><span class="ro-name">${esc(a.name)}</span>${evTag}</div>`;
+    const b0 = D.before[a.id];
+    if(b0 && a.state!=='completed'){
+      const g=document.createElement('div'); g.className='bar ghost';
+      g.style.left=L(b0.old_start)+'%'; g.style.width=W(b0.old_end-b0.old_start)+'%';
+      g.innerHTML=`<span class="bar-time">${hhmm(b0.old_start)}</span>`; row.appendChild(g);
+    }
+    const [s,e] = window_(a), st = barState(a, D);
+    const b=document.createElement('div'); b.className='bar '+st;
+    b.style.left=L(s)+'%'; b.style.width=Math.max(W(e-s),0.6)+'%';
+    const res = a.resources.map(r=>D.resName[r]||r).join(' · ');
+    b.innerHTML=`<span class="bar-time">${hhmm(s)}–${hhmm(e)}</span>`+(showRes?`<span class="bar-res">${esc(res)}</span>`:'');
+    b.title=`Cue ${D.cueNo[a.id]} — ${a.name} (${D.evName[a.event_id]})\nplanned ${hhmm(a.planned_start)}–${hhmm(a.planned_end)}`
+      +(a.actual_start!=null?`\nactual start ${hhmm(a.actual_start)}`:'')+(a.actual_end!=null?`, end ${hhmm(a.actual_end)}`:'')+`\n${res}`;
+    row.appendChild(b); host.appendChild(row);
+  });
+  const ph=document.createElement('div'); ph.className='playhead'; ph.style.left=L(S.clock.now)+'%'; ph.setAttribute('data-t', hhmm(S.clock.now));
+  host.appendChild(ph);
+}
+
+/* ---------- pages ---------- */
+const stateChipHTML = (a, D) => {
+  const st = barState(a, D);
+  const d = S.divergences.find(x=>x.activity_id===a.id && x.delta_minutes>0);
+  if(st==='held') return `<span class="chip chip-alarm"><span class="dot"></span>${d.type.startsWith('missing')?'No check-in':'Late'} +${d.delta_minutes}m</span>`;
+  return {done:'<span class="chip chip-mute">Complete</span>', live:'<span class="chip chip-live"><span class="dot"></span>Live</span>',
+          next:'<span class="chip chip-twin">Standby</span>', recued:'<span class="chip chip-go">Re-cued</span>'}[st];
+};
+
+function renderTop(D){
+  $('evtName').textContent = S.events.map(e=>e.name).join('  +  ');
+  $('evtMeta').textContent = `${S.events.length} EVENTS · ${S.activities.length} ACTIVITIES · ${S.resources.length} RESOURCES · SCHEDULE v${S.clock.schedule_version}`;
+  $('clock').textContent = S.clock.now_hhmm;
+  const nDiv = D.diverging.size;
+  let chip;
+  if(S.pending_proposal) chip = '<span class="chip chip-alarm" id="stateChip"><span class="dot"></span> Decision needed</span>';
+  else if(nDiv) chip = `<span class="chip chip-live" id="stateChip"><span class="dot"></span> Watching ${nDiv} divergence${nDiv>1?'s':''}</span>`;
+  else if(S.clock.schedule_version>1) chip = `<span class="chip chip-go" id="stateChip"><span class="dot"></span> Re-planned · v${S.clock.schedule_version}</span>`;
+  else chip = '<span class="chip chip-live" id="stateChip"><span class="dot"></span> On schedule</span>';
+  $('stateChip').outerHTML = chip;
+  $('cfBadge').textContent = nDiv + S.conflicts.length;
+}
+
+function renderBoard(D){
+  const total = D.acts.length, onTrack = D.acts.filter(a=>!D.diverging.has(a.id)).length;
+  $('mCues').innerHTML = `${onTrack}<small>/${total}</small>`;
+  $('mCuesFoot').textContent = `${D.acts.filter(a=>a.state==='completed').length} complete · ${D.acts.filter(a=>a.state==='in_progress').length} live`;
+  const used = new Set(D.acts.flatMap(a=>a.resources));
+  const busy = D.acts.reduce((s,a)=>s + a.resources.length*(a.planned_end-a.planned_start), 0);
+  const cap = S.resources.length*(D.T1-D.T0);
+  $('mUtil').innerHTML = `${Math.round(100*busy/cap)}<small>%</small>`;
+  $('mUtilFoot').textContent = `${used.size} of ${S.resources.length} resources committed`;
+  $('mConf').innerHTML = S.pending_proposal ? '1' : '0';
+  $('mConf').style.color = S.pending_proposal ? 'var(--alarm)' : 'var(--go)';
+  $('mConfFoot').textContent = S.pending_proposal ? `proposal #${S.pending_proposal.id} waiting` : `${S.conflicts.length} constraint violations in plan`;
+  const last = S.pending_proposal || S.last_confirmed;
+  $('mReopt').innerHTML = last ? `${last.solve_seconds.toFixed(3)}<small>s</small>` : '–';
+  $('mReoptFoot').textContent = last ? `measured · target under 5 s` : 'no re-optimisation yet';
+  $('miniState').textContent = `${total} cues · ${hhmm(D.T0)}–${hhmm(D.T1)}`;
+  drawTimeline('axisMini','gridMini','rowsMini', D, false);
+
+  let html = '';
+  if(S.pending_proposal){
+    const p = S.pending_proposal;
+    html += cf('crit', `Proposal #${p.id} needs your decision`, 'Decision needed',
+      `${p.do_nothing_violations.length ? p.do_nothing_violations.length+' rule break(s)' : 'Client-facing delay'} if nothing is done; re-optimised plan ready.`,
+      [], 'Review', 'disrupt');
+  }
+  S.divergences.filter(d=>d.delta_minutes>0).slice(0,4).forEach(d=>{
+    const a = D.acts.find(x=>x.id===d.activity_id);
+    html += cf(d.type.startsWith('missing')?'crit':'warn', `${a.name}: ${labelDiv(d.type)}`, `+${d.delta_minutes} min`,
+      `Planned ${hhmm(d.planned_minutes)}; tolerance ${a.tolerance} min.`, [], null);
+  });
+  if(!html) html = cf('ok', 'Nothing needs a call', 'All clear', 'Every check-in so far is within tolerance of the plan.', [], null);
+  $('boardConflicts').innerHTML = html;
+}
+
+const labelDiv = t => ({missing_start_confirmation:'no start check-in', missing_completion_confirmation:'no completion check-in',
+  start_time_deviation:'started late', end_time_deviation:'finished late'}[t] || t);
+
+function cf(sev, title, chip, why, ev, fix, goto){
+  return `<div class="cf"><div class="cf-sev ${sev}"></div><div class="cf-main">
+    <div class="cf-top"><span class="cf-title">${esc(title)}</span>
+    <span class="chip ${sev==='crit'?'chip-alarm':sev==='warn'?'chip-live':'chip-go'}">${esc(chip)}</span></div>
+    <div class="cf-why">${esc(why)}</div>
+    ${ev.length?`<div class="cf-ev">${ev.map(e=>`<span>${esc(e)}</span>`).join('')}</div>`:''}</div>
+    ${fix?`<div class="cf-act"><button class="btn btn-sm" data-go="${goto||'disrupt'}">${esc(fix)}</button></div>`:''}</div>`;
+}
+
+function renderOrder(D){
+  drawTimeline('axisFull','gridFull','rowsFull', D, true);
+  $('cueTable').innerHTML = D.acts.map(a=>{
+    const [s,e] = window_(a);
+    const tags = (a.fixed_start!=null?' <span class="chip chip-mute" style="margin-left:6px">Fixed '+hhmm(a.fixed_start)+'</span>':'')
+               + (a.locked_start!=null?' <span class="chip chip-mute" style="margin-left:6px">Locked</span>':'')
+               + (a.event_id!==S.events[0].id?' <span class="chip chip-mute" style="margin-left:6px">'+esc(D.evName[a.event_id])+'</span>':'');
+    return `<tr><td class="mono">${String(D.cueNo[a.id]).padStart(2,'0')}</td><td>${esc(a.name)}${tags}</td>
+      <td class="mono">${hhmm(s)}–${hhmm(e)}</td><td class="mono">${e-s}m</td>
+      <td style="color:var(--ink-2);font-size:12.5px">${esc(a.resources.map(r=>D.resName[r]||r).join(' · '))}</td>
+      <td class="mono" style="color:var(--ink-3)">${a.predecessors.length?a.predecessors.map(p=>'Cue '+D.cueNo[p]).join(', '):'—'}</td>
+      <td>${stateChipHTML(a, D)}</td></tr>`;
+  }).join('');
+}
+
+function renderResources(D){
+  const span = D.T1 - D.T0;
+  const rows = S.resources.map(r=>{
+    const mine = D.acts.filter(a=>a.resources.includes(r.id));
+    const busy = mine.reduce((s,a)=>s+(a.planned_end-a.planned_start),0);
+    const load = Math.round(100*busy/span);
+    const shared = S.shared_resources.includes(r.id);
+    let cls='go', status='Committed';
+    if(!mine.length){ cls='mute'; status='Standby'; }
+    if(shared){ cls='tung'; status='Shared · '+new Set(mine.map(a=>a.event_id)).size+' events'; }
+    if(mine.some(a=>a.state==='in_progress')){ cls='tung'; status='In use now'; }
+    if(mine.some(a=>D.diverging.has(a.id))){ cls='alarm'; status='Affected by delay'; }
+    const win = mine.length ? `${hhmm(Math.min(...mine.map(a=>a.planned_start)))}–${hhmm(Math.max(...mine.map(a=>a.planned_end)))}` : '—';
+    return {r, mine, load, cls, status, win};
+  });
+  const UC={go:'var(--go)',tung:'var(--tungsten)',alarm:'var(--alarm)',mute:'var(--ink-3)'}, SC={go:'chip-go',tung:'chip-live',alarm:'chip-alarm',mute:'chip-mute'};
+  $('resTable').innerHTML = rows.map(x=>`<tr><td style="font-weight:500">${esc(x.r.name)}</td>
+    <td><span class="chip chip-mute">${esc(x.r.type)}</span></td>
+    <td class="mono" style="color:var(--ink-2)">${x.mine.map(a=>'Cue '+D.cueNo[a.id]).join(', ')||'—'}</td>
+    <td class="mono" style="color:var(--ink-3)">${x.win}</td>
+    <td><div class="util"><div class="util-track"><div class="util-fill" style="width:${Math.min(x.load,100)}%;background:${UC[x.cls]}"></div></div><span class="util-num">${x.load}%</span></div></td>
+    <td>${riskChip(x.r.id)}</td>
+    <td><span class="chip ${SC[x.cls]}">${esc(x.status)}</span></td></tr>`).join('');
+  const byType = t => { const all=rows.filter(x=>x.r.type===t); return [all.filter(x=>x.mine.length).length, all.length]; };
+  const [sU,sT]=byType('staff'), [vU,vT]=byType('vendor');
+  $('resStaff').innerHTML=`${sU}<small>/${sT}</small>`; $('resStaffFoot').textContent=`${sT-sU} on standby`;
+  $('resVendor').innerHTML=`${vU}<small>/${vT}</small>`;
+  const late = rows.filter(x=>x.r.type==='vendor' && x.cls==='alarm').length;
+  $('resVendorFoot').textContent = late ? `${late} affected by a delay` : 'all on plan';
+  $('resVendorFoot').style.color = late ? 'var(--alarm)' : '';
+  $('resShared').textContent = S.shared_resources.length;
+}
+
+function renderConflicts(D){
+  let html = '';
+  S.conflicts.forEach(c=> html += cf('crit', human(c.message), c.type, 'Found by the independent verifier.', [], null));
+  html += cf(S.conflicts.length?'crit':'ok', `Plan v${S.clock.schedule_version}: ${S.conflicts.length} constraint violations`, 'Independent check',
+    'Every precedence, resource-exclusivity, turnaround and fixed-time rule re-checked by conflict_detection.verify_schedule, which does not trust the solver.',
+    ['RULES precedence · exclusivity · turnaround · fixed time', `ACTIVITIES ${S.activities.length}`, `EVENTS ${S.events.length}`], null);
+  S.divergences.filter(d=>d.delta_minutes>0).forEach(d=>{
+    const a = D.acts.find(x=>x.id===d.activity_id);
+    const missing = d.type.startsWith('missing');
+    html += cf(missing?'crit':'warn', `${a.name}: ${labelDiv(d.type)}`, missing?'Sensor-free detection':'Reported delay',
+      missing ? `No check-in received ${d.delta_minutes} min after the planned ${hhmm(d.planned_minutes)}. The silence itself is the signal.`
+              : `Check-in arrived ${d.delta_minutes} min after the planned ${hhmm(d.planned_minutes)}.`,
+      [`TYPE ${d.type}`, `DELTA +${d.delta_minutes}m`, `TOLERANCE ${a.tolerance}m`], S.pending_proposal?'See proposal':null);
+  });
+  if(S.shared_resources.length){
+    html += cf('ok', `${S.shared_resources.length} resources shared across events`, 'Cross-event',
+      `${S.shared_resources.map(r=>D.resName[r]).join(', ')} serve more than one event; the solver schedules them on one timeline, so they cannot be double-booked.`,
+      S.shared_resources.map(r=>'ASSET '+D.resName[r]), null);
+  }
+  $('conflictList').innerHTML = html;
+}
+
+/* ---------- disruption console ---------- */
+function renderConsole(D){
+  const sel = $('ciAct'), keep = sel.value;
+  sel.innerHTML = D.acts.filter(a=>a.state!=='completed').map(a=>
+    `<option value="${a.id}">Cue ${String(D.cueNo[a.id]).padStart(2,'0')} — ${esc(a.name)} (${a.state==='in_progress'?'live':'not started'})</option>`).join('');
+  if([...sel.options].some(o=>o.value===keep)) sel.value = keep;
+
+  const p = S.pending_proposal, pane = $('simPane');
+  if(!p){
+    if(animatedProposal !== 'idle'){ animatedProposal = 'idle'; }
+    const absorbed = [...S.audit].reverse().find(e=>e.kind==='disruption.absorbed');
+    $('simChip').outerHTML = '<span class="chip chip-twin" id="simChip"><span class="dot"></span> Watching</span>';
+    pane.innerHTML = absorbed && absorbed.sequence > lastDecisionSeq()
+      ? `<div class="eyebrow" style="margin-bottom:11px">Latest detection</div>
+         <div class="trace">${traceRows(recentDetections(absorbed))}</div>
+         <div class="note" style="margin-top:14px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--go)"><polyline points="20 6 9 17 4 12"/></svg>
+         <div><b style="color:var(--ink)">Absorbed by slack — no action needed.</b> The simulation shows no client-facing time moves and no rule breaks, so the planner is not interrupted. It is logged for the record.</div></div>`
+      : `<div class="sim-idle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>
+         <p>No disruption needs a decision. Advance the clock, send a check-in, or run a demo scenario — detection, simulation and re-optimisation run automatically.</p></div>`;
+    return;
+  }
+  $('simChip').outerHTML = '<span class="chip chip-alarm" id="simChip"><span class="dot"></span> Decision needed</span>';
+  if(animatedProposal === p.id) return;   // keep the rendered trace (and any typed note) stable
+  animatedProposal = p.id;
+
+  const name = id => (D.acts.find(a=>a.id===id)||{name:id}).name;
+  const clientDelay = Object.entries(p.do_nothing_delay);
+  const steps = [];
+  p.trigger.forEach(d=> steps.push(['twin', `Twin: <b>${esc(name(d.activity_id))}</b> — ${labelDiv(d.type)} (+${d.delta_minutes} min)`]));
+  if(Object.keys(p.predicted_extra_duration).length)
+    steps.push(['', `Overdue time taken as minimum extra duration: ${Object.entries(p.predicted_extra_duration).map(([k,v])=>esc(name(k))+' +'+v+'m').join(', ')}`]);
+  steps.push(['hit', `Simulated doing nothing (SimPy): ${clientDelay.length} activities delayed, finish ${hhmm(p.do_nothing_end)}`]);
+  p.do_nothing_violations.forEach(v=> steps.push(['hit', `Rule broken if nothing is done: ${esc(human(v))}`]));
+  if(p.is_feasible){
+    steps.push(['fix', `Re-optimised remaining schedule (CP-SAT) in <b>${p.solve_seconds.toFixed(3)} s</b> — ${p.changes.length} cues moved, finish ${hhmm(p.revised_end)}`]);
+    steps.push(['fix', `Cost signal ready: ${p.cost_signal.total_delay_minutes} delay-minutes, ${Object.keys(p.cost_signal.resource_overtime_minutes).length} resources on overtime`]);
+    steps.push(['twin', `Awaiting your decision — nothing changes until you confirm (FR-13)`]);
+  } else {
+    steps.push(['hit', `No feasible re-plan keeps every lock: ${p.conflicting_locked_ids.map(name).join(', ')} — unlock or reject`]);
+  }
+
+  pane.innerHTML = `<div class="eyebrow" style="margin-bottom:11px">Twin reasoning trace · proposal #${p.id} at ${hhmm(p.created_at_minute)}</div>
+    <div class="trace" id="trace"></div><div class="bar-load"><i id="load"></i></div><div id="decisionWrap"></div>`;
+  const trace = $('trace'), load = $('load');
+  let i = 0;
+  const tick = setInterval(()=>{
+    if(i >= steps.length){ clearInterval(tick); load.style.background='var(--go)'; showDecision(p, D, name); return; }
+    const r=document.createElement('div'); r.className='tr '+steps[i][0];
+    r.innerHTML=`<span class="tr-t">step ${i+1}</span><span class="tr-b">${steps[i][1]}</span>`; trace.appendChild(r);
+    load.style.width=((i+1)/steps.length*100)+'%'; i++;
+  }, 260);
+}
+
+function showDecision(p, D, name){
+  const dn = Object.entries(p.do_nothing_delay).sort((a,b)=>b[1]-a[1]);
+  const fixedKept = D.acts.filter(a=>a.fixed_start!=null || a.locked_start!=null);
+  $('decisionWrap').innerHTML = `
+    <div class="impact">
+      <div class="imp bad"><div class="imp-l">Do nothing: rule breaks</div><div class="imp-v">${p.do_nothing_violations.length}</div></div>
+      <div class="imp good"><div class="imp-l">Re-optimised: cues moved</div><div class="imp-v">${p.is_feasible?p.changes.length:'—'}</div></div>
+      <div class="imp twin"><div class="imp-l">Solve time</div><div class="imp-v">${p.solve_seconds.toFixed(3)}s</div></div>
+    </div>
+    <div class="cmp">
+      <div class="cmp-col bad"><h4>If we do nothing</h4><ul>
+        ${dn.map(([k,v])=>`<li>${esc(name(k))} <b>+${v} min</b></li>`).join('') || '<li>No activity delayed</li>'}
+        ${p.do_nothing_violations.map(v=>`<li style="color:var(--alarm)">${esc(human(v))}</li>`).join('')}
+        <li>Finish ${hhmm(p.do_nothing_end)}</li></ul></div>
+      <div class="cmp-col good"><h4>Re-optimised plan</h4><ul>
+        ${p.is_feasible ? p.changes.map(c=>`<li>${esc(c.activity_name)}: ${moveText(c)}</li>`).join('') : '<li>Infeasible with current locks</li>'}
+        ${p.is_feasible ? fixedKept.map(a=>`<li style="color:var(--go)">${esc(a.name)} held at ${hhmm(a.fixed_start ?? a.locked_start)}</li>`).join('') : ''}
+        ${p.is_feasible ? `<li>Finish ${hhmm(p.revised_end)}</li>` : ''}</ul></div>
+    </div>
+    <div class="decide">
+      <input id="note" placeholder="Note for the log (optional), e.g. client agreed">
+      ${p.is_feasible ? `<button class="btn btn-go" id="btnApply">Confirm re-optimised order</button>` : ''}
+      <button class="btn btn-ghost" id="btnDiscard">Reject</button>
+    </div>`;
+  if(p.is_feasible) $('btnApply').onclick = async ()=>{
+    if(await act(`/api/proposals/${p.id}/confirm`, {planner:'planner', note:$('note').value},
+                 'Re-optimised order applied — cost signal sent, crew notified')) go('reopt');
+  };
+  $('btnDiscard').onclick = ()=> act(`/api/proposals/${p.id}/reject`, {planner:'planner', note:$('note').value},
+                                     'Proposal rejected — plan unchanged, logged');
+}
+
+function lastDecisionSeq(){
+  const d = [...S.audit].reverse().find(e=>['schedule.changed','proposal.rejected','schedule.planned'].includes(e.kind));
+  return d ? d.sequence : 0;
+}
+function recentDetections(absorbed){
+  return S.audit.filter(e=>(e.kind==='disruption.detected' || e.kind==='disruption.absorbed') && e.event_minute===absorbed.event_minute);
+}
+function traceRows(entries){
+  return entries.map(e=>`<div class="tr ${e.kind==='disruption.absorbed'?'fix':'twin'}"><span class="tr-t">${hhmm(e.event_minute)}</span><span class="tr-b">${esc(e.summary)}</span></div>`).join('');
+}
+
+/* ---------- re-optimisation page ---------- */
+function renderReopt(D){
+  const p = S.last_confirmed;
+  $('reoptEmpty').style.display = p ? 'none' : 'block';
+  $('reoptFull').style.display = p ? 'block' : 'none';
+  if(!p) return;
+  const span = D.T1-D.T0, L = m => (m-D.T0)/span*100, W = d => d/span*100;
+  $('roSolve').innerHTML = `${p.solve_seconds.toFixed(3)}<small>s</small>`;
+  $('roMoved').textContent = `${p.changes.length} cues moved · target under 5 s`;
+  $('roAvoided').innerHTML = `${p.do_nothing_violations.length}`;
+  $('roAvoided').style.color = p.do_nothing_violations.length ? 'var(--go)' : '';
+  $('roFinish').textContent = hhmm(p.revised_end);
+  $('roFinishFoot').textContent = `doing nothing: ${hhmm(p.do_nothing_end)}`;
+  $('roCost').innerHTML = `${p.cost_signal.total_delay_minutes}<small> delay-min</small>`;
+  $('roVersion').innerHTML = `<span class="dot"></span> Applied · v${S.clock.schedule_version} by ${esc(p.decided_by)}`;
+  $('diffList').innerHTML = p.changes.map(c=>`<div class="diff-row"><div class="diff-top">
+      <span class="diff-name">${esc(c.activity_name)}</span>
+      <span class="diff-arrow" style="margin-left:auto">${moveText(c)}</span></div>
+      <div class="diff-track"><div class="diff-was" style="left:${L(c.old_start)}%;width:${W(c.old_end-c.old_start)}%"></div>
+      <div class="diff-now" style="left:${L(c.new_start)}%;width:${W(c.new_end-c.new_start)}%"></div></div></div>`).join('')
+    || '<div class="diff-row">No cue times changed.</div>';
+  const ok = t => `<div class="note" style="padding:11px 13px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:var(--go)"><polyline points="20 6 9 17 4 12"/></svg><div>${t}</div></div>`;
+  const items = D.acts.filter(a=>a.fixed_start!=null || a.locked_start!=null)
+    .map(a=>ok(`<b style="color:var(--ink)">${esc(a.name)} held at ${hhmm(a.fixed_start ?? a.locked_start)}.</b> ${a.fixed_start!=null?'Fixed by the client':'Locked by the planner'} — the solver may not move it.`));
+  p.do_nothing_violations.forEach(v=> items.push(ok(`<b style="color:var(--ink)">Avoided:</b> ${esc(human(v))} (what doing nothing would have caused).`)));
+  items.push(ok(`<b style="color:var(--ink)">${S.conflicts.length} constraint violations</b> in the applied plan, re-checked by the independent verifier.`));
+  const c4 = S.component4_received[S.component4_received.length-1];
+  if(c4) items.push(ok(`<b style="color:var(--ink)">Cost signal published to Component 4:</b> ${c4.cost_signal.total_delay_minutes} delay-minutes; overtime ${Object.entries(c4.cost_signal.resource_overtime_minutes).map(([k,v])=>esc(D.resName[k]||k)+' '+v+'m').join(', ')||'none'}.`));
+  const notes = S.notifications.filter(n=>n.event_minute===p.created_at_minute || true).slice(-p.changes.length*3);
+  items.push(ok(`<b style="color:var(--ink)">${S.notifications.length} notifications</b> queued to affected staff and vendors, e.g. “${esc((S.notifications[S.notifications.length-1]||{}).message||'')}”`));
+  $('protectList').innerHTML = items.join('');
+}
+
+/* ---------- ML forecasts ---------- */
+function riskChip(rid){
+  const v = (S.ml?.vendor_risk || []).find(r=>r.resource_id===rid);
+  if(!v) return '<span style="color:var(--ink-3)">—</span>';
+  const pct = Math.round(v.probability*100);
+  return `<span class="chip ${pct>=50?'chip-alarm':pct>=25?'chip-live':'chip-go'}">${pct}%</span>`;
+}
+function renderML(D){
+  const ml = S.ml; if(!ml) return;
+  $('mlMode').textContent = ml.mode==='predicted' ? 'ML durations' : 'Planner estimates';
+  document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('btn-twin', b.dataset.mode===ml.mode));
+  $('mlEnd').textContent = hhmm(ml.plan_end);
+  $('mlEndFoot').textContent = ml.mode==='predicted'
+    ? `planner estimates would end ${hhmm(ml.planner_end)} (+${ml.plan_end-ml.planner_end} min hidden)`
+    : 'switch to ML durations to see the realistic end';
+  const c = ml.card;
+  $('mlMae').innerHTML = `${c.duration.mae.toFixed(1)}<small> min</small>`;
+  $('mlMaeFoot').textContent = `planner estimates: ${c.duration.planner_mae.toFixed(1)} min · ${Math.round(100*(1-c.duration.mae/c.duration.planner_mae))}% less error`;
+  $('mlAuc').textContent = c.lateness.auc.toFixed(3);
+  $('mlAucFoot').textContent = c.lateness.oracle_auc ? `theoretical best ${c.lateness.oracle_auc.toFixed(3)} · chance 0.5` : 'chance 0.5';
+  $('mlTable').innerHTML = ml.durations.map(d=>{
+    const delta = d.predicted==null ? null : d.predicted - d.planner;
+    const why = d.predicted==null ? '<span style="color:var(--ink-3)">not a trained activity type — planner estimate kept</span>'
+      : d.reasons.map(r=>`<span class="chip ${r.minutes>0?'chip-live':'chip-go'}" style="margin:0 4px 3px 0">${esc(r.feature)} ${r.minutes>0?'+':''}${r.minutes}m</span>`).join('');
+    return `<tr><td>${esc(d.name)}${d.event_id!==S.events[0].id?' <span class="lane-evt">'+esc(d.event_id.split('_')[0].toUpperCase())+'</span>':''}</td>
+      <td class="mono">${d.planner}m</td><td class="mono">${d.predicted==null?'—':d.predicted+'m'}</td>
+      <td class="mono" style="color:${delta>0?'var(--tungsten)':delta<0?'var(--go)':'var(--ink-3)'}">${delta==null?'—':(delta>0?'+':'')+delta+'m'}</td>
+      <td>${why}</td></tr>`;
+  }).join('');
+  $('mlRisk').innerHTML = ml.vendor_risk.map(v=>{
+    const pct = Math.round(v.probability*100), col = pct>=50?'var(--alarm)':pct>=25?'var(--tungsten)':'var(--go)';
+    return `<div><div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">
+        <b>${esc(v.vendor)}</b><span class="mono" style="color:${col};font-size:18px">${pct}%</span></div>
+      <div class="util" style="margin:6px 0"><div class="util-track"><div class="util-fill" style="width:${pct}%;background:${col}"></div></div></div>
+      <div style="font-size:11.5px;color:var(--ink-3)">arrives ${hhmm(v.arrival)} · ${v.distance_km} km · ${v.prior_jobs} past jobs · ${v.prior_mean_lateness==null?'no lateness history':'avg '+v.prior_mean_lateness+' min late'}</div>
+      ${pct>=50?'<div style="font-size:12px;color:var(--alarm);margin-top:4px">Confirm arrival the day before</div>':''}</div>`;
+  }).join('');
+}
+
+/* ---------- build event (planner-entered events) ---------- */
+// The form only collects what the person types; all checking happens in the
+// engine (api/custom_event.py), which explains any problem in plain words.
+const B_KEY = 'c3_builder_v1';
+const bBlankAct = () => ({name:'', minutes:30, after:'', role1:'', count1:1, role2:'', fixed:''});
+const bBlankRes = () => ({name:'', role:'', type:'staff', turnaround:0});
+const B_EXAMPLE = {
+  name: 'Nimal’s birthday party', opens: '13:00', keep: false,
+  acts: [
+    {name:'Hall setup', minutes:60, after:'', role1:'setup crew', count1:2, role2:'', fixed:''},
+    {name:'Decorations', minutes:45, after:'1', role1:'decorator', count1:1, role2:'', fixed:''},
+    {name:'Sound check', minutes:20, after:'1', role1:'dj', count1:1, role2:'', fixed:''},
+    {name:'Guests arrive', minutes:30, after:'2, 3', role1:'host', count1:1, role2:'', fixed:'16:00'},
+    {name:'Cake and speeches', minutes:30, after:'4', role1:'host', count1:1, role2:'dj', fixed:''},
+    {name:'Party and music', minutes:90, after:'5', role1:'dj', count1:1, role2:'', fixed:''},
+    {name:'Clean-up', minutes:45, after:'6', role1:'setup crew', count1:2, role2:'', fixed:''},
+  ],
+  res: [
+    {name:'Crew Kasun', role:'setup crew', type:'staff', turnaround:0},
+    {name:'Crew Ruwan', role:'setup crew', type:'staff', turnaround:0},
+    {name:'Decor by Dilini', role:'decorator', type:'vendor', turnaround:0},
+    {name:'DJ Shan', role:'dj', type:'vendor', turnaround:10},
+    {name:'Host Amaya', role:'host', type:'staff', turnaround:0},
+  ],
+};
+let builder = (()=>{ try { const s = JSON.parse(localStorage.getItem(B_KEY)); if(s && s.acts) return s; } catch(e){}
+  return {name:'', opens:'08:00', keep:false, acts:[bBlankAct()], res:[bBlankRes()]}; })();
+function bSave(){ try { localStorage.setItem(B_KEY, JSON.stringify(builder)); } catch(e){} }
+
+function bRender(){
+  $('bName').value = builder.name; $('bOpens').value = builder.opens; $('bKeep').checked = builder.keep;
+  const roles = [...new Set(builder.res.map(r=>r.role.trim()).filter(Boolean))];
+  $('bRoles').innerHTML = roles.map(r=>`<option value="${esc(r)}">`).join('');
+  const roleSelect = (i, k, val, allowNone) => `<select class="bin" data-a="${i}" data-k="${k}">`
+    + (allowNone ? '<option value="">—</option>' : '<option value="">choose…</option>')
+    + roles.map(r=>`<option value="${esc(r)}"${r===val?' selected':''}>${esc(r)}</option>`).join('')
+    + (val && !roles.includes(val) ? `<option value="${esc(val)}" selected>${esc(val)} (no resource)</option>` : '')
+    + '</select>';
+  $('bActs').innerHTML = builder.acts.map((a,i)=>`<tr>
+    <td class="mono">${i+1}</td>
+    <td><input class="bin" data-a="${i}" data-k="name" value="${esc(a.name)}" placeholder="e.g. Hall setup"></td>
+    <td><input class="bin" data-a="${i}" data-k="minutes" type="number" min="1" max="1440" value="${esc(a.minutes)}"></td>
+    <td><input class="bin" data-a="${i}" data-k="after" value="${esc(a.after)}" placeholder="e.g. 1, 2"></td>
+    <td>${roleSelect(i,'role1',a.role1,false)}</td>
+    <td><input class="bin" data-a="${i}" data-k="count1" type="number" min="1" value="${esc(a.count1)}"></td>
+    <td>${roleSelect(i,'role2',a.role2,true)}</td>
+    <td><input class="bin" data-a="${i}" data-k="fixed" type="time" value="${esc(a.fixed)}"></td>
+    <td><button class="btn btn-sm btn-ghost" data-del-a="${i}" aria-label="Remove activity ${i+1}">×</button></td></tr>`).join('');
+  $('bRes').innerHTML = builder.res.map((r,i)=>`<tr>
+    <td class="mono">${i+1}</td>
+    <td><input class="bin" data-r="${i}" data-k="name" value="${esc(r.name)}" placeholder="e.g. Crew Kasun"></td>
+    <td><input class="bin" data-r="${i}" data-k="role" value="${esc(r.role)}" list="bRoles" placeholder="e.g. setup crew"></td>
+    <td><select class="bin" data-r="${i}" data-k="type">${['staff','vendor','equipment'].map(t=>`<option${t===r.type?' selected':''}>${t}</option>`).join('')}</select></td>
+    <td><input class="bin" data-r="${i}" data-k="turnaround" type="number" min="0" max="240" value="${esc(r.turnaround)}"></td>
+    <td><button class="btn btn-sm btn-ghost" data-del-r="${i}" aria-label="Remove resource ${i+1}">×</button></td></tr>`).join('');
+}
+function bMessage(kind, text){
+  $('bMsg').innerHTML = !text ? '' : `<div class="note ${kind==='err'?'warn':'twin'}" style="margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16" x2="12" y2="16"/></svg><div>${esc(text)}</div></div>`;
+}
+document.addEventListener('input', e=>{
+  const t = e.target;
+  if(t.id==='bName'){ builder.name = t.value; bSave(); return; }
+  if(t.id==='bOpens'){ builder.opens = t.value; bSave(); return; }
+  if(t.dataset.a!==undefined){ builder.acts[+t.dataset.a][t.dataset.k] = t.value; bSave(); return; }
+  if(t.dataset.r!==undefined){ builder.res[+t.dataset.r][t.dataset.k] = t.value; bSave();
+    if(t.dataset.k==='role'){ clearTimeout(bRender._t); bRender._t = setTimeout(()=>{ const f = document.activeElement; const at = f && f.dataset ? [f.dataset.r, f.dataset.k] : null; bRender(); if(at && at[0]!==undefined){ const el = document.querySelector(`[data-r="${at[0]}"][data-k="${at[1]}"]`); if(el){ el.focus(); el.setSelectionRange && el.setSelectionRange(el.value.length, el.value.length); } } }, 600); } }
+});
+document.addEventListener('change', e=>{
+  const t = e.target;
+  if(t.id==='bKeep'){ builder.keep = t.checked; bSave(); return; }
+  if(t.tagName==='SELECT' && t.dataset.a!==undefined){ builder.acts[+t.dataset.a][t.dataset.k] = t.value; bSave(); }
+  if(t.tagName==='SELECT' && t.dataset.r!==undefined){ builder.res[+t.dataset.r][t.dataset.k] = t.value; bSave(); }
+});
+document.addEventListener('click', e=>{
+  const da = e.target.closest('[data-del-a]'); if(da){ builder.acts.splice(+da.dataset.delA,1); if(!builder.acts.length) builder.acts.push(bBlankAct()); bSave(); bRender(); return; }
+  const dr = e.target.closest('[data-del-r]'); if(dr){ builder.res.splice(+dr.dataset.delR,1); if(!builder.res.length) builder.res.push(bBlankRes()); bSave(); bRender(); return; }
+});
+$('bAddAct').onclick = ()=>{ builder.acts.push(bBlankAct()); bSave(); bRender(); };
+$('bAddRes').onclick = ()=>{ builder.res.push(bBlankRes()); bSave(); bRender(); };
+$('bExample').onclick = ()=>{ builder = JSON.parse(JSON.stringify(B_EXAMPLE)); bSave(); bRender(); bMessage('ok', 'Example loaded — press Plan event, or change anything first.'); };
+$('bClear').onclick = ()=>{ builder = {name:'', opens:'08:00', keep:false, acts:[bBlankAct()], res:[bBlankRes()]}; bSave(); bRender(); bMessage('', ''); };
+$('bUseStaff').onclick = ()=>{
+  if(!S) return;
+  builder.res = S.resources.map(r=>({name:r.name, role:r.role.replace(/_/g,' '), type:r.type, turnaround:r.turnaround||0}));
+  bSave(); bRender(); bMessage('ok', `Copied ${S.resources.length} people and items from today’s list.`);
+};
+$('bPlan').onclick = async ()=>{
+  const toRows = txt => String(txt||'').split(/[^0-9]+/).filter(Boolean).map(Number);
+  const payload = {
+    name: builder.name, opens_at: builder.opens || '08:00', keep_demo_events: !!builder.keep,
+    activities: builder.acts.filter(a=>a.name.trim() || a.role1).map(a=>({
+      name: a.name, duration_minutes: parseInt(a.minutes, 10) || 0, after: toRows(a.after),
+      needs: [a.role1 ? {role:a.role1, count: parseInt(a.count1, 10) || 1} : null, a.role2 ? {role:a.role2, count:1} : null].filter(Boolean),
+      fixed_time: a.fixed || null })),
+    resources: builder.res.filter(r=>r.name.trim() || r.role.trim()).map(r=>({
+      name: r.name, role: r.role, type: r.type, turnaround_minutes: parseInt(r.turnaround, 10) || 0 })),
+  };
+  $('bPlan').disabled = true; bMessage('ok', 'Planning…');
+  try{
+    const res = await fetch('/api/plan/custom', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+    const data = await res.json().catch(()=>({}));
+    if(!res.ok){
+      const d = data.detail;
+      bMessage('err', typeof d === 'string' ? d : 'Some fields are missing or not numbers: check minutes, how many and turnaround.');
+      return;
+    }
+    S = data; animatedProposal = null; render();
+    bMessage('ok', `Planned “${builder.name}”: ${S.activities.length} activities, ${S.conflicts.length} conflicts. Open Running order to see it, then test it from the Disruption console or the phone page.`);
+    toast('Event planned by the solver');
+    go('order');
+  }catch(e){ bMessage('err', 'Could not reach the engine. Is the server running?'); }
+  finally{ $('bPlan').disabled = false; }
+};
+bRender();
+
+/* ---------- log ---------- */
+const TAG = k => k.startsWith('disruption') ? ['detect','d'] : k.startsWith('proposal') ? ['propose','r']
+  : k==='schedule.changed' ? ['re-cue','r'] : k.startsWith('cost') ? ['cost','c'] : k.startsWith('checkin') ? ['check-in','t']
+  : k.startsWith('schedule') ? ['plan','t'] : k.startsWith('activity') ? ['lock','c'] : [k,'t'];
+function renderLog(){
+  $('logList').innerHTML = [...S.audit].reverse().map(e=>{ const [t,c]=TAG(e.kind); return `<div class="log-row">
+    <span class="log-t">${hhmm(e.event_minute)}</span><span class="log-tag ${c}">${t}</span>
+    <span class="log-b">${esc(e.summary)} <span style="color:var(--ink-3)">· ${esc(e.actor)}</span></span></div>`; }).join('');
+}
+
+/* ---------- render all ---------- */
+function render(){
+  if(!S) return;
+  const D = derive();
+  renderTop(D); renderBoard(D); renderOrder(D); renderResources(D); renderConflicts(D); renderConsole(D); renderReopt(D); renderML(D); renderLog();
+}
+
+/* ---------- nav + controls ---------- */
+function go(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on', p.id==='page-'+id));
+  document.querySelectorAll('.nav-item').forEach(n=>n.setAttribute('aria-current', String(n.dataset.go===id)));
+  window.scrollTo({top:0, behavior:'instant'});
+  history.replaceState(null, '', '#'+id);
+}
+document.addEventListener('click', e=>{
+  const g = e.target.closest('[data-go]'); if(g){ go(g.dataset.go); return; }
+  const adv = e.target.closest('[data-adv]'); if(adv){ act('/api/clock', {advance_minutes:+adv.dataset.adv}); return; }
+  const ci = e.target.closest('[data-ci]');
+  if(ci){ const a=$('ciAct').value; if(a) act('/api/checkins', {activity_id:a, type:ci.dataset.ci}, `Check-in recorded: ${ci.dataset.ci}`); return; }
+  const md = e.target.closest('[data-mode]');
+  if(md){ stopRun(); animatedProposal=null; act('/api/plan/mode', {mode:md.dataset.mode}, md.dataset.mode==='predicted'?'Re-planned with ML-predicted durations':'Re-planned with planner estimates'); return; }
+  const sc = e.target.closest('[data-scn]');
+  if(sc){ stopRun(); animatedProposal=null; act(`/api/demo/scenario/${sc.dataset.scn}`, {}, 'Scenario played — check-ins replayed in time order'); return; }
+});
+$('btnReset').onclick = ()=>{ stopRun(); animatedProposal=null; act('/api/reset', {}, 'Reset to the planned day'); };
+$('btnRegen').onclick = ()=>{ stopRun(); animatedProposal=null;
+  // Your own event: re-plan it from the Build event form; otherwise the demo day.
+  if(S && S.ml && S.ml.mode === 'custom'){ $('bPlan').click(); return; }
+  act('/api/reset', {}, 'Running order re-planned by the solver'); };
+function stopRun(){ if(runTimer){ clearInterval(runTimer); runTimer=null; $('btnRun').innerHTML='&#9654; Run clock (+5m every 2s)'; } }
+$('btnRun').onclick = ()=>{
+  if(runTimer){ stopRun(); return; }
+  $('btnRun').textContent = '❚❚ Pause clock';
+  runTimer = setInterval(async ()=>{
+    await act('/api/clock', {advance_minutes:5});
+    if(S && S.pending_proposal){ stopRun(); toast('Disruption needs a decision — clock paused'); go('disrupt'); }
+  }, 2000);
+};
+
+let tHandle;
+function toast(msg){
+  const el=$('toast'); $('toastMsg').textContent=msg; el.classList.add('on');
+  clearTimeout(tHandle); tHandle=setTimeout(()=>el.classList.remove('on'), 3200);
+}
+
+if(location.hash && document.getElementById('page-'+location.hash.slice(1))) go(location.hash.slice(1));
+poll();
+setInterval(()=>{ if(!runTimer) poll(); }, 2500);
+</script>
+</body>
+</html>

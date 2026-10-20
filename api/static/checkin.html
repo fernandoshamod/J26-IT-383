@@ -3,55 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0E1116">
+<meta name="theme-color" content="#F3F3EF">
 <title>Check-in</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
 /* Vendor/staff check-in (FR-08). Built for event-day conditions: one hand,
-   divided attention, weak signal (NFR-05, NFR-07). Same palette as the
-   planner console. */
+   divided attention, bright daylight, weak signal (NFR-05, NFR-07).
+   Same light palette as the planner console. */
 :root{
-  --bg:#0E1116; --panel:#151A22; --raised:#222A34; --line:#28313D;
-  --ink:#E9EEF5; --ink-2:#AEB8C5; --ink-3:#6C7A8B;
-  --tungsten:#F2A93B; --twin:#4CC9F0; --alarm:#FF5C7A; --go:#5FD39B;
+  --bg:#F3F3EF; --panel:#FFFFFF; --raised:#ECEDE7; --line:#DEE0D8;
+  --ink:#1C2621; --ink-2:#4B5751; --ink-3:#7A857F;
+  --brand:#2E6A4F; --brand-soft:#E3EFE7;
+  --tungsten:#A56A12; --tungsten-dim:#FAF0DC; --tungsten-line:#E2BE7C;
+  --twin:#33608E; --twin-dim:#E8EFF6;
+  --alarm:#B0432C; --alarm-dim:#FBEAE4; --alarm-line:#E4A898;
+  --go:#2C7650; --go-dim:#E2F1E8;
+  color-scheme:light;
 }
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
-body{min-height:100vh;padding:max(16px,env(safe-area-inset-top)) 16px 120px}
-.mono{font-family:"IBM Plex Mono",monospace}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Instrument Sans','Segoe UI',system-ui,sans-serif;-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
+body{min-height:100vh;padding:max(18px,env(safe-area-inset-top)) 16px 120px}
+.mono{font-family:'IBM Plex Mono',Consolas,monospace;font-variant-numeric:tabular-nums}
 header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:16px}
-h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:28px;line-height:1.05;margin:0}
-.sub{color:var(--ink-3);font-size:13px;margin-top:3px}
-.clock{text-align:right}
-.clock b{font-family:"IBM Plex Mono",monospace;font-size:22px;display:block}
-.clock span{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
-.net{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:8px;margin-bottom:16px;font-size:13.5px;border:1px solid var(--line);background:var(--panel)}
+h1{font-family:'Bricolage Grotesque','Segoe UI',sans-serif;font-weight:700;font-size:28px;line-height:1.08;margin:0;letter-spacing:-.02em}
+.sub{color:var(--ink-3);font-size:14px;margin-top:4px}
+.clock{text-align:right;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:6px 12px}
+.clock b{font-family:'IBM Plex Mono',Consolas,monospace;font-variant-numeric:tabular-nums;font-size:21px;display:block;font-weight:600}
+.clock span{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.net{display:flex;align-items:center;gap:9px;padding:11px 14px;border-radius:12px;margin-bottom:16px;font-size:14px;border:1px solid var(--line);background:var(--panel)}
 .net .dot{width:9px;height:9px;border-radius:50%;background:var(--go);flex:none}
-.net.off{border-color:var(--alarm);background:rgba(255,92,122,.1)}
+.net.off{border-color:var(--alarm-line);background:var(--alarm-dim);color:#7E2F1F}
 .net.off .dot{background:var(--alarm)}
-.task{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px}
-.task.now{border-color:var(--tungsten)}
-.task.late{border-color:var(--alarm)}
-.task.done{opacity:.55}
+.task{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:12px;box-shadow:0 1px 2px rgba(28,38,33,.05)}
+.task.now{border-color:var(--tungsten-line);box-shadow:0 0 0 3px var(--tungsten-dim)}
+.task.late{border-color:var(--alarm-line);box-shadow:0 0 0 3px var(--alarm-dim)}
+.task.done{opacity:.6;box-shadow:none;background:transparent}
 .t-top{display:flex;justify-content:space-between;gap:4px 10px;align-items:baseline;flex-wrap:wrap}
 .t-name{font-size:18px;font-weight:600}
-.t-time{font-family:"IBM Plex Mono",monospace;color:var(--ink-2);font-size:14px;white-space:nowrap}
-.t-meta{color:var(--ink-3);font-size:12.5px;margin-top:4px}
-.warn{color:var(--alarm);font-size:13.5px;margin-top:8px;font-weight:500}
-.act{display:block;width:100%;margin-top:14px;min-height:60px;border:none;border-radius:10px;font:600 19px "IBM Plex Sans",sans-serif;cursor:pointer;color:#0E1116}
+.t-time{font-family:'IBM Plex Mono',Consolas,monospace;font-variant-numeric:tabular-nums;color:var(--ink-2);font-size:14px;white-space:nowrap}
+.t-meta{color:var(--ink-3);font-size:13px;margin-top:4px}
+.warn{color:var(--alarm);font-size:14px;margin-top:10px;font-weight:600;background:var(--alarm-dim);padding:8px 11px;border-radius:9px}
+.act{display:block;width:100%;margin-top:14px;min-height:60px;border:none;border-radius:12px;font:600 19px 'Instrument Sans','Segoe UI',sans-serif;cursor:pointer;color:#FFFFFF;box-shadow:inset 0 -2px 0 rgba(0,0,0,.12)}
 .act.start{background:var(--twin)}
-.act.finish{background:var(--go)}
+.act.finish{background:var(--brand)}
 .act:active{transform:scale(.98)}
-.state{margin-top:12px;font-size:14px;color:var(--ink-2)}
-.state.pending{color:var(--tungsten)}
-.who{display:block;width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:16px;margin-bottom:10px;font:500 17px "IBM Plex Sans",sans-serif;cursor:pointer}
-.who small{display:block;color:var(--ink-3);font-size:12px;margin-top:3px;text-transform:capitalize}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px max(12px,env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 35%);display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12.5px;color:var(--ink-3)}
+.act:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.state{margin-top:12px;font-size:14.5px;color:var(--ink-2)}
+.state.pending{color:var(--tungsten);font-weight:600}
+.who{display:block;width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:14px;padding:16px 18px;margin-bottom:10px;font:600 17px 'Instrument Sans','Segoe UI',sans-serif;cursor:pointer}
+.who:active{background:var(--brand-soft)}
+.who small{display:block;color:var(--ink-3);font-size:12.5px;margin-top:3px;text-transform:capitalize;font-weight:400}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px max(12px,env(safe-area-inset-bottom));background:linear-gradient(rgba(243,243,239,0),var(--bg) 35%);display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--ink-2)}
 .foot label{display:flex;align-items:center;gap:8px;cursor:pointer}
-.foot a{color:var(--ink-3)}
-.toast{position:fixed;left:16px;right:16px;bottom:70px;background:var(--raised);border:1px solid var(--line);border-radius:10px;padding:13px 14px;font-size:14px;opacity:0;transform:translateY(8px);transition:.2s;pointer-events:none}
+.foot input{accent-color:var(--brand);width:17px;height:17px}
+.foot a{color:var(--brand)}
+.toast{position:fixed;left:16px;right:16px;bottom:72px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 15px;font-size:14px;font-weight:500;opacity:0;transform:translateY(8px);transition:.2s;pointer-events:none;box-shadow:0 12px 32px -12px rgba(28,38,33,.25)}
 .toast.on{opacity:1;transform:none}
 .empty{color:var(--ink-3);text-align:center;padding:40px 10px}
 </style>
