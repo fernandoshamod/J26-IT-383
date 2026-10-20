@@ -92,3 +92,13 @@ def test_api_plan_custom(monkeypatch, tmp_path):
     bad = client.post("/api/plan/custom", json=body)
     assert bad.status_code == 409 and "doesn’t exist" in bad.json()["detail"]
     client.post("/api/reset")
+
+
+def test_same_role_twice_is_added_together():
+    """'Needs crew x2' + 'Also needs crew' = 3 crew in total, explained if too few."""
+    acts = [A("Hall setup", 60, [], [R("setup crew", 2), R("setup crew", 1)])]
+    with pytest.raises(OperationsError, match="needs 3 × setup crew in total, but only 2"):
+        build(birthday(activities=acts), STAFF)
+    ok = [A("Hall setup", 60, [], [R("setup crew", 1), R("setup crew", 1)])]
+    event, _ = build(birthday(activities=ok), STAFF)
+    assert [(r.role, r.count) for r in event.activities[0].requirements] == [("setup_crew", 2)]

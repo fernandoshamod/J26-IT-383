@@ -135,16 +135,24 @@ def build(event_spec: EventSpec, resource_specs: list[ResourceSpec],
                 raise OperationsError(f"{label} can’t come after itself — its “After rows” contains {i}, its own row number.")
         if not a.needs:
             raise OperationsError(f"{label}: choose at least one role it needs.")
-        reqs = []
+        # The same role listed twice ("Needs crew x2", "Also needs crew") means
+        # that many people of that role in total, so add the counts together.
+        totals: dict[str, int] = {}
+        shown: dict[str, str] = {}
         for need in a.needs:
-            role = _slug(need.role)
             if need.count < 1:
                 raise OperationsError(f"{label}: the number needed must be at least 1.")
+            role = _slug(need.role)
+            totals[role] = totals.get(role, 0) + need.count
+            shown.setdefault(role, need.role)
+        reqs = []
+        for role, count in totals.items():
             have = units_by_role.get(role, 0)
-            if have < need.count:
-                raise OperationsError(f"{label} needs {need.count} × {need.role}, but only {have} "
-                                      f"resource(s) have that role. Add more, or need fewer.")
-            reqs.append(ResourceRequirement(role, need.count))
+            if have < count:
+                raise OperationsError(f"{label} needs {count} × {shown[role]} in total, but only {have} "
+                                      f"resource(s) have that role. Add more, or need fewer "
+                                      f"(“Also needs” is for a second, different role).")
+            reqs.append(ResourceRequirement(role, count))
         fixed = _clock(a.fixed_time, f"{label}, fixed time") if a.fixed_time else None
         if fixed is not None and fixed < opens:
             raise OperationsError(f"{label} is fixed at {a.fixed_time}, before the venue opens at {event_spec.opens_at}.")

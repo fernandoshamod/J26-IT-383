@@ -657,7 +657,7 @@ input[type=checkbox]{accent-color:var(--brand);width:16px;height:16px}
         </div>
         <div class="card-body" style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end">
           <div class="field" style="flex:2;min-width:220px;margin:0"><label for="bName">Event name</label><input id="bName" class="bin" placeholder="e.g. Nimal’s birthday party"></div>
-          <div class="field" style="flex:1;min-width:140px;margin:0"><label for="bOpens">Venue opens</label><input id="bOpens" class="bin" type="time" value="08:00"></div>
+          <div class="field" style="flex:1;min-width:140px;margin:0"><label for="bOpens">Venue opens</label><input id="bOpens" class="bin" type="time" value="08:00"><div class="bhint" id="bOpensHint"></div></div>
           <label style="display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink-2);min-width:240px"><input type="checkbox" id="bKeep"> Also keep today’s demo events (they share staff with mine)</label>
         </div>
       </div>
@@ -1301,8 +1301,20 @@ function bSave(){ try { localStorage.setItem(B_KEY, JSON.stringify(builder)); } 
 
 const bRows = txt => String(txt||'').split(/[^0-9]+/).filter(Boolean).map(Number);
 const bIsEmpty = a => !a.name.trim() && !a.role1 && !String(a.after||'').trim() && !a.fixed;
+// "19:00" -> "19:00 (7:00 PM)" — browsers may show the time box in AM/PM.
+const bClock = v => { const [hh, mm] = String(v).split(':').map(Number); if(isNaN(hh)) return '';
+  return `${String(hh).padStart(2,'0')}:${String(mm).padStart(2,'0')} (${(hh % 12) || 12}:${String(mm).padStart(2,'0')} ${hh < 12 ? 'AM' : 'PM'})`; };
 // What each "After rows" entry points to, in words; red when a number is wrong.
 function bHints(){
+  const oh = document.getElementById('bOpensHint');
+  if(oh) oh.textContent = builder.opens ? '= ' + bClock(builder.opens) : '';
+  builder.acts.forEach((a, i) => {
+    const el = document.getElementById('bf' + i); if(!el) return;
+    if(!a.fixed){ el.textContent = ''; el.className = 'bhint'; return; }
+    const early = builder.opens && a.fixed < builder.opens;
+    el.className = 'bhint' + (early ? ' bad' : '');
+    el.textContent = early ? `⚠ ${bClock(a.fixed)} is before the venue opens at ${builder.opens}` : '= ' + bClock(a.fixed);
+  });
   builder.acts.forEach((a, i) => {
     const el = document.getElementById('bh' + i); if(!el) return;
     const rows = bRows(a.after);
@@ -1319,12 +1331,13 @@ function bHints(){
   });
 }
 function bRender(){
+  builder.acts.forEach(a => { if(a.role2 && a.role2 === a.role1) a.role2 = ''; });
   $('bName').value = builder.name; $('bOpens').value = builder.opens; $('bKeep').checked = builder.keep;
   const roles = [...new Set(builder.res.map(r=>r.role.trim()).filter(Boolean))];
   $('bRoles').innerHTML = roles.map(r=>`<option value="${esc(r)}">`).join('');
-  const roleSelect = (i, k, val, allowNone) => `<select class="bin" data-a="${i}" data-k="${k}">`
+  const roleSelect = (i, k, val, allowNone, exclude) => `<select class="bin" data-a="${i}" data-k="${k}">`
     + (allowNone ? '<option value="">—</option>' : '<option value="">choose…</option>')
-    + roles.map(r=>`<option value="${esc(r)}"${r===val?' selected':''}>${esc(r)}</option>`).join('')
+    + roles.filter(r=>r!==exclude).map(r=>`<option value="${esc(r)}"${r===val?' selected':''}>${esc(r)}</option>`).join('')
     + (val && !roles.includes(val) ? `<option value="${esc(val)}" selected>${esc(val)} (no resource)</option>` : '')
     + '</select>';
   $('bActs').innerHTML = builder.acts.map((a,i)=>`<tr>
@@ -1334,8 +1347,8 @@ function bRender(){
     <td><input class="bin" data-a="${i}" data-k="after" value="${esc(a.after)}" placeholder="e.g. 1, 2"><div class="bhint" id="bh${i}"></div></td>
     <td>${roleSelect(i,'role1',a.role1,false)}</td>
     <td><input class="bin" data-a="${i}" data-k="count1" type="number" min="1" value="${esc(a.count1)}"></td>
-    <td>${roleSelect(i,'role2',a.role2,true)}</td>
-    <td><input class="bin" data-a="${i}" data-k="fixed" type="time" value="${esc(a.fixed)}"></td>
+    <td>${roleSelect(i,'role2',a.role2,true,a.role1)}</td>
+    <td><input class="bin" data-a="${i}" data-k="fixed" type="time" value="${esc(a.fixed)}"><div class="bhint" id="bf${i}"></div></td>
     <td><button class="btn btn-sm btn-ghost" data-del-a="${i}" aria-label="Remove activity ${i+1}">×</button></td></tr>`).join('');
   $('bRes').innerHTML = builder.res.map((r,i)=>`<tr>
     <td class="mono">${i+1}</td>
@@ -1352,7 +1365,7 @@ function bMessage(kind, text){
 document.addEventListener('input', e=>{
   const t = e.target;
   if(t.id==='bName'){ builder.name = t.value; bSave(); return; }
-  if(t.id==='bOpens'){ builder.opens = t.value; bSave(); return; }
+  if(t.id==='bOpens'){ builder.opens = t.value; bSave(); bHints(); return; }
   if(t.dataset.a!==undefined){ builder.acts[+t.dataset.a][t.dataset.k] = t.value; bSave(); bHints(); return; }
   if(t.dataset.r!==undefined){ builder.res[+t.dataset.r][t.dataset.k] = t.value; bSave();
     if(t.dataset.k==='role'){ clearTimeout(bRender._t); bRender._t = setTimeout(()=>{ const f = document.activeElement; const at = f && f.dataset ? [f.dataset.r, f.dataset.k] : null; bRender(); if(at && at[0]!==undefined){ const el = document.querySelector(`[data-r="${at[0]}"][data-k="${at[1]}"]`); if(el){ el.focus(); el.setSelectionRange && el.setSelectionRange(el.value.length, el.value.length); } } }, 600); } }
@@ -1360,7 +1373,8 @@ document.addEventListener('input', e=>{
 document.addEventListener('change', e=>{
   const t = e.target;
   if(t.id==='bKeep'){ builder.keep = t.checked; bSave(); return; }
-  if(t.tagName==='SELECT' && t.dataset.a!==undefined){ builder.acts[+t.dataset.a][t.dataset.k] = t.value; bSave(); bHints(); }
+  if(t.tagName==='SELECT' && t.dataset.a!==undefined){ builder.acts[+t.dataset.a][t.dataset.k] = t.value; bSave();
+    if(t.dataset.k==='role1') bRender(); else bHints(); }
   if(t.tagName==='SELECT' && t.dataset.r!==undefined){ builder.res[+t.dataset.r][t.dataset.k] = t.value; bSave(); }
 });
 document.addEventListener('click', e=>{
