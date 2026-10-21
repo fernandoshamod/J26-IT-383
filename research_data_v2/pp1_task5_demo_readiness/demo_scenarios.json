@@ -1,0 +1,51 @@
+{
+  "generated_on": "2026-10-17",
+  "data_class": "SYNTHETIC_TEST",
+  "scenarios": {
+    "A_wedding": {
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "city": "Philadelphia",
+      "state": "PA",
+      "budget_lkr": 1000000,
+      "top_k": 3,
+      "event_type": "Wedding",
+      "event_date": "2026-10-22",
+      "guest_count": 50,
+      "required_services": [
+        "Photography",
+        "Decoration"
+      ]
+    },
+    "B_corporate": {
+      "start_time": "09:00",
+      "end_time": "17:00",
+      "city": "Philadelphia",
+      "state": "PA",
+      "budget_lkr": 1000000,
+      "top_k": 3,
+      "event_type": "Corporate",
+      "event_date": "2026-10-23",
+      "guest_count": 40,
+      "required_services": [
+        "Photography",
+        "Audio Visual"
+      ]
+    },
+    "C_low_budget": {
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "city": "Philadelphia",
+      "state": "PA",
+      "budget_lkr": 1,
+      "top_k": 3,
+      "event_type": "Wedding",
+      "event_date": "2026-10-24",
+      "guest_count": 50,
+      "required_services": [
+        "Photography",
+        "Decoration"
+      ]
+    }
+  }
+}

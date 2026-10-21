@@ -1,0 +1,312 @@
+{
+  "checked_at_utc": "2026-10-17T20:30:14.580067+00:00",
+  "method": "FastAPI TestClient against current backend.main:app; read-only",
+  "route": "POST /api/packages/generate-dynamic",
+  "request": {
+    "event_type": "Wedding",
+    "event_date": "2026-11-16",
+    "start_time": "10:00",
+    "end_time": "18:00",
+    "city": "Philadelphia",
+    "state": "PA",
+    "guest_count": 50,
+    "budget_lkr": 1000000,
+    "required_services": [
+      "Photography",
+      "Decoration"
+    ],
+    "top_k": 3
+  },
+  "http_status": 200,
+  "event_id": "USER-F5F13B227736",
+  "generation_status": "search_limit_reached",
+  "search": {
+    "complete": false,
+    "candidate_limit_reached": true,
+    "node_limit_reached": false,
+    "max_candidates_per_service": 12,
+    "max_search_nodes": 5000,
+    "nodes_visited": 156,
+    "combinations_evaluated": 138,
+    "all_examined_combinations_validated": true,
+    "feasibility_priority": [
+      "PASS_IN_SIMULATION",
+      "VERIFICATION_REQUIRED"
+    ],
+    "selected_search_space_upper_bound": 144,
+    "minimum_possible_cost_lkr": 244874.21,
+    "top_k": 3,
+    "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+  },
+  "candidate_counts": {
+    "Photography": 165,
+    "Decoration": 237
+  },
+  "package_count": 3,
+  "packages": [
+    {
+      "package_id": "PKG-0001",
+      "rank": 1,
+      "total_cost_lkr": 305535.41,
+      "remaining_budget_lkr": 694464.59,
+      "ranking_score": 84.7786,
+      "feasibility_status": "VERIFICATION_REQUIRED",
+      "service_coverage": [
+        "Photography",
+        "Decoration"
+      ],
+      "passed_checks": 10,
+      "pending_checks": 8,
+      "failed_checks": 0,
+      "option_ids": [
+        "SIMOPT-000111-B",
+        "SIMOPT-001022-S"
+      ],
+      "vendor_ids": [
+        "FQ_QUyrwtnaEdxUxruZkXg",
+        "_t_UwNkwAinJSljDDYvnoQ"
+      ],
+      "model_predictions": [
+        {
+          "vendor_id": "FQ_QUyrwtnaEdxUxruZkXg",
+          "predicted_risk_level": "Low",
+          "rule_risk_level": "Low",
+          "risk_provenance": "random_forest_prediction_of_rule_generated_label"
+        },
+        {
+          "vendor_id": "_t_UwNkwAinJSljDDYvnoQ",
+          "predicted_risk_level": "Low",
+          "rule_risk_level": "Low",
+          "risk_provenance": "random_forest_prediction_of_rule_generated_label"
+        }
+      ],
+      "service_categories": [
+        "Photography",
+        "Decoration"
+      ]
+    },
+    {
+      "package_id": "PKG-0002",
+      "rank": 2,
+      "total_cost_lkr": 328001.78,
+      "remaining_budget_lkr": 671998.22,
+      "ranking_score": 83.8799,
+      "feasibility_status": "VERIFICATION_REQUIRED",
+      "service_coverage": [
+        "Photography",
+        "Decoration"
+      ],
+      "passed_checks": 10,
+      "pending_checks": 8,
+      "failed_checks": 0,
+      "option_ids": [
+        "SIMOPT-000111-B",
+        "SIMOPT-000547-B"
+      ],
+      "vendor_ids": [
+        "FQ_QUyrwtnaEdxUxruZkXg",
+        "P7MHW-EtCdp3eVF2P_nX0A"
+      ],
+      "model_predictions": [
+        {
+          "vendor_id": "FQ_QUyrwtnaEdxUxruZkXg",
+          "predicted_risk_level": "Low",
+          "rule_risk_level": "Low",
+          "risk_provenance": "random_forest_prediction_of_rule_generated_label"
+        },
+        {
+          "vendor_id": "P7MHW-EtCdp3eVF2P_nX0A",
+          "predicted_risk_level": "Low",
+          "rule_risk_level": "Low",
+          "risk_provenance": "random_forest_prediction_of_rule_generated_label"
+        }
+      ],
+      "service_categories": [
+        "Photography",
+        "Decoration"
+      ]
+    },
+    {
+      "package_id": "PKG-0003",
+      "rank": 3,
+      "total_cost_lkr": 244874.21,
+      "remaining_budget_lkr": 755125.79,
+      "ranking_score": 79.205,
+      "feasibility_status": "VERIFICATION_REQUIRED",
+      "service_coverage": [
+        "Photography",
+        "Decoration"
+      ],
+      "passed_checks": 10,
+      "pending_checks": 8,
+      "failed_checks": 0,
+      "option_ids": [
+        "SIMOPT-000111-B",
+        "SIMOPT-004737-B"
+      ],
+      "vendor_ids": [
+        "FQ_QUyrwtnaEdxUxruZkXg",
+        "zwl7iLwHBTdkb5-0gNgGFg"
+      ],
+      "model_predictions": [
+        {
+          "vendor_id": "FQ_QUyrwtnaEdxUxruZkXg",
+          "predicted_risk_level": "Low",
+          "rule_risk_level": "Low",
+          "risk_provenance": "random_forest_prediction_of_rule_generated_label"
+        },
+        {
+          "vendor_id": "zwl7iLwHBTdkb5-0gNgGFg",
+          "predicted_risk_level": "Medium",
+          "rule_risk_level": "Medium",
+          "risk_provenance": "random_forest_prediction_of_rule_generated_label"
+        }
+      ],
+      "service_categories": [
+        "Photography",
+        "Decoration"
+      ]
+    }
+  ],
+  "top_package_feasibility_rerun": {
+    "http_status": 200,
+    "status": "VERIFICATION_REQUIRED",
+    "passed_checks": [
+      {
+        "code": "service_coverage",
+        "status": "PASS_IN_SIMULATION",
+        "message": "Every required service is covered exactly once.",
+        "evidence_origin": "current_option_record"
+      },
+      {
+        "code": "unique_vendors",
+        "status": "PASS_IN_SIMULATION",
+        "message": "All selected vendors are distinct.",
+        "evidence_origin": "current_option_record"
+      },
+      {
+        "code": "event_duration",
+        "status": "PASS_IN_SIMULATION",
+        "message": "Event interval is 8 hours.",
+        "evidence_origin": "submitted_event"
+      },
+      {
+        "code": "event_type:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+        "status": "PASS_IN_SIMULATION",
+        "message": "Photography / FQ_QUyrwtnaEdxUxruZkXg: event type matches option support.",
+        "evidence_origin": "current_option_record"
+      },
+      {
+        "code": "location:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+        "status": "PASS_IN_SIMULATION",
+        "message": "Photography / FQ_QUyrwtnaEdxUxruZkXg: simulated location Philadelphia, PA; event Philadelphia, PA.",
+        "evidence_origin": "current_option_record"
+      },
+      {
+        "code": "cost:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+        "status": "PASS_IN_SIMULATION",
+        "message": "Photography / FQ_QUyrwtnaEdxUxruZkXg: estimated LKR 132945.89 from current synthetic option.",
+        "evidence_origin": "current_option_record"
+      },
+      {
+        "code": "event_type:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+        "status": "PASS_IN_SIMULATION",
+        "message": "Decoration / _t_UwNkwAinJSljDDYvnoQ: event type matches option support.",
+        "evidence_origin": "current_option_record"
+      },
+      {
+        "code": "location:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+        "status": "PASS_IN_SIMULATION",
+        "message": "Decoration / _t_UwNkwAinJSljDDYvnoQ: simulated location Philadelphia, PA; event Philadelphia, PA.",
+        "evidence_origin": "current_option_record"
+      },
+      {
+        "code": "cost:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+        "status": "PASS_IN_SIMULATION",
+        "message": "Decoration / _t_UwNkwAinJSljDDYvnoQ: estimated LKR 172589.52 from current synthetic option.",
+        "evidence_origin": "current_option_record"
+      },
+      {
+        "code": "budget",
+        "status": "PASS_IN_SIMULATION",
+        "message": "Estimated LKR 305535.41 fits budget LKR 1000000.00.",
+        "evidence_origin": "current_option_record"
+      }
+    ],
+    "pending_checks": [
+      {
+        "code": "capacity:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+        "status": "VERIFICATION_REQUIRED",
+        "message": "Photography / FQ_QUyrwtnaEdxUxruZkXg: vendor capacity is unverified.",
+        "evidence_origin": "missing_evidence"
+      },
+      {
+        "code": "availability:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+        "status": "VERIFICATION_REQUIRED",
+        "message": "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm availability for this event and time.",
+        "evidence_origin": "missing_event_specific_evidence"
+      },
+      {
+        "code": "scheduling:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+        "status": "VERIFICATION_REQUIRED",
+        "message": "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm setup, travel and schedule fit.",
+        "evidence_origin": "missing_event_specific_evidence"
+      },
+      {
+        "code": "capacity:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+        "status": "VERIFICATION_REQUIRED",
+        "message": "Decoration / _t_UwNkwAinJSljDDYvnoQ: vendor capacity is unverified.",
+        "evidence_origin": "missing_evidence"
+      },
+      {
+        "code": "availability:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+        "status": "VERIFICATION_REQUIRED",
+        "message": "Decoration / _t_UwNkwAinJSljDDYvnoQ: confirm availability for this event and time.",
+        "evidence_origin": "missing_event_specific_evidence"
+      },
+      {
+        "code": "scheduling:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+        "status": "VERIFICATION_REQUIRED",
+        "message": "Decoration / _t_UwNkwAinJSljDDYvnoQ: confirm setup, travel and schedule fit.",
+        "evidence_origin": "missing_event_specific_evidence"
+      },
+      {
+        "code": "vendor_collaboration:FQ_QUyrwtnaEdxUxruZkXg:_t_UwNkwAinJSljDDYvnoQ",
+        "status": "VERIFICATION_REQUIRED",
+        "message": "Confirm whether vendors FQ_QUyrwtnaEdxUxruZkXg and _t_UwNkwAinJSljDDYvnoQ can work together.",
+        "evidence_origin": "missing_event_specific_evidence"
+      },
+      {
+        "code": "venue_suitability",
+        "status": "VERIFICATION_REQUIRED",
+        "message": "Confirm venue capacity, access, equipment and service suitability.",
+        "evidence_origin": "missing_venue_evidence"
+      }
+    ],
+    "failed_checks": [],
+    "response": null
+  },
+  "risk_data_audit": {
+    "model_artifact": "models/vendor_risk_random_forest.pkl",
+    "model_sha256": "4eed156cfdf677b992b8c36350c21c968d7cb4d532a8afd302ca1b697aea3e6a",
+    "model_features": [
+      "stars",
+      "review_count",
+      "collected_review_count",
+      "mean_review_rating",
+      "rating_std"
+    ],
+    "label_origin": "rule_generated_from_review_features",
+    "independent_real_world_validation": false,
+    "requested_vendor_ids": 134,
+    "status_counts": {
+      "available": 134
+    }
+  },
+  "comparison_of_first_two": {
+    "available": true,
+    "different_option_ids": true,
+    "different_total_cost": true
+  },
+  "claim_scope": "Local in-process simulation; no vendor booking, quotation, capacity confirmation, or actual availability verified."
+}

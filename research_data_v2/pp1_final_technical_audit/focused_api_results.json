@@ -1,0 +1,146 @@
+{
+  "checked_at_utc": "2026-10-17T21:01:26.039505+00:00",
+  "method": "FastAPI TestClient, current backend.main:app, read-only",
+  "results": [
+    {
+      "scenario": "bensalem_50",
+      "request": {
+        "event_type": "Corporate",
+        "event_date": "2026-11-26",
+        "start_time": "10:00",
+        "end_time": "18:00",
+        "guest_count": 50,
+        "budget_lkr": 1000000,
+        "required_services": [
+          "Catering",
+          "Entertainment"
+        ],
+        "top_k": 3,
+        "city": "Bensalem",
+        "state": "PA"
+      },
+      "http_status": 200,
+      "event_id": "USER-AE4D3807EF96",
+      "generation_status": "search_limit_reached",
+      "package_count": 3,
+      "search": {
+        "complete": false,
+        "candidate_limit_reached": true,
+        "node_limit_reached": false,
+        "max_candidates_per_service": 12,
+        "max_search_nodes": 5000,
+        "nodes_visited": 54,
+        "combinations_evaluated": 33,
+        "all_examined_combinations_validated": true,
+        "feasibility_priority": [
+          "PASS_IN_SIMULATION",
+          "VERIFICATION_REQUIRED"
+        ],
+        "selected_search_space_upper_bound": 72,
+        "minimum_possible_cost_lkr": 667243.36,
+        "top_k": 3,
+        "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+      },
+      "diagnostic_reason_codes": [],
+      "first_package": {
+        "package_id": "PKG-0001",
+        "total_cost_lkr": 677662.86,
+        "feasibility_status": "VERIFICATION_REQUIRED",
+        "model_classes": [
+          "Low",
+          "Medium"
+        ]
+      }
+    },
+    {
+      "scenario": "bensalem_500",
+      "request": {
+        "event_type": "Corporate",
+        "event_date": "2026-11-26",
+        "start_time": "10:00",
+        "end_time": "18:00",
+        "guest_count": 500,
+        "budget_lkr": 1000000,
+        "required_services": [
+          "Catering",
+          "Entertainment"
+        ],
+        "top_k": 3,
+        "city": "Bensalem",
+        "state": "PA"
+      },
+      "http_status": 200,
+      "event_id": "USER-DDA564604F8F",
+      "generation_status": "no_budget_feasible_combinations",
+      "package_count": 0,
+      "search": {
+        "complete": true,
+        "candidate_limit_reached": true,
+        "node_limit_reached": false,
+        "max_candidates_per_service": 12,
+        "max_search_nodes": 5000,
+        "nodes_visited": 0,
+        "combinations_evaluated": 0,
+        "all_examined_combinations_validated": true,
+        "feasibility_priority": [
+          "PASS_IN_SIMULATION",
+          "VERIFICATION_REQUIRED"
+        ],
+        "selected_search_space_upper_bound": 72,
+        "minimum_possible_cost_lkr": 3200664.36,
+        "top_k": 3,
+        "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+      },
+      "diagnostic_reason_codes": [
+        "BUDGET_INSUFFICIENT",
+        "BUDGET_INSUFFICIENT"
+      ],
+      "first_package": null
+    },
+    {
+      "scenario": "belle_chasse_50",
+      "request": {
+        "event_type": "Corporate",
+        "event_date": "2026-11-26",
+        "start_time": "10:00",
+        "end_time": "18:00",
+        "guest_count": 50,
+        "budget_lkr": 1000000,
+        "required_services": [
+          "Catering",
+          "Entertainment"
+        ],
+        "top_k": 3,
+        "city": "Belle Chasse",
+        "state": "LA"
+      },
+      "http_status": 200,
+      "event_id": "USER-9C5FA0E53B99",
+      "generation_status": "no_matching_candidates",
+      "package_count": 0,
+      "search": {
+        "complete": true,
+        "candidate_limit_reached": true,
+        "node_limit_reached": false,
+        "max_candidates_per_service": 12,
+        "max_search_nodes": 5000,
+        "nodes_visited": 0,
+        "combinations_evaluated": 0,
+        "all_examined_combinations_validated": true,
+        "feasibility_priority": [
+          "PASS_IN_SIMULATION",
+          "VERIFICATION_REQUIRED"
+        ],
+        "selected_search_space_upper_bound": 0,
+        "minimum_possible_cost_lkr": null,
+        "top_k": 3,
+        "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+      },
+      "diagnostic_reason_codes": [
+        "NO_SERVICE_COVERAGE"
+      ],
+      "first_package": null
+    }
+  ],
+  "scope": "Synthetic option prices and capacities; no real-world vendor confirmation."
+}

@@ -1,0 +1,278 @@
+{
+    "report_title": "Smart Event Package Recommendations",
+    "status": "Recommendations Generated",
+    "event_details": {
+        "event_type": "Wedding",
+        "event_date": "2026-12-20",
+        "location": "Santa Barbara, CA",
+        "guest_count": 100,
+        "vendor_budget": 10000,
+        "currency": "USD",
+        "required_services": [
+            "Catering",
+            "Photography",
+            "Decoration"
+        ]
+    },
+    "total_recommended_packages": 5,
+    "packages": [
+        {
+            "recommendation_rank": 1,
+            "package_id": 1,
+            "selected_vendors": [
+                "Catering: Tondi Gelato",
+                "Photography: MICHAEL & ANNA COSTA PHOTOGRAPHY",
+                "Decoration: ella & louie flowers"
+            ],
+            "average_vendor_score": 69.0389,
+            "service_compatibility_score": 90.0,
+            "final_package_score": 75.3272,
+            "ranking_explanation": "Package ranking uses 70% average vendor score and 30% service-level compatibility score. Final selection also considers vendor diversity.",
+            "feasibility_status": "Verification Required",
+            "verification_required": [
+                "Actual vendor quotations",
+                "Client budget feasibility",
+                "Event-date availability",
+                "Guest capacity",
+                "Event duration suitability",
+                "Venue suitability"
+            ],
+            "pricing_evidence": {
+                "total_vendors": 3,
+                "price_indicators_known": 2,
+                "price_indicators_missing": 1,
+                "indicator_coverage_percent": 66.67,
+                "pricing_evidence_status": "Partial Indicators Available",
+                "actual_quotation_status": "Verification Required",
+                "budget_feasibility_status": "Verification Required"
+            },
+            "service_classification_evidence": {
+                "total_vendors": 3,
+                "direct_evidence": 3,
+                "indirect_evidence": 0,
+                "insufficient_evidence": 0,
+                "evidence_status": "All Direct Category Evidence",
+                "actual_service_capability": "Verification Required"
+            }
+        },
+        {
+            "recommendation_rank": 2,
+            "package_id": 32,
+            "selected_vendors": [
+                "Catering: Buena Onda",
+                "Photography: Head & Heart Photography by Kiel Rucker",
+                "Decoration: Santa Barbara Company"
+            ],
+            "average_vendor_score": 68.8039,
+            "service_compatibility_score": 90.0,
+            "final_package_score": 75.1627,
+            "ranking_explanation": "Package ranking uses 70% average vendor score and 30% service-level compatibility score. Final selection also considers vendor diversity.",
+            "feasibility_status": "Verification Required",
+            "verification_required": [
+                "Actual vendor quotations",
+                "Client budget feasibility",
+                "Event-date availability",
+                "Guest capacity",
+                "Event duration suitability",
+                "Venue suitability"
+            ],
+            "pricing_evidence": {
+                "total_vendors": 3,
+                "price_indicators_known": 2,
+                "price_indicators_missing": 1,
+                "indicator_coverage_percent": 66.67,
+                "pricing_evidence_status": "Partial Indicators Available",
+                "actual_quotation_status": "Verification Required",
+                "budget_feasibility_status": "Verification Required"
+            },
+            "service_classification_evidence": {
+                "total_vendors": 3,
+                "direct_evidence": 3,
+                "indirect_evidence": 0,
+                "insufficient_evidence": 0,
+                "evidence_status": "All Direct Category Evidence",
+                "actual_service_capability": "Verification Required"
+            }
+        },
+        {
+            "recommendation_rank": 3,
+            "package_id": 63,
+            "selected_vendors": [
+                "Catering: Broad Street Oyster Company",
+                "Photography: Karen D Photography",
+                "Decoration: Blue Blossoms"
+            ],
+            "average_vendor_score": 67.191,
+            "service_compatibility_score": 90.0,
+            "final_package_score": 74.0337,
+            "ranking_explanation": "Package ranking uses 70% average vendor score and 30% service-level compatibility score. Final selection also considers vendor diversity.",
+            "feasibility_status": "Verification Required",
+            "verification_required": [
+                "Actual vendor quotations",
+                "Client budget feasibility",
+                "Event-date availability",
+                "Guest capacity",
+                "Event duration suitability",
+                "Venue suitability"
+            ],
+            "pricing_evidence": {
+                "total_vendors": 3,
+                "price_indicators_known": 2,
+                "price_indicators_missing": 1,
+                "indicator_coverage_percent": 66.67,
+                "pricing_evidence_status": "Partial Indicators Available",
+                "actual_quotation_status": "Verification Required",
+                "budget_feasibility_status": "Verification Required"
+            },
+            "service_classification_evidence": {
+                "total_vendors": 3,
+                "direct_evidence": 3,
+                "indirect_evidence": 0,
+                "insufficient_evidence": 0,
+                "evidence_status": "All Direct Category Evidence",
+                "actual_service_capability": "Verification Required"
+            }
+        },
+        {
+            "recommendation_rank": 4,
+            "package_id": 94,
+            "selected_vendors": [
+                "Catering: ParadICE Hawaiian Shave Ice & Ice Cream",
+                "Photography: Ryanne Bee Photography",
+                "Decoration: Terra Malia Designs"
+            ],
+            "average_vendor_score": 66.4844,
+            "service_compatibility_score": 90.0,
+            "final_package_score": 73.5391,
+            "ranking_explanation": "Package ranking uses 70% average vendor score and 30% service-level compatibility score. Final selection also considers vendor diversity.",
+            "feasibility_status": "Verification Required",
+            "verification_required": [
+                "Actual vendor quotations",
+                "Client budget feasibility",
+                "Event-date availability",
+                "Guest capacity",
+                "Event duration suitability",
+                "Venue suitability"
+            ],
+            "pricing_evidence": {
+                "total_vendors": 3,
+                "price_indicators_known": 2,
+                "price_indicators_missing": 1,
+                "indicator_coverage_percent": 66.67,
+                "pricing_evidence_status": "Partial Indicators Available",
+                "actual_quotation_status": "Verification Required",
+                "budget_feasibility_status": "Verification Required"
+            },
+            "service_classification_evidence": {
+                "total_vendors": 3,
+                "direct_evidence": 3,
+                "indirect_evidence": 0,
+                "insufficient_evidence": 0,
+                "evidence_status": "All Direct Category Evidence",
+                "actual_service_capability": "Verification Required"
+            }
+        },
+        {
+            "recommendation_rank": 5,
+            "package_id": 125,
+            "selected_vendors": [
+                "Catering: Skyenna Wine Lounge",
+                "Photography: Veils & Tails Photography",
+                "Decoration: Santa Barbara Floral Artistry"
+            ],
+            "average_vendor_score": 65.5008,
+            "service_compatibility_score": 90.0,
+            "final_package_score": 72.8506,
+            "ranking_explanation": "Package ranking uses 70% average vendor score and 30% service-level compatibility score. Final selection also considers vendor diversity.",
+            "feasibility_status": "Verification Required",
+            "verification_required": [
+                "Actual vendor quotations",
+                "Client budget feasibility",
+                "Event-date availability",
+                "Guest capacity",
+                "Event duration suitability",
+                "Venue suitability"
+            ],
+            "pricing_evidence": {
+                "total_vendors": 3,
+                "price_indicators_known": 1,
+                "price_indicators_missing": 2,
+                "indicator_coverage_percent": 33.33,
+                "pricing_evidence_status": "Partial Indicators Available",
+                "actual_quotation_status": "Verification Required",
+                "budget_feasibility_status": "Verification Required"
+            },
+            "service_classification_evidence": {
+                "total_vendors": 3,
+                "direct_evidence": 3,
+                "indirect_evidence": 0,
+                "insufficient_evidence": 0,
+                "evidence_status": "All Direct Category Evidence",
+                "actual_service_capability": "Verification Required"
+            }
+        }
+    ],
+    "important_notice": "Recommendations are based on dataset-derived vendor scores and service-level compatibility. Actual prices, availability, capacity and venue suitability require independent verification.",
+    "client_requirement_assessment": [
+        {
+            "Requirement": "Event Type",
+            "Client_Value": "Wedding",
+            "Status": "Informational Only",
+            "Explanation": "Not used for event-specific suitability filtering"
+        },
+        {
+            "Requirement": "Event Date",
+            "Client_Value": "2026-12-20",
+            "Status": "Verification Required",
+            "Explanation": "Vendor booking availability is unknown"
+        },
+        {
+            "Requirement": "Location",
+            "Client_Value": "Santa Barbara, CA",
+            "Status": "Dataset Match",
+            "Explanation": "Vendor city and state are filtered; service radius unverified"
+        },
+        {
+            "Requirement": "Required Services",
+            "Client_Value": "Catering, Photography, Decoration",
+            "Status": "Dataset Match",
+            "Explanation": "Service categories matched; actual service suitability unverified"
+        },
+        {
+            "Requirement": "Allowed Risks",
+            "Client_Value": "Low, Medium",
+            "Status": "Dataset Match",
+            "Explanation": "Rule-derived risk labels used for filtering"
+        },
+        {
+            "Requirement": "Guest Count",
+            "Client_Value": 100,
+            "Status": "Verification Required",
+            "Explanation": "Vendor capacity data is unavailable"
+        },
+        {
+            "Requirement": "Vendor Budget",
+            "Client_Value": 10000,
+            "Status": "Verification Required",
+            "Explanation": "Actual vendor quotations are unavailable"
+        },
+        {
+            "Requirement": "Currency",
+            "Client_Value": "USD",
+            "Status": "Informational Only",
+            "Explanation": "No actual pricing or currency conversion performed"
+        },
+        {
+            "Requirement": "Event Duration",
+            "Client_Value": 6,
+            "Status": "Verification Required",
+            "Explanation": "Event-specific service duration is unverified"
+        }
+    ],
+    "requirement_assessment_summary": {
+        "total_requirements": 9,
+        "dataset_matches": 3,
+        "verification_required": 4,
+        "informational_only": 2
+    }
+}

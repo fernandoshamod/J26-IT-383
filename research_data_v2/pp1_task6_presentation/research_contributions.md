@@ -1,0 +1,9 @@
+# Research contributions and status
+
+1. **Active prototype:** request-time assembly of USER-specific packages from current service-option rows, with eligibility filtering, bounded search, simulated feasibility, multi-factor ranking and deterministic explanations. The contribution is an implemented integration and transparent constraints, not a demonstrated globally optimal or real-world superior recommender. [Production path](./implementation_summary.md); [Task 5 test evidence](../pp1_task5_demo_readiness/demo_readiness_report.md).
+2. **Measured historical evaluation:** 35 synthetic scenarios and a shared-pool cost-only reranking comparison, with explicit missing-data and search-limit reporting. This is not a Criteria-Based Individual Vendor Selection baseline or a user preference study. [Evaluation report](../../research_evaluation/research_results_report.md).
+3. **Standalone pair-evidence prototype:** three-way compatibility/conflict/pending semantics and deterministic operational checks. Twelve controlled fixture cases had exact statuses; this does not measure real-world conflict prediction. [Task 2 evaluation](../pp1_task2_conflict_engine/evaluation_report.md).
+4. **Standalone shadow mapping:** six new packages were mapped without modifying ranking; all required verification because event-specific evidence was absent. [Task 3 evaluation](../pp1_task3_shadow_integration/evaluation_report.md).
+5. **Standalone performance prototype:** an isolated search optimization preserved controlled outputs in three scenarios and improved two two-service local medians, but one single-service median regressed. It is not deployed. [Task 4 report](../pp1_task4_performance/performance_report.md).
+
+The exact FR1–FR13 proposal text remains unverified because the official proposal PDF was unavailable in Task 1. [Provisional gap analysis](../audit_2026-10-17_01/proposal_gap_analysis.md).

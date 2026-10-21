@@ -1,0 +1,9 @@
+{
+  "task1_file_count": 22,
+  "task1_hash_matches": 22,
+  "task1_hash_mismatches": [],
+  "watched_code_file_count": 7,
+  "watched_code_matches_live_run": 7,
+  "watched_code_mismatches": [],
+  "scope": "Current hashes compared with Task 1 inventory and the code hashes captured before live API requests. No pre-task code-hash baseline was available."
+}

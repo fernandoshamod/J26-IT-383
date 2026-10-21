@@ -1,0 +1,77 @@
+﻿[
+    {
+        "service_1":  "Catering",
+        "service_2":  "Photography",
+        "base_score":  95
+    },
+    {
+        "service_1":  "Catering",
+        "service_2":  "Decoration",
+        "base_score":  90
+    },
+    {
+        "service_1":  "Catering",
+        "service_2":  "Entertainment",
+        "base_score":  80
+    },
+    {
+        "service_1":  "Catering",
+        "service_2":  "Audio Visual",
+        "base_score":  75
+    },
+    {
+        "service_1":  "Photography",
+        "service_2":  "Decoration",
+        "base_score":  85
+    },
+    {
+        "service_1":  "Photography",
+        "service_2":  "Entertainment",
+        "base_score":  80
+    },
+    {
+        "service_1":  "Photography",
+        "service_2":  "Audio Visual",
+        "base_score":  85
+    },
+    {
+        "service_1":  "Decoration",
+        "service_2":  "Entertainment",
+        "base_score":  80
+    },
+    {
+        "service_1":  "Decoration",
+        "service_2":  "Audio Visual",
+        "base_score":  75
+    },
+    {
+        "service_1":  "Entertainment",
+        "service_2":  "Audio Visual",
+        "base_score":  100
+    },
+    {
+        "service_1":  "Catering",
+        "service_2":  "Catering",
+        "base_score":  30
+    },
+    {
+        "service_1":  "Photography",
+        "service_2":  "Photography",
+        "base_score":  30
+    },
+    {
+        "service_1":  "Decoration",
+        "service_2":  "Decoration",
+        "base_score":  30
+    },
+    {
+        "service_1":  "Entertainment",
+        "service_2":  "Entertainment",
+        "base_score":  30
+    },
+    {
+        "service_1":  "Audio Visual",
+        "service_2":  "Audio Visual",
+        "base_score":  30
+    }
+]

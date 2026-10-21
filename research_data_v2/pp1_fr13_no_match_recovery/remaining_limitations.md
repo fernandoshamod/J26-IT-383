@@ -1,0 +1,10 @@
+# Remaining limitations and PP1 cautions
+
+- The original screenshot did not include guest count or budget. The exact numeric root-cause reproduction used 50 guests and LKR 1,000,000; zero Entertainment location rows makes the principal cause independent of those chosen values.
+- Alternative locations are synthetic source-coverage suggestions only. They are not automatically applied and do not guarantee budget fit, distinct vendors, feasibility, availability or collaboration.
+- The diagnostic reuses the production location/event/capacity filters and price validator but scans aggregate source rows only after an empty result. Additional diagnostics add local request time; the six TestClient timings are not a deployed SLA.
+- For unsupported cities, event types, dates or budgets, FastAPI still returns HTTP 422 rather than a no-match payload. Unexpected server faults remain errors; they are not classified as legitimate zero results.
+- “NO_COMPATIBLE_COMBINATION” describes failure to form a valid distinct-vendor, budget/feasibility package in a complete bounded pool. The category compatibility score itself does not exclude candidates. If candidate or node caps truncate an attempted search, absence of returned packages is not proof of global infeasibility.
+- Editing is React session state only; reload loses the result and revision link. Every save issues a new USER ID; no persistent server event is versioned. Repeated identical requests may select identical source options.
+- Real vendor availability, quotes, collaboration and venue suitability remain unverified. Random Forest labels remain review-rule-derived. No model or dataset was changed.
+- Browser actions were tested in the shared local Vite instance; full cross-browser, mobile, accessibility, failure-injection and deployed performance studies remain open. The failed experimental route.fetch interception was not evidence of an application failure; the direct mock out-of-order test passed.

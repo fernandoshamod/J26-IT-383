@@ -1,0 +1,130 @@
+{
+  "inventory_files_checked": 22,
+  "inventory_matches": 22,
+  "inventory": [
+    {
+      "path": "dataset/yelp_business_1000.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "dataset/yelp_reviews_1000.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "data/cleaned/vendor_profiles_missingness_checked.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "hybrid_simulation_v1/real_vendor_profiles.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "hybrid_simulation_v1/synthetic_service_options.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "hybrid_simulation_v1/synthetic_event_requirements.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "hybrid_simulation_v1/synthetic_availability.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "hybrid_simulation_v1/synthetic_collaboration_scenarios.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "hybrid_simulation_v1/hybrid_vendor_service_dataset.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "hybrid_simulation_v1/field_provenance.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "vendor_compatibility_matrix.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "vendor_risk_dataset.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "vendor_availability.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "vendor_service_details.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "event_requirements.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "venue_constraints.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "models/vendor_risk_random_forest.pkl",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "vendor_risk_model.pkl",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "research_evaluation/evaluation_results.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "research_evaluation/baseline_comparison.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "research_evaluation/ranking_sensitivity.csv",
+      "exists": true,
+      "matches_task1": true
+    },
+    {
+      "path": "research_evaluation/evaluation_summary.json",
+      "exists": true,
+      "matches_task1": true
+    }
+  ],
+  "benchmark_pairs": 6,
+  "benchmark_search_metadata_consistent": true,
+  "monitored_existing_code_sha256": {
+    "backend/engine/dynamic_package_service.py": "ee4cedc7cc3c3b264439bc14ff9e6bb7bb3503185aed6bdbc1cfb1476d48d6f5",
+    "backend/engine/candidate_selection.py": "51ae7f52db77f17014db2f286c0d9c5e4ac42f43252ae4ae4128e516e1269e62",
+    "backend/engine/bounded_package_generator.py": "124c62a4c31689d6537ecc3cd0ab2d6e9c4932ac6b9ee6f9ff666e46d6715770",
+    "backend/engine/dynamic_feasibility.py": "5792ee987470aa53db8131a1c9f4d1752796201f95a11794debbe1ca1e8d23c5",
+    "backend/engine/risk_signals.py": "c40b5bfad9f280655c931c696fd014867bc50511f6ff50f4f4551368244c7523",
+    "backend/engine/service_compatibility.py": "e286c14a711315b1374dc9e9427e56ba4ae601782355a8ad1aba6b93eea8c678",
+    "backend/engine/package_explanations.py": "e1dba18d4d3ec24152e4701a577c5eb6883ffce7c62874e01735d9e65f20c360",
+    "research_data_v2/pp1_task2_conflict_engine/conflict_engine.py": "f7e2dabc4ae6ec46fe7078aaae364f726d922d8e83c2d57162b49df8902e5d0d",
+    "research_data_v2/pp1_task3_shadow_integration/shadow_adapter.py": "41fd1f1072ff43441477a95b56294303db973920af65ec5ccf99c0620ac75502"
+  },
+  "note": "Code hashes are a post-run record; no pre-task code-hash baseline was available."
+}

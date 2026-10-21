@@ -1,0 +1,10 @@
+﻿# Safe optimization options
+
+| Option | Why it may help | Required guardrails | PP1 decision |
+|---|---|---|---|
+| Reuse one request-local location/event-type mask across services | Candidate filtering repeats normalization and event-type parsing for each service. The prior [isolated prototype](../pp1_task4_performance/optimized_prototype.py) improved two-service Wedding median 5.82 to 4.86 s in only two paired runs. | Compare exact candidate rows/order and full response after normalizing USER IDs across varied event types, locations, guest counts and budgets. Preserve Catering capacity logic. | Low semantic risk, but earlier prototype still had a 5.12 s Wedding run. Do not rush before PP1 without approval and full regression. |
+| Reduce redundant CSV read/parse cost with a freshness-aware, process-local cache | Option CSV and profile CSV reads together cost about 0.8 s median in current warm stage runs. | Define invalidation by file identity/mtime/hash, preserve the model hash check and current-source semantics, avoid shared DataFrame mutation, evaluate memory and concurrent requests. | Potential gain, but freshness and lifecycle risk make this a post-PP1 candidate. |
+| Preload verified model at server startup | First HTTP request was 2.16 s slower than warm median; cold model import may contribute. | Keep hash/metadata verification, fail startup clearly if artifact invalid, test restart behavior and memory. It shifts cost from first request to startup rather than reducing work. | Optional post-PP1. Current warm model verification is ~2 ms. |
+| Keep default candidate/search limits | Search is a small fraction of default request time, while limits define the ranked pool. | Retain 12 candidates/service, 5,000 nodes, current weights, feasibility checks and response fields. | Recommended for the live demo. |
+
+Do not cache final recommendations, skip model inference or feasibility, change ranking weights, reduce candidate cap, or claim a global best package as a speed fix. No option above was applied to production.

@@ -1,0 +1,91 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Length 4055 >>
+stream
+1 1 1 rg 0 0 612 792 re f
+1 1 1 rg 0 0 612 792 re f
+0.09 0.42 0.41 rg 0 710 612 82 re f
+1 1 1 rg BT /F2 16 Tf 1 0 0 1 48 762 Tm (PLANOVISION) Tj ET
+0.89 0.96 0.94 rg BT /F1 8 Tf 1 0 0 1 48 745 Tm (EVENT MANAGEMENT RESEARCH PLATFORM) Tj ET
+0.09 0.42 0.41 rg BT /F2 22 Tf 1 0 0 1 48 682 Tm (Model and Research Evaluation) Tj ET
+0.39 0.48 0.46 rg BT /F1 11 Tf 1 0 0 1 48 650 Tm (A source-transparent summary of the existing Random Forest evaluation evidence.) Tj ET
+0.39 0.48 0.46 rg BT /F1 8 Tf 1 0 0 1 48 631 Tm (Generated 2026-10-20T20:17:05.643Z) Tj ET
+0.09 0.42 0.41 rg BT /F2 14 Tf 1 0 0 1 48 600 Tm (Verified evaluation metrics) Tj ET
+0.84 0.89 0.86 RG 48 591 516 1 re S
+0.91 0.96 0.94 rg 48 519 165.33333333333334 58 re f
+0.29 0.49 0.46 rg BT /F2 8 Tf 1 0 0 1 60 559 Tm (ACCURACY) Tj ET
+0.09 0.42 0.41 rg BT /F2 16 Tf 1 0 0 1 60 537 Tm (100.00%) Tj ET
+0.91 0.96 0.94 rg 223.33333333333334 519 165.33333333333334 58 re f
+0.29 0.49 0.46 rg BT /F2 8 Tf 1 0 0 1 235.33333333333334 559 Tm (MACRO F1) Tj ET
+0.09 0.42 0.41 rg BT /F2 16 Tf 1 0 0 1 235.33333333333334 537 Tm (1.0000) Tj ET
+0.91 0.96 0.94 rg 398.6666666666667 519 165.33333333333334 58 re f
+0.29 0.49 0.46 rg BT /F2 8 Tf 1 0 0 1 410.6666666666667 559 Tm (TEST RECORDS) Tj ET
+0.09 0.42 0.41 rg BT /F2 16 Tf 1 0 0 1 410.6666666666667 537 Tm (3,686) Tj ET
+0.09 0.42 0.41 rg BT /F2 14 Tf 1 0 0 1 48 494 Tm (Evaluation evidence) Tj ET
+0.84 0.89 0.86 RG 48 485 516 1 re S
+0.09 0.42 0.41 rg 48 452 516 24 re f
+1 1 1 rg BT /F2 8 Tf 1 0 0 1 55 459 Tm (Measure) Tj ET
+1 1 1 rg BT /F2 8 Tf 1 0 0 1 275 459 Tm (Verified value) Tj ET
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 55 435 Tm (Accuracy) Tj ET
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 275 435 Tm (100.00%) Tj ET
+0.88 0.91 0.89 RG 48 428 516 1 re S
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 55 411 Tm (Macro F1) Tj ET
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 275 411 Tm (1.0000) Tj ET
+0.88 0.91 0.89 RG 48 404 516 1 re S
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 55 387 Tm (Test records) Tj ET
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 275 387 Tm (3,686) Tj ET
+0.88 0.91 0.89 RG 48 380 516 1 re S
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 55 363 Tm (Events evaluated) Tj ET
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 275 363 Tm (35) Tj ET
+0.88 0.91 0.89 RG 48 356 516 1 re S
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 55 339 Tm (Independent validation) Tj ET
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 275 339 Tm (No) Tj ET
+0.88 0.91 0.89 RG 48 332 516 1 re S
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 55 315 Tm (Label origin) Tj ET
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 275 315 Tm (Rule-derived labels) Tj ET
+0.88 0.91 0.89 RG 48 308 516 1 re S
+0.09 0.42 0.41 rg BT /F2 14 Tf 1 0 0 1 48 286 Tm (Model input features) Tj ET
+0.84 0.89 0.86 RG 48 277 516 1 re S
+0.20 0.29 0.28 rg BT /F1 10 Tf 1 0 0 1 48 263 Tm (stars, review_count, collected_review_count, mean_review_rating, rating_std) Tj ET
+0.09 0.42 0.41 rg BT /F2 14 Tf 1 0 0 1 48 240 Tm (Research limitations and interpretation) Tj ET
+0.84 0.89 0.86 RG 48 231 516 1 re S
+0.20 0.29 0.28 rg BT /F1 10 Tf 1 0 0 1 48 217 Tm (This report is generated from the existing PlanoVision project data. Synthetic service) Tj ET
+0.20 0.29 0.28 rg BT /F1 10 Tf 1 0 0 1 48 202 Tm (options are simulation inputs, not verified real-world offers or availability. Vendor) Tj ET
+0.20 0.29 0.28 rg BT /F1 10 Tf 1 0 0 1 48 187 Tm (risk fields are research-derived and do not confirm reliability, booking status or) Tj ET
+0.20 0.29 0.28 rg BT /F1 10 Tf 1 0 0 1 48 172 Tm (collaboration. Model metrics use rule-derived labels and do not establish independent) Tj ET
+0.20 0.29 0.28 rg BT /F1 10 Tf 1 0 0 1 48 157 Tm (real-world validation. This academic administration workspace has no authentication or) Tj ET
+0.20 0.29 0.28 rg BT /F1 10 Tf 1 0 0 1 48 142 Tm (role-based access control.) Tj ET
+0.84 0.89 0.86 RG 48 60 516 1 re S
+0.39 0.48 0.46 rg BT /F1 7.5 Tf 1 0 0 1 48 43 Tm (PlanoVision  Academic administration demonstration  Research data limitations apply) Tj ET
+0.39 0.48 0.46 rg BT /F1 7.5 Tf 1 0 0 1 500 43 Tm (Page 1 of 1) Tj ET
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000000321 00000 n 
+0000000396 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+4503
+%%EOF

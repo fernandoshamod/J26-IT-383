@@ -1,0 +1,17 @@
+Shadow assessment of a freshly generated USER event; synthetic source options.
+{
+  "scenario": 1,
+  "event_id": "USER-C1D842C93D68",
+  "package_id": "PKG-0001",
+  "vendor_ids": "FQ_QUyrwtnaEdxUxruZkXg;_t_UwNkwAinJSljDDYvnoQ",
+  "option_ids": "SIMOPT-000111-B;SIMOPT-001022-S",
+  "existing_feasibility_status": "VERIFICATION_REQUIRED",
+  "existing_ranking_score": 84.7786,
+  "shadow_status": "VERIFICATION_REQUIRED",
+  "supported_conflicts": 0,
+  "pending_checks": 6,
+  "missing_evidence_categories": "availability;option_schedule;resource_capacity;resource_requirements;teardown_duration;vendor_pair_evidence",
+  "mapping_failures": 0,
+  "adapter_ms": 0.459
+}
+Pending means missing evidence, not confirmed vendor conflict or availability.

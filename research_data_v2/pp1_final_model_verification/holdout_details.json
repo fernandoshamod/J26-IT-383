@@ -1,0 +1,31 @@
+{
+  "split_recipe": "train_test_split(test_size=0.20, random_state=42, stratify=y)",
+  "source_file": "D:\\Vendor-Intelligence-System\\data\\cleaned\\vendor_profiles_missingness_checked.csv",
+  "source_sha256": "adcd1ff530283b9f9965f243dadc345d768220ed5892764dfc7fce7fce12fc9a",
+  "train_count": 14744,
+  "test_count": 3686,
+  "classes": [
+    "High",
+    "Low",
+    "Medium"
+  ],
+  "confusion_matrix_rows_true_columns_predicted": [
+    [
+      576,
+      0,
+      0
+    ],
+    [
+      0,
+      408,
+      0
+    ],
+    [
+      0,
+      0,
+      2702
+    ]
+  ],
+  "original_heldout_ids_saved": false,
+  "interpretation": "Reconstructed holdout, not an independent failure-outcome test."
+}

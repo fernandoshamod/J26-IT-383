@@ -1,0 +1,11 @@
+# Exact tasks remaining before PP1 (2026-10-22)
+
+1. **Freeze the verified demo baseline.** Keep the saved model hash `4eed156cfdf677b992b8c36350c21c968d7cb4d532a8afd302ca1b697aea3e6a`, five-feature order, three-class order, and source hashes with the PP1 evidence pack. Do not retrain or replace the artifact for this milestone.
+2. **Use precise claims in slides and demo.** Call it a Random Forest classifier of *review-derived risk labels*. State reconstructed holdout accuracy 100% on 3,686 rows and immediately state that real operational failures were not labelled or validated. Show the confusion matrix and class support, not a standalone “100% risk prediction” claim.
+3. **Demonstrate the actual dynamic path.** Reuse a known successful request; show a fresh FastAPI package response, model SHA-256/risk audit, a package's model class and rule favorability, then the Vendor Intelligence browser view. Explain that availability and collaboration remain pending. The [integration probe](./fastapi_integration_probe.json) gives a repeatable Bensalem example.
+4. **Check UI wording and known service classifications for presentation.** The browser exposes plausible category false positives for manual review. Avoid citing any questionable vendor-service row as verified. If correction is needed, schedule a separately authorized data task; this verification made no production edits.
+5. **Keep the AI Model page's snapshot label visible.** Explain that its metrics come from saved evaluation JSON, whereas current vendor rows come from the new API response. Avoid claiming the dashboard recomputes metrics live.
+6. **Run a final PP1 smoke check on the demonstration machine.** Verify the same virtual environment, artifact hash, endpoint response, screenshot route, and chosen valid scenario shortly before the presentation. Record date, versions, and outcome; no retraining is needed.
+7. **Postpone scientific claims requiring new data.** Independent vendor failure labels, actual capacity/quotation/availability, calibrated operational risk, and external validation remain future research. Mark them **NOT_VERIFIED** for PP1.
+
+No integration change is required to meet the narrow technical goal of one loading, predicting, dynamically integrated model. Any changes to production, service classifications, or deployment should be proposed and reviewed separately.

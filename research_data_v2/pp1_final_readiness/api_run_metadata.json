@@ -1,0 +1,21 @@
+﻿{
+    "checked_at_utc":  "2026-10-19T06:57:45.0872882Z",
+    "http_status":  200,
+    "elapsed_ms":  7613.79,
+    "request":  {
+                    "event_type":  "Wedding",
+                    "event_date":  "2026-11-16",
+                    "start_time":  "10:00",
+                    "end_time":  "18:00",
+                    "city":  "Philadelphia",
+                    "state":  "PA",
+                    "guest_count":  50,
+                    "budget_lkr":  1000000,
+                    "required_services":  [
+                                              "Photography",
+                                              "Decoration"
+                                          ],
+                    "top_k":  3
+                },
+    "error":  null
+}

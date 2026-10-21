@@ -1,0 +1,90 @@
+{
+  "design": "eight purposively selected synthetic two-service cities; fixed seed 42; paired by scenario",
+  "ranking": {
+    "events": 8,
+    "paired_nonempty": 8,
+    "cost_difference": {
+      "n": 8,
+      "mean": 522.6287499999962,
+      "median": 0.0
+    },
+    "cost_difference_descriptive_bootstrap_95pct": [
+      0.0,
+      1567.8862499999886
+    ],
+    "risk_difference": {
+      "n": 8,
+      "mean": 2.5,
+      "median": 0.0
+    },
+    "risk_difference_descriptive_bootstrap_95pct": [
+      0.0,
+      7.5
+    ],
+    "same_top1_count": 7,
+    "baseline_ranking_ms": {
+      "n": 8,
+      "mean": 0.0280375,
+      "median": 0.022449999999999998
+    },
+    "proposed_ranking_ms": {
+      "n": 8,
+      "mean": 0.776525,
+      "median": 0.30045
+    }
+  },
+  "search": {
+    "events": 8,
+    "candidate_truncated_events": 5,
+    "node_truncated_events": 0,
+    "total_exhaustive_feasible": 173,
+    "total_bounded_feasible": 170,
+    "total_missed_feasible": 3,
+    "best_score_regret": {
+      "n": 8,
+      "mean": 0.0,
+      "median": 0.0
+    },
+    "bounded_ms": {
+      "n": 8,
+      "mean": 20.7977375,
+      "median": 13.2965
+    },
+    "exhaustive_ms": {
+      "n": 8,
+      "mean": 3.991225,
+      "median": 3.9446000000000003
+    }
+  },
+  "risk": {
+    "holdout_n": 3686,
+    "seed": 42,
+    "audit_status": "reconstructed_notebook_holdout",
+    "model_accuracy_vs_rule_labels": 1.0,
+    "model_macro_f1_vs_rule_labels": 1.0,
+    "rules_only_accuracy_vs_rule_labels": 1.0,
+    "rules_only_macro_f1_vs_rule_labels": 1.0,
+    "model_rule_disagreements": 0,
+    "independent_real_world_validation": false
+  },
+  "conflict": {
+    "fixture_count": 12,
+    "correct_statuses": 12,
+    "status_counts": {
+      "COMPATIBLE_WITH_EVIDENCE": 2,
+      "CONFLICT_WITH_EVIDENCE": 6,
+      "VERIFICATION_REQUIRED": 4
+    },
+    "same_category_groups_with_multiple_operational_statuses": 2
+  },
+  "seed": 42,
+  "input_sha256": {
+    "hybrid_simulation_v1/synthetic_service_options.csv": "94d01e9bdcb48da9c15c5054c9a734ecd1b927d0ab42fb674a6a24a2d24659df",
+    "hybrid_simulation_v1/real_vendor_profiles.csv": "47d380f2972eb9377610c7587b246835cdd0475492ee9518be6044b9e354d392",
+    "vendor_compatibility_matrix.csv": "de72d8483871813f1c18113b66a8882465e98f4ba51b31388fb7751edf741aba",
+    "models/vendor_risk_random_forest.pkl": "4eed156cfdf677b992b8c36350c21c968d7cb4d532a8afd302ca1b697aea3e6a",
+    "data/cleaned/vendor_profiles_missingness_checked.csv": "adcd1ff530283b9f9965f243dadc345d768220ed5892764dfc7fce7fce12fc9a",
+    "research_data_v2/pp1_task2_conflict_engine/fixtures.json": "5cc75e8efd46611c6a8626d4ca026dcf9fb899f1b71e3b9882f9470c44781116",
+    "research_data_v2/pp1_task2_conflict_engine/conflict_engine.py": "f7e2dabc4ae6ec46fe7078aaae364f726d922d8e83c2d57162b49df8902e5d0d"
+  }
+}

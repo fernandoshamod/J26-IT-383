@@ -1,0 +1,109 @@
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Node / React
+node_modules/
+dist/
+.vite/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs and temporary files
+*.log
+tmp/
+temp/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Large local datasets (review before publishing)
+*.csv
+*.parquet
+
+# Trained models (review before publishing)
+*.pkl
+*.joblib
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Backup files
+*.bak
+
+# Temporary files
+*.tmp
+
+# Generated frontend build artifacts
+research_data_v2/pp1_final_technical_audit/frontend_build/
+
+# Matplotlib cache
+**/matplotlib_config/
+
+# Python and test caches
+__pycache__/
+.pytest_cache/
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Local dependencies
+node_modules/
+venv/
+.venv/
+
+# Jupyter temporary files
+.ipynb_checkpoints/
+
+# Backup and temporary files
+*.bak
+*.tmp
+
+# Generated build files
+research_data_v2/pp1_final_technical_audit/frontend_build/
+
+# Matplotlib cache
+**/matplotlib_config/
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Dependencies
+node_modules/
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+.pytest_cache/

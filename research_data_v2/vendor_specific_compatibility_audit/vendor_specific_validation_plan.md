@@ -1,0 +1,14 @@
+﻿# Isolated vendor-specific validation plan (proposal only)
+
+A meaningful **simulation-scoped** prototype is feasible using the existing [conflict engine](../pp1_task2_conflict_engine/conflict_engine.py). Real-world pair certification is not feasible from current files. No implementation is authorized by this audit.
+
+1. Keep prototype code/output outside production API, React ranking, model files and backup. Use the existing [shadow adapter](../pp1_task3_shadow_integration/shadow_adapter.py) as a read-only source-ID mapping starting point; resolve each generated option to its current record and reject mismatches.
+2. Define an evidence contract per check: event ID, vendor and option IDs, time interval with timezone, source ID/URI, observation date, evidence class (`REAL_PUBLIC`, `DERIVED`, `SYNTHETIC_TEST`, `UNKNOWN`), verification status and scope. Historical Yelp listing identity is not booking evidence. Authenticate claimed public pair records outside the engine; syntax alone is insufficient.
+3. For a fresh USER event, map submitted event time and synthetic option location/capacity. Keep option schedule, availability, teardown, equipment/crew limits, venue and collaboration `UNKNOWN` unless actual matching evidence exists. Never attach SIMEVT availability or random pair outcomes to a USER event. Absence of a conflict record is not PASS.
+4. For a controlled demonstration, use labeled [synthetic fixtures](../pp1_task2_conflict_engine/fixtures.json) to show a scoped compatible case, conflict and unknown case, including overlap/resource examples. State that outcomes are invented test cases, not vendor claims. Keep the category score as unchanged separate context.
+5. Prototype output should show per-check `PASS_IN_SIMULATION`, `FAIL_IN_SIMULATION` or `VERIFICATION_REQUIRED`, evidence IDs and provenance; retain the standalone engine's original status separately. Aggregate conflict first, then unknown, then scoped pass. Never mark real-world feasibility true or turn simulated PASS into verified PASS.
+6. Before any future live integration, require evidence owner, source authentication, freshness rules, tests and rollback criteria. Preserve RF inference, package constraints, ranking weights and response fields. Shadow-compare identical generated package pools before seeking separate implementation approval.
+
+## Later test gate
+
+Test symmetric pairs, contradictory/missing/stale/out-of-event evidence, explicit timezone and interval coverage, touching versus overlapping windows, resource capacity boundary, setup/teardown gaps, duplicate IDs and venue pending. Compare two named pairs **within the same category pair** to show operational statuses can differ while category score stays equal. Assert production package IDs, ranking, feasibility fields and saved model hash stay unchanged. The 19 passing standalone tests are a software baseline, not real-world accuracy evidence.

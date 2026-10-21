@@ -1,0 +1,39 @@
+PlanoVision PP1: vendor-pair and operational conflict proof of concept
+All event times, availability, pair outcomes and equipment limits below are SYNTHETIC_TEST.
+Actual source option/vendor IDs are identity references only; no real booking is confirmed.
+
+CASE compatible_pair: USER-PP1-COMPATIBLE_PAIR | Philadelphia, PA
+Event interval: 2026-10-21T09:00:00-04:00 to 2026-10-21T18:00:00-04:00
+Selected vendor options:
+  Photography: yRO9jF-YqiMwq5ja96GdTg / SIMOPT-000057-B
+  Decoration: gziMakTc9EnZszDdTn9f8Q / SIMOPT-000115-B
+Pair evidence: COMPATIBLE_WITH_EVIDENCE | compatible_pair-E1
+Category rule context: 85/100 (service categories only; NOT vendor collaboration evidence)
+Scheduling/equipment checks: no conflict from supplied operational constraints
+Scoped result: COMPATIBLE_WITH_EVIDENCE
+Explanation: No conflict found within the supplied vendor-pair and operational evidence.
+Venue suitability: VERIFICATION_REQUIRED (external team)
+
+CASE equipment_insufficient: USER-PP1-EQUIPMENT_INSUFFICIENT | Philadelphia, PA
+Event interval: 2026-10-21T09:00:00-04:00 to 2026-10-21T18:00:00-04:00
+Selected vendor options:
+  Photography: yRO9jF-YqiMwq5ja96GdTg / SIMOPT-000057-B
+  Decoration: gziMakTc9EnZszDdTn9f8Q / SIMOPT-000115-B
+Pair evidence: COMPATIBLE_WITH_EVIDENCE | equipment_insufficient-E1
+Category rule context: 85/100 (service categories only; NOT vendor collaboration evidence)
+Scheduling/equipment checks: resource:equipment:shared-camera=CONFLICT_WITH_EVIDENCE
+Scoped result: CONFLICT_WITH_EVIDENCE
+Explanation: equipment:shared-camera: peak demand 2 exceeds documented limit 1.
+Venue suitability: VERIFICATION_REQUIRED (external team)
+
+CASE unknown_pair: USER-PP1-UNKNOWN_PAIR | Philadelphia, PA
+Event interval: 2026-10-21T09:00:00-04:00 to 2026-10-21T18:00:00-04:00
+Selected vendor options:
+  Photography: yRO9jF-YqiMwq5ja96GdTg / SIMOPT-000057-B
+  Decoration: gziMakTc9EnZszDdTn9f8Q / SIMOPT-000115-B
+Pair evidence: VERIFICATION_REQUIRED | none
+Category rule context: 85/100 (service categories only; NOT vendor collaboration evidence)
+Scheduling/equipment checks: no conflict from supplied operational constraints
+Scoped result: VERIFICATION_REQUIRED
+Explanation: No usable event-specific pair evidence; collaboration is unknown.
+Venue suitability: VERIFICATION_REQUIRED (external team)

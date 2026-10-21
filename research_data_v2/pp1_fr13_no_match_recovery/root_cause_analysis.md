@@ -1,0 +1,9 @@
+# Belle Chasse no-match root cause
+
+Controlled reproduction: Corporate, Belle Chasse LA, 2026-11-26, 10:00–18:00, 50 guests, LKR 1,000,000, Entertainment + Catering, top 3. The original screenshot omitted guests and budget; these are **explicit controlled test assumptions**, not inferred screenshot facts. The no-match cause from current records is independent of those assumed values because there are zero Entertainment rows at this location.
+
+The canonical CSV contains **57,549** service-option rows. Exactly **27** match Belle Chasse, LA after city/state trimming and case folding. All 27 are Catering; **0** are Entertainment. For Corporate, 50 guests and eight hours, the 27 Catering rows survive event-type and catering capacity filters; all 27 have a finite price under the production validator, 14 individually fit LKR 1,000,000, and the lowest eligible Catering estimate is LKR 311,096. Entertainment has 462 rows globally but 0 in Belle Chasse and hence 0 priceable/affordable there. See [scenario C JSON](./demo_test_results.json) and [live focused test](../../tests/test_no_match_diagnostics.py).
+
+The dynamic API returned HTTP 200, generation status no_matching_candidates, 0 packages and a new USER ID. **Combination search did not start** (0 nodes visited) because required Entertainment had no candidates. Category compatibility is a ranking input, not an eligibility filter, so it removed **0** rows. This request was not caused by an invalid price, Catering budget failure, category compatibility rule, or exhausted node search. The Catering candidate cap can be flagged because 27 priceable options exceed 12, but that did not cause this no-match and is not reported as SEARCH_LIMIT_REACHED in the diagnostic.
+
+Classification: **NO_SERVICE_COVERAGE for Entertainment**. The diagnostic does not infer vendor availability, actual quotations or real-world collaboration.

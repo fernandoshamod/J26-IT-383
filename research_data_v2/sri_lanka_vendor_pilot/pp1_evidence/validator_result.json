@@ -1,0 +1,27 @@
+﻿{
+  "status": "VALID",
+  "rows": 10,
+  "declared_real_rows": 10,
+  "category_counts": {
+    "Photography": 7,
+    "Decoration": 0,
+    "Catering": 3,
+    "Entertainment": 0,
+    "Audio Visual": 0
+  },
+  "missing_field_counts": {
+    "availability_status": 10,
+    "collected_review_count": 10,
+    "district": 10,
+    "guest_capacity": 10,
+    "mean_review_rating": 10,
+    "price_lkr": 10,
+    "province": 10,
+    "rating": 10,
+    "rating_std": 10,
+    "review_count": 10,
+    "service_area": 10
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,41 @@
+{
+  "cap": 6,
+  "elapsed_ms": 2876.756,
+  "option_ids": [
+    [
+      "SIMOPT-000111-B",
+      "SIMOPT-001022-S"
+    ],
+    [
+      "SIMOPT-000111-B",
+      "SIMOPT-000547-B"
+    ],
+    [
+      "SIMOPT-000111-B",
+      "SIMOPT-004737-B"
+    ]
+  ],
+  "scores": [
+    84.7786,
+    83.8799,
+    79.205
+  ],
+  "search": {
+    "complete": false,
+    "candidate_limit_reached": true,
+    "node_limit_reached": false,
+    "max_candidates_per_service": 6,
+    "max_search_nodes": 5000,
+    "nodes_visited": 42,
+    "combinations_evaluated": 36,
+    "all_examined_combinations_validated": true,
+    "feasibility_priority": [
+      "PASS_IN_SIMULATION",
+      "VERIFICATION_REQUIRED"
+    ],
+    "selected_search_space_upper_bound": 36,
+    "minimum_possible_cost_lkr": 244874.21,
+    "top_k": 3,
+    "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+  }
+}

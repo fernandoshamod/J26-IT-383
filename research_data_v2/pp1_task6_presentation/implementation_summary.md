@@ -1,0 +1,15 @@
+# Current implementation
+
+## Active request path
+
+The React [event wizard](../../frontend/src/pages/EventWizard.jsx) collects event type, date/time, city/state, guests, LKR budget, required services and top-K. [App state](../../frontend/src/App.jsx) sends it through the [API client](../../frontend/src/services/api.js) to POST /api/packages/generate-dynamic in [packages.py](../../backend/api/packages.py). [Request validation](../../backend/schemas/dynamic_package_request.py) rejects invalid input. The [dynamic service](../../backend/engine/dynamic_package_service.py) assigns a new USER-* ID, reads current service-option records, selects eligible candidates, and invokes bounded generation. A new USER ID does not imply different combinations for repeated identical inputs.
+
+The [candidate selector](../../backend/engine/candidate_selection.py) filters service, event type, synthetic location, capacity and relevant constraints. The [bounded generator](../../backend/engine/bounded_package_generator.py) combines options covering each required service once, without duplicate vendors or over-budget totals. Documented defaults: 12 candidates per service, 5,000 search nodes, top 10. Truncation means the top result is only best among examined combinations.
+
+The [risk module](../../backend/engine/risk_signals.py) applies an existing Random Forest to review-derived, rule-labeled vendor features. Its 0–100 package signal is **favorability**: higher is more favorable, not a higher failure probability. The [compatibility module](../../backend/engine/service_compatibility.py) scores service-category pairs using the 15-row matrix, not proven vendor collaboration. [Dynamic feasibility](../../backend/engine/dynamic_feasibility.py) checks examined packages before final selection; FAIL is excluded and PASS_IN_SIMULATION precedes VERIFICATION_REQUIRED. Missing availability, collaboration, scheduling and venue evidence stay pending. Production scoring weights are cost 0.4, risk favorability 0.4, category compatibility 0.2; [explanations](../../backend/engine/package_explanations.py) cite observed factors.
+
+The [recommendation and comparison view](../../frontend/src/pages/PackageViews.jsx) uses the current USER response. The [feasibility dashboard](../../frontend/src/pages/FeasibilityDashboard.jsx) reruns the dynamic feasibility API and shows recorded pass/pending/fail evidence. Historical research pages do not supply live recommendations. See [Task 5 discovery](../pp1_task5_demo_readiness/system_discovery.md) and [Task 5 observed results](../pp1_task5_demo_readiness/demo_readiness_report.md).
+
+## Component status
+
+Task 2 pair evidence/conflict detection, Task 3 shadow adapter and Task 4 optimization are **standalone research prototypes**, not active in the production API or ranking. Venue Suitability/Digital Twin belongs to another team; this repository documents only a prospective [venue contract](../audit_2026-10-17_01/venue_integration_contract.md).

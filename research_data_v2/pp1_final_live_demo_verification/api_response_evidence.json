@@ -1,0 +1,1264 @@
+﻿{
+    "checked_at_utc":  "2026-10-18T06:57:07.8343805Z",
+    "method":  "live_http",
+    "url":  "http://127.0.0.1:8000/api/packages/generate-dynamic",
+    "request":  {
+                    "event_type":  "Wedding",
+                    "event_date":  "2026-11-16",
+                    "start_time":  "10:00",
+                    "end_time":  "18:00",
+                    "city":  "Philadelphia",
+                    "state":  "PA",
+                    "guest_count":  50,
+                    "budget_lkr":  1000000,
+                    "required_services":  [
+                                              "Photography",
+                                              "Decoration"
+                                          ],
+                    "top_k":  3
+                },
+    "http_status":  200,
+    "elapsed_ms":  10795.85,
+    "response":  {
+                     "event_id":  "USER-3E864697E372",
+                     "event":  {
+                                   "event_id":  "USER-3E864697E372",
+                                   "event_type":  "Wedding",
+                                   "event_date":  "2026-11-16",
+                                   "start_time":  "10:00:00",
+                                   "end_time":  "18:00:00",
+                                   "city":  "Philadelphia",
+                                   "state":  "PA",
+                                   "guest_count":  50,
+                                   "budget_lkr":  1000000.0,
+                                   "duration_hours":  8.0,
+                                   "required_services":  "Photography;Decoration",
+                                   "currency":  "LKR"
+                               },
+                     "required_services":  [
+                                               "Photography",
+                                               "Decoration"
+                                           ],
+                     "currency":  "LKR",
+                     "data_origin":  "synthetic_simulation",
+                     "is_vendor_confirmed":  false,
+                     "availability_status":  "unverified",
+                     "generation_mode":  "dynamic_user_request",
+                     "candidate_counts":  {
+                                              "Photography":  165,
+                                              "Decoration":  237
+                                          },
+                     "risk_data_audit":  {
+                                             "model_artifact":  "models/vendor_risk_random_forest.pkl",
+                                             "model_sha256":  "4eed156cfdf677b992b8c36350c21c968d7cb4d532a8afd302ca1b697aea3e6a",
+                                             "model_features":  [
+                                                                    "stars",
+                                                                    "review_count",
+                                                                    "collected_review_count",
+                                                                    "mean_review_rating",
+                                                                    "rating_std"
+                                                                ],
+                                             "label_origin":  "rule_generated_from_review_features",
+                                             "independent_real_world_validation":  false,
+                                             "requested_vendor_ids":  134,
+                                             "status_counts":  {
+                                                                   "available":  134
+                                                               }
+                                         },
+                     "generation":  {
+                                        "status":  "search_limit_reached",
+                                        "message":  "Search limits were reached; results cover only the examined candidate options and combinations.",
+                                        "packages":  [
+                                                         {
+                                                             "option_ids":  [
+                                                                                "SIMOPT-000111-B",
+                                                                                "SIMOPT-001022-S"
+                                                                            ],
+                                                             "vendor_ids":  [
+                                                                                "FQ_QUyrwtnaEdxUxruZkXg",
+                                                                                "_t_UwNkwAinJSljDDYvnoQ"
+                                                                            ],
+                                                             "service_coverage":  [
+                                                                                      "Photography",
+                                                                                      "Decoration"
+                                                                                  ],
+                                                             "service_breakdown":  [
+                                                                                       {
+                                                                                           "service":  "Photography",
+                                                                                           "vendor_id":  "FQ_QUyrwtnaEdxUxruZkXg",
+                                                                                           "vendor_name":  "Minibooths",
+                                                                                           "option_id":  "SIMOPT-000111-B",
+                                                                                           "option_tier":  "Basic",
+                                                                                           "estimated_cost_lkr":  132945.89,
+                                                                                           "predicted_risk_level":  "Low",
+                                                                                           "rule_risk_score":  100.0,
+                                                                                           "risk_status":  "available",
+                                                                                           "data_origin":  "synthetic_simulation",
+                                                                                           "is_vendor_confirmed":  false
+                                                                                       },
+                                                                                       {
+                                                                                           "service":  "Decoration",
+                                                                                           "vendor_id":  "_t_UwNkwAinJSljDDYvnoQ",
+                                                                                           "vendor_name":  "Petit Jardin En Ville",
+                                                                                           "option_id":  "SIMOPT-001022-S",
+                                                                                           "option_tier":  "Standard",
+                                                                                           "estimated_cost_lkr":  172589.52,
+                                                                                           "predicted_risk_level":  "Low",
+                                                                                           "rule_risk_score":  100.0,
+                                                                                           "risk_status":  "available",
+                                                                                           "data_origin":  "synthetic_simulation",
+                                                                                           "is_vendor_confirmed":  false
+                                                                                       }
+                                                                                   ],
+                                                             "total_cost_lkr":  305535.41,
+                                                             "remaining_budget_lkr":  694464.59,
+                                                             "ranking_score":  84.7786,
+                                                             "ranking_factors":  {
+                                                                                     "cost_efficiency":  0.694465,
+                                                                                     "budget_utilization":  0.305535,
+                                                                                     "service_coverage":  1.0,
+                                                                                     "risk_score":  100.0,
+                                                                                     "compatibility_score":  85.0,
+                                                                                     "configured_weights":  {
+                                                                                                                "cost":  0.4,
+                                                                                                                "risk":  0.4,
+                                                                                                                "compatibility":  0.2
+                                                                                                            },
+                                                                                     "effective_weights":  {
+                                                                                                               "cost":  0.4,
+                                                                                                               "risk":  0.4,
+                                                                                                               "compatibility":  0.2
+                                                                                                           },
+                                                                                     "unknown_components":  [
+
+                                                                                                            ]
+                                                                                 },
+                                                             "risk":  {
+                                                                          "status":  "complete",
+                                                                          "mean_rule_risk_score":  100.0,
+                                                                          "known_vendor_count":  2,
+                                                                          "total_vendor_count":  2,
+                                                                          "vendors":  [
+                                                                                          {
+                                                                                              "vendor_id":  "FQ_QUyrwtnaEdxUxruZkXg",
+                                                                                              "vendor_name":  "Minibooths",
+                                                                                              "predicted_risk_level":  "Low",
+                                                                                              "rule_risk_level":  "Low",
+                                                                                              "rule_risk_score":  100.0,
+                                                                                              "risk_status":  "available",
+                                                                                              "risk_provenance":  "random_forest_prediction_of_rule_generated_label"
+                                                                                          },
+                                                                                          {
+                                                                                              "vendor_id":  "_t_UwNkwAinJSljDDYvnoQ",
+                                                                                              "vendor_name":  "Petit Jardin En Ville",
+                                                                                              "predicted_risk_level":  "Low",
+                                                                                              "rule_risk_level":  "Low",
+                                                                                              "rule_risk_score":  100.0,
+                                                                                              "risk_status":  "available",
+                                                                                              "risk_provenance":  "random_forest_prediction_of_rule_generated_label"
+                                                                                          }
+                                                                                      ],
+                                                                          "label_origin":  "rule_generated_from_review_features",
+                                                                          "independent_real_world_validation":  false
+                                                                      },
+                                                             "compatibility":  {
+                                                                                   "status":  "complete",
+                                                                                   "score":  85.0,
+                                                                                   "pairs":  [
+                                                                                                 {
+                                                                                                     "service_1":  "Photography",
+                                                                                                     "service_2":  "Decoration",
+                                                                                                     "score":  85.0,
+                                                                                                     "status":  "known"
+                                                                                                 }
+                                                                                             ],
+                                                                                   "unknown_pairs":  [
+
+                                                                                                     ],
+                                                                                   "provenance":  "static_service_category_heuristic",
+                                                                                   "is_vendor_collaboration_evidence":  false
+                                                                               },
+                                                             "feasibility":  {
+                                                                                 "event_id":  "USER-3E864697E372",
+                                                                                 "final_status":  "VERIFICATION_REQUIRED",
+                                                                                 "total_cost_lkr":  305535.41,
+                                                                                 "budget_lkr":  1000000.0,
+                                                                                 "budget_remaining_lkr":  694464.59,
+                                                                                 "passed_checks":  [
+                                                                                                       {
+                                                                                                           "code":  "service_coverage",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Every required service is covered exactly once.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "unique_vendors",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "All selected vendors are distinct.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "event_duration",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Event interval is 8 hours.",
+                                                                                                           "evidence_origin":  "submitted_event"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "event_type:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: event type matches option support.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "location:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: simulated location Philadelphia, PA; event Philadelphia, PA.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "cost:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: estimated LKR 132945.89 from current synthetic option.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "event_type:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Decoration / _t_UwNkwAinJSljDDYvnoQ: event type matches option support.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "location:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Decoration / _t_UwNkwAinJSljDDYvnoQ: simulated location Philadelphia, PA; event Philadelphia, PA.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "cost:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Decoration / _t_UwNkwAinJSljDDYvnoQ: estimated LKR 172589.52 from current synthetic option.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "budget",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Estimated LKR 305535.41 fits budget LKR 1000000.00.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       }
+                                                                                                   ],
+                                                                                 "pending_checks":  [
+                                                                                                        {
+                                                                                                            "code":  "capacity:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: vendor capacity is unverified.",
+                                                                                                            "evidence_origin":  "missing_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "availability:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm availability for this event and time.",
+                                                                                                            "evidence_origin":  "missing_event_specific_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "scheduling:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm setup, travel and schedule fit.",
+                                                                                                            "evidence_origin":  "missing_event_specific_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "capacity:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Decoration / _t_UwNkwAinJSljDDYvnoQ: vendor capacity is unverified.",
+                                                                                                            "evidence_origin":  "missing_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "availability:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Decoration / _t_UwNkwAinJSljDDYvnoQ: confirm availability for this event and time.",
+                                                                                                            "evidence_origin":  "missing_event_specific_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "scheduling:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Decoration / _t_UwNkwAinJSljDDYvnoQ: confirm setup, travel and schedule fit.",
+                                                                                                            "evidence_origin":  "missing_event_specific_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "vendor_collaboration:FQ_QUyrwtnaEdxUxruZkXg:_t_UwNkwAinJSljDDYvnoQ",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Confirm whether vendors FQ_QUyrwtnaEdxUxruZkXg and _t_UwNkwAinJSljDDYvnoQ can work together.",
+                                                                                                            "evidence_origin":  "missing_event_specific_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "venue_suitability",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Confirm venue capacity, access, equipment and service suitability.",
+                                                                                                            "evidence_origin":  "missing_venue_evidence"
+                                                                                                        }
+                                                                                                    ],
+                                                                                 "failed_checks":  [
+
+                                                                                                   ],
+                                                                                 "verification_requirements":  [
+                                                                                                                   "Photography / FQ_QUyrwtnaEdxUxruZkXg: vendor capacity is unverified.",
+                                                                                                                   "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm availability for this event and time.",
+                                                                                                                   "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm setup, travel and schedule fit.",
+                                                                                                                   "Decoration / _t_UwNkwAinJSljDDYvnoQ: vendor capacity is unverified.",
+                                                                                                                   "Decoration / _t_UwNkwAinJSljDDYvnoQ: confirm availability for this event and time.",
+                                                                                                                   "Decoration / _t_UwNkwAinJSljDDYvnoQ: confirm setup, travel and schedule fit.",
+                                                                                                                   "Confirm whether vendors FQ_QUyrwtnaEdxUxruZkXg and _t_UwNkwAinJSljDDYvnoQ can work together.",
+                                                                                                                   "Confirm venue capacity, access, equipment and service suitability."
+                                                                                                               ],
+                                                                                 "evidence_scope":  "Synthetic option checks only; USER-event availability, collaboration, venue and scheduling unverified.",
+                                                                                 "is_real_world_feasible":  false
+                                                                             },
+                                                             "warnings":  [
+                                                                              "vendor_availability_unverified"
+                                                                          ],
+                                                             "package_options":  [
+                                                                                     {
+                                                                                         "service_option_id":  "SIMOPT-000111-B",
+                                                                                         "business_id":  "FQ_QUyrwtnaEdxUxruZkXg",
+                                                                                         "service_category":  "Photography",
+                                                                                         "option_tier":  "Basic",
+                                                                                         "supported_event_types":  "Wedding; Corporate; Birthday",
+                                                                                         "unit_price":  401.92,
+                                                                                         "currency":  "USD",
+                                                                                         "pricing_basis":  "fixed_package",
+                                                                                         "min_billable_guests":  null,
+                                                                                         "max_guests":  null,
+                                                                                         "guest_capacity_applicability":  "not_modelled",
+                                                                                         "min_billable_hours":  null,
+                                                                                         "simulated_service_city":  "Philadelphia",
+                                                                                         "simulated_service_state":  "PA",
+                                                                                         "setup_space_m2":  8,
+                                                                                         "power_kw":  1.86,
+                                                                                         "setup_minutes":  90,
+                                                                                         "backup_capability":  "simulated_no",
+                                                                                         "service_features":  "SIMULATED Basic Photography option; no verified inclusions",
+                                                                                         "data_origin":  "synthetic",
+                                                                                         "is_vendor_confirmed":  false,
+                                                                                         "assumption_source":  "illustrative developer assumptions; not market research",
+                                                                                         "generation_version":  "simulation-v1",
+                                                                                         "unit_price_lkr":  132945.89,
+                                                                                         "display_currency":  "LKR",
+                                                                                         "estimated_cost_lkr":  132945.89
+                                                                                     },
+                                                                                     {
+                                                                                         "service_option_id":  "SIMOPT-001022-S",
+                                                                                         "business_id":  "_t_UwNkwAinJSljDDYvnoQ",
+                                                                                         "service_category":  "Decoration",
+                                                                                         "option_tier":  "Standard",
+                                                                                         "supported_event_types":  "Wedding; Corporate; Birthday",
+                                                                                         "unit_price":  521.77,
+                                                                                         "currency":  "USD",
+                                                                                         "pricing_basis":  "fixed_package",
+                                                                                         "min_billable_guests":  null,
+                                                                                         "max_guests":  null,
+                                                                                         "guest_capacity_applicability":  "not_modelled",
+                                                                                         "min_billable_hours":  null,
+                                                                                         "simulated_service_city":  "Philadelphia",
+                                                                                         "simulated_service_state":  "PA",
+                                                                                         "setup_space_m2":  43,
+                                                                                         "power_kw":  2.87,
+                                                                                         "setup_minutes":  30,
+                                                                                         "backup_capability":  "simulated_no",
+                                                                                         "service_features":  "SIMULATED Standard Decoration option; no verified inclusions",
+                                                                                         "data_origin":  "synthetic",
+                                                                                         "is_vendor_confirmed":  false,
+                                                                                         "assumption_source":  "illustrative developer assumptions; not market research",
+                                                                                         "generation_version":  "simulation-v1",
+                                                                                         "unit_price_lkr":  172589.52,
+                                                                                         "display_currency":  "LKR",
+                                                                                         "estimated_cost_lkr":  172589.52
+                                                                                     }
+                                                                                 ],
+                                                             "data_origin":  "synthetic_simulation",
+                                                             "is_vendor_confirmed":  false,
+                                                             "availability_status":  "unverified",
+                                                             "explanation":  {
+                                                                                 "reasons":  [
+                                                                                                 "Covers 2 required services with distinct vendors.",
+                                                                                                 "Estimated LKR 305535.41; LKR 694464.59 remains.",
+                                                                                                 "Ranking score 84.7786/100 uses effective cost/risk/compatibility weights {\u0027cost\u0027: 0.4, \u0027risk\u0027: 0.4, \u0027compatibility\u0027: 0.2}.",
+                                                                                                 "Mean rule-derived low-risk favorability 100.0000/100 (higher is more favorable; Low=100, Medium=60, High=20) for matched vendors; model labels are not verified failure predictions.",
+                                                                                                 "Service-category compatibility rule mean 85.0000/100; this is not evidence of vendor collaboration."
+                                                                                             ],
+                                                                                 "tradeoffs":  [
+                                                                                                   "Feasibility is VERIFICATION_REQUIRED; 8 checks require verification."
+                                                                                               ],
+                                                                                 "verification_steps":  [
+                                                                                                            "Photography / FQ_QUyrwtnaEdxUxruZkXg: vendor capacity is unverified.",
+                                                                                                            "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm availability for this event and time.",
+                                                                                                            "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm setup, travel and schedule fit.",
+                                                                                                            "Decoration / _t_UwNkwAinJSljDDYvnoQ: vendor capacity is unverified.",
+                                                                                                            "Decoration / _t_UwNkwAinJSljDDYvnoQ: confirm availability for this event and time.",
+                                                                                                            "Decoration / _t_UwNkwAinJSljDDYvnoQ: confirm setup, travel and schedule fit.",
+                                                                                                            "Confirm whether vendors FQ_QUyrwtnaEdxUxruZkXg and _t_UwNkwAinJSljDDYvnoQ can work together.",
+                                                                                                            "Confirm venue capacity, access, equipment and service suitability."
+                                                                                                        ],
+                                                                                 "provenance":  "Deterministic summary of package cost, ranking factors, risk and compatibility records, and USER-event feasibility checks."
+                                                                             },
+                                                             "package_id":  "PKG-0001",
+                                                             "rank":  1
+                                                         },
+                                                         {
+                                                             "option_ids":  [
+                                                                                "SIMOPT-000111-B",
+                                                                                "SIMOPT-000547-B"
+                                                                            ],
+                                                             "vendor_ids":  [
+                                                                                "FQ_QUyrwtnaEdxUxruZkXg",
+                                                                                "P7MHW-EtCdp3eVF2P_nX0A"
+                                                                            ],
+                                                             "service_coverage":  [
+                                                                                      "Photography",
+                                                                                      "Decoration"
+                                                                                  ],
+                                                             "service_breakdown":  [
+                                                                                       {
+                                                                                           "service":  "Photography",
+                                                                                           "vendor_id":  "FQ_QUyrwtnaEdxUxruZkXg",
+                                                                                           "vendor_name":  "Minibooths",
+                                                                                           "option_id":  "SIMOPT-000111-B",
+                                                                                           "option_tier":  "Basic",
+                                                                                           "estimated_cost_lkr":  132945.89,
+                                                                                           "predicted_risk_level":  "Low",
+                                                                                           "rule_risk_score":  100.0,
+                                                                                           "risk_status":  "available",
+                                                                                           "data_origin":  "synthetic_simulation",
+                                                                                           "is_vendor_confirmed":  false
+                                                                                       },
+                                                                                       {
+                                                                                           "service":  "Decoration",
+                                                                                           "vendor_id":  "P7MHW-EtCdp3eVF2P_nX0A",
+                                                                                           "vendor_name":  "Carl Alan Floral Designs LTD",
+                                                                                           "option_id":  "SIMOPT-000547-B",
+                                                                                           "option_tier":  "Basic",
+                                                                                           "estimated_cost_lkr":  195055.89,
+                                                                                           "predicted_risk_level":  "Low",
+                                                                                           "rule_risk_score":  100.0,
+                                                                                           "risk_status":  "available",
+                                                                                           "data_origin":  "synthetic_simulation",
+                                                                                           "is_vendor_confirmed":  false
+                                                                                       }
+                                                                                   ],
+                                                             "total_cost_lkr":  328001.78,
+                                                             "remaining_budget_lkr":  671998.22,
+                                                             "ranking_score":  83.8799,
+                                                             "ranking_factors":  {
+                                                                                     "cost_efficiency":  0.671998,
+                                                                                     "budget_utilization":  0.328002,
+                                                                                     "service_coverage":  1.0,
+                                                                                     "risk_score":  100.0,
+                                                                                     "compatibility_score":  85.0,
+                                                                                     "configured_weights":  {
+                                                                                                                "cost":  0.4,
+                                                                                                                "risk":  0.4,
+                                                                                                                "compatibility":  0.2
+                                                                                                            },
+                                                                                     "effective_weights":  {
+                                                                                                               "cost":  0.4,
+                                                                                                               "risk":  0.4,
+                                                                                                               "compatibility":  0.2
+                                                                                                           },
+                                                                                     "unknown_components":  [
+
+                                                                                                            ]
+                                                                                 },
+                                                             "risk":  {
+                                                                          "status":  "complete",
+                                                                          "mean_rule_risk_score":  100.0,
+                                                                          "known_vendor_count":  2,
+                                                                          "total_vendor_count":  2,
+                                                                          "vendors":  [
+                                                                                          {
+                                                                                              "vendor_id":  "FQ_QUyrwtnaEdxUxruZkXg",
+                                                                                              "vendor_name":  "Minibooths",
+                                                                                              "predicted_risk_level":  "Low",
+                                                                                              "rule_risk_level":  "Low",
+                                                                                              "rule_risk_score":  100.0,
+                                                                                              "risk_status":  "available",
+                                                                                              "risk_provenance":  "random_forest_prediction_of_rule_generated_label"
+                                                                                          },
+                                                                                          {
+                                                                                              "vendor_id":  "P7MHW-EtCdp3eVF2P_nX0A",
+                                                                                              "vendor_name":  "Carl Alan Floral Designs LTD",
+                                                                                              "predicted_risk_level":  "Low",
+                                                                                              "rule_risk_level":  "Low",
+                                                                                              "rule_risk_score":  100.0,
+                                                                                              "risk_status":  "available",
+                                                                                              "risk_provenance":  "random_forest_prediction_of_rule_generated_label"
+                                                                                          }
+                                                                                      ],
+                                                                          "label_origin":  "rule_generated_from_review_features",
+                                                                          "independent_real_world_validation":  false
+                                                                      },
+                                                             "compatibility":  {
+                                                                                   "status":  "complete",
+                                                                                   "score":  85.0,
+                                                                                   "pairs":  [
+                                                                                                 {
+                                                                                                     "service_1":  "Photography",
+                                                                                                     "service_2":  "Decoration",
+                                                                                                     "score":  85.0,
+                                                                                                     "status":  "known"
+                                                                                                 }
+                                                                                             ],
+                                                                                   "unknown_pairs":  [
+
+                                                                                                     ],
+                                                                                   "provenance":  "static_service_category_heuristic",
+                                                                                   "is_vendor_collaboration_evidence":  false
+                                                                               },
+                                                             "feasibility":  {
+                                                                                 "event_id":  "USER-3E864697E372",
+                                                                                 "final_status":  "VERIFICATION_REQUIRED",
+                                                                                 "total_cost_lkr":  328001.78,
+                                                                                 "budget_lkr":  1000000.0,
+                                                                                 "budget_remaining_lkr":  671998.22,
+                                                                                 "passed_checks":  [
+                                                                                                       {
+                                                                                                           "code":  "service_coverage",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Every required service is covered exactly once.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "unique_vendors",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "All selected vendors are distinct.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "event_duration",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Event interval is 8 hours.",
+                                                                                                           "evidence_origin":  "submitted_event"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "event_type:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: event type matches option support.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "location:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: simulated location Philadelphia, PA; event Philadelphia, PA.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "cost:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: estimated LKR 132945.89 from current synthetic option.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "event_type:P7MHW-EtCdp3eVF2P_nX0A:Decoration",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Decoration / P7MHW-EtCdp3eVF2P_nX0A: event type matches option support.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "location:P7MHW-EtCdp3eVF2P_nX0A:Decoration",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Decoration / P7MHW-EtCdp3eVF2P_nX0A: simulated location Philadelphia, PA; event Philadelphia, PA.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "cost:P7MHW-EtCdp3eVF2P_nX0A:Decoration",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Decoration / P7MHW-EtCdp3eVF2P_nX0A: estimated LKR 195055.89 from current synthetic option.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "budget",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Estimated LKR 328001.78 fits budget LKR 1000000.00.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       }
+                                                                                                   ],
+                                                                                 "pending_checks":  [
+                                                                                                        {
+                                                                                                            "code":  "capacity:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: vendor capacity is unverified.",
+                                                                                                            "evidence_origin":  "missing_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "availability:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm availability for this event and time.",
+                                                                                                            "evidence_origin":  "missing_event_specific_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "scheduling:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm setup, travel and schedule fit.",
+                                                                                                            "evidence_origin":  "missing_event_specific_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "capacity:P7MHW-EtCdp3eVF2P_nX0A:Decoration",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Decoration / P7MHW-EtCdp3eVF2P_nX0A: vendor capacity is unverified.",
+                                                                                                            "evidence_origin":  "missing_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "availability:P7MHW-EtCdp3eVF2P_nX0A:Decoration",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Decoration / P7MHW-EtCdp3eVF2P_nX0A: confirm availability for this event and time.",
+                                                                                                            "evidence_origin":  "missing_event_specific_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "scheduling:P7MHW-EtCdp3eVF2P_nX0A:Decoration",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Decoration / P7MHW-EtCdp3eVF2P_nX0A: confirm setup, travel and schedule fit.",
+                                                                                                            "evidence_origin":  "missing_event_specific_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "vendor_collaboration:FQ_QUyrwtnaEdxUxruZkXg:P7MHW-EtCdp3eVF2P_nX0A",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Confirm whether vendors FQ_QUyrwtnaEdxUxruZkXg and P7MHW-EtCdp3eVF2P_nX0A can work together.",
+                                                                                                            "evidence_origin":  "missing_event_specific_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "venue_suitability",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Confirm venue capacity, access, equipment and service suitability.",
+                                                                                                            "evidence_origin":  "missing_venue_evidence"
+                                                                                                        }
+                                                                                                    ],
+                                                                                 "failed_checks":  [
+
+                                                                                                   ],
+                                                                                 "verification_requirements":  [
+                                                                                                                   "Photography / FQ_QUyrwtnaEdxUxruZkXg: vendor capacity is unverified.",
+                                                                                                                   "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm availability for this event and time.",
+                                                                                                                   "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm setup, travel and schedule fit.",
+                                                                                                                   "Decoration / P7MHW-EtCdp3eVF2P_nX0A: vendor capacity is unverified.",
+                                                                                                                   "Decoration / P7MHW-EtCdp3eVF2P_nX0A: confirm availability for this event and time.",
+                                                                                                                   "Decoration / P7MHW-EtCdp3eVF2P_nX0A: confirm setup, travel and schedule fit.",
+                                                                                                                   "Confirm whether vendors FQ_QUyrwtnaEdxUxruZkXg and P7MHW-EtCdp3eVF2P_nX0A can work together.",
+                                                                                                                   "Confirm venue capacity, access, equipment and service suitability."
+                                                                                                               ],
+                                                                                 "evidence_scope":  "Synthetic option checks only; USER-event availability, collaboration, venue and scheduling unverified.",
+                                                                                 "is_real_world_feasible":  false
+                                                                             },
+                                                             "warnings":  [
+                                                                              "vendor_availability_unverified"
+                                                                          ],
+                                                             "package_options":  [
+                                                                                     {
+                                                                                         "service_option_id":  "SIMOPT-000111-B",
+                                                                                         "business_id":  "FQ_QUyrwtnaEdxUxruZkXg",
+                                                                                         "service_category":  "Photography",
+                                                                                         "option_tier":  "Basic",
+                                                                                         "supported_event_types":  "Wedding; Corporate; Birthday",
+                                                                                         "unit_price":  401.92,
+                                                                                         "currency":  "USD",
+                                                                                         "pricing_basis":  "fixed_package",
+                                                                                         "min_billable_guests":  null,
+                                                                                         "max_guests":  null,
+                                                                                         "guest_capacity_applicability":  "not_modelled",
+                                                                                         "min_billable_hours":  null,
+                                                                                         "simulated_service_city":  "Philadelphia",
+                                                                                         "simulated_service_state":  "PA",
+                                                                                         "setup_space_m2":  8,
+                                                                                         "power_kw":  1.86,
+                                                                                         "setup_minutes":  90,
+                                                                                         "backup_capability":  "simulated_no",
+                                                                                         "service_features":  "SIMULATED Basic Photography option; no verified inclusions",
+                                                                                         "data_origin":  "synthetic",
+                                                                                         "is_vendor_confirmed":  false,
+                                                                                         "assumption_source":  "illustrative developer assumptions; not market research",
+                                                                                         "generation_version":  "simulation-v1",
+                                                                                         "unit_price_lkr":  132945.89,
+                                                                                         "display_currency":  "LKR",
+                                                                                         "estimated_cost_lkr":  132945.89
+                                                                                     },
+                                                                                     {
+                                                                                         "service_option_id":  "SIMOPT-000547-B",
+                                                                                         "business_id":  "P7MHW-EtCdp3eVF2P_nX0A",
+                                                                                         "service_category":  "Decoration",
+                                                                                         "option_tier":  "Basic",
+                                                                                         "supported_event_types":  "Wedding; Corporate; Birthday",
+                                                                                         "unit_price":  589.69,
+                                                                                         "currency":  "USD",
+                                                                                         "pricing_basis":  "fixed_package",
+                                                                                         "min_billable_guests":  null,
+                                                                                         "max_guests":  null,
+                                                                                         "guest_capacity_applicability":  "not_modelled",
+                                                                                         "min_billable_hours":  null,
+                                                                                         "simulated_service_city":  "Philadelphia",
+                                                                                         "simulated_service_state":  "PA",
+                                                                                         "setup_space_m2":  11,
+                                                                                         "power_kw":  6.48,
+                                                                                         "setup_minutes":  120,
+                                                                                         "backup_capability":  "simulated_no",
+                                                                                         "service_features":  "SIMULATED Basic Decoration option; no verified inclusions",
+                                                                                         "data_origin":  "synthetic",
+                                                                                         "is_vendor_confirmed":  false,
+                                                                                         "assumption_source":  "illustrative developer assumptions; not market research",
+                                                                                         "generation_version":  "simulation-v1",
+                                                                                         "unit_price_lkr":  195055.89,
+                                                                                         "display_currency":  "LKR",
+                                                                                         "estimated_cost_lkr":  195055.89
+                                                                                     }
+                                                                                 ],
+                                                             "data_origin":  "synthetic_simulation",
+                                                             "is_vendor_confirmed":  false,
+                                                             "availability_status":  "unverified",
+                                                             "explanation":  {
+                                                                                 "reasons":  [
+                                                                                                 "Covers 2 required services with distinct vendors.",
+                                                                                                 "Estimated LKR 328001.78; LKR 671998.22 remains.",
+                                                                                                 "Ranking score 83.8799/100 uses effective cost/risk/compatibility weights {\u0027cost\u0027: 0.4, \u0027risk\u0027: 0.4, \u0027compatibility\u0027: 0.2}.",
+                                                                                                 "Mean rule-derived low-risk favorability 100.0000/100 (higher is more favorable; Low=100, Medium=60, High=20) for matched vendors; model labels are not verified failure predictions.",
+                                                                                                 "Service-category compatibility rule mean 85.0000/100; this is not evidence of vendor collaboration."
+                                                                                             ],
+                                                                                 "tradeoffs":  [
+                                                                                                   "Feasibility is VERIFICATION_REQUIRED; 8 checks require verification."
+                                                                                               ],
+                                                                                 "verification_steps":  [
+                                                                                                            "Photography / FQ_QUyrwtnaEdxUxruZkXg: vendor capacity is unverified.",
+                                                                                                            "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm availability for this event and time.",
+                                                                                                            "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm setup, travel and schedule fit.",
+                                                                                                            "Decoration / P7MHW-EtCdp3eVF2P_nX0A: vendor capacity is unverified.",
+                                                                                                            "Decoration / P7MHW-EtCdp3eVF2P_nX0A: confirm availability for this event and time.",
+                                                                                                            "Decoration / P7MHW-EtCdp3eVF2P_nX0A: confirm setup, travel and schedule fit.",
+                                                                                                            "Confirm whether vendors FQ_QUyrwtnaEdxUxruZkXg and P7MHW-EtCdp3eVF2P_nX0A can work together.",
+                                                                                                            "Confirm venue capacity, access, equipment and service suitability."
+                                                                                                        ],
+                                                                                 "provenance":  "Deterministic summary of package cost, ranking factors, risk and compatibility records, and USER-event feasibility checks."
+                                                                             },
+                                                             "package_id":  "PKG-0002",
+                                                             "rank":  2
+                                                         },
+                                                         {
+                                                             "option_ids":  [
+                                                                                "SIMOPT-000111-B",
+                                                                                "SIMOPT-004737-B"
+                                                                            ],
+                                                             "vendor_ids":  [
+                                                                                "FQ_QUyrwtnaEdxUxruZkXg",
+                                                                                "zwl7iLwHBTdkb5-0gNgGFg"
+                                                                            ],
+                                                             "service_coverage":  [
+                                                                                      "Photography",
+                                                                                      "Decoration"
+                                                                                  ],
+                                                             "service_breakdown":  [
+                                                                                       {
+                                                                                           "service":  "Photography",
+                                                                                           "vendor_id":  "FQ_QUyrwtnaEdxUxruZkXg",
+                                                                                           "vendor_name":  "Minibooths",
+                                                                                           "option_id":  "SIMOPT-000111-B",
+                                                                                           "option_tier":  "Basic",
+                                                                                           "estimated_cost_lkr":  132945.89,
+                                                                                           "predicted_risk_level":  "Low",
+                                                                                           "rule_risk_score":  100.0,
+                                                                                           "risk_status":  "available",
+                                                                                           "data_origin":  "synthetic_simulation",
+                                                                                           "is_vendor_confirmed":  false
+                                                                                       },
+                                                                                       {
+                                                                                           "service":  "Decoration",
+                                                                                           "vendor_id":  "zwl7iLwHBTdkb5-0gNgGFg",
+                                                                                           "vendor_name":  "Riehs Florist",
+                                                                                           "option_id":  "SIMOPT-004737-B",
+                                                                                           "option_tier":  "Basic",
+                                                                                           "estimated_cost_lkr":  111928.32,
+                                                                                           "predicted_risk_level":  "Medium",
+                                                                                           "rule_risk_score":  60.0,
+                                                                                           "risk_status":  "available",
+                                                                                           "data_origin":  "synthetic_simulation",
+                                                                                           "is_vendor_confirmed":  false
+                                                                                       }
+                                                                                   ],
+                                                             "total_cost_lkr":  244874.21,
+                                                             "remaining_budget_lkr":  755125.79,
+                                                             "ranking_score":  79.205,
+                                                             "ranking_factors":  {
+                                                                                     "cost_efficiency":  0.755126,
+                                                                                     "budget_utilization":  0.244874,
+                                                                                     "service_coverage":  1.0,
+                                                                                     "risk_score":  80.0,
+                                                                                     "compatibility_score":  85.0,
+                                                                                     "configured_weights":  {
+                                                                                                                "cost":  0.4,
+                                                                                                                "risk":  0.4,
+                                                                                                                "compatibility":  0.2
+                                                                                                            },
+                                                                                     "effective_weights":  {
+                                                                                                               "cost":  0.4,
+                                                                                                               "risk":  0.4,
+                                                                                                               "compatibility":  0.2
+                                                                                                           },
+                                                                                     "unknown_components":  [
+
+                                                                                                            ]
+                                                                                 },
+                                                             "risk":  {
+                                                                          "status":  "complete",
+                                                                          "mean_rule_risk_score":  80.0,
+                                                                          "known_vendor_count":  2,
+                                                                          "total_vendor_count":  2,
+                                                                          "vendors":  [
+                                                                                          {
+                                                                                              "vendor_id":  "FQ_QUyrwtnaEdxUxruZkXg",
+                                                                                              "vendor_name":  "Minibooths",
+                                                                                              "predicted_risk_level":  "Low",
+                                                                                              "rule_risk_level":  "Low",
+                                                                                              "rule_risk_score":  100.0,
+                                                                                              "risk_status":  "available",
+                                                                                              "risk_provenance":  "random_forest_prediction_of_rule_generated_label"
+                                                                                          },
+                                                                                          {
+                                                                                              "vendor_id":  "zwl7iLwHBTdkb5-0gNgGFg",
+                                                                                              "vendor_name":  "Riehs Florist",
+                                                                                              "predicted_risk_level":  "Medium",
+                                                                                              "rule_risk_level":  "Medium",
+                                                                                              "rule_risk_score":  60.0,
+                                                                                              "risk_status":  "available",
+                                                                                              "risk_provenance":  "random_forest_prediction_of_rule_generated_label"
+                                                                                          }
+                                                                                      ],
+                                                                          "label_origin":  "rule_generated_from_review_features",
+                                                                          "independent_real_world_validation":  false
+                                                                      },
+                                                             "compatibility":  {
+                                                                                   "status":  "complete",
+                                                                                   "score":  85.0,
+                                                                                   "pairs":  [
+                                                                                                 {
+                                                                                                     "service_1":  "Photography",
+                                                                                                     "service_2":  "Decoration",
+                                                                                                     "score":  85.0,
+                                                                                                     "status":  "known"
+                                                                                                 }
+                                                                                             ],
+                                                                                   "unknown_pairs":  [
+
+                                                                                                     ],
+                                                                                   "provenance":  "static_service_category_heuristic",
+                                                                                   "is_vendor_collaboration_evidence":  false
+                                                                               },
+                                                             "feasibility":  {
+                                                                                 "event_id":  "USER-3E864697E372",
+                                                                                 "final_status":  "VERIFICATION_REQUIRED",
+                                                                                 "total_cost_lkr":  244874.21,
+                                                                                 "budget_lkr":  1000000.0,
+                                                                                 "budget_remaining_lkr":  755125.79,
+                                                                                 "passed_checks":  [
+                                                                                                       {
+                                                                                                           "code":  "service_coverage",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Every required service is covered exactly once.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "unique_vendors",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "All selected vendors are distinct.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "event_duration",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Event interval is 8 hours.",
+                                                                                                           "evidence_origin":  "submitted_event"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "event_type:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: event type matches option support.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "location:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: simulated location Philadelphia, PA; event Philadelphia, PA.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "cost:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: estimated LKR 132945.89 from current synthetic option.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "event_type:zwl7iLwHBTdkb5-0gNgGFg:Decoration",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Decoration / zwl7iLwHBTdkb5-0gNgGFg: event type matches option support.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "location:zwl7iLwHBTdkb5-0gNgGFg:Decoration",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Decoration / zwl7iLwHBTdkb5-0gNgGFg: simulated location Philadelphia, PA; event Philadelphia, PA.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "cost:zwl7iLwHBTdkb5-0gNgGFg:Decoration",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Decoration / zwl7iLwHBTdkb5-0gNgGFg: estimated LKR 111928.32 from current synthetic option.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "code":  "budget",
+                                                                                                           "status":  "PASS_IN_SIMULATION",
+                                                                                                           "message":  "Estimated LKR 244874.21 fits budget LKR 1000000.00.",
+                                                                                                           "evidence_origin":  "current_option_record"
+                                                                                                       }
+                                                                                                   ],
+                                                                                 "pending_checks":  [
+                                                                                                        {
+                                                                                                            "code":  "capacity:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: vendor capacity is unverified.",
+                                                                                                            "evidence_origin":  "missing_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "availability:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm availability for this event and time.",
+                                                                                                            "evidence_origin":  "missing_event_specific_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "scheduling:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm setup, travel and schedule fit.",
+                                                                                                            "evidence_origin":  "missing_event_specific_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "capacity:zwl7iLwHBTdkb5-0gNgGFg:Decoration",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Decoration / zwl7iLwHBTdkb5-0gNgGFg: vendor capacity is unverified.",
+                                                                                                            "evidence_origin":  "missing_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "availability:zwl7iLwHBTdkb5-0gNgGFg:Decoration",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Decoration / zwl7iLwHBTdkb5-0gNgGFg: confirm availability for this event and time.",
+                                                                                                            "evidence_origin":  "missing_event_specific_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "scheduling:zwl7iLwHBTdkb5-0gNgGFg:Decoration",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Decoration / zwl7iLwHBTdkb5-0gNgGFg: confirm setup, travel and schedule fit.",
+                                                                                                            "evidence_origin":  "missing_event_specific_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "vendor_collaboration:FQ_QUyrwtnaEdxUxruZkXg:zwl7iLwHBTdkb5-0gNgGFg",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Confirm whether vendors FQ_QUyrwtnaEdxUxruZkXg and zwl7iLwHBTdkb5-0gNgGFg can work together.",
+                                                                                                            "evidence_origin":  "missing_event_specific_evidence"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "code":  "venue_suitability",
+                                                                                                            "status":  "VERIFICATION_REQUIRED",
+                                                                                                            "message":  "Confirm venue capacity, access, equipment and service suitability.",
+                                                                                                            "evidence_origin":  "missing_venue_evidence"
+                                                                                                        }
+                                                                                                    ],
+                                                                                 "failed_checks":  [
+
+                                                                                                   ],
+                                                                                 "verification_requirements":  [
+                                                                                                                   "Photography / FQ_QUyrwtnaEdxUxruZkXg: vendor capacity is unverified.",
+                                                                                                                   "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm availability for this event and time.",
+                                                                                                                   "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm setup, travel and schedule fit.",
+                                                                                                                   "Decoration / zwl7iLwHBTdkb5-0gNgGFg: vendor capacity is unverified.",
+                                                                                                                   "Decoration / zwl7iLwHBTdkb5-0gNgGFg: confirm availability for this event and time.",
+                                                                                                                   "Decoration / zwl7iLwHBTdkb5-0gNgGFg: confirm setup, travel and schedule fit.",
+                                                                                                                   "Confirm whether vendors FQ_QUyrwtnaEdxUxruZkXg and zwl7iLwHBTdkb5-0gNgGFg can work together.",
+                                                                                                                   "Confirm venue capacity, access, equipment and service suitability."
+                                                                                                               ],
+                                                                                 "evidence_scope":  "Synthetic option checks only; USER-event availability, collaboration, venue and scheduling unverified.",
+                                                                                 "is_real_world_feasible":  false
+                                                                             },
+                                                             "warnings":  [
+                                                                              "vendor_availability_unverified"
+                                                                          ],
+                                                             "package_options":  [
+                                                                                     {
+                                                                                         "service_option_id":  "SIMOPT-000111-B",
+                                                                                         "business_id":  "FQ_QUyrwtnaEdxUxruZkXg",
+                                                                                         "service_category":  "Photography",
+                                                                                         "option_tier":  "Basic",
+                                                                                         "supported_event_types":  "Wedding; Corporate; Birthday",
+                                                                                         "unit_price":  401.92,
+                                                                                         "currency":  "USD",
+                                                                                         "pricing_basis":  "fixed_package",
+                                                                                         "min_billable_guests":  null,
+                                                                                         "max_guests":  null,
+                                                                                         "guest_capacity_applicability":  "not_modelled",
+                                                                                         "min_billable_hours":  null,
+                                                                                         "simulated_service_city":  "Philadelphia",
+                                                                                         "simulated_service_state":  "PA",
+                                                                                         "setup_space_m2":  8,
+                                                                                         "power_kw":  1.86,
+                                                                                         "setup_minutes":  90,
+                                                                                         "backup_capability":  "simulated_no",
+                                                                                         "service_features":  "SIMULATED Basic Photography option; no verified inclusions",
+                                                                                         "data_origin":  "synthetic",
+                                                                                         "is_vendor_confirmed":  false,
+                                                                                         "assumption_source":  "illustrative developer assumptions; not market research",
+                                                                                         "generation_version":  "simulation-v1",
+                                                                                         "unit_price_lkr":  132945.89,
+                                                                                         "display_currency":  "LKR",
+                                                                                         "estimated_cost_lkr":  132945.89
+                                                                                     },
+                                                                                     {
+                                                                                         "service_option_id":  "SIMOPT-004737-B",
+                                                                                         "business_id":  "zwl7iLwHBTdkb5-0gNgGFg",
+                                                                                         "service_category":  "Decoration",
+                                                                                         "option_tier":  "Basic",
+                                                                                         "supported_event_types":  "Wedding; Corporate; Birthday",
+                                                                                         "unit_price":  338.38,
+                                                                                         "currency":  "USD",
+                                                                                         "pricing_basis":  "fixed_package",
+                                                                                         "min_billable_guests":  null,
+                                                                                         "max_guests":  null,
+                                                                                         "guest_capacity_applicability":  "not_modelled",
+                                                                                         "min_billable_hours":  null,
+                                                                                         "simulated_service_city":  "Philadelphia",
+                                                                                         "simulated_service_state":  "PA",
+                                                                                         "setup_space_m2":  39,
+                                                                                         "power_kw":  2.36,
+                                                                                         "setup_minutes":  60,
+                                                                                         "backup_capability":  "simulated_yes",
+                                                                                         "service_features":  "SIMULATED Basic Decoration option; no verified inclusions",
+                                                                                         "data_origin":  "synthetic",
+                                                                                         "is_vendor_confirmed":  false,
+                                                                                         "assumption_source":  "illustrative developer assumptions; not market research",
+                                                                                         "generation_version":  "simulation-v1",
+                                                                                         "unit_price_lkr":  111928.32,
+                                                                                         "display_currency":  "LKR",
+                                                                                         "estimated_cost_lkr":  111928.32
+                                                                                     }
+                                                                                 ],
+                                                             "data_origin":  "synthetic_simulation",
+                                                             "is_vendor_confirmed":  false,
+                                                             "availability_status":  "unverified",
+                                                             "explanation":  {
+                                                                                 "reasons":  [
+                                                                                                 "Covers 2 required services with distinct vendors.",
+                                                                                                 "Estimated LKR 244874.21; LKR 755125.79 remains.",
+                                                                                                 "Ranking score 79.2050/100 uses effective cost/risk/compatibility weights {\u0027cost\u0027: 0.4, \u0027risk\u0027: 0.4, \u0027compatibility\u0027: 0.2}.",
+                                                                                                 "Mean rule-derived low-risk favorability 80.0000/100 (higher is more favorable; Low=100, Medium=60, High=20) for matched vendors; model labels are not verified failure predictions.",
+                                                                                                 "Service-category compatibility rule mean 85.0000/100; this is not evidence of vendor collaboration."
+                                                                                             ],
+                                                                                 "tradeoffs":  [
+                                                                                                   "Feasibility is VERIFICATION_REQUIRED; 8 checks require verification."
+                                                                                               ],
+                                                                                 "verification_steps":  [
+                                                                                                            "Photography / FQ_QUyrwtnaEdxUxruZkXg: vendor capacity is unverified.",
+                                                                                                            "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm availability for this event and time.",
+                                                                                                            "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm setup, travel and schedule fit.",
+                                                                                                            "Decoration / zwl7iLwHBTdkb5-0gNgGFg: vendor capacity is unverified.",
+                                                                                                            "Decoration / zwl7iLwHBTdkb5-0gNgGFg: confirm availability for this event and time.",
+                                                                                                            "Decoration / zwl7iLwHBTdkb5-0gNgGFg: confirm setup, travel and schedule fit.",
+                                                                                                            "Confirm whether vendors FQ_QUyrwtnaEdxUxruZkXg and zwl7iLwHBTdkb5-0gNgGFg can work together.",
+                                                                                                            "Confirm venue capacity, access, equipment and service suitability."
+                                                                                                        ],
+                                                                                 "provenance":  "Deterministic summary of package cost, ranking factors, risk and compatibility records, and USER-event feasibility checks."
+                                                                             },
+                                                             "package_id":  "PKG-0003",
+                                                             "rank":  3
+                                                         }
+                                                     ],
+                                        "total_generated":  138,
+                                        "feasible_combinations_seen":  138,
+                                        "budget_rejected":  6,
+                                        "duplicate_vendor_rejected":  0,
+                                        "feasibility_counts":  {
+                                                                   "PASS_IN_SIMULATION":  0,
+                                                                   "VERIFICATION_REQUIRED":  138,
+                                                                   "FAIL":  0
+                                                               },
+                                        "missing_services":  [
+
+                                                             ],
+                                        "candidate_counts":  {
+                                                                 "Photography":  165,
+                                                                 "Decoration":  237
+                                                             },
+                                        "known_risk_candidate_counts":  {
+                                                                            "Photography":  165,
+                                                                            "Decoration":  237
+                                                                        },
+                                        "selected_candidate_counts":  {
+                                                                          "Photography":  12,
+                                                                          "Decoration":  12
+                                                                      },
+                                        "search":  {
+                                                       "complete":  false,
+                                                       "candidate_limit_reached":  true,
+                                                       "node_limit_reached":  false,
+                                                       "max_candidates_per_service":  12,
+                                                       "max_search_nodes":  5000,
+                                                       "nodes_visited":  156,
+                                                       "combinations_evaluated":  138,
+                                                       "all_examined_combinations_validated":  true,
+                                                       "feasibility_priority":  [
+                                                                                    "PASS_IN_SIMULATION",
+                                                                                    "VERIFICATION_REQUIRED"
+                                                                                ],
+                                                       "selected_search_space_upper_bound":  144,
+                                                       "minimum_possible_cost_lkr":  244874.21,
+                                                       "top_k":  3,
+                                                       "candidate_selection":  "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+                                                   },
+                                        "ranking_formula":  "100 * weighted mean of available normalized components: cost = 1 - budget_utilization; risk = mean existing rule_risk_score / 100; compatibility = mean known service-pair base_score / 100 only when all pairs are known. Unknown components are omitted and weights renormalized.",
+                                        "configured_weights":  {
+                                                                   "cost":  0.4,
+                                                                   "risk":  0.4,
+                                                                   "compatibility":  0.2
+                                                               }
+                                    },
+                     "diagnostics":  null
+                 },
+    "error":  null,
+    "feasibility_rerun":  {
+                              "url":  "http://127.0.0.1:8000/api/feasibility/validate-dynamic",
+                              "http_status":  200,
+                              "elapsed_ms":  664.35,
+                              "response":  {
+                                               "event_id":  "USER-3E864697E372",
+                                               "final_status":  "VERIFICATION_REQUIRED",
+                                               "total_cost_lkr":  305535.41,
+                                               "budget_lkr":  1000000.0,
+                                               "budget_remaining_lkr":  694464.59,
+                                               "passed_checks":  [
+                                                                     {
+                                                                         "code":  "service_coverage",
+                                                                         "status":  "PASS_IN_SIMULATION",
+                                                                         "message":  "Every required service is covered exactly once.",
+                                                                         "evidence_origin":  "current_option_record"
+                                                                     },
+                                                                     {
+                                                                         "code":  "unique_vendors",
+                                                                         "status":  "PASS_IN_SIMULATION",
+                                                                         "message":  "All selected vendors are distinct.",
+                                                                         "evidence_origin":  "current_option_record"
+                                                                     },
+                                                                     {
+                                                                         "code":  "event_duration",
+                                                                         "status":  "PASS_IN_SIMULATION",
+                                                                         "message":  "Event interval is 8 hours.",
+                                                                         "evidence_origin":  "submitted_event"
+                                                                     },
+                                                                     {
+                                                                         "code":  "event_type:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                         "status":  "PASS_IN_SIMULATION",
+                                                                         "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: event type matches option support.",
+                                                                         "evidence_origin":  "current_option_record"
+                                                                     },
+                                                                     {
+                                                                         "code":  "location:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                         "status":  "PASS_IN_SIMULATION",
+                                                                         "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: simulated location Philadelphia, PA; event Philadelphia, PA.",
+                                                                         "evidence_origin":  "current_option_record"
+                                                                     },
+                                                                     {
+                                                                         "code":  "cost:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                         "status":  "PASS_IN_SIMULATION",
+                                                                         "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: estimated LKR 132945.89 from current synthetic option.",
+                                                                         "evidence_origin":  "current_option_record"
+                                                                     },
+                                                                     {
+                                                                         "code":  "event_type:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+                                                                         "status":  "PASS_IN_SIMULATION",
+                                                                         "message":  "Decoration / _t_UwNkwAinJSljDDYvnoQ: event type matches option support.",
+                                                                         "evidence_origin":  "current_option_record"
+                                                                     },
+                                                                     {
+                                                                         "code":  "location:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+                                                                         "status":  "PASS_IN_SIMULATION",
+                                                                         "message":  "Decoration / _t_UwNkwAinJSljDDYvnoQ: simulated location Philadelphia, PA; event Philadelphia, PA.",
+                                                                         "evidence_origin":  "current_option_record"
+                                                                     },
+                                                                     {
+                                                                         "code":  "cost:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+                                                                         "status":  "PASS_IN_SIMULATION",
+                                                                         "message":  "Decoration / _t_UwNkwAinJSljDDYvnoQ: estimated LKR 172589.52 from current synthetic option.",
+                                                                         "evidence_origin":  "current_option_record"
+                                                                     },
+                                                                     {
+                                                                         "code":  "budget",
+                                                                         "status":  "PASS_IN_SIMULATION",
+                                                                         "message":  "Estimated LKR 305535.41 fits budget LKR 1000000.00.",
+                                                                         "evidence_origin":  "current_option_record"
+                                                                     }
+                                                                 ],
+                                               "pending_checks":  [
+                                                                      {
+                                                                          "code":  "capacity:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                          "status":  "VERIFICATION_REQUIRED",
+                                                                          "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: vendor capacity is unverified.",
+                                                                          "evidence_origin":  "missing_evidence"
+                                                                      },
+                                                                      {
+                                                                          "code":  "availability:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                          "status":  "VERIFICATION_REQUIRED",
+                                                                          "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm availability for this event and time.",
+                                                                          "evidence_origin":  "missing_event_specific_evidence"
+                                                                      },
+                                                                      {
+                                                                          "code":  "scheduling:FQ_QUyrwtnaEdxUxruZkXg:Photography",
+                                                                          "status":  "VERIFICATION_REQUIRED",
+                                                                          "message":  "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm setup, travel and schedule fit.",
+                                                                          "evidence_origin":  "missing_event_specific_evidence"
+                                                                      },
+                                                                      {
+                                                                          "code":  "capacity:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+                                                                          "status":  "VERIFICATION_REQUIRED",
+                                                                          "message":  "Decoration / _t_UwNkwAinJSljDDYvnoQ: vendor capacity is unverified.",
+                                                                          "evidence_origin":  "missing_evidence"
+                                                                      },
+                                                                      {
+                                                                          "code":  "availability:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+                                                                          "status":  "VERIFICATION_REQUIRED",
+                                                                          "message":  "Decoration / _t_UwNkwAinJSljDDYvnoQ: confirm availability for this event and time.",
+                                                                          "evidence_origin":  "missing_event_specific_evidence"
+                                                                      },
+                                                                      {
+                                                                          "code":  "scheduling:_t_UwNkwAinJSljDDYvnoQ:Decoration",
+                                                                          "status":  "VERIFICATION_REQUIRED",
+                                                                          "message":  "Decoration / _t_UwNkwAinJSljDDYvnoQ: confirm setup, travel and schedule fit.",
+                                                                          "evidence_origin":  "missing_event_specific_evidence"
+                                                                      },
+                                                                      {
+                                                                          "code":  "vendor_collaboration:FQ_QUyrwtnaEdxUxruZkXg:_t_UwNkwAinJSljDDYvnoQ",
+                                                                          "status":  "VERIFICATION_REQUIRED",
+                                                                          "message":  "Confirm whether vendors FQ_QUyrwtnaEdxUxruZkXg and _t_UwNkwAinJSljDDYvnoQ can work together.",
+                                                                          "evidence_origin":  "missing_event_specific_evidence"
+                                                                      },
+                                                                      {
+                                                                          "code":  "venue_suitability",
+                                                                          "status":  "VERIFICATION_REQUIRED",
+                                                                          "message":  "Confirm venue capacity, access, equipment and service suitability.",
+                                                                          "evidence_origin":  "missing_venue_evidence"
+                                                                      }
+                                                                  ],
+                                               "failed_checks":  [
+
+                                                                 ],
+                                               "verification_requirements":  [
+                                                                                 "Photography / FQ_QUyrwtnaEdxUxruZkXg: vendor capacity is unverified.",
+                                                                                 "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm availability for this event and time.",
+                                                                                 "Photography / FQ_QUyrwtnaEdxUxruZkXg: confirm setup, travel and schedule fit.",
+                                                                                 "Decoration / _t_UwNkwAinJSljDDYvnoQ: vendor capacity is unverified.",
+                                                                                 "Decoration / _t_UwNkwAinJSljDDYvnoQ: confirm availability for this event and time.",
+                                                                                 "Decoration / _t_UwNkwAinJSljDDYvnoQ: confirm setup, travel and schedule fit.",
+                                                                                 "Confirm whether vendors FQ_QUyrwtnaEdxUxruZkXg and _t_UwNkwAinJSljDDYvnoQ can work together.",
+                                                                                 "Confirm venue capacity, access, equipment and service suitability."
+                                                                             ],
+                                               "evidence_scope":  "Synthetic option checks only; USER-event availability, collaboration, venue and scheduling unverified.",
+                                               "is_real_world_feasible":  false
+                                           },
+                              "error":  null
+                          }
+}

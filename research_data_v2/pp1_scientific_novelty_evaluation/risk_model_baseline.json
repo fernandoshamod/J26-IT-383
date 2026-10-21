@@ -1,0 +1,11 @@
+{
+  "holdout_n": 3686,
+  "seed": 42,
+  "audit_status": "reconstructed_notebook_holdout",
+  "model_accuracy_vs_rule_labels": 1.0,
+  "model_macro_f1_vs_rule_labels": 1.0,
+  "rules_only_accuracy_vs_rule_labels": 1.0,
+  "rules_only_macro_f1_vs_rule_labels": 1.0,
+  "model_rule_disagreements": 0,
+  "independent_real_world_validation": false
+}

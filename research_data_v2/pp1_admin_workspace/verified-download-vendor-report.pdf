@@ -1,0 +1,87 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Length 3967 >>
+stream
+1 1 1 rg 0 0 612 792 re f
+1 1 1 rg 0 0 612 792 re f
+0.09 0.42 0.41 rg 0 710 612 82 re f
+1 1 1 rg BT /F2 16 Tf 1 0 0 1 48 762 Tm (PLANOVISION) Tj ET
+0.89 0.96 0.94 rg BT /F1 8 Tf 1 0 0 1 48 745 Tm (EVENT MANAGEMENT RESEARCH PLATFORM) Tj ET
+0.09 0.42 0.41 rg BT /F2 22 Tf 1 0 0 1 48 682 Tm (Vendor Intelligence Summary) Tj ET
+0.39 0.48 0.46 rg BT /F1 11 Tf 1 0 0 1 48 650 Tm (A source-transparent view of vendor profiles and service-option research data.) Tj ET
+0.39 0.48 0.46 rg BT /F1 8 Tf 1 0 0 1 48 631 Tm (Generated 2026-10-20T20:16:43.114Z) Tj ET
+0.09 0.42 0.41 rg BT /F2 14 Tf 1 0 0 1 48 600 Tm (Verified project metrics) Tj ET
+0.84 0.89 0.86 RG 48 591 516 1 re S
+0.91 0.96 0.94 rg 48 519 165.33333333333334 58 re f
+0.29 0.49 0.46 rg BT /F2 8 Tf 1 0 0 1 60 559 Tm (VENDOR PROFILES) Tj ET
+0.09 0.42 0.41 rg BT /F2 16 Tf 1 0 0 1 60 537 Tm (18,430) Tj ET
+0.91 0.96 0.94 rg 223.33333333333334 519 165.33333333333334 58 re f
+0.29 0.49 0.46 rg BT /F2 8 Tf 1 0 0 1 235.33333333333334 559 Tm (SERVICE OPTIONS) Tj ET
+0.09 0.42 0.41 rg BT /F2 16 Tf 1 0 0 1 235.33333333333334 537 Tm (57,549) Tj ET
+0.91 0.96 0.94 rg 398.6666666666667 519 165.33333333333334 58 re f
+0.29 0.49 0.46 rg BT /F2 8 Tf 1 0 0 1 410.6666666666667 559 Tm (CATEGORIES) Tj ET
+0.09 0.42 0.41 rg BT /F2 16 Tf 1 0 0 1 410.6666666666667 537 Tm (7) Tj ET
+0.09 0.42 0.41 rg BT /F2 14 Tf 1 0 0 1 48 494 Tm (Data source register) Tj ET
+0.84 0.89 0.86 RG 48 485 516 1 re S
+0.09 0.42 0.41 rg 48 452 516 24 re f
+1 1 1 rg BT /F2 8 Tf 1 0 0 1 55 459 Tm (Data source) Tj ET
+1 1 1 rg BT /F2 8 Tf 1 0 0 1 280 459 Tm (Classification) Tj ET
+1 1 1 rg BT /F2 8 Tf 1 0 0 1 455 459 Tm (Records) Tj ET
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 55 435 Tm (Vendor profiles CSV) Tj ET
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 280 435 Tm (Historical research) Tj ET
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 455 435 Tm (18,430) Tj ET
+0.88 0.91 0.89 RG 48 428 516 1 re S
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 55 411 Tm (Service options CSV) Tj ET
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 280 411 Tm (Synthetic simulation) Tj ET
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 455 411 Tm (57,549) Tj ET
+0.88 0.91 0.89 RG 48 404 516 1 re S
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 55 387 Tm (Event database) Tj ET
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 280 387 Tm (Operational SQLite) Tj ET
+0.20 0.29 0.28 rg BT /F1 8.5 Tf 1 0 0 1 455 387 Tm (2) Tj ET
+0.88 0.91 0.89 RG 48 380 516 1 re S
+0.09 0.42 0.41 rg BT /F2 14 Tf 1 0 0 1 48 358 Tm (Service coverage) Tj ET
+0.84 0.89 0.86 RG 48 349 516 1 re S
+0.20 0.29 0.28 rg BT /F1 10 Tf 1 0 0 1 48 335 Tm (The existing service-option loader exposes 7 categories: Audio Visual, Catering,) Tj ET
+0.20 0.29 0.28 rg BT /F1 10 Tf 1 0 0 1 48 320 Tm (Decoration, Entertainment, Equipment Rental, Event Planning, Photography.) Tj ET
+0.09 0.42 0.41 rg BT /F2 14 Tf 1 0 0 1 48 297 Tm (Research limitations and interpretation) Tj ET
+0.84 0.89 0.86 RG 48 288 516 1 re S
+0.20 0.29 0.28 rg BT /F1 10 Tf 1 0 0 1 48 274 Tm (This report is generated from the existing PlanoVision project data. Synthetic service) Tj ET
+0.20 0.29 0.28 rg BT /F1 10 Tf 1 0 0 1 48 259 Tm (options are simulation inputs, not verified real-world offers or availability. Vendor) Tj ET
+0.20 0.29 0.28 rg BT /F1 10 Tf 1 0 0 1 48 244 Tm (risk fields are research-derived and do not confirm reliability, booking status or) Tj ET
+0.20 0.29 0.28 rg BT /F1 10 Tf 1 0 0 1 48 229 Tm (collaboration. Model metrics use rule-derived labels and do not establish independent) Tj ET
+0.20 0.29 0.28 rg BT /F1 10 Tf 1 0 0 1 48 214 Tm (real-world validation. This academic administration workspace has no authentication or) Tj ET
+0.20 0.29 0.28 rg BT /F1 10 Tf 1 0 0 1 48 199 Tm (role-based access control.) Tj ET
+0.84 0.89 0.86 RG 48 60 516 1 re S
+0.39 0.48 0.46 rg BT /F1 7.5 Tf 1 0 0 1 48 43 Tm (PlanoVision  Academic administration demonstration  Research data limitations apply) Tj ET
+0.39 0.48 0.46 rg BT /F1 7.5 Tf 1 0 0 1 500 43 Tm (Page 1 of 1) Tj ET
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000000321 00000 n 
+0000000396 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+4415
+%%EOF

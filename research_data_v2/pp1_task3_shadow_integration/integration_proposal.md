@@ -1,0 +1,10 @@
+# Proposed future integration contract (not enabled)
+
+1. Keep the dynamic USER request path and current source-option candidate selection. Never use saved package files as recommendations. Attach an event-scoped conflict assessment to each newly formed package before final ranking, including packages later discarded.
+2. Add a separately governed evidence repository with vendor-pair IDs, source, timestamp, event scope, evidence class and verification status. Admit public/verified or explicitly simulated observations only under the correct scope. Unknown pairs remain pending; contradictory records require adjudication.
+3. Obtain explicit per-option service start/end with timezone, setup and teardown duration, vendor-owned equipment/crew IDs, quantities and documented capacity before invoking Task 2's full operational evaluator. Preserve provenance for every field. Do not infer these from event-wide hours, `power_kw` or `setup_space_m2`.
+4. Agree on a versioned external venue response with the venue team, as described in Task 1's `venue_integration_contract.md`. Keep absent or stale venue evidence pending.
+5. Map documented conflict to a feasibility failure only after event scope and provenance checks. Keep missing evidence as `VERIFICATION_REQUIRED`. Re-run budget, eligibility and feasibility on canonical current option rows rather than trusting client-submitted options.
+6. Before any production activation, add API contract, ranking-invariance, provenance, adversarial input, conflict-evidence and regression tests. Product wording must distinguish simulation from confirmed vendor booking.
+
+**Readiness:** not ready for production integration. The current source lacks the operational and vendor-pair evidence needed to turn pending assessments into supported passes or conflicts.

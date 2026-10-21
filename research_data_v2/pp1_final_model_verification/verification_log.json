@@ -1,0 +1,18 @@
+{
+  "all_source_hashes_unchanged": true,
+  "model_sha256_matches_production_pin": true,
+  "training_profile_rows_equal": true,
+  "rule_label_disagreements": 0,
+  "model_features": [
+    "stars",
+    "review_count",
+    "collected_review_count",
+    "mean_review_rating",
+    "rating_std"
+  ],
+  "classes": [
+    "High",
+    "Low",
+    "Medium"
+  ]
+}

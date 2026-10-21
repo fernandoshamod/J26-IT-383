@@ -1,0 +1,120 @@
+{
+  "title": "Vendor-specific conflict research demonstration",
+  "fixture_source": "research_data_v2/pp1_task2_conflict_engine/fixtures.json",
+  "engine_source": "research_data_v2/pp1_task2_conflict_engine/conflict_engine.py",
+  "matrix_source": "vendor_compatibility_matrix.csv",
+  "examples": [
+    {
+      "fixture_id": "compatible_pair",
+      "label": "No conflict detected within supplied simulated checks",
+      "event_id": "USER-PP1-COMPATIBLE_PAIR",
+      "vendors": [
+        {
+          "vendor_id": "yRO9jF-YqiMwq5ja96GdTg",
+          "option_id": "SIMOPT-000057-B",
+          "service_category": "Photography"
+        },
+        {
+          "vendor_id": "gziMakTc9EnZszDdTn9f8Q",
+          "option_id": "SIMOPT-000115-B",
+          "service_category": "Decoration"
+        }
+      ],
+      "service_categories": [
+        "Photography",
+        "Decoration"
+      ],
+      "category_score": 85.0,
+      "category_score_source": "vendor_compatibility_matrix.csv",
+      "operational_status": "COMPATIBLE_WITH_EVIDENCE",
+      "reason": [
+        "No conflict found within the supplied vendor-pair and operational evidence."
+      ],
+      "pair_evidence_status": "COMPATIBLE_WITH_EVIDENCE",
+      "pair_evidence_ids": [
+        "compatible_pair-E1"
+      ],
+      "conflict_count": 0,
+      "pending_count": 0,
+      "evidence_source": "SYNTHETIC TEST DATA",
+      "real_world_availability": "NOT VERIFIED",
+      "real_world_collaboration_history": "UNKNOWN",
+      "venue_suitability": "VERIFICATION_REQUIRED",
+      "is_real_world_feasible": false
+    },
+    {
+      "fixture_id": "equipment_insufficient",
+      "label": "Conflict detected in supplied simulated evidence",
+      "event_id": "USER-PP1-EQUIPMENT_INSUFFICIENT",
+      "vendors": [
+        {
+          "vendor_id": "yRO9jF-YqiMwq5ja96GdTg",
+          "option_id": "SIMOPT-000057-B",
+          "service_category": "Photography"
+        },
+        {
+          "vendor_id": "gziMakTc9EnZszDdTn9f8Q",
+          "option_id": "SIMOPT-000115-B",
+          "service_category": "Decoration"
+        }
+      ],
+      "service_categories": [
+        "Photography",
+        "Decoration"
+      ],
+      "category_score": 85.0,
+      "category_score_source": "vendor_compatibility_matrix.csv",
+      "operational_status": "CONFLICT_WITH_EVIDENCE",
+      "reason": [
+        "equipment:shared-camera: peak demand 2 exceeds documented limit 1."
+      ],
+      "pair_evidence_status": "COMPATIBLE_WITH_EVIDENCE",
+      "pair_evidence_ids": [
+        "equipment_insufficient-E1"
+      ],
+      "conflict_count": 1,
+      "pending_count": 0,
+      "evidence_source": "SYNTHETIC TEST DATA",
+      "real_world_availability": "NOT VERIFIED",
+      "real_world_collaboration_history": "UNKNOWN",
+      "venue_suitability": "VERIFICATION_REQUIRED",
+      "is_real_world_feasible": false
+    },
+    {
+      "fixture_id": "unknown_pair",
+      "label": "Verification required because evidence is missing",
+      "event_id": "USER-PP1-UNKNOWN_PAIR",
+      "vendors": [
+        {
+          "vendor_id": "yRO9jF-YqiMwq5ja96GdTg",
+          "option_id": "SIMOPT-000057-B",
+          "service_category": "Photography"
+        },
+        {
+          "vendor_id": "gziMakTc9EnZszDdTn9f8Q",
+          "option_id": "SIMOPT-000115-B",
+          "service_category": "Decoration"
+        }
+      ],
+      "service_categories": [
+        "Photography",
+        "Decoration"
+      ],
+      "category_score": 85.0,
+      "category_score_source": "vendor_compatibility_matrix.csv",
+      "operational_status": "VERIFICATION_REQUIRED",
+      "reason": [
+        "No usable event-specific pair evidence; collaboration is unknown."
+      ],
+      "pair_evidence_status": "VERIFICATION_REQUIRED",
+      "pair_evidence_ids": [],
+      "conflict_count": 0,
+      "pending_count": 1,
+      "evidence_source": "SYNTHETIC TEST DATA",
+      "real_world_availability": "NOT VERIFIED",
+      "real_world_collaboration_history": "UNKNOWN",
+      "venue_suitability": "VERIFICATION_REQUIRED",
+      "is_real_world_feasible": false
+    }
+  ]
+}

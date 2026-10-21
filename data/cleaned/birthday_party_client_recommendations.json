@@ -1,0 +1,131 @@
+{
+    "report_title": "Smart Event Package Recommendations",
+    "status": "Recommendations Generated",
+    "event_details": {
+        "event_type": "Birthday Party",
+        "event_date": "2026-12-20",
+        "location": "Santa Barbara, CA",
+        "guest_count": 100,
+        "vendor_budget": 10000,
+        "currency": "USD",
+        "required_services": [
+            "Photography",
+            "Decoration",
+            "Entertainment"
+        ]
+    },
+    "total_recommended_packages": 5,
+    "packages": [
+        {
+            "recommendation_rank": 1,
+            "package_id": 1,
+            "selected_vendors": [
+                "Photography: MICHAEL & ANNA COSTA PHOTOGRAPHY",
+                "Decoration: ella & louie flowers",
+                "Entertainment: Music By Bonnie and Company"
+            ],
+            "average_vendor_score": 68.4184,
+            "service_compatibility_score": 81.6667,
+            "final_package_score": 72.3929,
+            "ranking_explanation": "Package ranking uses 70% average vendor score and 30% service-level compatibility score. Final selection also considers vendor diversity.",
+            "feasibility_status": "Verification Required",
+            "verification_required": [
+                "Actual vendor quotations",
+                "Client budget feasibility",
+                "Event-date availability",
+                "Guest capacity",
+                "Event duration suitability",
+                "Venue suitability"
+            ]
+        },
+        {
+            "recommendation_rank": 2,
+            "package_id": 32,
+            "selected_vendors": [
+                "Photography: Head & Heart Photography by Kiel Rucker",
+                "Decoration: Santa Barbara Company",
+                "Entertainment: Vera Kong Piano Studio"
+            ],
+            "average_vendor_score": 67.4259,
+            "service_compatibility_score": 81.6667,
+            "final_package_score": 71.6981,
+            "ranking_explanation": "Package ranking uses 70% average vendor score and 30% service-level compatibility score. Final selection also considers vendor diversity.",
+            "feasibility_status": "Verification Required",
+            "verification_required": [
+                "Actual vendor quotations",
+                "Client budget feasibility",
+                "Event-date availability",
+                "Guest capacity",
+                "Event duration suitability",
+                "Venue suitability"
+            ]
+        },
+        {
+            "recommendation_rank": 3,
+            "package_id": 63,
+            "selected_vendors": [
+                "Photography: Karen D Photography",
+                "Decoration: Blue Blossoms",
+                "Entertainment: Party Proper Productions"
+            ],
+            "average_vendor_score": 66.0382,
+            "service_compatibility_score": 81.6667,
+            "final_package_score": 70.7267,
+            "ranking_explanation": "Package ranking uses 70% average vendor score and 30% service-level compatibility score. Final selection also considers vendor diversity.",
+            "feasibility_status": "Verification Required",
+            "verification_required": [
+                "Actual vendor quotations",
+                "Client budget feasibility",
+                "Event-date availability",
+                "Guest capacity",
+                "Event duration suitability",
+                "Venue suitability"
+            ]
+        },
+        {
+            "recommendation_rank": 4,
+            "package_id": 94,
+            "selected_vendors": [
+                "Photography: Agápe Films",
+                "Decoration: Terra Malia Designs",
+                "Entertainment: Moving Miss Daisy"
+            ],
+            "average_vendor_score": 65.4402,
+            "service_compatibility_score": 81.6667,
+            "final_package_score": 70.3081,
+            "ranking_explanation": "Package ranking uses 70% average vendor score and 30% service-level compatibility score. Final selection also considers vendor diversity.",
+            "feasibility_status": "Verification Required",
+            "verification_required": [
+                "Actual vendor quotations",
+                "Client budget feasibility",
+                "Event-date availability",
+                "Guest capacity",
+                "Event duration suitability",
+                "Venue suitability"
+            ]
+        },
+        {
+            "recommendation_rank": 5,
+            "package_id": 125,
+            "selected_vendors": [
+                "Photography: Ryanne Bee Photography",
+                "Decoration: Santa Barbara Floral Artistry",
+                "Entertainment: Music By Catalina Esteves"
+            ],
+            "average_vendor_score": 64.7162,
+            "service_compatibility_score": 81.6667,
+            "final_package_score": 69.8013,
+            "ranking_explanation": "Package ranking uses 70% average vendor score and 30% service-level compatibility score. Final selection also considers vendor diversity.",
+            "feasibility_status": "Verification Required",
+            "verification_required": [
+                "Actual vendor quotations",
+                "Client budget feasibility",
+                "Event-date availability",
+                "Guest capacity",
+                "Event duration suitability",
+                "Venue suitability"
+            ]
+        }
+    ],
+    "important_notice": "Recommendations are based on dataset-derived vendor scores and service-level compatibility. Actual prices, availability, capacity and venue suitability require independent verification."
+}

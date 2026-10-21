@@ -1,0 +1,131 @@
+{
+    "report_title": "Smart Event Package Recommendations",
+    "status": "Recommendations Generated",
+    "event_details": {
+        "event_type": "Wedding",
+        "event_date": "2026-12-20",
+        "location": "Santa Barbara, CA",
+        "guest_count": 100,
+        "vendor_budget": 10000,
+        "currency": "USD",
+        "required_services": [
+            "Catering",
+            "Photography",
+            "Decoration"
+        ]
+    },
+    "total_recommended_packages": 5,
+    "packages": [
+        {
+            "recommendation_rank": 1,
+            "package_id": 1,
+            "selected_vendors": [
+                "Catering: Los Agaves",
+                "Photography: MICHAEL & ANNA COSTA PHOTOGRAPHY",
+                "Decoration: ella & louie flowers"
+            ],
+            "average_vendor_score": 72.2729,
+            "service_compatibility_score": 90.0,
+            "final_package_score": 77.591,
+            "ranking_explanation": "Package ranking uses 70% average vendor score and 30% service-level compatibility score. Final selection also considers vendor diversity.",
+            "feasibility_status": "Verification Required",
+            "verification_required": [
+                "Actual vendor quotations",
+                "Client budget feasibility",
+                "Event-date availability",
+                "Guest capacity",
+                "Event duration suitability",
+                "Venue suitability"
+            ]
+        },
+        {
+            "recommendation_rank": 2,
+            "package_id": 32,
+            "selected_vendors": [
+                "Catering: Aperitivo",
+                "Photography: Head & Heart Photography by Kiel Rucker",
+                "Decoration: Santa Barbara Company"
+            ],
+            "average_vendor_score": 70.1408,
+            "service_compatibility_score": 90.0,
+            "final_package_score": 76.0985,
+            "ranking_explanation": "Package ranking uses 70% average vendor score and 30% service-level compatibility score. Final selection also considers vendor diversity.",
+            "feasibility_status": "Verification Required",
+            "verification_required": [
+                "Actual vendor quotations",
+                "Client budget feasibility",
+                "Event-date availability",
+                "Guest capacity",
+                "Event duration suitability",
+                "Venue suitability"
+            ]
+        },
+        {
+            "recommendation_rank": 3,
+            "package_id": 63,
+            "selected_vendors": [
+                "Catering: McConnell's Fine Ice Creams",
+                "Photography: Karen D Photography",
+                "Decoration: Blue Blossoms"
+            ],
+            "average_vendor_score": 68.0418,
+            "service_compatibility_score": 90.0,
+            "final_package_score": 74.6293,
+            "ranking_explanation": "Package ranking uses 70% average vendor score and 30% service-level compatibility score. Final selection also considers vendor diversity.",
+            "feasibility_status": "Verification Required",
+            "verification_required": [
+                "Actual vendor quotations",
+                "Client budget feasibility",
+                "Event-date availability",
+                "Guest capacity",
+                "Event duration suitability",
+                "Venue suitability"
+            ]
+        },
+        {
+            "recommendation_rank": 4,
+            "package_id": 94,
+            "selected_vendors": [
+                "Catering: Tondi Gelato",
+                "Photography: Agápe Films",
+                "Decoration: Terra Malia Designs"
+            ],
+            "average_vendor_score": 66.9476,
+            "service_compatibility_score": 90.0,
+            "final_package_score": 73.8634,
+            "ranking_explanation": "Package ranking uses 70% average vendor score and 30% service-level compatibility score. Final selection also considers vendor diversity.",
+            "feasibility_status": "Verification Required",
+            "verification_required": [
+                "Actual vendor quotations",
+                "Client budget feasibility",
+                "Event-date availability",
+                "Guest capacity",
+                "Event duration suitability",
+                "Venue suitability"
+            ]
+        },
+        {
+            "recommendation_rank": 5,
+            "package_id": 125,
+            "selected_vendors": [
+                "Catering: Uncorked Wine Tasting and Kitchen",
+                "Photography: Ryanne Bee Photography",
+                "Decoration: Santa Barbara Floral Artistry"
+            ],
+            "average_vendor_score": 66.1451,
+            "service_compatibility_score": 90.0,
+            "final_package_score": 73.3016,
+            "ranking_explanation": "Package ranking uses 70% average vendor score and 30% service-level compatibility score. Final selection also considers vendor diversity.",
+            "feasibility_status": "Verification Required",
+            "verification_required": [
+                "Actual vendor quotations",
+                "Client budget feasibility",
+                "Event-date availability",
+                "Guest capacity",
+                "Event duration suitability",
+                "Venue suitability"
+            ]
+        }
+    ],
+    "important_notice": "Recommendations are based on dataset-derived vendor scores and service-level compatibility. Actual prices, availability, capacity and venue suitability require independent verification."
+}

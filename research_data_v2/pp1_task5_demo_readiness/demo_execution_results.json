@@ -1,0 +1,760 @@
+{
+  "executed_at_utc": "2026-10-17T10:09:34.475875+00:00",
+  "interpreter": "D:\\Vendor-Intelligence-System\\venv\\Scripts\\python.exe",
+  "base_url": "http://127.0.0.1:8000",
+  "mode": "live_http_existing_server",
+  "scenarios": {
+    "A_wedding": {
+      "http_status": 200,
+      "elapsed_ms": 5345.926,
+      "event_id": "USER-EEA36C7DB527",
+      "event": {
+        "event_id": "USER-EEA36C7DB527",
+        "event_type": "Wedding",
+        "event_date": "2026-10-22",
+        "start_time": "10:00:00",
+        "end_time": "18:00:00",
+        "city": "Philadelphia",
+        "state": "PA",
+        "guest_count": 50,
+        "budget_lkr": 1000000.0,
+        "duration_hours": 8.0,
+        "required_services": "Photography;Decoration",
+        "currency": "LKR"
+      },
+      "generation_mode": "dynamic_user_request",
+      "generation_status": "search_limit_reached",
+      "generation_message": "Search limits were reached; results cover only the examined candidate options and combinations.",
+      "search": {
+        "complete": false,
+        "candidate_limit_reached": true,
+        "node_limit_reached": false,
+        "max_candidates_per_service": 12,
+        "max_search_nodes": 5000,
+        "nodes_visited": 156,
+        "combinations_evaluated": 138,
+        "all_examined_combinations_validated": true,
+        "feasibility_priority": [
+          "PASS_IN_SIMULATION",
+          "VERIFICATION_REQUIRED"
+        ],
+        "selected_search_space_upper_bound": 144,
+        "minimum_possible_cost_lkr": 244874.21,
+        "top_k": 3,
+        "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+      },
+      "candidate_counts": {
+        "Photography": 165,
+        "Decoration": 237
+      },
+      "total_generated": 138,
+      "package_count": 3,
+      "packages": [
+        {
+          "package_id": "PKG-0001",
+          "rank": 1,
+          "option_ids": [
+            "SIMOPT-000111-B",
+            "SIMOPT-001022-S"
+          ],
+          "vendor_ids": [
+            "FQ_QUyrwtnaEdxUxruZkXg",
+            "_t_UwNkwAinJSljDDYvnoQ"
+          ],
+          "service_coverage": [
+            "Photography",
+            "Decoration"
+          ],
+          "total_cost_lkr": 305535.41,
+          "remaining_budget_lkr": 694464.59,
+          "ranking_score": 84.7786,
+          "risk_status": "complete",
+          "risk_score": 100.0,
+          "risk_provenance": [
+            "random_forest_prediction_of_rule_generated_label",
+            "random_forest_prediction_of_rule_generated_label"
+          ],
+          "compatibility_status": "complete",
+          "compatibility_score": 85.0,
+          "feasibility_status": "VERIFICATION_REQUIRED",
+          "passed_checks": 10,
+          "pending_checks": 8,
+          "failed_checks": 0,
+          "explanation_reasons": [
+            "Covers 2 required services with distinct vendors.",
+            "Estimated LKR 305535.41; LKR 694464.59 remains.",
+            "Ranking score 84.7786/100 uses effective cost/risk/compatibility weights {'cost': 0.4, 'risk': 0.4, 'compatibility': 0.2}.",
+            "Mean rule-derived low-risk favorability 100.0000/100 (higher is more favorable; Low=100, Medium=60, High=20) for matched vendors; model labels are not verified failure predictions.",
+            "Service-category compatibility rule mean 85.0000/100; this is not evidence of vendor collaboration."
+          ],
+          "data_origin": "synthetic_simulation",
+          "is_vendor_confirmed": false
+        },
+        {
+          "package_id": "PKG-0002",
+          "rank": 2,
+          "option_ids": [
+            "SIMOPT-000111-B",
+            "SIMOPT-000547-B"
+          ],
+          "vendor_ids": [
+            "FQ_QUyrwtnaEdxUxruZkXg",
+            "P7MHW-EtCdp3eVF2P_nX0A"
+          ],
+          "service_coverage": [
+            "Photography",
+            "Decoration"
+          ],
+          "total_cost_lkr": 328001.78,
+          "remaining_budget_lkr": 671998.22,
+          "ranking_score": 83.8799,
+          "risk_status": "complete",
+          "risk_score": 100.0,
+          "risk_provenance": [
+            "random_forest_prediction_of_rule_generated_label",
+            "random_forest_prediction_of_rule_generated_label"
+          ],
+          "compatibility_status": "complete",
+          "compatibility_score": 85.0,
+          "feasibility_status": "VERIFICATION_REQUIRED",
+          "passed_checks": 10,
+          "pending_checks": 8,
+          "failed_checks": 0,
+          "explanation_reasons": [
+            "Covers 2 required services with distinct vendors.",
+            "Estimated LKR 328001.78; LKR 671998.22 remains.",
+            "Ranking score 83.8799/100 uses effective cost/risk/compatibility weights {'cost': 0.4, 'risk': 0.4, 'compatibility': 0.2}.",
+            "Mean rule-derived low-risk favorability 100.0000/100 (higher is more favorable; Low=100, Medium=60, High=20) for matched vendors; model labels are not verified failure predictions.",
+            "Service-category compatibility rule mean 85.0000/100; this is not evidence of vendor collaboration."
+          ],
+          "data_origin": "synthetic_simulation",
+          "is_vendor_confirmed": false
+        },
+        {
+          "package_id": "PKG-0003",
+          "rank": 3,
+          "option_ids": [
+            "SIMOPT-000111-B",
+            "SIMOPT-004737-B"
+          ],
+          "vendor_ids": [
+            "FQ_QUyrwtnaEdxUxruZkXg",
+            "zwl7iLwHBTdkb5-0gNgGFg"
+          ],
+          "service_coverage": [
+            "Photography",
+            "Decoration"
+          ],
+          "total_cost_lkr": 244874.21,
+          "remaining_budget_lkr": 755125.79,
+          "ranking_score": 79.205,
+          "risk_status": "complete",
+          "risk_score": 80.0,
+          "risk_provenance": [
+            "random_forest_prediction_of_rule_generated_label",
+            "random_forest_prediction_of_rule_generated_label"
+          ],
+          "compatibility_status": "complete",
+          "compatibility_score": 85.0,
+          "feasibility_status": "VERIFICATION_REQUIRED",
+          "passed_checks": 10,
+          "pending_checks": 8,
+          "failed_checks": 0,
+          "explanation_reasons": [
+            "Covers 2 required services with distinct vendors.",
+            "Estimated LKR 244874.21; LKR 755125.79 remains.",
+            "Ranking score 79.2050/100 uses effective cost/risk/compatibility weights {'cost': 0.4, 'risk': 0.4, 'compatibility': 0.2}.",
+            "Mean rule-derived low-risk favorability 80.0000/100 (higher is more favorable; Low=100, Medium=60, High=20) for matched vendors; model labels are not verified failure predictions.",
+            "Service-category compatibility rule mean 85.0000/100; this is not evidence of vendor collaboration."
+          ],
+          "data_origin": "synthetic_simulation",
+          "is_vendor_confirmed": false
+        }
+      ],
+      "risk_data_audit": {
+        "model_artifact": "models/vendor_risk_random_forest.pkl",
+        "model_sha256": "4eed156cfdf677b992b8c36350c21c968d7cb4d532a8afd302ca1b697aea3e6a",
+        "model_features": [
+          "stars",
+          "review_count",
+          "collected_review_count",
+          "mean_review_rating",
+          "rating_std"
+        ],
+        "label_origin": "rule_generated_from_review_features",
+        "independent_real_world_validation": false,
+        "requested_vendor_ids": 134,
+        "status_counts": {
+          "available": 134
+        }
+      }
+    },
+    "B_corporate": {
+      "http_status": 200,
+      "elapsed_ms": 4377.524,
+      "event_id": "USER-D130025BACDF",
+      "event": {
+        "event_id": "USER-D130025BACDF",
+        "event_type": "Corporate",
+        "event_date": "2026-10-23",
+        "start_time": "09:00:00",
+        "end_time": "17:00:00",
+        "city": "Philadelphia",
+        "state": "PA",
+        "guest_count": 40,
+        "budget_lkr": 1000000.0,
+        "duration_hours": 8.0,
+        "required_services": "Photography;Audio Visual",
+        "currency": "LKR"
+      },
+      "generation_mode": "dynamic_user_request",
+      "generation_status": "search_limit_reached",
+      "generation_message": "Search limits were reached; results cover only the examined candidate options and combinations.",
+      "search": {
+        "complete": false,
+        "candidate_limit_reached": true,
+        "node_limit_reached": false,
+        "max_candidates_per_service": 12,
+        "max_search_nodes": 5000,
+        "nodes_visited": 39,
+        "combinations_evaluated": 36,
+        "all_examined_combinations_validated": true,
+        "feasibility_priority": [
+          "PASS_IN_SIMULATION",
+          "VERIFICATION_REQUIRED"
+        ],
+        "selected_search_space_upper_bound": 36,
+        "minimum_possible_cost_lkr": 371707.34,
+        "top_k": 3,
+        "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+      },
+      "candidate_counts": {
+        "Photography": 165,
+        "Audio Visual": 3
+      },
+      "total_generated": 36,
+      "package_count": 3,
+      "packages": [
+        {
+          "package_id": "PKG-0001",
+          "rank": 1,
+          "option_ids": [
+            "SIMOPT-000111-B",
+            "SIMOPT-001873-S"
+          ],
+          "vendor_ids": [
+            "FQ_QUyrwtnaEdxUxruZkXg",
+            "r6gFO9a67llZRUf_jagDjA"
+          ],
+          "service_coverage": [
+            "Photography",
+            "Audio Visual"
+          ],
+          "total_cost_lkr": 371707.34,
+          "remaining_budget_lkr": 628292.66,
+          "ranking_score": 74.1317,
+          "risk_status": "complete",
+          "risk_score": 80.0,
+          "risk_provenance": [
+            "random_forest_prediction_of_rule_generated_label",
+            "random_forest_prediction_of_rule_generated_label"
+          ],
+          "compatibility_status": "complete",
+          "compatibility_score": 85.0,
+          "feasibility_status": "VERIFICATION_REQUIRED",
+          "passed_checks": 10,
+          "pending_checks": 8,
+          "failed_checks": 0,
+          "explanation_reasons": [
+            "Covers 2 required services with distinct vendors.",
+            "Estimated LKR 371707.34; LKR 628292.66 remains.",
+            "Ranking score 74.1317/100 uses effective cost/risk/compatibility weights {'cost': 0.4, 'risk': 0.4, 'compatibility': 0.2}.",
+            "Mean rule-derived low-risk favorability 80.0000/100 (higher is more favorable; Low=100, Medium=60, High=20) for matched vendors; model labels are not verified failure predictions.",
+            "Service-category compatibility rule mean 85.0000/100; this is not evidence of vendor collaboration."
+          ],
+          "data_origin": "synthetic_simulation",
+          "is_vendor_confirmed": false
+        },
+        {
+          "package_id": "PKG-0002",
+          "rank": 2,
+          "option_ids": [
+            "SIMOPT-000111-B",
+            "SIMOPT-001873-B"
+          ],
+          "vendor_ids": [
+            "FQ_QUyrwtnaEdxUxruZkXg",
+            "r6gFO9a67llZRUf_jagDjA"
+          ],
+          "service_coverage": [
+            "Photography",
+            "Audio Visual"
+          ],
+          "total_cost_lkr": 460253.04,
+          "remaining_budget_lkr": 539746.96,
+          "ranking_score": 70.5899,
+          "risk_status": "complete",
+          "risk_score": 80.0,
+          "risk_provenance": [
+            "random_forest_prediction_of_rule_generated_label",
+            "random_forest_prediction_of_rule_generated_label"
+          ],
+          "compatibility_status": "complete",
+          "compatibility_score": 85.0,
+          "feasibility_status": "VERIFICATION_REQUIRED",
+          "passed_checks": 10,
+          "pending_checks": 8,
+          "failed_checks": 0,
+          "explanation_reasons": [
+            "Covers 2 required services with distinct vendors.",
+            "Estimated LKR 460253.04; LKR 539746.96 remains.",
+            "Ranking score 70.5899/100 uses effective cost/risk/compatibility weights {'cost': 0.4, 'risk': 0.4, 'compatibility': 0.2}.",
+            "Mean rule-derived low-risk favorability 80.0000/100 (higher is more favorable; Low=100, Medium=60, High=20) for matched vendors; model labels are not verified failure predictions.",
+            "Service-category compatibility rule mean 85.0000/100; this is not evidence of vendor collaboration."
+          ],
+          "data_origin": "synthetic_simulation",
+          "is_vendor_confirmed": false
+        },
+        {
+          "package_id": "PKG-0003",
+          "rank": 3,
+          "option_ids": [
+            "SIMOPT-000655-S",
+            "SIMOPT-001873-S"
+          ],
+          "vendor_ids": [
+            "jZIR4QJOswbgwYKRcJRTsQ",
+            "r6gFO9a67llZRUf_jagDjA"
+          ],
+          "service_coverage": [
+            "Photography",
+            "Audio Visual"
+          ],
+          "total_cost_lkr": 524284.85,
+          "remaining_budget_lkr": 475715.15,
+          "ranking_score": 68.0286,
+          "risk_status": "complete",
+          "risk_score": 80.0,
+          "risk_provenance": [
+            "random_forest_prediction_of_rule_generated_label",
+            "random_forest_prediction_of_rule_generated_label"
+          ],
+          "compatibility_status": "complete",
+          "compatibility_score": 85.0,
+          "feasibility_status": "VERIFICATION_REQUIRED",
+          "passed_checks": 10,
+          "pending_checks": 8,
+          "failed_checks": 0,
+          "explanation_reasons": [
+            "Covers 2 required services with distinct vendors.",
+            "Estimated LKR 524284.85; LKR 475715.15 remains.",
+            "Ranking score 68.0286/100 uses effective cost/risk/compatibility weights {'cost': 0.4, 'risk': 0.4, 'compatibility': 0.2}.",
+            "Mean rule-derived low-risk favorability 80.0000/100 (higher is more favorable; Low=100, Medium=60, High=20) for matched vendors; model labels are not verified failure predictions.",
+            "Service-category compatibility rule mean 85.0000/100; this is not evidence of vendor collaboration."
+          ],
+          "data_origin": "synthetic_simulation",
+          "is_vendor_confirmed": false
+        }
+      ],
+      "risk_data_audit": {
+        "model_artifact": "models/vendor_risk_random_forest.pkl",
+        "model_sha256": "4eed156cfdf677b992b8c36350c21c968d7cb4d532a8afd302ca1b697aea3e6a",
+        "model_features": [
+          "stars",
+          "review_count",
+          "collected_review_count",
+          "mean_review_rating",
+          "rating_std"
+        ],
+        "label_origin": "rule_generated_from_review_features",
+        "independent_real_world_validation": false,
+        "requested_vendor_ids": 56,
+        "status_counts": {
+          "available": 56
+        }
+      }
+    },
+    "C_low_budget": {
+      "http_status": 200,
+      "elapsed_ms": 4870.337,
+      "event_id": "USER-DB63EFE96BAB",
+      "event": {
+        "event_id": "USER-DB63EFE96BAB",
+        "event_type": "Wedding",
+        "event_date": "2026-10-24",
+        "start_time": "10:00:00",
+        "end_time": "18:00:00",
+        "city": "Philadelphia",
+        "state": "PA",
+        "guest_count": 50,
+        "budget_lkr": 1.0,
+        "duration_hours": 8.0,
+        "required_services": "Photography;Decoration",
+        "currency": "LKR"
+      },
+      "generation_mode": "dynamic_user_request",
+      "generation_status": "no_budget_feasible_combinations",
+      "generation_message": "Even the cheapest eligible option per service exceeds the LKR budget.",
+      "search": {
+        "complete": true,
+        "candidate_limit_reached": true,
+        "node_limit_reached": false,
+        "max_candidates_per_service": 12,
+        "max_search_nodes": 5000,
+        "nodes_visited": 0,
+        "combinations_evaluated": 0,
+        "all_examined_combinations_validated": true,
+        "feasibility_priority": [
+          "PASS_IN_SIMULATION",
+          "VERIFICATION_REQUIRED"
+        ],
+        "selected_search_space_upper_bound": 144,
+        "minimum_possible_cost_lkr": 244874.21,
+        "top_k": 3,
+        "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+      },
+      "candidate_counts": {
+        "Photography": 165,
+        "Decoration": 237
+      },
+      "total_generated": 0,
+      "package_count": 0,
+      "packages": [],
+      "risk_data_audit": {
+        "model_artifact": "models/vendor_risk_random_forest.pkl",
+        "model_sha256": "4eed156cfdf677b992b8c36350c21c968d7cb4d532a8afd302ca1b697aea3e6a",
+        "model_features": [
+          "stars",
+          "review_count",
+          "collected_review_count",
+          "mean_review_rating",
+          "rating_std"
+        ],
+        "label_origin": "rule_generated_from_review_features",
+        "independent_real_world_validation": false,
+        "requested_vendor_ids": 134,
+        "status_counts": {
+          "available": 134
+        }
+      }
+    },
+    "A_repeat": {
+      "http_status": 200,
+      "elapsed_ms": 4779.075,
+      "event_id": "USER-29AD3C2979C4",
+      "event": {
+        "event_id": "USER-29AD3C2979C4",
+        "event_type": "Wedding",
+        "event_date": "2026-10-22",
+        "start_time": "10:00:00",
+        "end_time": "18:00:00",
+        "city": "Philadelphia",
+        "state": "PA",
+        "guest_count": 50,
+        "budget_lkr": 1000000.0,
+        "duration_hours": 8.0,
+        "required_services": "Photography;Decoration",
+        "currency": "LKR"
+      },
+      "generation_mode": "dynamic_user_request",
+      "generation_status": "search_limit_reached",
+      "generation_message": "Search limits were reached; results cover only the examined candidate options and combinations.",
+      "search": {
+        "complete": false,
+        "candidate_limit_reached": true,
+        "node_limit_reached": false,
+        "max_candidates_per_service": 12,
+        "max_search_nodes": 5000,
+        "nodes_visited": 156,
+        "combinations_evaluated": 138,
+        "all_examined_combinations_validated": true,
+        "feasibility_priority": [
+          "PASS_IN_SIMULATION",
+          "VERIFICATION_REQUIRED"
+        ],
+        "selected_search_space_upper_bound": 144,
+        "minimum_possible_cost_lkr": 244874.21,
+        "top_k": 3,
+        "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+      },
+      "candidate_counts": {
+        "Photography": 165,
+        "Decoration": 237
+      },
+      "total_generated": 138,
+      "package_count": 3,
+      "packages": [
+        {
+          "package_id": "PKG-0001",
+          "rank": 1,
+          "option_ids": [
+            "SIMOPT-000111-B",
+            "SIMOPT-001022-S"
+          ],
+          "vendor_ids": [
+            "FQ_QUyrwtnaEdxUxruZkXg",
+            "_t_UwNkwAinJSljDDYvnoQ"
+          ],
+          "service_coverage": [
+            "Photography",
+            "Decoration"
+          ],
+          "total_cost_lkr": 305535.41,
+          "remaining_budget_lkr": 694464.59,
+          "ranking_score": 84.7786,
+          "risk_status": "complete",
+          "risk_score": 100.0,
+          "risk_provenance": [
+            "random_forest_prediction_of_rule_generated_label",
+            "random_forest_prediction_of_rule_generated_label"
+          ],
+          "compatibility_status": "complete",
+          "compatibility_score": 85.0,
+          "feasibility_status": "VERIFICATION_REQUIRED",
+          "passed_checks": 10,
+          "pending_checks": 8,
+          "failed_checks": 0,
+          "explanation_reasons": [
+            "Covers 2 required services with distinct vendors.",
+            "Estimated LKR 305535.41; LKR 694464.59 remains.",
+            "Ranking score 84.7786/100 uses effective cost/risk/compatibility weights {'cost': 0.4, 'risk': 0.4, 'compatibility': 0.2}.",
+            "Mean rule-derived low-risk favorability 100.0000/100 (higher is more favorable; Low=100, Medium=60, High=20) for matched vendors; model labels are not verified failure predictions.",
+            "Service-category compatibility rule mean 85.0000/100; this is not evidence of vendor collaboration."
+          ],
+          "data_origin": "synthetic_simulation",
+          "is_vendor_confirmed": false
+        },
+        {
+          "package_id": "PKG-0002",
+          "rank": 2,
+          "option_ids": [
+            "SIMOPT-000111-B",
+            "SIMOPT-000547-B"
+          ],
+          "vendor_ids": [
+            "FQ_QUyrwtnaEdxUxruZkXg",
+            "P7MHW-EtCdp3eVF2P_nX0A"
+          ],
+          "service_coverage": [
+            "Photography",
+            "Decoration"
+          ],
+          "total_cost_lkr": 328001.78,
+          "remaining_budget_lkr": 671998.22,
+          "ranking_score": 83.8799,
+          "risk_status": "complete",
+          "risk_score": 100.0,
+          "risk_provenance": [
+            "random_forest_prediction_of_rule_generated_label",
+            "random_forest_prediction_of_rule_generated_label"
+          ],
+          "compatibility_status": "complete",
+          "compatibility_score": 85.0,
+          "feasibility_status": "VERIFICATION_REQUIRED",
+          "passed_checks": 10,
+          "pending_checks": 8,
+          "failed_checks": 0,
+          "explanation_reasons": [
+            "Covers 2 required services with distinct vendors.",
+            "Estimated LKR 328001.78; LKR 671998.22 remains.",
+            "Ranking score 83.8799/100 uses effective cost/risk/compatibility weights {'cost': 0.4, 'risk': 0.4, 'compatibility': 0.2}.",
+            "Mean rule-derived low-risk favorability 100.0000/100 (higher is more favorable; Low=100, Medium=60, High=20) for matched vendors; model labels are not verified failure predictions.",
+            "Service-category compatibility rule mean 85.0000/100; this is not evidence of vendor collaboration."
+          ],
+          "data_origin": "synthetic_simulation",
+          "is_vendor_confirmed": false
+        },
+        {
+          "package_id": "PKG-0003",
+          "rank": 3,
+          "option_ids": [
+            "SIMOPT-000111-B",
+            "SIMOPT-004737-B"
+          ],
+          "vendor_ids": [
+            "FQ_QUyrwtnaEdxUxruZkXg",
+            "zwl7iLwHBTdkb5-0gNgGFg"
+          ],
+          "service_coverage": [
+            "Photography",
+            "Decoration"
+          ],
+          "total_cost_lkr": 244874.21,
+          "remaining_budget_lkr": 755125.79,
+          "ranking_score": 79.205,
+          "risk_status": "complete",
+          "risk_score": 80.0,
+          "risk_provenance": [
+            "random_forest_prediction_of_rule_generated_label",
+            "random_forest_prediction_of_rule_generated_label"
+          ],
+          "compatibility_status": "complete",
+          "compatibility_score": 85.0,
+          "feasibility_status": "VERIFICATION_REQUIRED",
+          "passed_checks": 10,
+          "pending_checks": 8,
+          "failed_checks": 0,
+          "explanation_reasons": [
+            "Covers 2 required services with distinct vendors.",
+            "Estimated LKR 244874.21; LKR 755125.79 remains.",
+            "Ranking score 79.2050/100 uses effective cost/risk/compatibility weights {'cost': 0.4, 'risk': 0.4, 'compatibility': 0.2}.",
+            "Mean rule-derived low-risk favorability 80.0000/100 (higher is more favorable; Low=100, Medium=60, High=20) for matched vendors; model labels are not verified failure predictions.",
+            "Service-category compatibility rule mean 85.0000/100; this is not evidence of vendor collaboration."
+          ],
+          "data_origin": "synthetic_simulation",
+          "is_vendor_confirmed": false
+        }
+      ],
+      "risk_data_audit": {
+        "model_artifact": "models/vendor_risk_random_forest.pkl",
+        "model_sha256": "4eed156cfdf677b992b8c36350c21c968d7cb4d532a8afd302ca1b697aea3e6a",
+        "model_features": [
+          "stars",
+          "review_count",
+          "collected_review_count",
+          "mean_review_rating",
+          "rating_std"
+        ],
+        "label_origin": "rule_generated_from_review_features",
+        "independent_real_world_validation": false,
+        "requested_vendor_ids": 134,
+        "status_counts": {
+          "available": 134
+        }
+      }
+    }
+  },
+  "checks": {
+    "positive_requests_http_200": true,
+    "positive_requests_have_packages": true,
+    "fresh_user_ids": true,
+    "repeat_same_requirements_same_options": true,
+    "changed_requirements_change_services": true,
+    "coverage_budget_unique_vendors": true,
+    "no_fail_recommendations": true,
+    "risk_signal_present": true,
+    "compatibility_signal_present": true,
+    "explanations_present": true,
+    "low_budget_no_combinations": true,
+    "invalid_inputs_422": true,
+    "feasibility_http_200": true,
+    "tampered_price_rejected": true
+  },
+  "api": {
+    "root": {
+      "http_status": 200,
+      "elapsed_ms": 19.424,
+      "error": null
+    },
+    "health": {
+      "http_status": 200,
+      "elapsed_ms": 10.792,
+      "error": null
+    },
+    "locations": {
+      "http_status": 200,
+      "elapsed_ms": 2051.444,
+      "error": null,
+      "location_count": 704,
+      "philadelphia_present": true
+    },
+    "openapi": {
+      "http_status": 200,
+      "elapsed_ms": 284.033,
+      "error": null,
+      "paths": [
+        "/",
+        "/api/events/{event_id}",
+        "/api/feasibility/validate",
+        "/api/feasibility/validate-dynamic",
+        "/api/locations",
+        "/api/packages/generate",
+        "/api/packages/generate-dynamic",
+        "/health"
+      ]
+    },
+    "legacy_event_read": {
+      "http_status": 200,
+      "elapsed_ms": 1434.383,
+      "error": null
+    },
+    "invalid_zero_budget": {
+      "http_status": 422,
+      "elapsed_ms": 46.812,
+      "detail": [
+        {
+          "type": "greater_than",
+          "loc": [
+            "body",
+            "budget_lkr"
+          ],
+          "msg": "Input should be greater than 0",
+          "input": 0,
+          "ctx": {
+            "gt": 0.0
+          }
+        }
+      ],
+      "error": null
+    },
+    "invalid_location": {
+      "http_status": 422,
+      "elapsed_ms": 2192.643,
+      "detail": "Unsupported location: Nowhere, ZZ. Choose a city and state listed by GET /api/locations.",
+      "error": null
+    },
+    "invalid_service": {
+      "http_status": 422,
+      "elapsed_ms": 28.502,
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "body",
+            "required_services"
+          ],
+          "msg": "Value error, Unsupported services: ['Unlisted']",
+          "input": [
+            "Unlisted"
+          ],
+          "ctx": {
+            "error": {}
+          }
+        }
+      ],
+      "error": null
+    },
+    "dynamic_feasibility": {
+      "http_status": 200,
+      "elapsed_ms": 1689.261,
+      "status": "VERIFICATION_REQUIRED",
+      "event_id": "USER-EEA36C7DB527",
+      "total_cost_lkr": 305535.41,
+      "passed_checks": 10,
+      "pending_checks": 8,
+      "failed_checks": 0,
+      "error": null
+    },
+    "tampered_price": {
+      "http_status": 422,
+      "elapsed_ms": 1607.664,
+      "detail": "Option SIMOPT-000111-B has conflicting unit_price_lkr; use the current source record",
+      "error": null
+    }
+  },
+  "integrity": {
+    "task1_inventory_count": 22,
+    "task1_inventory_matching": 22,
+    "inventory_unchanged_during_run": true,
+    "watched_code_unchanged_during_run": true,
+    "watched_code_sha256": {
+      "backend/main.py": "6a41f592817f5e3dbabbbbe3f372023ba52098951b5c6b8a8534a421caa07cc8",
+      "backend/api/packages.py": "5dfe9a16496a87360268c66112f6c26b988bcfd6b1e764070132c5eacbec66fa",
+      "backend/api/feasibility.py": "d789f65c042a191dc18cb2fb9921ecc6a7f87a8831fc414a72adf6589ecfeee8",
+      "backend/engine/dynamic_package_service.py": "ee4cedc7cc3c3b264439bc14ff9e6bb7bb3503185aed6bdbc1cfb1476d48d6f5",
+      "backend/engine/bounded_package_generator.py": "124c62a4c31689d6537ecc3cd0ab2d6e9c4932ac6b9ee6f9ff666e46d6715770",
+      "frontend/src/App.jsx": "e79e1f401c4f73325a25111933026d2f1e66f63b63249d6cd32084cd1d277c5a",
+      "frontend/src/services/api.js": "30e1da6176ad5d3684d5f1f39bdda1b09bc6f981d6d9de1a45b25ba8795a28ce"
+    }
+  }
+}

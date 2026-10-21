@@ -1,0 +1,10 @@
+{
+    "scope":  "Task 1 inventoried datasets, model artifacts and research outputs; production source files were not in that inventory",
+    "inventory_path":  "research_data_v2/audit_2026-10-17_01/dataset_inventory.csv",
+    "mismatch_count":  0,
+    "mismatches":  [
+
+                   ],
+    "file_count":  22,
+    "checked_at_utc":  "2026-10-17T07:57:23.1427086Z"
+}

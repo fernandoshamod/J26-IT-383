@@ -1,0 +1,900 @@
+{
+    "fixture_version":  "pp1-controlled-v1",
+    "evidence_class":  "SYNTHETIC_TEST",
+    "description":  "Independent hand-authored expected labels; current source IDs are identity references only. Intervals, pair evidence, availability, resource limits and operational outcomes are synthetic.",
+    "cases":  [
+                  {
+                      "case_id":  "compatible_pair",
+                      "expected_status":  "COMPATIBLE_WITH_EVIDENCE",
+                      "expected_conflict":  false,
+                      "data_origin":  "SYNTHETIC_TEST",
+                      "event":  {
+                                    "event_id":  "USER-PP1-COMPATIBLE_PAIR",
+                                    "event_type":  "Wedding",
+                                    "start_at":  "2026-10-21T09:00:00-04:00",
+                                    "end_at":  "2026-10-21T18:00:00-04:00",
+                                    "city":  "Philadelphia",
+                                    "state":  "PA",
+                                    "required_services":  [
+                                                              "Photography",
+                                                              "Decoration"
+                                                          ]
+                                },
+                      "assignments":  [
+                                          {
+                                              "option_id":  "SIMOPT-000057-B",
+                                              "vendor_id":  "yRO9jF-YqiMwq5ja96GdTg",
+                                              "service_category":  "Photography",
+                                              "service_start":  "2026-10-21T12:00:00-04:00",
+                                              "service_end":  "2026-10-21T15:00:00-04:00",
+                                              "setup_minutes":  30,
+                                              "teardown_minutes":  0,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-COMPATIBLE_PAIR",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          },
+                                          {
+                                              "option_id":  "SIMOPT-000115-B",
+                                              "vendor_id":  "gziMakTc9EnZszDdTn9f8Q",
+                                              "service_category":  "Decoration",
+                                              "service_start":  "2026-10-21T13:00:00-04:00",
+                                              "service_end":  "2026-10-21T16:00:00-04:00",
+                                              "setup_minutes":  30,
+                                              "teardown_minutes":  0,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-COMPATIBLE_PAIR",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          }
+                                      ],
+                      "pair_evidence":  [
+                                            {
+                                                "evidence_id":  "compatible_pair-E1",
+                                                "vendor_a_id":  "yRO9jF-YqiMwq5ja96GdTg",
+                                                "vendor_b_id":  "gziMakTc9EnZszDdTn9f8Q",
+                                                "event_id":  "USER-PP1-COMPATIBLE_PAIR",
+                                                "evidence_type":  "simulated_pair_observation",
+                                                "outcome":  "compatible",
+                                                "verification_status":  "simulated",
+                                                "evidence_class":  "SYNTHETIC_TEST",
+                                                "source":  "controlled fixture",
+                                                "observed_at_utc":  "2026-10-17T00:00:00+00:00"
+                                            }
+                                        ],
+                      "resource_limits":  {
+
+                                          }
+                  },
+                  {
+                      "case_id":  "pair_conflict",
+                      "expected_status":  "CONFLICT_WITH_EVIDENCE",
+                      "expected_conflict":  true,
+                      "data_origin":  "SYNTHETIC_TEST",
+                      "event":  {
+                                    "event_id":  "USER-PP1-PAIR_CONFLICT",
+                                    "event_type":  "Wedding",
+                                    "start_at":  "2026-10-21T09:00:00-04:00",
+                                    "end_at":  "2026-10-21T18:00:00-04:00",
+                                    "city":  "Philadelphia",
+                                    "state":  "PA",
+                                    "required_services":  [
+                                                              "Photography",
+                                                              "Decoration"
+                                                          ]
+                                },
+                      "assignments":  [
+                                          {
+                                              "option_id":  "SIMOPT-000057-B",
+                                              "vendor_id":  "yRO9jF-YqiMwq5ja96GdTg",
+                                              "service_category":  "Photography",
+                                              "service_start":  "2026-10-21T12:00:00-04:00",
+                                              "service_end":  "2026-10-21T15:00:00-04:00",
+                                              "setup_minutes":  30,
+                                              "teardown_minutes":  0,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-PAIR_CONFLICT",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          },
+                                          {
+                                              "option_id":  "SIMOPT-000115-B",
+                                              "vendor_id":  "gziMakTc9EnZszDdTn9f8Q",
+                                              "service_category":  "Decoration",
+                                              "service_start":  "2026-10-21T13:00:00-04:00",
+                                              "service_end":  "2026-10-21T16:00:00-04:00",
+                                              "setup_minutes":  30,
+                                              "teardown_minutes":  0,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-PAIR_CONFLICT",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          }
+                                      ],
+                      "pair_evidence":  [
+                                            {
+                                                "evidence_id":  "pair_conflict-E1",
+                                                "vendor_a_id":  "yRO9jF-YqiMwq5ja96GdTg",
+                                                "vendor_b_id":  "gziMakTc9EnZszDdTn9f8Q",
+                                                "event_id":  "USER-PP1-PAIR_CONFLICT",
+                                                "evidence_type":  "simulated_pair_observation",
+                                                "outcome":  "conflict",
+                                                "verification_status":  "simulated",
+                                                "evidence_class":  "SYNTHETIC_TEST",
+                                                "source":  "controlled fixture",
+                                                "observed_at_utc":  "2026-10-17T00:00:00+00:00"
+                                            }
+                                        ],
+                      "resource_limits":  {
+
+                                          }
+                  },
+                  {
+                      "case_id":  "unknown_pair",
+                      "expected_status":  "VERIFICATION_REQUIRED",
+                      "expected_conflict":  false,
+                      "data_origin":  "SYNTHETIC_TEST",
+                      "event":  {
+                                    "event_id":  "USER-PP1-UNKNOWN_PAIR",
+                                    "event_type":  "Wedding",
+                                    "start_at":  "2026-10-21T09:00:00-04:00",
+                                    "end_at":  "2026-10-21T18:00:00-04:00",
+                                    "city":  "Philadelphia",
+                                    "state":  "PA",
+                                    "required_services":  [
+                                                              "Photography",
+                                                              "Decoration"
+                                                          ]
+                                },
+                      "assignments":  [
+                                          {
+                                              "option_id":  "SIMOPT-000057-B",
+                                              "vendor_id":  "yRO9jF-YqiMwq5ja96GdTg",
+                                              "service_category":  "Photography",
+                                              "service_start":  "2026-10-21T12:00:00-04:00",
+                                              "service_end":  "2026-10-21T15:00:00-04:00",
+                                              "setup_minutes":  30,
+                                              "teardown_minutes":  0,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-UNKNOWN_PAIR",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          },
+                                          {
+                                              "option_id":  "SIMOPT-000115-B",
+                                              "vendor_id":  "gziMakTc9EnZszDdTn9f8Q",
+                                              "service_category":  "Decoration",
+                                              "service_start":  "2026-10-21T13:00:00-04:00",
+                                              "service_end":  "2026-10-21T16:00:00-04:00",
+                                              "setup_minutes":  30,
+                                              "teardown_minutes":  0,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-UNKNOWN_PAIR",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          }
+                                      ],
+                      "pair_evidence":  [
+
+                                        ],
+                      "resource_limits":  {
+
+                                          }
+                  },
+                  {
+                      "case_id":  "same_vendor_overlap",
+                      "expected_status":  "CONFLICT_WITH_EVIDENCE",
+                      "expected_conflict":  true,
+                      "data_origin":  "SYNTHETIC_TEST",
+                      "event":  {
+                                    "event_id":  "USER-PP1-SAME_VENDOR_OVERLAP",
+                                    "event_type":  "Wedding",
+                                    "start_at":  "2026-10-21T09:00:00-04:00",
+                                    "end_at":  "2026-10-21T18:00:00-04:00",
+                                    "city":  "Philadelphia",
+                                    "state":  "PA",
+                                    "required_services":  [
+                                                              "Photography",
+                                                              "Photography"
+                                                          ]
+                                },
+                      "assignments":  [
+                                          {
+                                              "option_id":  "FIXTURE-OPT-A",
+                                              "vendor_id":  "FIXTURE-VENDOR-1",
+                                              "service_category":  "Photography",
+                                              "service_start":  "2026-10-21T12:00:00-04:00",
+                                              "service_end":  "2026-10-21T15:00:00-04:00",
+                                              "setup_minutes":  0,
+                                              "teardown_minutes":  0,
+                                              "can_multitask":  false,
+                                              "exclusive_setup_crew":  true,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-SAME_VENDOR_OVERLAP",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          },
+                                          {
+                                              "option_id":  "FIXTURE-OPT-B",
+                                              "vendor_id":  "FIXTURE-VENDOR-1",
+                                              "service_category":  "Photography",
+                                              "service_start":  "2026-10-21T13:00:00-04:00",
+                                              "service_end":  "2026-10-21T16:00:00-04:00",
+                                              "setup_minutes":  0,
+                                              "teardown_minutes":  0,
+                                              "can_multitask":  false,
+                                              "exclusive_setup_crew":  true,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-SAME_VENDOR_OVERLAP",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          }
+                                      ],
+                      "pair_evidence":  [
+
+                                        ],
+                      "resource_limits":  {
+
+                                          }
+                  },
+                  {
+                      "case_id":  "nonoverlap",
+                      "expected_status":  "COMPATIBLE_WITH_EVIDENCE",
+                      "expected_conflict":  false,
+                      "data_origin":  "SYNTHETIC_TEST",
+                      "event":  {
+                                    "event_id":  "USER-PP1-NONOVERLAP",
+                                    "event_type":  "Wedding",
+                                    "start_at":  "2026-10-21T09:00:00-04:00",
+                                    "end_at":  "2026-10-21T18:00:00-04:00",
+                                    "city":  "Philadelphia",
+                                    "state":  "PA",
+                                    "required_services":  [
+                                                              "Photography",
+                                                              "Photography"
+                                                          ]
+                                },
+                      "assignments":  [
+                                          {
+                                              "option_id":  "FIXTURE-OPT-A",
+                                              "vendor_id":  "FIXTURE-VENDOR-1",
+                                              "service_category":  "Photography",
+                                              "service_start":  "2026-10-21T10:00:00-04:00",
+                                              "service_end":  "2026-10-21T12:00:00-04:00",
+                                              "setup_minutes":  0,
+                                              "teardown_minutes":  0,
+                                              "can_multitask":  false,
+                                              "exclusive_setup_crew":  true,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-NONOVERLAP",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          },
+                                          {
+                                              "option_id":  "FIXTURE-OPT-B",
+                                              "vendor_id":  "FIXTURE-VENDOR-1",
+                                              "service_category":  "Photography",
+                                              "service_start":  "2026-10-21T13:00:00-04:00",
+                                              "service_end":  "2026-10-21T15:00:00-04:00",
+                                              "setup_minutes":  0,
+                                              "teardown_minutes":  0,
+                                              "can_multitask":  false,
+                                              "exclusive_setup_crew":  true,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-NONOVERLAP",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          }
+                                      ],
+                      "pair_evidence":  [
+
+                                        ],
+                      "resource_limits":  {
+
+                                          }
+                  },
+                  {
+                      "case_id":  "equipment_insufficient",
+                      "expected_status":  "CONFLICT_WITH_EVIDENCE",
+                      "expected_conflict":  true,
+                      "data_origin":  "SYNTHETIC_TEST",
+                      "event":  {
+                                    "event_id":  "USER-PP1-EQUIPMENT_INSUFFICIENT",
+                                    "event_type":  "Wedding",
+                                    "start_at":  "2026-10-21T09:00:00-04:00",
+                                    "end_at":  "2026-10-21T18:00:00-04:00",
+                                    "city":  "Philadelphia",
+                                    "state":  "PA",
+                                    "required_services":  [
+                                                              "Photography",
+                                                              "Decoration"
+                                                          ]
+                                },
+                      "assignments":  [
+                                          {
+                                              "option_id":  "SIMOPT-000057-B",
+                                              "vendor_id":  "yRO9jF-YqiMwq5ja96GdTg",
+                                              "service_category":  "Photography",
+                                              "service_start":  "2026-10-21T12:00:00-04:00",
+                                              "service_end":  "2026-10-21T15:00:00-04:00",
+                                              "setup_minutes":  30,
+                                              "teardown_minutes":  0,
+                                              "resources":  [
+                                                                {
+                                                                    "resource_id":  "equipment:shared-camera",
+                                                                    "quantity":  1
+                                                                }
+                                                            ],
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-EQUIPMENT_INSUFFICIENT",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          },
+                                          {
+                                              "option_id":  "SIMOPT-000115-B",
+                                              "vendor_id":  "gziMakTc9EnZszDdTn9f8Q",
+                                              "service_category":  "Decoration",
+                                              "service_start":  "2026-10-21T13:00:00-04:00",
+                                              "service_end":  "2026-10-21T16:00:00-04:00",
+                                              "setup_minutes":  30,
+                                              "teardown_minutes":  0,
+                                              "resources":  [
+                                                                {
+                                                                    "resource_id":  "equipment:shared-camera",
+                                                                    "quantity":  1
+                                                                }
+                                                            ],
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-EQUIPMENT_INSUFFICIENT",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          }
+                                      ],
+                      "pair_evidence":  [
+                                            {
+                                                "evidence_id":  "equipment_insufficient-E1",
+                                                "vendor_a_id":  "yRO9jF-YqiMwq5ja96GdTg",
+                                                "vendor_b_id":  "gziMakTc9EnZszDdTn9f8Q",
+                                                "event_id":  "USER-PP1-EQUIPMENT_INSUFFICIENT",
+                                                "evidence_type":  "simulated_pair_observation",
+                                                "outcome":  "compatible",
+                                                "verification_status":  "simulated",
+                                                "evidence_class":  "SYNTHETIC_TEST",
+                                                "source":  "controlled fixture",
+                                                "observed_at_utc":  "2026-10-17T00:00:00+00:00"
+                                            }
+                                        ],
+                      "resource_limits":  {
+                                              "equipment:shared-camera":  {
+                                                                              "capacity":  1,
+                                                                              "evidence_class":  "SYNTHETIC_TEST",
+                                                                              "source":  "controlled equipment pool"
+                                                                          }
+                                          }
+                  },
+                  {
+                      "case_id":  "missing_resource_capacity",
+                      "expected_status":  "VERIFICATION_REQUIRED",
+                      "expected_conflict":  false,
+                      "data_origin":  "SYNTHETIC_TEST",
+                      "event":  {
+                                    "event_id":  "USER-PP1-MISSING_RESOURCE_CAPACITY",
+                                    "event_type":  "Wedding",
+                                    "start_at":  "2026-10-21T09:00:00-04:00",
+                                    "end_at":  "2026-10-21T18:00:00-04:00",
+                                    "city":  "Philadelphia",
+                                    "state":  "PA",
+                                    "required_services":  [
+                                                              "Photography",
+                                                              "Decoration"
+                                                          ]
+                                },
+                      "assignments":  [
+                                          {
+                                              "option_id":  "SIMOPT-000057-B",
+                                              "vendor_id":  "yRO9jF-YqiMwq5ja96GdTg",
+                                              "service_category":  "Photography",
+                                              "service_start":  "2026-10-21T12:00:00-04:00",
+                                              "service_end":  "2026-10-21T15:00:00-04:00",
+                                              "setup_minutes":  30,
+                                              "teardown_minutes":  0,
+                                              "resources":  [
+                                                                {
+                                                                    "resource_id":  "equipment:shared-camera",
+                                                                    "quantity":  1
+                                                                }
+                                                            ],
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-MISSING_RESOURCE_CAPACITY",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          },
+                                          {
+                                              "option_id":  "SIMOPT-000115-B",
+                                              "vendor_id":  "gziMakTc9EnZszDdTn9f8Q",
+                                              "service_category":  "Decoration",
+                                              "service_start":  "2026-10-21T13:00:00-04:00",
+                                              "service_end":  "2026-10-21T16:00:00-04:00",
+                                              "setup_minutes":  30,
+                                              "teardown_minutes":  0,
+                                              "resources":  [
+                                                                {
+                                                                    "resource_id":  "equipment:shared-camera",
+                                                                    "quantity":  1
+                                                                }
+                                                            ],
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-MISSING_RESOURCE_CAPACITY",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          }
+                                      ],
+                      "pair_evidence":  [
+                                            {
+                                                "evidence_id":  "missing_resource_capacity-E1",
+                                                "vendor_a_id":  "yRO9jF-YqiMwq5ja96GdTg",
+                                                "vendor_b_id":  "gziMakTc9EnZszDdTn9f8Q",
+                                                "event_id":  "USER-PP1-MISSING_RESOURCE_CAPACITY",
+                                                "evidence_type":  "simulated_pair_observation",
+                                                "outcome":  "compatible",
+                                                "verification_status":  "simulated",
+                                                "evidence_class":  "SYNTHETIC_TEST",
+                                                "source":  "controlled fixture",
+                                                "observed_at_utc":  "2026-10-17T00:00:00+00:00"
+                                            }
+                                        ],
+                      "resource_limits":  {
+
+                                          }
+                  },
+                  {
+                      "case_id":  "contradictory_pair",
+                      "expected_status":  "VERIFICATION_REQUIRED",
+                      "expected_conflict":  false,
+                      "data_origin":  "SYNTHETIC_TEST",
+                      "event":  {
+                                    "event_id":  "USER-PP1-CONTRADICTORY_PAIR",
+                                    "event_type":  "Wedding",
+                                    "start_at":  "2026-10-21T09:00:00-04:00",
+                                    "end_at":  "2026-10-21T18:00:00-04:00",
+                                    "city":  "Philadelphia",
+                                    "state":  "PA",
+                                    "required_services":  [
+                                                              "Photography",
+                                                              "Decoration"
+                                                          ]
+                                },
+                      "assignments":  [
+                                          {
+                                              "option_id":  "SIMOPT-000057-B",
+                                              "vendor_id":  "yRO9jF-YqiMwq5ja96GdTg",
+                                              "service_category":  "Photography",
+                                              "service_start":  "2026-10-21T12:00:00-04:00",
+                                              "service_end":  "2026-10-21T15:00:00-04:00",
+                                              "setup_minutes":  30,
+                                              "teardown_minutes":  0,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-CONTRADICTORY_PAIR",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          },
+                                          {
+                                              "option_id":  "SIMOPT-000115-B",
+                                              "vendor_id":  "gziMakTc9EnZszDdTn9f8Q",
+                                              "service_category":  "Decoration",
+                                              "service_start":  "2026-10-21T13:00:00-04:00",
+                                              "service_end":  "2026-10-21T16:00:00-04:00",
+                                              "setup_minutes":  30,
+                                              "teardown_minutes":  0,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-CONTRADICTORY_PAIR",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          }
+                                      ],
+                      "pair_evidence":  [
+                                            {
+                                                "evidence_id":  "contradictory_pair-E1",
+                                                "vendor_a_id":  "yRO9jF-YqiMwq5ja96GdTg",
+                                                "vendor_b_id":  "gziMakTc9EnZszDdTn9f8Q",
+                                                "event_id":  "USER-PP1-CONTRADICTORY_PAIR",
+                                                "evidence_type":  "simulated_pair_observation",
+                                                "outcome":  "compatible",
+                                                "verification_status":  "simulated",
+                                                "evidence_class":  "SYNTHETIC_TEST",
+                                                "source":  "controlled fixture",
+                                                "observed_at_utc":  "2026-10-17T00:00:00+00:00"
+                                            },
+                                            {
+                                                "evidence_id":  "contradictory_pair-E2",
+                                                "vendor_a_id":  "yRO9jF-YqiMwq5ja96GdTg",
+                                                "vendor_b_id":  "gziMakTc9EnZszDdTn9f8Q",
+                                                "event_id":  "USER-PP1-CONTRADICTORY_PAIR",
+                                                "evidence_type":  "simulated_pair_observation",
+                                                "outcome":  "conflict",
+                                                "verification_status":  "simulated",
+                                                "evidence_class":  "SYNTHETIC_TEST",
+                                                "source":  "controlled fixture",
+                                                "observed_at_utc":  "2026-10-17T00:00:00+00:00"
+                                            }
+                                        ],
+                      "resource_limits":  {
+
+                                          }
+                  },
+                  {
+                      "case_id":  "unknown_availability",
+                      "expected_status":  "VERIFICATION_REQUIRED",
+                      "expected_conflict":  false,
+                      "data_origin":  "SYNTHETIC_TEST",
+                      "event":  {
+                                    "event_id":  "USER-PP1-UNKNOWN_AVAILABILITY",
+                                    "event_type":  "Wedding",
+                                    "start_at":  "2026-10-21T09:00:00-04:00",
+                                    "end_at":  "2026-10-21T18:00:00-04:00",
+                                    "city":  "Philadelphia",
+                                    "state":  "PA",
+                                    "required_services":  [
+                                                              "Photography",
+                                                              "Decoration"
+                                                          ]
+                                },
+                      "assignments":  [
+                                          {
+                                              "option_id":  "SIMOPT-000057-B",
+                                              "vendor_id":  "yRO9jF-YqiMwq5ja96GdTg",
+                                              "service_category":  "Photography",
+                                              "service_start":  "2026-10-21T12:00:00-04:00",
+                                              "service_end":  "2026-10-21T15:00:00-04:00",
+                                              "setup_minutes":  30,
+                                              "teardown_minutes":  0,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-UNKNOWN_AVAILABILITY",
+                                                                   "status":  "unknown",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          },
+                                          {
+                                              "option_id":  "SIMOPT-000115-B",
+                                              "vendor_id":  "gziMakTc9EnZszDdTn9f8Q",
+                                              "service_category":  "Decoration",
+                                              "service_start":  "2026-10-21T13:00:00-04:00",
+                                              "service_end":  "2026-10-21T16:00:00-04:00",
+                                              "setup_minutes":  30,
+                                              "teardown_minutes":  0,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-UNKNOWN_AVAILABILITY",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          }
+                                      ],
+                      "pair_evidence":  [
+                                            {
+                                                "evidence_id":  "unknown_availability-E1",
+                                                "vendor_a_id":  "yRO9jF-YqiMwq5ja96GdTg",
+                                                "vendor_b_id":  "gziMakTc9EnZszDdTn9f8Q",
+                                                "event_id":  "USER-PP1-UNKNOWN_AVAILABILITY",
+                                                "evidence_type":  "simulated_pair_observation",
+                                                "outcome":  "compatible",
+                                                "verification_status":  "simulated",
+                                                "evidence_class":  "SYNTHETIC_TEST",
+                                                "source":  "controlled fixture",
+                                                "observed_at_utc":  "2026-10-17T00:00:00+00:00"
+                                            }
+                                        ],
+                      "resource_limits":  {
+
+                                          }
+                  },
+                  {
+                      "case_id":  "multiple_conflicts",
+                      "expected_status":  "CONFLICT_WITH_EVIDENCE",
+                      "expected_conflict":  true,
+                      "data_origin":  "SYNTHETIC_TEST",
+                      "event":  {
+                                    "event_id":  "USER-PP1-MULTIPLE_CONFLICTS",
+                                    "event_type":  "Wedding",
+                                    "start_at":  "2026-10-21T09:00:00-04:00",
+                                    "end_at":  "2026-10-21T18:00:00-04:00",
+                                    "city":  "Philadelphia",
+                                    "state":  "PA",
+                                    "required_services":  [
+                                                              "Photography",
+                                                              "Decoration"
+                                                          ]
+                                },
+                      "assignments":  [
+                                          {
+                                              "option_id":  "SIMOPT-000057-B",
+                                              "vendor_id":  "yRO9jF-YqiMwq5ja96GdTg",
+                                              "service_category":  "Photography",
+                                              "service_start":  "2026-10-21T12:00:00-04:00",
+                                              "service_end":  "2026-10-21T15:00:00-04:00",
+                                              "setup_minutes":  30,
+                                              "teardown_minutes":  0,
+                                              "resources":  [
+                                                                {
+                                                                    "resource_id":  "equipment:shared-camera",
+                                                                    "quantity":  1
+                                                                }
+                                                            ],
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-MULTIPLE_CONFLICTS",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          },
+                                          {
+                                              "option_id":  "SIMOPT-000115-B",
+                                              "vendor_id":  "gziMakTc9EnZszDdTn9f8Q",
+                                              "service_category":  "Decoration",
+                                              "service_start":  "2026-10-21T13:00:00-04:00",
+                                              "service_end":  "2026-10-21T16:00:00-04:00",
+                                              "setup_minutes":  30,
+                                              "teardown_minutes":  0,
+                                              "resources":  [
+                                                                {
+                                                                    "resource_id":  "equipment:shared-camera",
+                                                                    "quantity":  1
+                                                                }
+                                                            ],
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-MULTIPLE_CONFLICTS",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          }
+                                      ],
+                      "pair_evidence":  [
+                                            {
+                                                "evidence_id":  "multiple_conflicts-E1",
+                                                "vendor_a_id":  "yRO9jF-YqiMwq5ja96GdTg",
+                                                "vendor_b_id":  "gziMakTc9EnZszDdTn9f8Q",
+                                                "event_id":  "USER-PP1-MULTIPLE_CONFLICTS",
+                                                "evidence_type":  "simulated_pair_observation",
+                                                "outcome":  "conflict",
+                                                "verification_status":  "simulated",
+                                                "evidence_class":  "SYNTHETIC_TEST",
+                                                "source":  "controlled fixture",
+                                                "observed_at_utc":  "2026-10-17T00:00:00+00:00"
+                                            }
+                                        ],
+                      "resource_limits":  {
+                                              "equipment:shared-camera":  {
+                                                                              "capacity":  1,
+                                                                              "evidence_class":  "SYNTHETIC_TEST",
+                                                                              "source":  "controlled equipment pool"
+                                                                          }
+                                          }
+                  },
+                  {
+                      "case_id":  "setup_overlap",
+                      "expected_status":  "CONFLICT_WITH_EVIDENCE",
+                      "expected_conflict":  true,
+                      "data_origin":  "SYNTHETIC_TEST",
+                      "event":  {
+                                    "event_id":  "USER-PP1-SETUP_OVERLAP",
+                                    "event_type":  "Wedding",
+                                    "start_at":  "2026-10-21T09:00:00-04:00",
+                                    "end_at":  "2026-10-21T18:00:00-04:00",
+                                    "city":  "Philadelphia",
+                                    "state":  "PA",
+                                    "required_services":  [
+                                                              "Photography",
+                                                              "Photography"
+                                                          ]
+                                },
+                      "assignments":  [
+                                          {
+                                              "option_id":  "FIXTURE-OPT-A",
+                                              "vendor_id":  "FIXTURE-VENDOR-1",
+                                              "service_category":  "Photography",
+                                              "service_start":  "2026-10-21T10:00:00-04:00",
+                                              "service_end":  "2026-10-21T12:00:00-04:00",
+                                              "setup_minutes":  0,
+                                              "teardown_minutes":  60,
+                                              "can_multitask":  false,
+                                              "exclusive_setup_crew":  true,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-SETUP_OVERLAP",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          },
+                                          {
+                                              "option_id":  "FIXTURE-OPT-B",
+                                              "vendor_id":  "FIXTURE-VENDOR-1",
+                                              "service_category":  "Photography",
+                                              "service_start":  "2026-10-21T12:30:00-04:00",
+                                              "service_end":  "2026-10-21T15:00:00-04:00",
+                                              "setup_minutes":  30,
+                                              "teardown_minutes":  0,
+                                              "can_multitask":  false,
+                                              "exclusive_setup_crew":  true,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-SETUP_OVERLAP",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          }
+                                      ],
+                      "pair_evidence":  [
+
+                                        ],
+                      "resource_limits":  {
+
+                                          }
+                  },
+                  {
+                      "case_id":  "teardown_overlap",
+                      "expected_status":  "CONFLICT_WITH_EVIDENCE",
+                      "expected_conflict":  true,
+                      "data_origin":  "SYNTHETIC_TEST",
+                      "event":  {
+                                    "event_id":  "USER-PP1-TEARDOWN_OVERLAP",
+                                    "event_type":  "Wedding",
+                                    "start_at":  "2026-10-21T09:00:00-04:00",
+                                    "end_at":  "2026-10-21T18:00:00-04:00",
+                                    "city":  "Philadelphia",
+                                    "state":  "PA",
+                                    "required_services":  [
+                                                              "Photography",
+                                                              "Photography"
+                                                          ]
+                                },
+                      "assignments":  [
+                                          {
+                                              "option_id":  "FIXTURE-OPT-A",
+                                              "vendor_id":  "FIXTURE-VENDOR-1",
+                                              "service_category":  "Photography",
+                                              "service_start":  "2026-10-21T10:00:00-04:00",
+                                              "service_end":  "2026-10-21T12:00:00-04:00",
+                                              "setup_minutes":  0,
+                                              "teardown_minutes":  120,
+                                              "can_multitask":  false,
+                                              "exclusive_setup_crew":  true,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-TEARDOWN_OVERLAP",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          },
+                                          {
+                                              "option_id":  "FIXTURE-OPT-B",
+                                              "vendor_id":  "FIXTURE-VENDOR-1",
+                                              "service_category":  "Photography",
+                                              "service_start":  "2026-10-21T13:00:00-04:00",
+                                              "service_end":  "2026-10-21T15:00:00-04:00",
+                                              "setup_minutes":  0,
+                                              "teardown_minutes":  0,
+                                              "can_multitask":  false,
+                                              "exclusive_setup_crew":  true,
+                                              "availability":  {
+                                                                   "event_id":  "USER-PP1-TEARDOWN_OVERLAP",
+                                                                   "status":  "available",
+                                                                   "evidence_class":  "SYNTHETIC_TEST",
+                                                                   "source":  "controlled fixture",
+                                                                   "observed_at_utc":  "2026-10-17T00:00:00+00:00",
+                                                                   "start_at":  "2026-10-21T09:00:00-04:00",
+                                                                   "end_at":  "2026-10-21T18:00:00-04:00"
+                                                               }
+                                          }
+                                      ],
+                      "pair_evidence":  [
+
+                                        ],
+                      "resource_limits":  {
+
+                                          }
+                  }
+              ]
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "A_wedding_success",
+    "request": {
+      "event_date": "2026-11-26",
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "top_k": 3,
+      "event_type": "Wedding",
+      "city": "Philadelphia",
+      "state": "PA",
+      "guest_count": 50,
+      "budget_lkr": 1000000,
+      "required_services": [
+        "Photography",
+        "Decoration"
+      ]
+    }
+  },
+  {
+    "id": "B_corporate_success",
+    "request": {
+      "event_date": "2026-11-26",
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "top_k": 3,
+      "event_type": "Corporate",
+      "city": "Philadelphia",
+      "state": "PA",
+      "guest_count": 40,
+      "budget_lkr": 1000000,
+      "required_services": [
+        "Photography",
+        "Audio Visual"
+      ]
+    }
+  },
+  {
+    "id": "C_belle_chasse_no_match",
+    "request": {
+      "event_date": "2026-11-26",
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "top_k": 3,
+      "event_type": "Corporate",
+      "city": "Belle Chasse",
+      "state": "LA",
+      "guest_count": 50,
+      "budget_lkr": 1000000,
+      "required_services": [
+        "Entertainment",
+        "Catering"
+      ]
+    }
+  },
+  {
+    "id": "D_edit_location_recovery",
+    "request": {
+      "event_date": "2026-11-26",
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "top_k": 3,
+      "event_type": "Corporate",
+      "city": "Bensalem",
+      "state": "PA",
+      "guest_count": 50,
+      "budget_lkr": 1000000,
+      "required_services": [
+        "Entertainment",
+        "Catering"
+      ]
+    }
+  },
+  {
+    "id": "E_insufficient_budget",
+    "request": {
+      "event_date": "2026-11-26",
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "top_k": 3,
+      "event_type": "Corporate",
+      "city": "Bensalem",
+      "state": "PA",
+      "guest_count": 50,
+      "budget_lkr": 1,
+      "required_services": [
+        "Entertainment",
+        "Catering"
+      ]
+    }
+  },
+  {
+    "id": "F_invalid_zero_budget",
+    "request": {
+      "event_date": "2026-11-26",
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "top_k": 3,
+      "event_type": "Corporate",
+      "city": "Bensalem",
+      "state": "PA",
+      "guest_count": 50,
+      "budget_lkr": 0,
+      "required_services": [
+        "Entertainment",
+        "Catering"
+      ]
+    }
+  }
+]

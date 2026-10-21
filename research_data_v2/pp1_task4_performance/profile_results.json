@@ -1,0 +1,366 @@
+{
+  "interpreter": "D:\\Vendor-Intelligence-System\\venv\\Scripts\\python.exe",
+  "repeats_per_scenario": 2,
+  "timing_unit": "milliseconds",
+  "memory": "not_measured",
+  "results": [
+    {
+      "scenario": "wedding",
+      "event_id": "USER-CCF0428E14AD",
+      "elapsed_ms": 30418.552,
+      "stage_ms": {
+        "source_csv": 2028.31,
+        "candidate_selection": 5915.17,
+        "risk_inference_including_model_verification": 20042.287,
+        "matrix_csv": 6.94,
+        "compatibility_calculation": 0.062,
+        "feasibility_calls": 111.832,
+        "ranking_calls": 9.662,
+        "explanation_calls": 20.393,
+        "bounded_generation": 583.24
+      },
+      "stage_calls": {
+        "source_csv": 1,
+        "candidate_selection": 1,
+        "risk_inference_including_model_verification": 1,
+        "matrix_csv": 1,
+        "compatibility_calculation": 1,
+        "feasibility_calls": 138,
+        "ranking_calls": 138,
+        "explanation_calls": 138,
+        "bounded_generation": 1
+      },
+      "status": "search_limit_reached",
+      "search": {
+        "complete": false,
+        "candidate_limit_reached": true,
+        "node_limit_reached": false,
+        "max_candidates_per_service": 12,
+        "max_search_nodes": 5000,
+        "nodes_visited": 156,
+        "combinations_evaluated": 138,
+        "all_examined_combinations_validated": true,
+        "feasibility_priority": [
+          "PASS_IN_SIMULATION",
+          "VERIFICATION_REQUIRED"
+        ],
+        "selected_search_space_upper_bound": 144,
+        "minimum_possible_cost_lkr": 244874.21,
+        "top_k": 3,
+        "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+      },
+      "returned_packages": 3,
+      "combinations_evaluated": 138,
+      "candidate_counts": {
+        "Photography": 165,
+        "Decoration": 237
+      },
+      "selected_candidate_counts": {
+        "Photography": 12,
+        "Decoration": 12
+      },
+      "cprofile_top30": "         4732696 function calls (4690526 primitive calls) in 30.376 seconds\n\n   Ordered by: cumulative time\n   List reduced from 4435 to 30 due to restriction <30>\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n        1    0.191    0.191   30.406   30.406 D:\\Vendor-Intelligence-System\\backend\\engine\\dynamic_package_service.py:16(generate_dynamic_packages)\n    420/6    0.007    0.000   28.576    4.763 D:\\Vendor-Intelligence-System\\research_data_v2\\pp1_task4_performance\\baseline_profile.py:61(wrapped)\n        1    0.017    0.017   20.041   20.041 D:\\Vendor-Intelligence-System\\backend\\engine\\risk_signals.py:56(load_risk_signals)\n        1    0.000    0.000   18.063   18.063 D:\\Vendor-Intelligence-System\\backend\\engine\\risk_signals.py:44(verified_model)\n        1    0.000    0.000   18.024   18.024 D:\\Vendor-Intelligence-System\\backend\\engine\\risk_signals.py:25(_load_verified_model)\n        1    0.001    0.001   18.024   18.024 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\joblib\\numpy_pickle.py:680(load)\n        1    0.000    0.000   18.023   18.023 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\joblib\\numpy_pickle.py:619(_unpickle)\n      3/1    0.088    0.029   18.023   18.023 C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.2288.0_x64__qbz5n2kfra8p0\\Lib\\pickle.py:1230(load)\n  1447/10    0.024    0.000   17.562    1.756 <frozen importlib._bootstrap>:1349(_find_and_load)\n    928/9    0.033    0.000   17.540    1.949 <frozen importlib._bootstrap>:1304(_find_and_load_unlocked)\n   906/10    0.016    0.000   17.524    1.752 <frozen importlib._bootstrap>:911(_load_unlocked)\n   760/10    0.010    0.000   17.523    1.752 <frozen importlib._bootstrap_external>:1021(exec_module)\n  2192/17    0.026    0.000   17.489    1.029 <frozen importlib._bootstrap>:480(_call_with_frames_removed)\n   992/10    0.199    0.000   17.453    1.745 {built-in method builtins.exec}\n   263/15    0.003    0.000   17.350    1.157 {built-in method builtins.__import__}\n       13    0.000    0.000   17.346    1.334 C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.2288.0_x64__qbz5n2kfra8p0\\Lib\\pickle.py:1576(load_stack_global)\n       13    0.000    0.000   17.346    1.334 C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.2288.0_x64__qbz5n2kfra8p0\\Lib\\pickle.py:1614(find_class)\n        1    0.000    0.000   15.620   15.620 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\sklearn\\__init__.py:1(<module>)\n        1    0.000    0.000   15.505   15.505 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\sklearn\\base.py:1(<module>)\n        1    0.000    0.000   15.441   15.441 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\sklearn\\utils\\__init__.py:1(<module>)\n        1    0.000    0.000   15.277   15.277 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\sklearn\\utils\\_chunking.py:1(<module>)\n        1    0.000    0.000   15.269   15.269 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\sklearn\\utils\\_param_validation.py:1(<module>)\n        1    0.000    0.000   13.842   13.842 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\sklearn\\utils\\validation.py:1(<module>)\n        1    0.000    0.000   13.292   13.292 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\sklearn\\utils\\_array_api.py:1(<module>)\n        1    0.000    0.000   10.875   10.875 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\sklearn\\utils\\fixes.py:1(<module>)\n        1    0.001    0.001   10.407   10.407 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\scipy\\stats\\__init__.py:1(<module>)\n  915/450    0.007    0.000    8.394    0.019 <frozen importlib._bootstrap>:1390(_handle_fromlist)\n        1    0.054    0.054    6.772    6.772 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\scipy\\stats\\_stats_py.py:1(<module>)\n      604    0.013    0.000    6.010    0.010 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\scipy\\_lib\\_docscrape.py:579(__init__)\n        1    0.011    0.011    5.915    5.915 D:\\Vendor-Intelligence-System\\backend\\engine\\candidate_selection.py:7(select_candidates_for_event)\n\n\n",
+      "repeat": 1
+    },
+    {
+      "scenario": "wedding",
+      "event_id": "USER-702BDB4884C4",
+      "elapsed_ms": 5347.365,
+      "stage_ms": {
+        "source_csv": 1346.316,
+        "candidate_selection": 1317.924,
+        "risk_inference_including_model_verification": 1828.991,
+        "matrix_csv": 3.905,
+        "compatibility_calculation": 0.036,
+        "feasibility_calls": 43.183,
+        "ranking_calls": 26.897,
+        "explanation_calls": 3.625,
+        "bounded_generation": 225.811
+      },
+      "stage_calls": {
+        "source_csv": 1,
+        "candidate_selection": 1,
+        "risk_inference_including_model_verification": 1,
+        "matrix_csv": 1,
+        "compatibility_calculation": 1,
+        "feasibility_calls": 138,
+        "ranking_calls": 138,
+        "explanation_calls": 138,
+        "bounded_generation": 1
+      },
+      "status": "search_limit_reached",
+      "search": {
+        "complete": false,
+        "candidate_limit_reached": true,
+        "node_limit_reached": false,
+        "max_candidates_per_service": 12,
+        "max_search_nodes": 5000,
+        "nodes_visited": 156,
+        "combinations_evaluated": 138,
+        "all_examined_combinations_validated": true,
+        "feasibility_priority": [
+          "PASS_IN_SIMULATION",
+          "VERIFICATION_REQUIRED"
+        ],
+        "selected_search_space_upper_bound": 144,
+        "minimum_possible_cost_lkr": 244874.21,
+        "top_k": 3,
+        "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+      },
+      "returned_packages": 3,
+      "combinations_evaluated": 138,
+      "candidate_counts": {
+        "Photography": 165,
+        "Decoration": 237
+      },
+      "selected_candidate_counts": {
+        "Photography": 12,
+        "Decoration": 12
+      },
+      "repeat": 2
+    },
+    {
+      "scenario": "corporate",
+      "event_id": "USER-793DE71C1C95",
+      "elapsed_ms": 11178.291,
+      "stage_ms": {
+        "source_csv": 1859.073,
+        "candidate_selection": 5563.995,
+        "risk_inference_including_model_verification": 1626.723,
+        "matrix_csv": 7.916,
+        "compatibility_calculation": 0.066,
+        "feasibility_calls": 36.023,
+        "ranking_calls": 3.056,
+        "explanation_calls": 1.949,
+        "bounded_generation": 251.114
+      },
+      "stage_calls": {
+        "source_csv": 1,
+        "candidate_selection": 1,
+        "risk_inference_including_model_verification": 1,
+        "matrix_csv": 1,
+        "compatibility_calculation": 1,
+        "feasibility_calls": 36,
+        "ranking_calls": 36,
+        "explanation_calls": 36,
+        "bounded_generation": 1
+      },
+      "status": "search_limit_reached",
+      "search": {
+        "complete": false,
+        "candidate_limit_reached": true,
+        "node_limit_reached": false,
+        "max_candidates_per_service": 12,
+        "max_search_nodes": 5000,
+        "nodes_visited": 39,
+        "combinations_evaluated": 36,
+        "all_examined_combinations_validated": true,
+        "feasibility_priority": [
+          "PASS_IN_SIMULATION",
+          "VERIFICATION_REQUIRED"
+        ],
+        "selected_search_space_upper_bound": 36,
+        "minimum_possible_cost_lkr": 371707.34,
+        "top_k": 3,
+        "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+      },
+      "returned_packages": 3,
+      "combinations_evaluated": 36,
+      "candidate_counts": {
+        "Photography": 165,
+        "Audio Visual": 3
+      },
+      "selected_candidate_counts": {
+        "Photography": 12,
+        "Audio Visual": 3
+      },
+      "cprofile_top30": "         2313764 function calls (2311338 primitive calls) in 11.154 seconds\n\n   Ordered by: cumulative time\n   List reduced from 1200 to 30 due to restriction <30>\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n        1    0.193    0.193   11.154   11.154 D:\\Vendor-Intelligence-System\\backend\\engine\\dynamic_package_service.py:16(generate_dynamic_packages)\n    114/6    0.008    0.000    9.309    1.551 D:\\Vendor-Intelligence-System\\research_data_v2\\pp1_task4_performance\\baseline_profile.py:61(wrapped)\n        1    0.050    0.050    5.564    5.564 D:\\Vendor-Intelligence-System\\backend\\engine\\candidate_selection.py:7(select_candidates_for_event)\n        3    0.000    0.000    3.972    1.324 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\series.py:4960(apply)\n        3    0.000    0.000    3.972    1.324 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\apply.py:1502(apply)\n        3    0.000    0.000    3.971    1.324 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\apply.py:1560(apply_standard)\n        3    0.000    0.000    3.959    1.320 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\base.py:996(_map_values)\n        3    0.513    0.171    3.959    1.320 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\algorithms.py:1637(map_array)\n        2    0.000    0.000    3.959    1.980 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\base.py:2725(map)\n   115098    1.985    0.000    3.445    0.000 D:\\Vendor-Intelligence-System\\backend\\engine\\candidate_selection.py:41(<lambda>)\n        3    0.000    0.000    3.179    1.060 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\io\\parsers\\readers.py:349(read_csv)\n        3    0.001    0.000    3.176    1.059 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\io\\parsers\\readers.py:258(_read)\n        3    0.000    0.000    3.130    1.043 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\io\\parsers\\readers.py:1934(read)\n        3    2.915    0.972    3.007    1.002 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\io\\parsers\\c_parser_wrapper.py:226(read)\n       12    0.017    0.001    2.004    0.167 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\strings\\accessor.py:134(wrapper)\n       12    0.000    0.000    1.965    0.164 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\string_.py:464(_str_map)\n       12    0.000    0.000    1.965    0.164 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\string_.py:557(_str_map_nan_semantics)\n       12    0.705    0.059    1.878    0.156 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\string_.py:517(_str_map_str_or_object)\n        1    0.000    0.000    1.859    1.859 D:\\Vendor-Intelligence-System\\backend\\engine\\package_data_loader.py:81(load_service_options)\n        6    0.000    0.000    1.789    0.298 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\strings\\accessor.py:2475(strip)\n        6    0.000    0.000    1.778    0.296 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\strings\\object_array.py:491(_str_strip)\n        1    0.002    0.002    1.620    1.620 D:\\Vendor-Intelligence-System\\backend\\engine\\risk_signals.py:56(load_risk_signals)\n   806808    1.156    0.000    1.156    0.000 {method 'strip' of 'str' objects}\n   345294    0.683    0.000    1.114    0.000 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\strings\\object_array.py:492(<lambda>)\n   118209    0.277    0.000    0.923    0.000 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\base.py:559(__iter__)\n   118234    0.578    0.000    0.647    0.000 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\_mixins.py:287(__getitem__)\n   460974    0.482    0.000    0.482    0.000 {method 'casefold' of 'str' objects}\n  491/469    0.002    0.000    0.396    0.001 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\dtypes\\missing.py:97(isna)\n  491/469    0.006    0.000    0.395    0.001 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\dtypes\\missing.py:180(_isna)\n      102    0.000    0.000    0.293    0.003 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\joblib\\parallel.py:1692(_get_outputs)\n\n\n",
+      "repeat": 1
+    },
+    {
+      "scenario": "corporate",
+      "event_id": "USER-B33BB35ED8B4",
+      "elapsed_ms": 5302.597,
+      "stage_ms": {
+        "source_csv": 1718.38,
+        "candidate_selection": 1531.753,
+        "risk_inference_including_model_verification": 1252.996,
+        "matrix_csv": 4.717,
+        "compatibility_calculation": 0.042,
+        "feasibility_calls": 5.846,
+        "ranking_calls": 1.196,
+        "explanation_calls": 0.872,
+        "bounded_generation": 45.153
+      },
+      "stage_calls": {
+        "source_csv": 1,
+        "candidate_selection": 1,
+        "risk_inference_including_model_verification": 1,
+        "matrix_csv": 1,
+        "compatibility_calculation": 1,
+        "feasibility_calls": 36,
+        "ranking_calls": 36,
+        "explanation_calls": 36,
+        "bounded_generation": 1
+      },
+      "status": "search_limit_reached",
+      "search": {
+        "complete": false,
+        "candidate_limit_reached": true,
+        "node_limit_reached": false,
+        "max_candidates_per_service": 12,
+        "max_search_nodes": 5000,
+        "nodes_visited": 39,
+        "combinations_evaluated": 36,
+        "all_examined_combinations_validated": true,
+        "feasibility_priority": [
+          "PASS_IN_SIMULATION",
+          "VERIFICATION_REQUIRED"
+        ],
+        "selected_search_space_upper_bound": 36,
+        "minimum_possible_cost_lkr": 371707.34,
+        "top_k": 3,
+        "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+      },
+      "returned_packages": 3,
+      "combinations_evaluated": 36,
+      "candidate_counts": {
+        "Photography": 165,
+        "Audio Visual": 3
+      },
+      "selected_candidate_counts": {
+        "Photography": 12,
+        "Audio Visual": 3
+      },
+      "repeat": 2
+    },
+    {
+      "scenario": "small",
+      "event_id": "USER-9C0F5270DBF9",
+      "elapsed_ms": 7845.627,
+      "stage_ms": {
+        "source_csv": 1531.661,
+        "candidate_selection": 2684.242,
+        "risk_inference_including_model_verification": 1632.406,
+        "matrix_csv": 6.048,
+        "compatibility_calculation": 0.017,
+        "feasibility_calls": 4.742,
+        "ranking_calls": 0.804,
+        "explanation_calls": 0.518,
+        "bounded_generation": 78.713
+      },
+      "stage_calls": {
+        "source_csv": 1,
+        "candidate_selection": 1,
+        "risk_inference_including_model_verification": 1,
+        "matrix_csv": 1,
+        "compatibility_calculation": 1,
+        "feasibility_calls": 12,
+        "ranking_calls": 12,
+        "explanation_calls": 12,
+        "bounded_generation": 1
+      },
+      "status": "search_limit_reached",
+      "search": {
+        "complete": false,
+        "candidate_limit_reached": true,
+        "node_limit_reached": false,
+        "max_candidates_per_service": 12,
+        "max_search_nodes": 5000,
+        "nodes_visited": 12,
+        "combinations_evaluated": 12,
+        "all_examined_combinations_validated": true,
+        "feasibility_priority": [
+          "PASS_IN_SIMULATION",
+          "VERIFICATION_REQUIRED"
+        ],
+        "selected_search_space_upper_bound": 12,
+        "minimum_possible_cost_lkr": 132945.89,
+        "top_k": 3,
+        "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+      },
+      "returned_packages": 3,
+      "combinations_evaluated": 12,
+      "candidate_counts": {
+        "Photography": 165
+      },
+      "selected_candidate_counts": {
+        "Photography": 12
+      },
+      "cprofile_top30": "         1486372 function calls (1484653 primitive calls) in 7.831 seconds\n\n   Ordered by: cumulative time\n   List reduced from 1199 to 30 due to restriction <30>\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n        1    0.209    0.209    7.831    7.831 D:\\Vendor-Intelligence-System\\backend\\engine\\dynamic_package_service.py:16(generate_dynamic_packages)\n     42/6    0.009    0.000    5.933    0.989 D:\\Vendor-Intelligence-System\\research_data_v2\\pp1_task4_performance\\baseline_profile.py:61(wrapped)\n        3    0.000    0.000    2.840    0.947 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\io\\parsers\\readers.py:349(read_csv)\n        3    0.000    0.000    2.839    0.946 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\io\\parsers\\readers.py:258(_read)\n        3    0.000    0.000    2.795    0.932 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\io\\parsers\\readers.py:1934(read)\n        3    2.609    0.870    2.702    0.901 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\io\\parsers\\c_parser_wrapper.py:226(read)\n        1    0.006    0.006    2.684    2.684 D:\\Vendor-Intelligence-System\\backend\\engine\\candidate_selection.py:7(select_candidates_for_event)\n        2    0.000    0.000    1.867    0.933 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\series.py:4960(apply)\n        2    0.000    0.000    1.867    0.933 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\apply.py:1502(apply)\n        2    0.000    0.000    1.867    0.933 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\apply.py:1560(apply_standard)\n        2    0.000    0.000    1.866    0.933 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\base.py:996(_map_values)\n        2    0.170    0.085    1.866    0.933 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\algorithms.py:1637(map_array)\n        1    0.000    0.000    1.866    1.866 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\base.py:2725(map)\n    57549    0.965    0.000    1.695    0.000 D:\\Vendor-Intelligence-System\\backend\\engine\\candidate_selection.py:41(<lambda>)\n        1    0.003    0.003    1.630    1.630 D:\\Vendor-Intelligence-System\\backend\\engine\\risk_signals.py:56(load_risk_signals)\n        1    0.000    0.000    1.532    1.532 D:\\Vendor-Intelligence-System\\backend\\engine\\package_data_loader.py:81(load_service_options)\n        8    0.003    0.000    1.452    0.182 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\strings\\accessor.py:134(wrapper)\n        8    0.000    0.000    1.426    0.178 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\string_.py:464(_str_map)\n        8    0.000    0.000    1.426    0.178 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\string_.py:557(_str_map_nan_semantics)\n        8    0.534    0.067    1.348    0.168 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\string_.py:517(_str_map_str_or_object)\n        4    0.000    0.000    1.239    0.310 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\strings\\accessor.py:2475(strip)\n        4    0.000    0.000    1.233    0.308 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\strings\\object_array.py:491(_str_strip)\n   118089    0.222    0.000    0.936    0.000 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\base.py:559(__iter__)\n   230196    0.478    0.000    0.788    0.000 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\strings\\object_array.py:492(<lambda>)\n   118101    0.635    0.000    0.714    0.000 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\arrays\\_mixins.py:287(__getitem__)\n   460608    0.603    0.000    0.603    0.000 {method 'strip' of 'str' objects}\n      102    0.000    0.000    0.328    0.003 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\joblib\\parallel.py:1692(_get_outputs)\n        2    0.000    0.000    0.321    0.160 C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.2288.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\pool.py:500(_wait_for_updates)\n   230296    0.299    0.000    0.299    0.000 {method 'casefold' of 'str' objects}\n        4    0.000    0.000    0.211    0.053 D:\\Vendor-Intelligence-System\\venv\\Lib\\site-packages\\pandas\\core\\strings\\accessor.py:4212(casefold)\n\n\n",
+      "repeat": 1
+    },
+    {
+      "scenario": "small",
+      "event_id": "USER-149F8242333E",
+      "elapsed_ms": 4517.584,
+      "stage_ms": {
+        "source_csv": 1285.71,
+        "candidate_selection": 897.823,
+        "risk_inference_including_model_verification": 1675.326,
+        "matrix_csv": 3.686,
+        "compatibility_calculation": 0.012,
+        "feasibility_calls": 8.422,
+        "ranking_calls": 0.714,
+        "explanation_calls": 0.342,
+        "bounded_generation": 35.458
+      },
+      "stage_calls": {
+        "source_csv": 1,
+        "candidate_selection": 1,
+        "risk_inference_including_model_verification": 1,
+        "matrix_csv": 1,
+        "compatibility_calculation": 1,
+        "feasibility_calls": 12,
+        "ranking_calls": 12,
+        "explanation_calls": 12,
+        "bounded_generation": 1
+      },
+      "status": "search_limit_reached",
+      "search": {
+        "complete": false,
+        "candidate_limit_reached": true,
+        "node_limit_reached": false,
+        "max_candidates_per_service": 12,
+        "max_search_nodes": 5000,
+        "nodes_visited": 12,
+        "combinations_evaluated": 12,
+        "all_examined_combinations_validated": true,
+        "feasibility_priority": [
+          "PASS_IN_SIMULATION",
+          "VERIFICATION_REQUIRED"
+        ],
+        "selected_search_space_upper_bound": 12,
+        "minimum_possible_cost_lkr": 132945.89,
+        "top_k": 3,
+        "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+      },
+      "returned_packages": 3,
+      "combinations_evaluated": 12,
+      "candidate_counts": {
+        "Photography": 165
+      },
+      "selected_candidate_counts": {
+        "Photography": 12
+      },
+      "repeat": 2
+    }
+  ],
+  "summary": {
+    "wedding": {
+      "median_ms": 17882.9585,
+      "min_ms": 5347.365,
+      "max_ms": 30418.552
+    },
+    "corporate": {
+      "median_ms": 8240.444,
+      "min_ms": 5302.597,
+      "max_ms": 11178.291
+    },
+    "small": {
+      "median_ms": 6181.6055,
+      "min_ms": 4517.584,
+      "max_ms": 7845.627
+    }
+  }
+}

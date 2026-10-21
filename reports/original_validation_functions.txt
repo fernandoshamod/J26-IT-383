@@ -1,0 +1,94 @@
+
+===== validate_vendor_availability =====
+
+def validate_vendor_availability(event, business_id, availability_df):
+    records = availability_df.loc[
+        (availability_df["event_id"] == event["event_id"])
+        & (availability_df["business_id"] == business_id)
+        & (availability_df["event_date"].astype(str)
+           == str(event["event_date"]))
+    ]
+
+    if records.empty:
+        return {
+            "availability_result": "Verification Required",
+            "reason": "No matching event-specific availability record"
+        }
+
+    event_start = str(event["start_time"])
+    event_end = str(event["end_time"])
+
+    covering = records.loc[
+        (records["checked_interval_start"].astype(str) <= event_start)
+        & (records["checked_interval_end"].astype(str) >= event_end)
+    ]
+
+    if covering.empty:
+        return {
+            "availability_result": "Verification Required",
+            "reason": "Event time interval is not fully covered"
+        }
+
+    statuses = set(covering["availability_status"].astype(str))
+
+    if "unavailable" in statuses:
+        decision = "Fail"
+    elif statuses == {"available"}:
+        decision = "Simulated Available"
+    else:
+        decision = "Verification Required"
+
+    return {
+        "availability_result": decision,
+        "recorded_statuses": sorted(statuses),
+        "data_origin": "synthetic",
+        "is_vendor_confirmed": False
+    }
+
+===== validate_vendor_collaboration =====
+
+def validate_vendor_collaboration(
+    event_id, vendor_a_id, vendor_b_id, collaboration_df
+):
+    if vendor_a_id == vendor_b_id:
+        return {
+            "conflict_result": "Verification Required",
+            "reason": "Same vendor selected twice; requires role validation"
+        }
+
+    records = collaboration_df.loc[
+        (collaboration_df["event_id"] == event_id)
+        & (
+            (
+                (collaboration_df["vendor_a_id"] == vendor_a_id)
+                & (collaboration_df["vendor_b_id"] == vendor_b_id)
+            )
+            |
+            (
+                (collaboration_df["vendor_a_id"] == vendor_b_id)
+                & (collaboration_df["vendor_b_id"] == vendor_a_id)
+            )
+        )
+    ]
+
+    if records.empty:
+        return {
+            "conflict_result": "Verification Required",
+            "reason": "No event-specific collaboration evidence"
+        }
+
+    labels = set(records["simulated_conflict"].dropna())
+
+    if 1 in labels:
+        decision = "Simulated Conflict Detected"
+    elif labels == {0}:
+        decision = "No Conflict in Simulation"
+    else:
+        decision = "Verification Required"
+
+    return {
+        "conflict_result": decision,
+        "recorded_labels": sorted(labels),
+        "data_origin": "synthetic",
+        "is_actual_collaboration": False
+    }

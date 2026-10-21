@@ -1,0 +1,56 @@
+
+FUNCTION: generate_packages_for_event
+STATUS: FOUND
+SIGNATURE: (selected_event, selected_services, candidate_groups)
+  product: type
+  validate_service_option_lkr: FUNCTION
+
+FUNCTION: validate_package_feasibility_v3_indexed
+STATUS: FOUND
+SIGNATURE: (event, package_options)
+  check_multi_service_vendor_capability: FUNCTION
+  copy: MODULE
+  validate_package_feasibility_v2_indexed: FUNCTION
+
+FUNCTION: validate_package_feasibility_v2_indexed
+STATUS: FOUND
+SIGNATURE: (event, package_options)
+  validate_package_feasibility_indexed: FUNCTION
+  validate_package_structure: FUNCTION
+
+FUNCTION: validate_package_structure
+STATUS: FOUND
+SIGNATURE: (event, package_options)
+  Counter: type
+
+FUNCTION: validate_service_option_lkr
+STATUS: FOUND
+SIGNATURE: (option, guest_count, duration_hours, budget_lkr)
+  USD_TO_LKR: float
+  copy: MODULE
+  validate_service_option: FUNCTION
+
+FUNCTION: validate_service_option
+STATUS: FOUND
+SIGNATURE: (option, guest_count, duration_hours, budget)
+  pd: MODULE
+
+FUNCTION: validate_vendor_availability_indexed
+STATUS: FOUND
+SIGNATURE: (event, business_id)
+  availability_index: defaultdict
+
+FUNCTION: validate_vendor_collaboration_indexed
+STATUS: FOUND
+SIGNATURE: (event_id, vendor_a_id, vendor_b_id)
+  collaboration_index: defaultdict
+  pd: MODULE
+
+FUNCTION: check_multi_service_vendor_capability
+STATUS: FOUND
+SIGNATURE: (package_options)
+  defaultdict: type
+
+FUNCTION: explain_v3_validation
+STATUS: FOUND
+SIGNATURE: (result)

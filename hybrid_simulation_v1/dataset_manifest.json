@@ -1,0 +1,62 @@
+{
+  "version": "simulation-v1",
+  "seed": 42,
+  "source": "D:\\Vendor-Intelligence-System\\vendor_recommendation_dataset_ids_checked.csv",
+  "source_sha256": "47d380f2972eb9377610c7587b246835cdd0475492ee9518be6044b9e354d392",
+  "rows": {
+    "real_vendor_profiles.csv": 18430,
+    "synthetic_service_options.csv": 57549,
+    "synthetic_event_requirements.csv": 30,
+    "synthetic_availability.csv": 191,
+    "synthetic_collaboration_scenarios.csv": 330,
+    "hybrid_vendor_service_dataset.csv": 57549,
+    "field_provenance.csv": 51
+  },
+  "price_assumptions": {
+    "Catering": [
+      "per_person",
+      15,
+      65
+    ],
+    "Photography": [
+      "fixed_package",
+      400,
+      2200
+    ],
+    "Decoration": [
+      "fixed_package",
+      300,
+      2500
+    ],
+    "Entertainment": [
+      "per_hour",
+      80,
+      350
+    ],
+    "Audio Visual": [
+      "fixed_package",
+      250,
+      1800
+    ],
+    "Equipment Rental": [
+      "fixed_package",
+      150,
+      1400
+    ],
+    "Event Planning": [
+      "fixed_package",
+      400,
+      2500
+    ]
+  },
+  "limitations": [
+    "Not a verified complete real-world dataset.",
+    "USD is a simulation currency, not a confirmed vendor quotation currency.",
+    "Synthetic prices, capacities, service areas, backup and availability are NOT vendor facts.",
+    "Synthetic collaboration rows are NOT evidence these vendors worked together.",
+    "Risk labels and vendor scores in the real input are derived, not operational-risk ground truth.",
+    "No venue, safety, tax, travel-fee or actual scheduling validation.",
+    "Random synthetic outcomes are only pipeline tests; not meaningful real-world ML evaluation.",
+    "No actual vendor-specific free-text inclusions are supplied."
+  ]
+}

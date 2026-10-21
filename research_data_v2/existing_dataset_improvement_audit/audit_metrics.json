@@ -1,0 +1,113 @@
+{
+  "inventory_files": 113,
+  "live_files": [
+    "hybrid_simulation_v1/synthetic_service_options.csv",
+    "hybrid_simulation_v1/real_vendor_profiles.csv",
+    "models/vendor_risk_random_forest.pkl",
+    "vendor_compatibility_matrix.csv",
+    "hybrid_simulation_v1/synthetic_event_requirements.csv",
+    "hybrid_simulation_v1/synthetic_availability.csv",
+    "hybrid_simulation_v1/synthetic_collaboration_scenarios.csv"
+  ],
+  "profile_rows": 18430,
+  "option_rows": 57549,
+  "service_names": [
+    "Audio Visual",
+    "Catering",
+    "Decoration",
+    "Entertainment",
+    "Equipment Rental",
+    "Event Planning",
+    "Photography"
+  ],
+  "location_count": 704,
+  "cities_at_least_3": 213,
+  "cities_at_least_5": 52,
+  "cities_all_7": 7,
+  "model_hash_expected": "4eed156cfdf677b992b8c36350c21c968d7cb4d532a8afd302ca1b697aea3e6a",
+  "model_loaded": true,
+  "model_features": [
+    "stars",
+    "review_count",
+    "collected_review_count",
+    "mean_review_rating",
+    "rating_std"
+  ],
+  "feature_complete_profiles": 18430,
+  "feature_incomplete_profiles": 0,
+  "sample_predictions": [
+    "Low",
+    "Medium",
+    "Medium",
+    "Low",
+    "Low"
+  ],
+  "rule_derived_labels": {
+    "Medium": 13511,
+    "High": 2881,
+    "Low": 2038
+  },
+  "availability_rows": 191,
+  "availability_event_id_prefixes": {
+    "SIMEVT": 191
+  },
+  "availability_statuses": {
+    "available": 121,
+    "unavailable": 56,
+    "unknown": 14
+  },
+  "availability_date_min": "2027-01-01",
+  "availability_date_max": "2027-03-29",
+  "availability_interval_top": [
+    {
+      "start": "14:00",
+      "end": "18:00",
+      "rows": 191
+    }
+  ],
+  "collaboration_rows": 330,
+  "synthetic_option_origin_counts": {
+    "synthetic": 57549
+  },
+  "profile_source_categories": {
+    "Catering": 15836,
+    "Event Planning": 758,
+    "Decoration": 625,
+    "Photography": 403,
+    "Catering; Event Planning": 223,
+    "Decoration; Event Planning": 185,
+    "Entertainment": 63,
+    "Equipment Rental": 61,
+    "Catering; Decoration": 56,
+    "Equipment Rental; Event Planning": 53,
+    "Entertainment; Event Planning": 40,
+    "Event Planning; Photography": 29,
+    "Entertainment; Photography": 13,
+    "Catering; Equipment Rental; Event Planning": 11,
+    "Entertainment; Equipment Rental; Event Planning": 10,
+    "Equipment Rental; Photography": 7,
+    "Entertainment; Equipment Rental": 7,
+    "Decoration; Equipment Rental; Event Planning": 7,
+    "Audio Visual; Entertainment; Equipment Rental; Event Planning": 5,
+    "Catering; Equipment Rental": 5,
+    "Catering; Entertainment": 4,
+    "Equipment Rental; Event Planning; Photography": 3,
+    "Catering; Photography": 3,
+    "Catering; Decoration; Event Planning": 3,
+    "Entertainment; Event Planning; Photography": 2,
+    "Decoration; Entertainment; Event Planning": 2,
+    "Audio Visual; Equipment Rental": 2,
+    "Audio Visual; Equipment Rental; Photography": 2,
+    "Entertainment; Equipment Rental; Photography": 2,
+    "Audio Visual; Catering; Entertainment; Equipment Rental; Event Planning": 1,
+    "Entertainment; Equipment Rental; Event Planning; Photography": 1,
+    "Audio Visual; Equipment Rental; Event Planning": 1,
+    "Catering; Decoration; Equipment Rental; Event Planning": 1,
+    "Decoration; Entertainment; Equipment Rental": 1,
+    "Audio Visual; Equipment Rental; Event Planning; Photography": 1,
+    "Decoration; Entertainment; Equipment Rental; Event Planning": 1,
+    "Catering; Entertainment; Equipment Rental; Event Planning": 1,
+    "Catering; Entertainment; Event Planning; Photography": 1,
+    "Decoration; Equipment Rental": 1
+  }
+}

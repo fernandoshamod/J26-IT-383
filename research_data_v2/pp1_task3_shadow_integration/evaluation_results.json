@@ -1,0 +1,265 @@
+{
+  "evaluated_at_utc": "2026-10-17T09:27:45.426715+00:00",
+  "data_class": "SYNTHETIC_TEST",
+  "scenario_count": 2,
+  "fresh_user_event_count": 2,
+  "packages_examined": 6,
+  "packages_with_supported_conflicts": 0,
+  "packages_requiring_verification": 6,
+  "missing_evidence_frequency_by_package": {
+    "availability": 6,
+    "option_schedule": 6,
+    "resource_capacity": 6,
+    "resource_requirements": 6,
+    "teardown_duration": 6,
+    "vendor_pair_evidence": 6
+  },
+  "mapping_failure_count": 0,
+  "assessment_disagreement_count": 0,
+  "adapter_total_ms": 2.926,
+  "adapter_mean_ms": 0.488,
+  "evaluation_wall_seconds": 21.089,
+  "production_and_task2_hashes_unchanged_during_run": true,
+  "task1_inventory_hashes": [
+    {
+      "path": "dataset/yelp_business_1000.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "dataset/yelp_reviews_1000.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "data/cleaned/vendor_profiles_missingness_checked.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "hybrid_simulation_v1/real_vendor_profiles.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "hybrid_simulation_v1/synthetic_service_options.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "hybrid_simulation_v1/synthetic_event_requirements.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "hybrid_simulation_v1/synthetic_availability.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "hybrid_simulation_v1/synthetic_collaboration_scenarios.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "hybrid_simulation_v1/hybrid_vendor_service_dataset.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "hybrid_simulation_v1/field_provenance.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "vendor_compatibility_matrix.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "vendor_risk_dataset.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "vendor_availability.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "vendor_service_details.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "event_requirements.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "venue_constraints.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "models/vendor_risk_random_forest.pkl",
+      "matches_task1": true
+    },
+    {
+      "path": "vendor_risk_model.pkl",
+      "matches_task1": true
+    },
+    {
+      "path": "research_evaluation/evaluation_results.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "research_evaluation/baseline_comparison.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "research_evaluation/ranking_sensitivity.csv",
+      "matches_task1": true
+    },
+    {
+      "path": "research_evaluation/evaluation_summary.json",
+      "matches_task1": true
+    }
+  ],
+  "events": [
+    {
+      "scenario": 1,
+      "event_id": "USER-C1D842C93D68",
+      "required_services": [
+        "Photography",
+        "Decoration"
+      ],
+      "generation_status": "search_limit_reached",
+      "generated_packages_examined": 3,
+      "generation_ms": 15951.93,
+      "search": {
+        "complete": false,
+        "candidate_limit_reached": true,
+        "node_limit_reached": false,
+        "max_candidates_per_service": 12,
+        "max_search_nodes": 5000,
+        "nodes_visited": 156,
+        "combinations_evaluated": 138,
+        "all_examined_combinations_validated": true,
+        "feasibility_priority": [
+          "PASS_IN_SIMULATION",
+          "VERIFICATION_REQUIRED"
+        ],
+        "selected_search_space_upper_bound": 144,
+        "minimum_possible_cost_lkr": 244874.21,
+        "top_k": 3,
+        "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+      }
+    },
+    {
+      "scenario": 2,
+      "event_id": "USER-AA4E3651F79E",
+      "required_services": [
+        "Photography",
+        "Audio Visual"
+      ],
+      "generation_status": "search_limit_reached",
+      "generated_packages_examined": 3,
+      "generation_ms": 5133.67,
+      "search": {
+        "complete": false,
+        "candidate_limit_reached": true,
+        "node_limit_reached": false,
+        "max_candidates_per_service": 12,
+        "max_search_nodes": 5000,
+        "nodes_visited": 39,
+        "combinations_evaluated": 36,
+        "all_examined_combinations_validated": true,
+        "feasibility_priority": [
+          "PASS_IN_SIMULATION",
+          "VERIFICATION_REQUIRED"
+        ],
+        "selected_search_space_upper_bound": 36,
+        "minimum_possible_cost_lkr": 371707.34,
+        "top_k": 3,
+        "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+      }
+    }
+  ],
+  "packages": [
+    {
+      "scenario": 1,
+      "event_id": "USER-C1D842C93D68",
+      "package_id": "PKG-0001",
+      "vendor_ids": "FQ_QUyrwtnaEdxUxruZkXg;_t_UwNkwAinJSljDDYvnoQ",
+      "option_ids": "SIMOPT-000111-B;SIMOPT-001022-S",
+      "existing_feasibility_status": "VERIFICATION_REQUIRED",
+      "existing_ranking_score": 84.7786,
+      "shadow_status": "VERIFICATION_REQUIRED",
+      "supported_conflicts": 0,
+      "pending_checks": 6,
+      "missing_evidence_categories": "availability;option_schedule;resource_capacity;resource_requirements;teardown_duration;vendor_pair_evidence",
+      "mapping_failures": 0,
+      "adapter_ms": 0.459
+    },
+    {
+      "scenario": 1,
+      "event_id": "USER-C1D842C93D68",
+      "package_id": "PKG-0002",
+      "vendor_ids": "FQ_QUyrwtnaEdxUxruZkXg;P7MHW-EtCdp3eVF2P_nX0A",
+      "option_ids": "SIMOPT-000111-B;SIMOPT-000547-B",
+      "existing_feasibility_status": "VERIFICATION_REQUIRED",
+      "existing_ranking_score": 83.8799,
+      "shadow_status": "VERIFICATION_REQUIRED",
+      "supported_conflicts": 0,
+      "pending_checks": 6,
+      "missing_evidence_categories": "availability;option_schedule;resource_capacity;resource_requirements;teardown_duration;vendor_pair_evidence",
+      "mapping_failures": 0,
+      "adapter_ms": 0.184
+    },
+    {
+      "scenario": 1,
+      "event_id": "USER-C1D842C93D68",
+      "package_id": "PKG-0003",
+      "vendor_ids": "FQ_QUyrwtnaEdxUxruZkXg;zwl7iLwHBTdkb5-0gNgGFg",
+      "option_ids": "SIMOPT-000111-B;SIMOPT-004737-B",
+      "existing_feasibility_status": "VERIFICATION_REQUIRED",
+      "existing_ranking_score": 79.205,
+      "shadow_status": "VERIFICATION_REQUIRED",
+      "supported_conflicts": 0,
+      "pending_checks": 6,
+      "missing_evidence_categories": "availability;option_schedule;resource_capacity;resource_requirements;teardown_duration;vendor_pair_evidence",
+      "mapping_failures": 0,
+      "adapter_ms": 0.157
+    },
+    {
+      "scenario": 2,
+      "event_id": "USER-AA4E3651F79E",
+      "package_id": "PKG-0001",
+      "vendor_ids": "FQ_QUyrwtnaEdxUxruZkXg;r6gFO9a67llZRUf_jagDjA",
+      "option_ids": "SIMOPT-000111-B;SIMOPT-001873-S",
+      "existing_feasibility_status": "VERIFICATION_REQUIRED",
+      "existing_ranking_score": 74.1317,
+      "shadow_status": "VERIFICATION_REQUIRED",
+      "supported_conflicts": 0,
+      "pending_checks": 6,
+      "missing_evidence_categories": "availability;option_schedule;resource_capacity;resource_requirements;teardown_duration;vendor_pair_evidence",
+      "mapping_failures": 0,
+      "adapter_ms": 0.263
+    },
+    {
+      "scenario": 2,
+      "event_id": "USER-AA4E3651F79E",
+      "package_id": "PKG-0002",
+      "vendor_ids": "FQ_QUyrwtnaEdxUxruZkXg;r6gFO9a67llZRUf_jagDjA",
+      "option_ids": "SIMOPT-000111-B;SIMOPT-001873-B",
+      "existing_feasibility_status": "VERIFICATION_REQUIRED",
+      "existing_ranking_score": 70.5899,
+      "shadow_status": "VERIFICATION_REQUIRED",
+      "supported_conflicts": 0,
+      "pending_checks": 6,
+      "missing_evidence_categories": "availability;option_schedule;resource_capacity;resource_requirements;teardown_duration;vendor_pair_evidence",
+      "mapping_failures": 0,
+      "adapter_ms": 0.423
+    },
+    {
+      "scenario": 2,
+      "event_id": "USER-AA4E3651F79E",
+      "package_id": "PKG-0003",
+      "vendor_ids": "jZIR4QJOswbgwYKRcJRTsQ;r6gFO9a67llZRUf_jagDjA",
+      "option_ids": "SIMOPT-000655-S;SIMOPT-001873-S",
+      "existing_feasibility_status": "VERIFICATION_REQUIRED",
+      "existing_ranking_score": 68.0286,
+      "shadow_status": "VERIFICATION_REQUIRED",
+      "supported_conflicts": 0,
+      "pending_checks": 6,
+      "missing_evidence_categories": "availability;option_schedule;resource_capacity;resource_requirements;teardown_duration;vendor_pair_evidence",
+      "mapping_failures": 0,
+      "adapter_ms": 1.44
+    }
+  ]
+}

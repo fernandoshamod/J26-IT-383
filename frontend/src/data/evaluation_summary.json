@@ -1,0 +1,261 @@
+{
+  "configuration": {
+    "currency": "LKR",
+    "max_candidates_per_service": 12,
+    "max_search_nodes": 5000,
+    "measured_request_warmups": 1,
+    "model_split_seed": 42,
+    "production_weights": {
+      "compatibility": 0.2,
+      "cost": 0.4,
+      "risk": 0.4
+    },
+    "sensitivity_weights": {
+      "balanced": {
+        "compatibility": 0.3333333333333333,
+        "cost": 0.3333333333333333,
+        "risk": 0.3333333333333333
+      },
+      "compatibility_focused": {
+        "compatibility": 0.7,
+        "cost": 0.2,
+        "risk": 0.1
+      },
+      "cost_focused": {
+        "compatibility": 0.1,
+        "cost": 0.7,
+        "risk": 0.2
+      },
+      "production": {
+        "compatibility": 0.2,
+        "cost": 0.4,
+        "risk": 0.4
+      },
+      "risk_focused": {
+        "compatibility": 0.1,
+        "cost": 0.2,
+        "risk": 0.7
+      }
+    },
+    "simulation_seed": 42,
+    "synthetic_usd_to_lkr": 330.777,
+    "top_k": 10
+  },
+  "evaluation_date_utc": "2026-10-16T17:59:20.910074+00:00",
+  "evaluation_execution_seconds": 142.10805559999426,
+  "input_manifest": {
+    "data/cleaned/vendor_profiles_missingness_checked.csv": {
+      "bytes": 23270305,
+      "rows": 18430,
+      "sha256": "adcd1ff530283b9f9965f243dadc345d768220ed5892764dfc7fce7fce12fc9a"
+    },
+    "hybrid_simulation_v1/real_vendor_profiles.csv": {
+      "bytes": 22894128,
+      "rows": 18430,
+      "sha256": "47d380f2972eb9377610c7587b246835cdd0475492ee9518be6044b9e354d392"
+    },
+    "hybrid_simulation_v1/synthetic_event_requirements.csv": {
+      "bytes": 4106,
+      "rows": 30,
+      "sha256": "fab7d42651b3f388be51fa6251695ed916746bd0a6ae479f1c433cdb123fa5d4"
+    },
+    "hybrid_simulation_v1/synthetic_service_options.csv": {
+      "bytes": 18639627,
+      "rows": 57549,
+      "sha256": "94d01e9bdcb48da9c15c5054c9a734ecd1b927d0ab42fb674a6a24a2d24659df"
+    },
+    "models/vendor_risk_random_forest.pkl": {
+      "bytes": 448937,
+      "sha256": "4eed156cfdf677b992b8c36350c21c968d7cb4d532a8afd302ca1b697aea3e6a"
+    },
+    "vendor_compatibility_matrix.csv": {
+      "bytes": 447,
+      "rows": 15,
+      "sha256": "de72d8483871813f1c18113b66a8882465e98f4ba51b31388fb7751edf741aba"
+    },
+    "vendor_risk_dataset.csv": {
+      "bytes": 21478484,
+      "rows": 18430,
+      "sha256": "c2541345862895114fd2795b3badfc42600d6d289d68fb3841bf07e743259ae6"
+    },
+    "vendor_risk_model.pkl": {
+      "bytes": 381185,
+      "sha256": "b496170292cb622c69af3908db94e67d3723e6905fc4cc3952e7c5a4a2c11ad7"
+    }
+  },
+  "method": "Measured FastAPI TestClient requests; identical feasible package pool captured by evaluation-only explanation hook and reranked.",
+  "metrics": {
+    "average_recommended_package_cost_difference_lkr": 77258.3173461538,
+    "average_recommended_packages_per_event": 5.771428571428571,
+    "baseline_proposed_overlap_event_count": 26,
+    "baseline_proposed_top_k_overlap_mean": 0.7115384615384616,
+    "budget_feasible_package_rate": 1.0,
+    "candidate_counts_per_service": {
+      "Catering": {
+        "max": 4701,
+        "mean": 212.2962962962963,
+        "min": 0,
+        "observations": 27
+      },
+      "Decoration": {
+        "max": 237,
+        "mean": 71.18181818181819,
+        "min": 3,
+        "observations": 11
+      },
+      "Entertainment": {
+        "max": 3,
+        "mean": 3.0,
+        "min": 3,
+        "observations": 3
+      },
+      "Equipment Rental": {
+        "max": 30,
+        "mean": 16.5,
+        "min": 3,
+        "observations": 2
+      },
+      "Event Planning": {
+        "max": 273,
+        "mean": 115.2,
+        "min": 6,
+        "observations": 5
+      },
+      "Photography": {
+        "max": 165,
+        "mean": 40.38461538461539,
+        "min": 3,
+        "observations": 13
+      }
+    },
+    "compatibility_known_package_count": 50,
+    "cost_difference_event_count": 26,
+    "evaluated_package_combinations": 4653,
+    "events_evaluated": 35,
+    "feasibility_status_counts": {
+      "FAIL": 0,
+      "PASS_IN_SIMULATION": 0,
+      "VERIFICATION_REQUIRED": 202
+    },
+    "feasibility_status_denominator": 202,
+    "max_execution_ms": 3600.1639000023715,
+    "mean_absolute_rank_shift_common": 1.7392496392496393,
+    "mean_execution_ms": 1986.3830771421947,
+    "mean_service_compatibility_score_known": 92.0,
+    "mean_vendor_risk_score_known": 70.3630301980198,
+    "median_execution_ms": 1964.3425999965984,
+    "min_execution_ms": 629.7368999803439,
+    "missing_risk_fraction": 0.0,
+    "multiservice_package_count": 100,
+    "p95_execution_ms": 3181.1220100091296,
+    "recommendation_yield_rate": 0.7428571428571429,
+    "recommended_package_count": 202,
+    "request_success_rate": 0.9714285714285714,
+    "required_service_coverage_rate": 1.0,
+    "risk_known_package_count": 202,
+    "risk_score_distribution_known": {
+      "count": 202,
+      "max": 100.0,
+      "median": 60.0,
+      "min": 20.0,
+      "p95": 100.0
+    },
+    "search_truncation_frequency": 0.5714285714285714,
+    "unknown_compatibility_fraction": 0.5,
+    "vendor_diversity_top_k": 0.25268817204301075,
+    "vendor_slot_count": 372
+  },
+  "model_evaluation": {
+    "accuracy": 1.0,
+    "caution": "The target was generated using related review features; excellent accuracy measures rule imitation, not real-world failure prediction.",
+    "class_support": {
+      "High": 576,
+      "Low": 408,
+      "Medium": 2702
+    },
+    "classes": [
+      "High",
+      "Low",
+      "Medium"
+    ],
+    "confusion_matrix": [
+      [
+        576,
+        0,
+        0
+      ],
+      [
+        0,
+        408,
+        0
+      ],
+      [
+        0,
+        0,
+        2702
+      ]
+    ],
+    "confusion_matrix_labels": [
+      "High",
+      "Low",
+      "Medium"
+    ],
+    "features": [
+      "stars",
+      "review_count",
+      "collected_review_count",
+      "mean_review_rating",
+      "rating_std"
+    ],
+    "independent_real_world_validation": false,
+    "label_origin": "deterministic_review_feature_rules",
+    "macro_f1": 1.0,
+    "macro_precision": 1.0,
+    "macro_recall": 1.0,
+    "model_sha256": "4eed156cfdf677b992b8c36350c21c968d7cb4d532a8afd302ca1b697aea3e6a",
+    "per_class": {
+      "High": {
+        "f1-score": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 576.0
+      },
+      "Low": {
+        "f1-score": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 408.0
+      },
+      "Medium": {
+        "f1-score": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 2702.0
+      }
+    },
+    "source": "data/cleaned/vendor_profiles_missingness_checked.csv",
+    "source_profile_rows_equal": true,
+    "source_sha256": "adcd1ff530283b9f9965f243dadc345d768220ed5892764dfc7fce7fce12fc9a",
+    "split_method": "sklearn train_test_split(test_size=0.20, random_state=42, stratify=y)",
+    "status": "reconstructed_notebook_holdout",
+    "test_count": 3686,
+    "train_count": 14744,
+    "weighted_f1": 1.0
+  },
+  "production_code_modified": false,
+  "runtime": {
+    "fastapi": "0.143.0",
+    "joblib": "1.6.0",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "pydantic": "2.14.1",
+    "python": "3.13.8",
+    "scikit_learn": "1.9.1",
+    "starlette": "1.8.0"
+  },
+  "scenario_counts": {
+    "additional_explicit_synthetic_scenarios": 5,
+    "existing_synthetic_event_templates": 30,
+    "total": 35
+  }
+}

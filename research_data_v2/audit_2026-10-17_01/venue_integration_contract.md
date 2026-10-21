@@ -1,0 +1,9 @@
+# Proposed interface with external Venue Suitability / Digital Twin component
+
+**Boundary:** This document proposes an integration contract for agreement with the venue team. PlanoVision does not implement or replace venue suitability here. The current USER-event feasibility checker marks venue suitability `VERIFICATION_REQUIRED` because it has no event-specific venue evidence.
+
+**Request (from recommendation engine):** `request_id`, `event_id`, event date, start/end and timezone, guest count, location, required service categories, selected `option_id` and `vendor_id` pairs, and option-level resource requirements (space m², power kW, setup/teardown minutes, load-in constraints) with provenance and missing flags. No inferred venue ID.
+
+**Response (from venue team):** `request_id`, `venue_id`, `venue_record_version`, `checked_at_utc`, `evidence_class`, per-constraint result `PASS_IN_SIMULATION | VERIFICATION_REQUIRED | FAIL`, reason code, observed value, required value, units, source reference, and aggregate status. Include capacity, indoor/outdoor, power, space, accessibility/load-in, scheduling, and any equipment conflicts **only if supported by source data**. An absent value yields `VERIFICATION_REQUIRED`, not PASS.
+
+**Integration behavior:** The recommendation service may exclude a package only for a documented FAIL and must retain missing evidence as pending. It must never equate a simulated venue pass with a confirmed booking. Version and timestamp prevent stale venue results from being presented as current. For repeat USER requests, venue results must be tied to the exact event/option set and should not borrow SIMEVT records. Define timeout/unavailable response as pending, and agree on IDs, units, ownership, test fixtures and error codes with the venue team before coding.

@@ -1,0 +1,29 @@
+{
+  "model_file": "D:\\Vendor-Intelligence-System\\models\\vendor_risk_random_forest.pkl",
+  "model_sha256": "4eed156cfdf677b992b8c36350c21c968d7cb4d532a8afd302ca1b697aea3e6a",
+  "model_type": "RandomForestClassifier",
+  "sklearn_version_runtime": "1.9.1",
+  "python_version_runtime": "3.13.8 (tags/v3.13.8:a15ae61, Oct  7 2025, 12:34:25) [MSC v.1944 64 bit (AMD64)]",
+  "n_estimators": 100,
+  "n_features_in": 5,
+  "features_in_order": [
+    "stars",
+    "review_count",
+    "collected_review_count",
+    "mean_review_rating",
+    "rating_std"
+  ],
+  "classes_in_order": [
+    "High",
+    "Low",
+    "Medium"
+  ],
+  "package_target": "risk_level",
+  "package_label_type": "rule-derived",
+  "training_rows": 18430,
+  "training_profile_rows_equal_in_order": true,
+  "complete_features_and_label": true,
+  "rule_label_agreement_rows": 18430,
+  "rule_label_disagreement_rows": 0,
+  "original_holdout_ids_persisted": false
+}

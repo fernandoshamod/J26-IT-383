@@ -1,0 +1,56 @@
+{
+  "method": "FastAPI TestClient POST /api/packages/generate-dynamic",
+  "request": {
+    "event_type": "Corporate",
+    "event_date": "2027-01-01",
+    "start_time": "14:00",
+    "end_time": "18:00",
+    "city": "Bensalem",
+    "state": "PA",
+    "guest_count": 50,
+    "budget_lkr": 1000000,
+    "required_services": [
+      "Catering",
+      "Entertainment"
+    ],
+    "top_k": 3
+  },
+  "http_status": 200,
+  "generation_status": "search_limit_reached",
+  "model_sha256_in_response": "4eed156cfdf677b992b8c36350c21c968d7cb4d532a8afd302ca1b697aea3e6a",
+  "risk_data_audit": {
+    "model_artifact": "models/vendor_risk_random_forest.pkl",
+    "model_sha256": "4eed156cfdf677b992b8c36350c21c968d7cb4d532a8afd302ca1b697aea3e6a",
+    "model_features": [
+      "stars",
+      "review_count",
+      "collected_review_count",
+      "mean_review_rating",
+      "rating_std"
+    ],
+    "label_origin": "rule_generated_from_review_features",
+    "independent_real_world_validation": false,
+    "requested_vendor_ids": 62,
+    "status_counts": {
+      "available": 62
+    }
+  },
+  "package_count": 3,
+  "sample_package_vendor_signals": [
+    {
+      "vendor_id": "tYqIKRQjDCywDVkbfUGSug",
+      "predicted_risk_level": "Low",
+      "rule_risk_level": "Low",
+      "risk_status": "available",
+      "risk_provenance": "random_forest_prediction_of_rule_generated_label"
+    },
+    {
+      "vendor_id": "tGM01cAHcM11Iq-7T_0etw",
+      "predicted_risk_level": "Medium",
+      "rule_risk_level": "Medium",
+      "risk_status": "available",
+      "risk_provenance": "random_forest_prediction_of_rule_generated_label"
+    }
+  ],
+  "response_predictions_match_direct_model": true
+}

@@ -1,0 +1,420 @@
+[
+  {
+    "verification_status": "PASS",
+    "identity_note": "Independent API request received a fresh USER ID; client edit lineage is verified separately in browser evidence.",
+    "id": "A_wedding_success",
+    "request": {
+      "event_date": "2026-11-26",
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "top_k": 3,
+      "event_type": "Wedding",
+      "city": "Philadelphia",
+      "state": "PA",
+      "guest_count": 50,
+      "budget_lkr": 1000000,
+      "required_services": [
+        "Photography",
+        "Decoration"
+      ]
+    },
+    "http_status": 200,
+    "elapsed_ms_local_testclient": 11498.19,
+    "event_id": "USER-49C347527B7A",
+    "generation_status": "search_limit_reached",
+    "candidate_counts": {
+      "Photography": 165,
+      "Decoration": 237
+    },
+    "selected_candidate_counts": {
+      "Photography": 12,
+      "Decoration": 12
+    },
+    "search": {
+      "complete": false,
+      "candidate_limit_reached": true,
+      "node_limit_reached": false,
+      "max_candidates_per_service": 12,
+      "max_search_nodes": 5000,
+      "nodes_visited": 156,
+      "combinations_evaluated": 138,
+      "all_examined_combinations_validated": true,
+      "feasibility_priority": [
+        "PASS_IN_SIMULATION",
+        "VERIFICATION_REQUIRED"
+      ],
+      "selected_search_space_upper_bound": 144,
+      "minimum_possible_cost_lkr": 244874.21,
+      "top_k": 3,
+      "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+    },
+    "diagnostic_reasons": [],
+    "service_stages": null,
+    "packages_returned": 3,
+    "top_package": {
+      "package_id": "PKG-0001",
+      "vendor_ids": [
+        "FQ_QUyrwtnaEdxUxruZkXg",
+        "_t_UwNkwAinJSljDDYvnoQ"
+      ],
+      "option_ids": [
+        "SIMOPT-000111-B",
+        "SIMOPT-001022-S"
+      ],
+      "total_cost_lkr": 305535.41,
+      "remaining_budget_lkr": 694464.59,
+      "feasibility_status": "VERIFICATION_REQUIRED"
+    },
+    "error_detail": null
+  },
+  {
+    "verification_status": "PASS",
+    "identity_note": "Independent API request received a fresh USER ID; client edit lineage is verified separately in browser evidence.",
+    "id": "B_corporate_success",
+    "request": {
+      "event_date": "2026-11-26",
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "top_k": 3,
+      "event_type": "Corporate",
+      "city": "Philadelphia",
+      "state": "PA",
+      "guest_count": 40,
+      "budget_lkr": 1000000,
+      "required_services": [
+        "Photography",
+        "Audio Visual"
+      ]
+    },
+    "http_status": 200,
+    "elapsed_ms_local_testclient": 4025.87,
+    "event_id": "USER-A055DD0A8181",
+    "generation_status": "search_limit_reached",
+    "candidate_counts": {
+      "Photography": 165,
+      "Audio Visual": 3
+    },
+    "selected_candidate_counts": {
+      "Photography": 12,
+      "Audio Visual": 3
+    },
+    "search": {
+      "complete": false,
+      "candidate_limit_reached": true,
+      "node_limit_reached": false,
+      "max_candidates_per_service": 12,
+      "max_search_nodes": 5000,
+      "nodes_visited": 39,
+      "combinations_evaluated": 36,
+      "all_examined_combinations_validated": true,
+      "feasibility_priority": [
+        "PASS_IN_SIMULATION",
+        "VERIFICATION_REQUIRED"
+      ],
+      "selected_search_space_upper_bound": 36,
+      "minimum_possible_cost_lkr": 371707.34,
+      "top_k": 3,
+      "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+    },
+    "diagnostic_reasons": [],
+    "service_stages": null,
+    "packages_returned": 3,
+    "top_package": {
+      "package_id": "PKG-0001",
+      "vendor_ids": [
+        "FQ_QUyrwtnaEdxUxruZkXg",
+        "r6gFO9a67llZRUf_jagDjA"
+      ],
+      "option_ids": [
+        "SIMOPT-000111-B",
+        "SIMOPT-001873-S"
+      ],
+      "total_cost_lkr": 371707.34,
+      "remaining_budget_lkr": 628292.66,
+      "feasibility_status": "VERIFICATION_REQUIRED"
+    },
+    "error_detail": null
+  },
+  {
+    "verification_status": "PASS",
+    "identity_note": "Independent API request received a fresh USER ID; client edit lineage is verified separately in browser evidence.",
+    "id": "C_belle_chasse_no_match",
+    "request": {
+      "event_date": "2026-11-26",
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "top_k": 3,
+      "event_type": "Corporate",
+      "city": "Belle Chasse",
+      "state": "LA",
+      "guest_count": 50,
+      "budget_lkr": 1000000,
+      "required_services": [
+        "Entertainment",
+        "Catering"
+      ]
+    },
+    "http_status": 200,
+    "elapsed_ms_local_testclient": 7130.034,
+    "event_id": "USER-6488A07A8B15",
+    "generation_status": "no_matching_candidates",
+    "candidate_counts": {
+      "Entertainment": 0,
+      "Catering": 27
+    },
+    "selected_candidate_counts": {
+      "Entertainment": 0,
+      "Catering": 12
+    },
+    "search": {
+      "complete": true,
+      "candidate_limit_reached": true,
+      "node_limit_reached": false,
+      "max_candidates_per_service": 12,
+      "max_search_nodes": 5000,
+      "nodes_visited": 0,
+      "combinations_evaluated": 0,
+      "all_examined_combinations_validated": true,
+      "feasibility_priority": [
+        "PASS_IN_SIMULATION",
+        "VERIFICATION_REQUIRED"
+      ],
+      "selected_search_space_upper_bound": 0,
+      "minimum_possible_cost_lkr": null,
+      "top_k": 3,
+      "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+    },
+    "diagnostic_reasons": [
+      {
+        "code": "NO_SERVICE_COVERAGE",
+        "service": "Entertainment",
+        "message": "No Entertainment option rows cover this location."
+      }
+    ],
+    "service_stages": {
+      "Entertainment": {
+        "source_rows": 462,
+        "location_rows": 0,
+        "event_type_rows": 0,
+        "capacity_eligible_rows": 0,
+        "priceable_rows": 0,
+        "individually_affordable_rows": 0,
+        "minimum_observed_eligible_cost_lkr": null
+      },
+      "Catering": {
+        "source_rows": 48435,
+        "location_rows": 27,
+        "event_type_rows": 27,
+        "capacity_eligible_rows": 27,
+        "priceable_rows": 27,
+        "individually_affordable_rows": 14,
+        "minimum_observed_eligible_cost_lkr": 311096.0
+      }
+    },
+    "packages_returned": 0,
+    "top_package": null,
+    "error_detail": null
+  },
+  {
+    "verification_status": "PASS",
+    "identity_note": "Independent API request received a fresh USER ID; client edit lineage is verified separately in browser evidence.",
+    "id": "D_edit_location_recovery",
+    "request": {
+      "event_date": "2026-11-26",
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "top_k": 3,
+      "event_type": "Corporate",
+      "city": "Bensalem",
+      "state": "PA",
+      "guest_count": 50,
+      "budget_lkr": 1000000,
+      "required_services": [
+        "Entertainment",
+        "Catering"
+      ]
+    },
+    "http_status": 200,
+    "elapsed_ms_local_testclient": 5495.302,
+    "event_id": "USER-01964EDB1143",
+    "generation_status": "search_limit_reached",
+    "candidate_counts": {
+      "Entertainment": 6,
+      "Catering": 180
+    },
+    "selected_candidate_counts": {
+      "Entertainment": 6,
+      "Catering": 12
+    },
+    "search": {
+      "complete": false,
+      "candidate_limit_reached": true,
+      "node_limit_reached": false,
+      "max_candidates_per_service": 12,
+      "max_search_nodes": 5000,
+      "nodes_visited": 54,
+      "combinations_evaluated": 33,
+      "all_examined_combinations_validated": true,
+      "feasibility_priority": [
+        "PASS_IN_SIMULATION",
+        "VERIFICATION_REQUIRED"
+      ],
+      "selected_search_space_upper_bound": 72,
+      "minimum_possible_cost_lkr": 667243.36,
+      "top_k": 3,
+      "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+    },
+    "diagnostic_reasons": [],
+    "service_stages": null,
+    "packages_returned": 3,
+    "top_package": {
+      "package_id": "PKG-0001",
+      "vendor_ids": [
+        "tGM01cAHcM11Iq-7T_0etw",
+        "tYqIKRQjDCywDVkbfUGSug"
+      ],
+      "option_ids": [
+        "SIMOPT-003950-B",
+        "SIMOPT-002318-B"
+      ],
+      "total_cost_lkr": 677662.86,
+      "remaining_budget_lkr": 322337.14,
+      "feasibility_status": "VERIFICATION_REQUIRED"
+    },
+    "error_detail": null
+  },
+  {
+    "verification_status": "PASS",
+    "identity_note": "Independent API request received a fresh USER ID; client edit lineage is verified separately in browser evidence.",
+    "id": "E_insufficient_budget",
+    "request": {
+      "event_date": "2026-11-26",
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "top_k": 3,
+      "event_type": "Corporate",
+      "city": "Bensalem",
+      "state": "PA",
+      "guest_count": 50,
+      "budget_lkr": 1,
+      "required_services": [
+        "Entertainment",
+        "Catering"
+      ]
+    },
+    "http_status": 200,
+    "elapsed_ms_local_testclient": 9568.997,
+    "event_id": "USER-4C6C73A39F0D",
+    "generation_status": "no_budget_feasible_combinations",
+    "candidate_counts": {
+      "Entertainment": 6,
+      "Catering": 180
+    },
+    "selected_candidate_counts": {
+      "Entertainment": 6,
+      "Catering": 12
+    },
+    "search": {
+      "complete": true,
+      "candidate_limit_reached": true,
+      "node_limit_reached": false,
+      "max_candidates_per_service": 12,
+      "max_search_nodes": 5000,
+      "nodes_visited": 0,
+      "combinations_evaluated": 0,
+      "all_examined_combinations_validated": true,
+      "feasibility_priority": [
+        "PASS_IN_SIMULATION",
+        "VERIFICATION_REQUIRED"
+      ],
+      "selected_search_space_upper_bound": 72,
+      "minimum_possible_cost_lkr": 667243.36,
+      "top_k": 3,
+      "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+    },
+    "diagnostic_reasons": [
+      {
+        "code": "BUDGET_INSUFFICIENT",
+        "service": "Entertainment",
+        "message": "No individually eligible Entertainment option fits the current LKR budget."
+      },
+      {
+        "code": "BUDGET_INSUFFICIENT",
+        "service": "Catering",
+        "message": "No individually eligible Catering option fits the current LKR budget."
+      },
+      {
+        "code": "BUDGET_INSUFFICIENT",
+        "message": "The sum of the cheapest individually eligible options exceeds the budget."
+      }
+    ],
+    "service_stages": {
+      "Entertainment": {
+        "source_rows": 462,
+        "location_rows": 6,
+        "event_type_rows": 6,
+        "capacity_eligible_rows": 6,
+        "priceable_rows": 6,
+        "individually_affordable_rows": 0,
+        "minimum_observed_eligible_cost_lkr": 397329.36
+      },
+      "Catering": {
+        "source_rows": 48435,
+        "location_rows": 180,
+        "event_type_rows": 180,
+        "capacity_eligible_rows": 180,
+        "priceable_rows": 180,
+        "individually_affordable_rows": 0,
+        "minimum_observed_eligible_cost_lkr": 269914.0
+      }
+    },
+    "packages_returned": 0,
+    "top_package": null,
+    "error_detail": null
+  },
+  {
+    "verification_status": "PASS",
+    "identity_note": "No USER event created for invalid request.",
+    "id": "F_invalid_zero_budget",
+    "request": {
+      "event_date": "2026-11-26",
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "top_k": 3,
+      "event_type": "Corporate",
+      "city": "Bensalem",
+      "state": "PA",
+      "guest_count": 50,
+      "budget_lkr": 0,
+      "required_services": [
+        "Entertainment",
+        "Catering"
+      ]
+    },
+    "http_status": 422,
+    "elapsed_ms_local_testclient": 6.465,
+    "event_id": null,
+    "generation_status": null,
+    "candidate_counts": null,
+    "selected_candidate_counts": null,
+    "search": null,
+    "diagnostic_reasons": [],
+    "service_stages": null,
+    "packages_returned": 0,
+    "top_package": null,
+    "error_detail": [
+      {
+        "type": "greater_than",
+        "loc": [
+          "body",
+          "budget_lkr"
+        ],
+        "msg": "Input should be greater than 0",
+        "input": 0,
+        "ctx": {
+          "gt": 0.0
+        }
+      }
+    ]
+  }
+]

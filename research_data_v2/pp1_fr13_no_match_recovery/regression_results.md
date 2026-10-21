@@ -1,0 +1,11 @@
+# Tests and build results
+
+- **Backend:** project venv Python 3.13.8, command: .\venv\Scripts\python.exe -m unittest discover -s tests -v. **51 tests ran; 51 passed; 0 failures/errors** in 93.668 seconds. This includes eight new no-match diagnostic tests and existing dynamic generation, feasibility, model/compatibility, final validation and research evaluation tests.
+- **Frontend lint:** npm run lint in frontend; exit code 0, no warnings in the final run.
+- **Frontend production build:** existing VS Code “PlanoVision frontend build” task, npm --prefix frontend run build; Vite 8.3.4, 31 modules transformed, build passed in 1.06 seconds in the final run after the text encoding correction.
+- **Editor diagnostics:** no reported errors in the seven touched source/test files at final check.
+- **Controlled TestClient demo:** six scenarios executed, all met their stated expected HTTP/result conditions. The local timings and actual USER IDs are in [demo_test_results.json](./demo_test_results.json). First request was slower than warmed requests; these are local test timings, not deployed/browser latency.
+- **Browser:** real zero-result recovery, cancel, location edit/regeneration, comparison and feasibility, budget edit, stale-state clearing all observed. The out-of-order response check used an explicitly mocked transport and passed; it does not measure backend timing. Mock HTTP 422 and 503 responses were displayed as INVALID_REQUEST and BACKEND_ERROR respectively, with retry left available.
+- **Integrity:** all 22 dataset/model files in the Task 1 inventory matched their recorded SHA-256 after tests/build. No original dataset or model artifact was rewritten.
+
+One attempted test-runner invocation reported “No tests found” for the unittest file, so the suite was executed directly with the configured project interpreter. A separate experimental browser route.fetch delay stalled and was canceled; it is **not** counted as a passing test. The later direct-fulfill mock race check passed.

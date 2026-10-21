@@ -1,0 +1,451 @@
+{
+  "business_rows": 150346,
+  "review_rows": 6990280,
+  "profile_rows": 18430,
+  "profile_distinct_ids": 18430,
+  "source_matched_ids": 18430,
+  "source_unmatched_ids": 0,
+  "source_field_differences": {
+    "latitude": 4618,
+    "longitude": 4588
+  },
+  "option_rows": 57549,
+  "option_distinct_ids": 57549,
+  "option_missing_profile_ids": 0,
+  "profiles_without_options": 0,
+  "locations": 704,
+  "locations_with_both": 54,
+  "scenarios": [
+    {
+      "city": "Bensalem",
+      "state": "PA",
+      "guests": 50,
+      "stages": {
+        "Catering": {
+          "location_rows": 180,
+          "location_vendors": 60,
+          "event_type_rows": 180,
+          "capacity_rows": 180,
+          "capacity_vendors": 60,
+          "priceable_rows": 180,
+          "priceable_vendors": 60,
+          "individually_affordable_rows": 111,
+          "min_cost_lkr": 269914.0,
+          "min_option": [
+            "5uHqdix18wYakIps4lM6Ow",
+            269914.0,
+            "SIMOPT-016336-B"
+          ],
+          "capacity_distribution": {
+            "500.0": 37,
+            "300.0": 28,
+            "200.0": 28,
+            "150.0": 33,
+            "50.0": 26,
+            "100.0": 28
+          }
+        },
+        "Entertainment": {
+          "location_rows": 6,
+          "location_vendors": 2,
+          "event_type_rows": 6,
+          "capacity_rows": 6,
+          "capacity_vendors": 2,
+          "priceable_rows": 6,
+          "priceable_vendors": 2,
+          "individually_affordable_rows": 6,
+          "min_cost_lkr": 198664.68,
+          "min_option": [
+            "tGM01cAHcM11Iq-7T_0etw",
+            198664.68,
+            "SIMOPT-003950-B"
+          ],
+          "capacity_distribution": {}
+        }
+      },
+      "generation": {
+        "status": "search_limit_reached",
+        "message": "Search limits were reached; results cover only the examined candidate options and combinations.",
+        "total_generated": 61,
+        "feasible_combinations_seen": 61,
+        "budget_rejected": 11,
+        "duplicate_vendor_rejected": 0,
+        "feasibility_counts": {
+          "PASS_IN_SIMULATION": 0,
+          "VERIFICATION_REQUIRED": 61,
+          "FAIL": 0
+        },
+        "missing_services": [],
+        "candidate_counts": {
+          "Catering": 180,
+          "Entertainment": 6
+        },
+        "known_risk_candidate_counts": {
+          "Catering": 180,
+          "Entertainment": 6
+        },
+        "selected_candidate_counts": {
+          "Catering": 12,
+          "Entertainment": 6
+        },
+        "search": {
+          "complete": false,
+          "candidate_limit_reached": true,
+          "node_limit_reached": false,
+          "max_candidates_per_service": 12,
+          "max_search_nodes": 5000,
+          "nodes_visited": 78,
+          "combinations_evaluated": 61,
+          "all_examined_combinations_validated": true,
+          "feasibility_priority": [
+            "PASS_IN_SIMULATION",
+            "VERIFICATION_REQUIRED"
+          ],
+          "selected_search_space_upper_bound": 72,
+          "minimum_possible_cost_lkr": 468578.68,
+          "top_k": 10,
+          "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+        },
+        "ranking_formula": "100 * weighted mean of available normalized components: cost = 1 - budget_utilization; risk = mean existing rule_risk_score / 100; compatibility = mean known service-pair base_score / 100 only when all pairs are known. Unknown components are omitted and weights renormalized.",
+        "configured_weights": {
+          "cost": 0.4,
+          "risk": 0.4,
+          "compatibility": 0.2
+        },
+        "package_count": 10
+      },
+      "diagnostics": null
+    },
+    {
+      "city": "Bensalem",
+      "state": "PA",
+      "guests": 500,
+      "stages": {
+        "Catering": {
+          "location_rows": 180,
+          "location_vendors": 60,
+          "event_type_rows": 180,
+          "capacity_rows": 37,
+          "capacity_vendors": 28,
+          "priceable_rows": 37,
+          "priceable_vendors": 28,
+          "individually_affordable_rows": 0,
+          "min_cost_lkr": 2803335.0,
+          "min_option": [
+            "tYqIKRQjDCywDVkbfUGSug",
+            2803335.0,
+            "SIMOPT-002318-B"
+          ],
+          "capacity_distribution": {
+            "500.0": 37,
+            "300.0": 28,
+            "200.0": 28,
+            "150.0": 33,
+            "50.0": 26,
+            "100.0": 28
+          }
+        },
+        "Entertainment": {
+          "location_rows": 6,
+          "location_vendors": 2,
+          "event_type_rows": 6,
+          "capacity_rows": 6,
+          "capacity_vendors": 2,
+          "priceable_rows": 6,
+          "priceable_vendors": 2,
+          "individually_affordable_rows": 6,
+          "min_cost_lkr": 198664.68,
+          "min_option": [
+            "tGM01cAHcM11Iq-7T_0etw",
+            198664.68,
+            "SIMOPT-003950-B"
+          ],
+          "capacity_distribution": {}
+        }
+      },
+      "generation": {
+        "status": "no_budget_feasible_combinations",
+        "message": "Even the cheapest eligible option per service exceeds the LKR budget.",
+        "total_generated": 0,
+        "feasible_combinations_seen": 0,
+        "budget_rejected": 0,
+        "duplicate_vendor_rejected": 0,
+        "feasibility_counts": {
+          "PASS_IN_SIMULATION": 0,
+          "VERIFICATION_REQUIRED": 0,
+          "FAIL": 0
+        },
+        "missing_services": [],
+        "candidate_counts": {
+          "Catering": 37,
+          "Entertainment": 6
+        },
+        "known_risk_candidate_counts": {
+          "Catering": 37,
+          "Entertainment": 6
+        },
+        "selected_candidate_counts": {
+          "Catering": 12,
+          "Entertainment": 6
+        },
+        "search": {
+          "complete": true,
+          "candidate_limit_reached": true,
+          "node_limit_reached": false,
+          "max_candidates_per_service": 12,
+          "max_search_nodes": 5000,
+          "nodes_visited": 0,
+          "combinations_evaluated": 0,
+          "all_examined_combinations_validated": true,
+          "feasibility_priority": [
+            "PASS_IN_SIMULATION",
+            "VERIFICATION_REQUIRED"
+          ],
+          "selected_search_space_upper_bound": 72,
+          "minimum_possible_cost_lkr": 3001999.68,
+          "top_k": 10,
+          "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+        },
+        "ranking_formula": "100 * weighted mean of available normalized components: cost = 1 - budget_utilization; risk = mean existing rule_risk_score / 100; compatibility = mean known service-pair base_score / 100 only when all pairs are known. Unknown components are omitted and weights renormalized.",
+        "configured_weights": {
+          "cost": 0.4,
+          "risk": 0.4,
+          "compatibility": 0.2
+        },
+        "package_count": 0
+      },
+      "diagnostics": {
+        "reasons": [
+          {
+            "code": "BUDGET_INSUFFICIENT",
+            "service": "Catering",
+            "message": "No individually eligible Catering option fits the current LKR budget."
+          },
+          {
+            "code": "BUDGET_INSUFFICIENT",
+            "message": "The sum of the cheapest individually eligible options exceeds the budget."
+          }
+        ],
+        "source_service_option_rows": 57549,
+        "location_matching_rows": 225,
+        "service_stages": {
+          "Catering": {
+            "source_rows": 48435,
+            "location_rows": 180,
+            "event_type_rows": 180,
+            "capacity_eligible_rows": 37,
+            "priceable_rows": 37,
+            "individually_affordable_rows": 0,
+            "minimum_observed_eligible_cost_lkr": 2803335.0
+          },
+          "Entertainment": {
+            "source_rows": 462,
+            "location_rows": 6,
+            "event_type_rows": 6,
+            "capacity_eligible_rows": 6,
+            "priceable_rows": 6,
+            "individually_affordable_rows": 6,
+            "minimum_observed_eligible_cost_lkr": 198664.68
+          }
+        },
+        "minimum_observed_package_lower_bound_lkr": 3001999.68,
+        "available_priceable_services_here": [
+          "Catering",
+          "Decoration",
+          "Entertainment",
+          "Equipment Rental",
+          "Event Planning"
+        ],
+        "suggested_locations": [
+          {
+            "city": "Belleville",
+            "state": "IL"
+          },
+          {
+            "city": "Berlin",
+            "state": "NJ"
+          },
+          {
+            "city": "Blackwood",
+            "state": "NJ"
+          },
+          {
+            "city": "Boise",
+            "state": "ID"
+          },
+          {
+            "city": "Boyertown",
+            "state": "PA"
+          }
+        ],
+        "suggestion_basis": "Same event type, guest-capacity rule and pricing validator; all requested categories have at least one priceable option. Budget, distinct vendors, feasibility and search limits can still prevent a package.",
+        "category_compatibility_candidates_removed": 0,
+        "category_compatibility_is_a_filter": false,
+        "search_attempted": false,
+        "data_origin": "synthetic_simulation",
+        "availability_status": "unverified",
+        "is_vendor_confirmed": false
+      }
+    },
+    {
+      "city": "Belle Chasse",
+      "state": "LA",
+      "guests": 50,
+      "stages": {
+        "Catering": {
+          "location_rows": 27,
+          "location_vendors": 9,
+          "event_type_rows": 27,
+          "capacity_rows": 27,
+          "capacity_vendors": 9,
+          "priceable_rows": 27,
+          "priceable_vendors": 9,
+          "individually_affordable_rows": 14,
+          "min_cost_lkr": 311096.0,
+          "min_option": [
+            "MkMTxMvbCPb4wehmDK05IQ",
+            311096.0,
+            "SIMOPT-011314-B"
+          ],
+          "capacity_distribution": {
+            "300.0": 8,
+            "50.0": 8,
+            "150.0": 2,
+            "500.0": 6,
+            "200.0": 3
+          }
+        },
+        "Entertainment": {
+          "location_rows": 0,
+          "location_vendors": 0,
+          "event_type_rows": 0,
+          "capacity_rows": 0,
+          "capacity_vendors": 0,
+          "priceable_rows": 0,
+          "priceable_vendors": 0,
+          "individually_affordable_rows": 0,
+          "min_cost_lkr": null,
+          "min_option": null,
+          "capacity_distribution": {}
+        }
+      },
+      "generation": {
+        "status": "no_matching_candidates",
+        "message": "No matching, priceable options for: Entertainment.",
+        "total_generated": 0,
+        "feasible_combinations_seen": 0,
+        "budget_rejected": 0,
+        "duplicate_vendor_rejected": 0,
+        "feasibility_counts": {
+          "PASS_IN_SIMULATION": 0,
+          "VERIFICATION_REQUIRED": 0,
+          "FAIL": 0
+        },
+        "missing_services": [
+          "Entertainment"
+        ],
+        "candidate_counts": {
+          "Catering": 27,
+          "Entertainment": 0
+        },
+        "known_risk_candidate_counts": {
+          "Catering": 27,
+          "Entertainment": 0
+        },
+        "selected_candidate_counts": {
+          "Catering": 12,
+          "Entertainment": 0
+        },
+        "search": {
+          "complete": true,
+          "candidate_limit_reached": true,
+          "node_limit_reached": false,
+          "max_candidates_per_service": 12,
+          "max_search_nodes": 5000,
+          "nodes_visited": 0,
+          "combinations_evaluated": 0,
+          "all_examined_combinations_validated": true,
+          "feasibility_priority": [
+            "PASS_IN_SIMULATION",
+            "VERIFICATION_REQUIRED"
+          ],
+          "selected_search_space_upper_bound": 0,
+          "minimum_possible_cost_lkr": null,
+          "top_k": 10,
+          "candidate_selection": "half lowest cost with distinct vendors, then highest existing rule-derived risk score with distinct vendors; fill remaining by cost"
+        },
+        "ranking_formula": "100 * weighted mean of available normalized components: cost = 1 - budget_utilization; risk = mean existing rule_risk_score / 100; compatibility = mean known service-pair base_score / 100 only when all pairs are known. Unknown components are omitted and weights renormalized.",
+        "configured_weights": {
+          "cost": 0.4,
+          "risk": 0.4,
+          "compatibility": 0.2
+        },
+        "package_count": 0
+      },
+      "diagnostics": {
+        "reasons": [
+          {
+            "code": "NO_SERVICE_COVERAGE",
+            "service": "Entertainment",
+            "message": "No Entertainment option rows cover this location."
+          }
+        ],
+        "source_service_option_rows": 57549,
+        "location_matching_rows": 27,
+        "service_stages": {
+          "Catering": {
+            "source_rows": 48435,
+            "location_rows": 27,
+            "event_type_rows": 27,
+            "capacity_eligible_rows": 27,
+            "priceable_rows": 27,
+            "individually_affordable_rows": 14,
+            "minimum_observed_eligible_cost_lkr": 311096.0
+          },
+          "Entertainment": {
+            "source_rows": 462,
+            "location_rows": 0,
+            "event_type_rows": 0,
+            "capacity_eligible_rows": 0,
+            "priceable_rows": 0,
+            "individually_affordable_rows": 0,
+            "minimum_observed_eligible_cost_lkr": null
+          }
+        },
+        "minimum_observed_package_lower_bound_lkr": null,
+        "available_priceable_services_here": [
+          "Catering"
+        ],
+        "suggested_locations": [
+          {
+            "city": "Belleville",
+            "state": "IL"
+          },
+          {
+            "city": "Bensalem",
+            "state": "PA"
+          },
+          {
+            "city": "Berlin",
+            "state": "NJ"
+          },
+          {
+            "city": "Blackwood",
+            "state": "NJ"
+          },
+          {
+            "city": "Boise",
+            "state": "ID"
+          }
+        ],
+        "suggestion_basis": "Same event type, guest-capacity rule and pricing validator; all requested categories have at least one priceable option. Budget, distinct vendors, feasibility and search limits can still prevent a package.",
+        "category_compatibility_candidates_removed": 0,
+        "category_compatibility_is_a_filter": false,
+        "search_attempted": false,
+        "data_origin": "synthetic_simulation",
+        "availability_status": "unverified",
+        "is_vendor_confirmed": false
+      }
+    }
+  ]
+}

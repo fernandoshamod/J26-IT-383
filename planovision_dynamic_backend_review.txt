@@ -1,0 +1,403 @@
+PLANOVISION DYNAMIC BACKEND REVIEW
+
+
+=================================================================
+backend/engine/candidate_selection.py
+=================================================================
+
+
+"""Event-specific candidate selection for PlanoVision."""
+
+import pandas as pd
+
+
+def select_candidates_for_event(
+    selected_event,
+    selected_services,
+    options_lkr
+):
+    """
+    Select service options using the original notebook rules.
+
+    Returns:
+        dict[str, pandas.DataFrame]
+    """
+
+    candidate_groups = {}
+
+    for service in selected_services:
+
+        group = options_lkr.loc[
+            options_lkr["service_category"].eq(service)
+            &
+            options_lkr["simulated_service_city"]
+            .astype(str)
+            .str.strip()
+            .str.casefold()
+            .eq(str(selected_event["city"]).strip().casefold())
+            &
+            options_lkr["simulated_service_state"]
+            .astype(str)
+            .str.strip()
+            .str.casefold()
+            .eq(str(selected_event["state"]).strip().casefold())
+            &
+            options_lkr["supported_event_types"]
+            .fillna("")
+            .apply(
+                lambda value:
+                str(selected_event["event_type"]).strip().casefold()
+                in [
+                    x.strip().casefold()
+                    for x in str(value).split(";")
+                ]
+            )
+            &
+            (
+                options_lkr["service_category"].ne("Catering")
+                |
+                options_lkr["max_guests"].ge(
+                    selected_event["guest_count"]
+                )
+            )
+        ].copy()
+
+        candidate_groups[service] = group
+
+    return candidate_groups
+
+
+=================================================================
+backend/engine/package_generator.py
+=================================================================
+
+"""Package generation using the verified notebook algorithm.
+
+Outputs are simulation candidates, not confirmed vendor bookings.
+"""
+
+import pandas as pd
+from itertools import product
+from .validation_helpers import validate_service_option_lkr
+
+
+def generate_packages_for_event(selected_event, selected_services, candidate_groups):
+    service_option_lists = [
+        candidate_groups[service].to_dict("records")
+        for service in selected_services
+    ]
+    package_candidates = []
+    total_generated = 0
+    duplicate_vendor_rejected = 0
+    budget_rejected = 0
+    for package in product(*service_option_lists):
+        total_generated += 1
+    
+        vendor_ids = [option["business_id"] for option in package]
+    
+        # Reject repeated vendors across services
+        if len(vendor_ids) != len(set(vendor_ids)):
+            duplicate_vendor_rejected += 1
+            continue
+    
+        costs = []
+    
+        for option in package:
+            result = validate_service_option_lkr(
+                option,
+                guest_count=int(selected_event["guest_count"]),
+                duration_hours=float(selected_event["duration_hours"]),
+                budget_lkr=float(selected_event["budget_lkr"])
+            )
+    
+            costs.append(result.get("estimated_cost_lkr", float("nan")))
+    
+        if any(pd.isna(cost) for cost in costs):
+            budget_rejected += 1
+            continue
+    
+        total_cost = round(sum(costs), 2)
+    
+        if total_cost > float(selected_event["budget_lkr"]):
+            budget_rejected += 1
+            continue
+    
+        package_candidates.append({
+            "package_id": f"PKG-{len(package_candidates)+1:04d}",
+            "option_ids": [option["service_option_id"] for option in package],
+            "vendor_ids": vendor_ids,
+            "total_cost_lkr": total_cost,
+            "remaining_budget_lkr": round(
+                float(selected_event["budget_lkr"]) - total_cost, 2
+            ),
+            "package_options": package
+        })
+    for package in sorted(
+        package_candidates,
+        key=lambda p: p["total_cost_lkr"]
+    )[:5]:
+        print(
+            package["package_id"],
+            "| Cost: Rs.",
+            f"{package['total_cost_lkr']:,.2f}",
+            "| Vendors:",
+            package["vendor_ids"]
+        )
+    return {
+        'packages': package_candidates,
+        'total_generated': total_generated,
+        'duplicate_vendor_rejected': duplicate_vendor_rejected,
+        'budget_rejected': budget_rejected
+    }
+
+
+=================================================================
+backend/engine/package_service.py
+=================================================================
+
+
+"""Service layer for synthetic package generation."""
+
+import contextlib
+import io
+
+from backend.engine.package_data_loader import load_package_data
+from backend.engine.candidate_selection import (
+    select_candidates_for_event
+)
+from backend.engine.package_generator import (
+    generate_packages_for_event
+)
+from backend.engine.json_serializer import to_json_safe
+
+
+def generate_packages_for_event_id(event_id: str):
+    """Generate packages for an existing synthetic event."""
+
+    if not isinstance(event_id, str) or not event_id.strip():
+        raise ValueError("event_id must be a non-empty string")
+
+    event_id = event_id.strip()
+
+    events_lkr, options_lkr = load_package_data()
+
+    matched_events = events_lkr.loc[
+        events_lkr["event_id"].astype(str) == event_id
+    ]
+
+    if matched_events.empty:
+        raise LookupError(f"Event not found: {event_id}")
+
+    selected_event = matched_events.iloc[0]
+
+    selected_services = [
+        service.strip()
+        for service in str(
+            selected_event["required_services"]
+        ).split(";")
+        if service.strip()
+    ]
+
+    if not selected_services:
+        raise ValueError(
+            f"Event has no required services: {event_id}"
+        )
+
+    candidate_groups = select_candidates_for_event(
+        selected_event,
+        selected_services,
+        options_lkr
+    )
+
+    # Suppress notebook-oriented diagnostic printing.
+    with contextlib.redirect_stdout(io.StringIO()):
+        generation_result = generate_packages_for_event(
+            selected_event,
+            selected_services,
+            candidate_groups
+        )
+
+    response = {
+        "event_id": event_id,
+        "required_services": selected_services,
+        "currency": "LKR",
+        "data_origin": "synthetic_simulation",
+        "is_vendor_confirmed": False,
+        "candidate_counts": {
+            service: len(candidate_groups.get(service, []))
+            for service in selected_services
+        },
+        "generation": generation_result
+    }
+
+    return to_json_safe(response)
+
+
+=================================================================
+backend/engine/package_data_loader.py
+=================================================================
+
+
+"""Load synthetic event and service-option data for PlanoVision."""
+
+from pathlib import Path
+
+import pandas as pd
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+SIMULATION_DIR = PROJECT_ROOT / "hybrid_simulation_v1"
+
+EVENT_FILE = SIMULATION_DIR / "synthetic_event_requirements.csv"
+OPTION_FILE = SIMULATION_DIR / "synthetic_service_options.csv"
+
+USD_TO_LKR = 330.777
+EXCHANGE_RATE_DATE = "2026-10-13"
+
+
+def load_package_data():
+    """Load datasets and reproduce notebook LKR transformations."""
+
+    if not EVENT_FILE.is_file():
+        raise FileNotFoundError(f"Event dataset not found: {EVENT_FILE}")
+
+    if not OPTION_FILE.is_file():
+        raise FileNotFoundError(f"Option dataset not found: {OPTION_FILE}")
+
+    events = pd.read_csv(EVENT_FILE)
+    options = pd.read_csv(OPTION_FILE)
+
+    required_event_columns = {
+        "event_id",
+        "event_type",
+        "city",
+        "state",
+        "guest_count",
+        "budget",
+        "required_services"
+    }
+
+    required_option_columns = {
+        "business_id",
+        "service_category",
+        "simulated_service_city",
+        "simulated_service_state",
+        "supported_event_types",
+        "max_guests",
+        "unit_price"
+    }
+
+    missing_event_columns = required_event_columns - set(events.columns)
+    missing_option_columns = required_option_columns - set(options.columns)
+
+    if missing_event_columns:
+        raise ValueError(
+            f"Missing event columns: {sorted(missing_event_columns)}"
+        )
+
+    if missing_option_columns:
+        raise ValueError(
+            f"Missing option columns: {sorted(missing_option_columns)}"
+        )
+
+    events_lkr = events.copy()
+    options_lkr = options.copy()
+
+    options_lkr["unit_price_lkr"] = (
+        options_lkr["unit_price"] * USD_TO_LKR
+    ).round(2)
+
+    events_lkr["budget_lkr"] = (
+        events_lkr["budget"] * USD_TO_LKR
+    ).round(2)
+
+    options_lkr["display_currency"] = "LKR"
+    events_lkr["display_currency"] = "LKR"
+
+    return events_lkr, options_lkr
+
+
+=================================================================
+backend/api/packages.py
+=================================================================
+
+
+"""FastAPI routes for synthetic package generation."""
+
+from fastapi import APIRouter, HTTPException
+
+from backend.schemas.package_request import (
+    PackageGenerationRequest
+)
+from backend.schemas.package_response import (
+    PackageGenerationResponse
+)
+from backend.engine.package_service import (
+    generate_packages_for_event_id
+)
+
+
+router = APIRouter(
+    prefix="/api/packages",
+    tags=["Package Generation"]
+)
+
+
+@router.post(
+    "/generate",
+    response_model=PackageGenerationResponse
+)
+def generate_event_packages(
+    request: PackageGenerationRequest
+):
+    """Generate packages for an existing synthetic event."""
+
+    try:
+        result = generate_packages_for_event_id(
+            request.event_id
+        )
+
+    except LookupError as exc:
+        raise HTTPException(
+            status_code=404,
+            detail=str(exc)
+        ) from exc
+
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=422,
+            detail=str(exc)
+        ) from exc
+
+    return result
+
+
+=================================================================
+backend/schemas/package_request.py
+=================================================================
+
+
+"""Request schema for synthetic package generation."""
+
+from pydantic import BaseModel, Field, field_validator
+
+
+class PackageGenerationRequest(BaseModel):
+    """Identify an existing synthetic event."""
+
+    event_id: str = Field(
+        ...,
+        min_length=1,
+        description="Existing synthetic event identifier"
+    )
+
+    @field_validator("event_id")
+    @classmethod
+    def validate_event_id(cls, value: str) -> str:
+        cleaned = value.strip()
+
+        if not cleaned:
+            raise ValueError("event_id cannot be empty")
+
+        return cleaned
+

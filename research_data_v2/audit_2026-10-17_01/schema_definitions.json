@@ -1,0 +1,143 @@
+{
+  "schema_version": "audit-v1",
+  "classification_enum": [
+    "REAL_PUBLIC",
+    "DERIVED",
+    "SYNTHETIC_TEST",
+    "UNKNOWN"
+  ],
+  "missing_policy": "Unknown is null/blank; never silently zero, false, or compatible.",
+  "cross_source_join_policy": "No automatic identity merge; review source IDs, address, geometry, category, and license.",
+  "entities": {
+    "vendors": {
+      "key": "vendor_id",
+      "foreign_keys": {
+        "provenance_id": "data_provenance.provenance_id"
+      },
+      "fields": {
+        "vendor_id": "string nonblank",
+        "source_system": "string nonblank",
+        "source_record_id": "string nonblank",
+        "name": "string nonblank",
+        "service_categories": "semicolon-separated strings or null",
+        "city": "string or null",
+        "state": "string or null",
+        "rating": "decimal 0..5 or null",
+        "review_count": "integer >=0 or null",
+        "evidence_class": "enum",
+        "provenance_id": "string or null"
+      }
+    },
+    "vendor_service_options": {
+      "key": "option_id",
+      "foreign_keys": {
+        "vendor_id": "vendors.vendor_id",
+        "provenance_id": "data_provenance.provenance_id"
+      },
+      "fields": {
+        "option_id": "string nonblank",
+        "vendor_id": "string nonblank",
+        "service_category": "string nonblank",
+        "pricing_basis": "per_person|per_hour|fixed_package|UNKNOWN",
+        "currency": "ISO 4217 or null",
+        "unit_price": "decimal >0 or null",
+        "max_guests": "integer >0 or null",
+        "price_evidence_status": "verified_quote|estimate|unknown",
+        "evidence_class": "enum"
+      }
+    },
+    "vendor_availability": {
+      "key": "availability_id",
+      "foreign_keys": {
+        "vendor_id": "vendors.vendor_id",
+        "provenance_id": "data_provenance.provenance_id"
+      },
+      "fields": {
+        "availability_id": "string nonblank",
+        "vendor_id": "string nonblank",
+        "start_at_utc": "ISO 8601 UTC or null",
+        "end_at_utc": "ISO 8601 UTC or null",
+        "availability_status": "available|unavailable|unknown",
+        "confirmation_status": "confirmed|unverified|unknown",
+        "evidence_class": "enum"
+      }
+    },
+    "vendor_resource_requirements": {
+      "key": "requirement_id",
+      "foreign_keys": {
+        "option_id": "vendor_service_options.option_id",
+        "provenance_id": "data_provenance.provenance_id"
+      },
+      "fields": {
+        "requirement_id": "string nonblank",
+        "option_id": "string nonblank",
+        "resource_type": "string nonblank",
+        "quantity": "decimal >=0 or null",
+        "unit": "string or null",
+        "evidence_class": "enum"
+      }
+    },
+    "vendor_pair_evidence": {
+      "key": "pair_evidence_id",
+      "foreign_keys": {
+        "vendor_a_id": "vendors.vendor_id",
+        "vendor_b_id": "vendors.vendor_id",
+        "provenance_id": "data_provenance.provenance_id"
+      },
+      "fields": {
+        "pair_evidence_id": "string nonblank",
+        "vendor_a_id": "string nonblank",
+        "vendor_b_id": "string nonblank different from vendor_a_id",
+        "evidence_type": "observed_collaboration|observed_conflict|attestation|simulation|unknown",
+        "pair_outcome": "compatible|conflict|unknown",
+        "verification_status": "verified|unverified|unknown",
+        "evidence_class": "enum"
+      }
+    },
+    "event_scenarios": {
+      "key": "scenario_id",
+      "foreign_keys": {
+        "provenance_id": "data_provenance.provenance_id"
+      },
+      "fields": {
+        "scenario_id": "string nonblank",
+        "event_type": "string nonblank",
+        "event_date": "ISO 8601 date",
+        "guest_count": "integer >0",
+        "budget": "decimal >0",
+        "currency": "ISO 4217",
+        "required_services": "semicolon-separated unique nonblank strings",
+        "evidence_class": "enum"
+      }
+    },
+    "conflict_test_cases": {
+      "key": "case_id",
+      "foreign_keys": {
+        "scenario_id": "event_scenarios.scenario_id",
+        "provenance_id": "data_provenance.provenance_id"
+      },
+      "fields": {
+        "case_id": "string nonblank",
+        "scenario_id": "string nonblank",
+        "selected_option_ids": "semicolon-separated vendor_service_options.option_id",
+        "expected_status": "PASS_IN_SIMULATION|VERIFICATION_REQUIRED|FAIL",
+        "adjudication_method": "string nonblank",
+        "evidence_class": "enum"
+      }
+    },
+    "data_provenance": {
+      "key": "provenance_id",
+      "foreign_keys": {},
+      "fields": {
+        "provenance_id": "string nonblank",
+        "source_title": "string nonblank",
+        "source_uri": "URI or local path",
+        "acquired_at_utc": "ISO 8601 UTC",
+        "source_file_sha256": "64 lowercase hex or null",
+        "license_or_permission": "string nonblank or UNKNOWN",
+        "transformation": "string or null",
+        "evidence_class": "enum"
+      }
+    }
+  }
+}
