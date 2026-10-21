@@ -765,8 +765,8 @@ python -m examples.scalability_test     # ~1-2 min; --quick for a smoke run
 ## Checking the ML yourself
 
 `notebooks/ml_walkthrough.ipynb` walks through the ML step by step on the
-real data files. Open it in VS Code and run the cells in order. Cells marked
-✅ stop with an error if anything is wrong. It checks:
+real data files. Open it in VS Code and run the cells in order. Check cells
+print PASS, and stop with an error if anything is wrong. It checks:
 
 - cleaning removed exactly the bad rows counted by hand;
 - vendor history uses only earlier events;
