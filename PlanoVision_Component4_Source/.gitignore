@@ -1,0 +1,61 @@
+# Research artifacts and source snapshots are stored outside the source repository.
+/data/
+/dataset_releases/
+/outputs/
+/reports/
+/work/
+/tmp/
+/output/
+/runtime/
+
+# Dependencies, caches and generated frontend output.
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.jupyter/
+frontend/dist/
+coverage/
+.coverage
+htmlcov/
+*.egg-info/
+
+# Personal configuration, credentials and operational files.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.sqlite
+*.sqlite3
+*.db
+*.sqlite3-*
+*.db-*
+*.log
+
+# Model binaries, archives and generated evidence.
+*.zip
+*.zip.sha256
+*.npz
+*.npy
+*.pkl
+*.pickle
+*.joblib
+*.pt
+*.pth
+*.onnx
+*.exe
+*.dll
+*.ipynb
+
+# Local editor and operating-system files.
+.DS_Store
+Thumbs.db
+.idea/

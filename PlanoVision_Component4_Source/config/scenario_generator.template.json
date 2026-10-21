@@ -1,0 +1,37 @@
+{
+  "version": "0.1.0-proposed",
+  "record_kind": "proposed_generator_design",
+  "seed": null,
+  "max_attempts_per_scenario": null,
+  "archetype_weights": {"Wedding": null, "Corporate": null},
+  "parameter_units": {
+    "guest_count": "persons", "seated_share": "fraction", "vip_seats": "seats",
+    "seats_per_table": "seats/table", "vip_tables": "tables", "event_hours": "hours",
+    "setup_hours": "hours", "clearance_hours": "hours", "venue_area_m2": "m2",
+    "excluded_area_m2": "m2", "area_per_standard_seat_m2": "m2/seat",
+    "area_per_vip_seat_m2": "m2/seat", "stage_width_m": "m", "stage_length_m": "m",
+    "service_area_m2": "m2", "circulation_area_m2": "m2", "capacity_persons": "persons",
+    "base_staff": "persons", "guests_per_staff": "persons/staff", "extra_general_staff": "persons",
+    "regular_paid_hours_limit": "hours", "overtime_multiplier": "multiplier",
+    "initial_budget_lkr": "LKR", "expected_receipts_lkr": "LKR",
+    "minimum_margin_points": "percentage points", "reserve_ratio": "fraction"
+  },
+  "profiles": {
+    "Wedding": {
+      "date_bounds": {"start": null, "end": null}, "parameter_domains": null,
+      "budget_policy": null, "retained_receipts": null,
+      "ancestry": {"venue_profile_id": null, "vendor_rate_card_id": null, "archetype_template_id": null}
+    },
+    "Corporate": {
+      "date_bounds": {"start": null, "end": null}, "parameter_domains": null,
+      "budget_policy": null, "retained_receipts": null,
+      "ancestry": {"venue_profile_id": null, "vendor_rate_card_id": null, "archetype_template_id": null}
+    }
+  },
+  "source_snapshot_hashes": null,
+  "code_snapshot_hashes": null,
+  "software_versions": {"python": null, "numpy": null},
+  "assumption_version": null,
+  "assumption_ids": null,
+  "outcome_design_label": "hypothetical_not_calibrated"
+}

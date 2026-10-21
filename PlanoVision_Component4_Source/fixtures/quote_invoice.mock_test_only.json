@@ -1,0 +1,14 @@
+{
+  "evidence_kind":"mock_test_only",
+  "relative_rate_tolerance":0.05,
+  "quote":[{
+    "line_id":"catering","service":"catering","unit":"person","currency":"dimensionless_score",
+    "quantity":100,"unit_rate":1,"date":"2026-10-01","tax_scope":"not_applicable_unitless_test",
+    "included_services":["food"],"bundle_id":null,"evidence_reference":"MOCK TEST ONLY — NOT A QUOTATION"
+  }],
+  "invoice":[{
+    "line_id":"catering","service":"catering","unit":"person","currency":"dimensionless_score",
+    "quantity":120,"unit_rate":1.1,"date":"2026-10-02","tax_scope":"not_applicable_unitless_test",
+    "included_services":["food"],"bundle_id":null,"evidence_reference":"MOCK TEST ONLY — NOT AN INVOICE"
+  }]
+}

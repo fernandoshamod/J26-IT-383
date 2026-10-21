@@ -1,0 +1,13 @@
+{
+  "version":"pp1-demo-cases.1.0",
+  "model_run":"lkr_research_v2_0_20261014",
+  "purpose":"Repeatable presentation examples, not new training data or observed events",
+  "draws":2000,
+  "seed":20261014,
+  "baseline":{"event_type":"Wedding","guests":150,"event_hours":5.0,"stage_width_m":4.0,"stage_length_m":6.0,"venue_area_m2":1000.0,"target_budget_lkr":2000000.0,"retained_receipts_lkr":2500000.0,"min_profit_margin_pct":15.0,"reference_id":"HOTEL-PUB-R008"},
+  "cases":[
+    {"id":"A_normal_change","title":"Add ten guests within planning limits","changes":{"guests":160},"expectation":"both_calculated_budget_reserve_and_margin_pass_cost_increases"},
+    {"id":"B_budget_margin_failure","title":"More guests, larger stage and longer event","changes":{"guests":230,"stage_width_m":6.0,"event_hours":9.0},"expectation":"alternative_calculated_budget_and_margin_fail_cost_increases"},
+    {"id":"C_invalid_spatial","title":"Too many guests for the supplied area","changes":{"guests":500,"venue_area_m2":400.0},"expectation":"alternative_blocked_spatially_infeasible_no_scores_or_delta"}
+  ]
+}

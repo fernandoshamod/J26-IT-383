@@ -1,0 +1,243 @@
+{
+  "explicit_authorization": false,
+  "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+  "code_sha256": {
+    "component4/unitless_pilot.py": "93cbc3cd045edbb2523bb073bfd06273a883f954fb50c7c7243b7181e04f4452",
+    "component4/unitless_experiment.py": "e2466ef4e91082fd2e84d567a181f83f4099a309d6fe54347272313bcfa2ea6a",
+    "component4/scenario_generator.py": "54ac34ac7460d2b9865248fa8dda976c6bf27d16e5a9916db3efa44c733bd49e",
+    "component4/dataset_design.py": "60bce94d393ff358a7757c7c4a2a94c97ea4b30fb59c1aec2f7e855d844f4949",
+    "component4/engine.py": "9811b95190a70734843d369577494214015cb479a92eec9e98807bdea7f8625a",
+    "component4/diagnostic_design.py": "cd0e1e4d289de0f4dade16ab45434b42c11c66660794fa7d9349c4783c51559d",
+    "work/minimal_pilot_authoring/export_unitless.mjs": "7b7efa5d38169c35d69e9c84cd43835c3e6306917f54907b0e4e2923044da38d"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5"
+  },
+  "scenario_count": 30,
+  "event_types": [
+    "Wedding",
+    "Corporate"
+  ],
+  "authorizer": null,
+  "date": null,
+  "evidence_ref": null,
+  "approvals": {
+    "A001": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A007": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A008": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A009": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A010": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A011": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A012": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A013": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A014": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A015": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A020": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A021": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A022": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A023": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A024": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A027": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A028": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A029": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "A033": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "numerical_parameters": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "methodology": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "sampling_split": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "acceptance_criteria": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    },
+    "tests_passed": {
+      "status": "pending",
+      "reviewer": null,
+      "role": null,
+      "date": null,
+      "rationale": null,
+      "evidence_ref": null,
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b"
+    }
+  }
+}

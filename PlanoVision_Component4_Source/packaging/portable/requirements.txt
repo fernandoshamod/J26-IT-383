@@ -1,0 +1,8 @@
+# Tested source runtime: Python 3.12.14 (64-bit). Use Python 3.12 x64.
+numpy==2.5.4
+scipy==1.18.1
+scikit-learn==1.7.2
+xgboost==3.0.5
+joblib==1.6.0
+threadpoolctl==3.7.0
+matplotlib==3.11.2

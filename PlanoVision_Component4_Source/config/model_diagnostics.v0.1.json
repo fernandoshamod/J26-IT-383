@@ -1,0 +1,19 @@
+{
+  "run_id":"v3_1_steps1_2_20261016",
+  "model_run":"expense_risk_v3_1_20261016",
+  "data_run":"expense_risk_v3_0_20261015",
+  "seed":20261016,
+  "outer_group_folds":3,
+  "subsample_repeats":3,
+  "training_family_counts":[30,60,120,180,240],
+  "comparison":"Locked deployed v3.1 setting versus locked original_full setting; no search, early stopping, threshold tuning or deployment changes",
+  "learning_curve_scope":"Existing TRAIN split only. Whole-family, nested, event-balanced subsets within each outer training fold. Fixed settings were selected previously using the same training pool; these are exploratory post-selection curves, not unbiased replacement accuracy estimates.",
+  "error_scope":"Existing validation/test native saved predictions, plus paired-label ambiguity in each existing split. Retrospective diagnostic use only; outcomes and derived realized multipliers are never training features.",
+  "budget_distance_bins":[-0.1,-0.02,0,0.02,0.1],
+  "margin_buffer_bins_pp":[-10,-5,0,5,10],
+  "boundary_windows":{"budget_utilization_distance_from_1":0.1,"margin_buffer_absolute_pp":5},
+  "boundary_window_origin":"Predeclared descriptive windows, not learned thresholds, approval decisions or empirical market statistics",
+  "outcome_reference":"Analytic conditional probability under the existing independent uniform common-cost/receipts shock model, ignoring cent rounding. Simulator-only diagnostic, never real-world risk or a calibrated ML prediction.",
+  "constraints":{"regenerate_dataset":false,"alter_labels":false,"use_test_for_fitting":false,"deploy_diagnostic_models":false,"change_current_models":false},
+  "references":["https://scikit-learn.org/stable/modules/learning_curve.html","https://scikit-learn.org/stable/modules/cross_validation.html"]
+}

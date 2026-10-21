@@ -1,0 +1,3 @@
+# Workspace setup. Portable releases materialize the same pinned requirements here.
+-r packaging/portable/requirements.txt
+-r config/requirements/lkr_graph_cpu.txt

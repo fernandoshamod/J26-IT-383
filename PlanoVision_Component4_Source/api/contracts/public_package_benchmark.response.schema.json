@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "required": ["api_version", "result_kind", "is_trained_model_prediction", "is_observed_event_outcome", "eligible_as_financial_risk_training_record", "currency", "evidence_id", "provider", "package", "event_type", "planned_guests", "published_rate_lkr_per_person", "advertised_package_amount_lkr", "known_components_subtotal_lkr", "complete_event_total_lkr", "confirmed_all_in_package_total_lkr", "actual_cost_lkr", "profit_lkr", "risk_labels", "source_url", "warnings"],
+  "properties": {
+    "api_version": {"const": "benchmark.0.1"},
+    "result_kind": {"const": "public_advertised_package_benchmark"},
+    "is_trained_model_prediction": {"const": false},
+    "is_observed_event_outcome": {"const": false},
+    "eligible_as_financial_risk_training_record": {"const": false},
+    "currency": {"const": "LKR"},
+    "evidence_id": {"type": "string"},
+    "provider": {"type": "string"},
+    "package": {"type": "string"},
+    "event_type": {"enum": ["Wedding", "Corporate"]},
+    "planned_guests": {"type": "number"},
+    "published_rate_lkr_per_person": {"type": "number"},
+    "advertised_package_amount_lkr": {"type": "number"},
+    "known_components_subtotal_lkr": {"type": "number"},
+    "published_charge_amount_lkr": {"type": ["number", "null"]},
+    "complete_event_total_lkr": {"type": "null"},
+    "confirmed_all_in_package_total_lkr": {"type": "null"},
+    "actual_cost_lkr": {"type": "null"},
+    "profit_lkr": {"type": "null"},
+    "risk_labels": {"type": "null"},
+    "source_url": {"type": "string", "pattern": "^https://"},
+    "warnings": {"type": "array", "items": {"type": "string"}}
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "config_version": "public-hotel-benchmark.0.1",
+  "mode": "public_advertised_package_benchmark",
+  "currency": "LKR",
+  "acceptance_scope": "working_evidence_only",
+  "user_direction": {
+    "recorded_on": "2026-10-12",
+    "message": "me api public krpu data tma hri kiyla hitla issrht yn",
+    "interpretation": "Proceed using collected public evidence as working inputs without waiting for private hotel quotations.",
+    "not_granted": [
+      "Independent domain validation",
+      "Hotel confirmation of rates or availability",
+      "Approval of undocumented taxes or service inclusions",
+      "Authorization to overwrite frozen data or relabel synthetic records as LKR outcomes"
+    ]
+  },
+  "evidence_file": "outputs/01a12103-7a09-7331-bb93-9e24a6f05005/hotel_evidence_20261012/evidence_metadata.json",
+  "evidence_sha256": "13526f7de2d6d10f5eca6f8e7bab10b0e8827b40bbd4773008740d7987e0d211",
+  "scope": "Published per-person package or menu components only",
+  "all_in_event_cost_enabled": false,
+  "risk_label_generation_enabled": false,
+  "training_enabled": false,
+  "full_lkr_simulator_approvals_changed": false,
+  "frozen_dataset_modified": false
+}

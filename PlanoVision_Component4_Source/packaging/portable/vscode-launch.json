@@ -1,0 +1,1 @@
+{"version":"0.2.0","configurations":[{"name":"PlanoVision backend","type":"debugpy","request":"launch","module":"component4.planner_dashboard_http","python":"${workspaceFolder}/.venv/Scripts/python.exe","cwd":"${workspaceFolder}","console":"integratedTerminal","justMyCode":true}]}

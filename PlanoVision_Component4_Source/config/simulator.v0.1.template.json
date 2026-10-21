@@ -1,0 +1,801 @@
+{
+  "config_version": "0.1.0-template",
+  "rules_version": "0.1.0-review",
+  "record_kind": "unapproved_configuration_template",
+  "currency": "LKR",
+  "seed": null,
+  "source_snapshot_hashes": null,
+  "calibration_cutoff": null,
+  "formula_approvals": {
+    "A001": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A007": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A008": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A009": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A010": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A011": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A012": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A013": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A014": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A015": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A020": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A021": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A022": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A023": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A024": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A027": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A028": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A029": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A033": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    }
+  },
+  "pilot": {
+    "scenario_count": null,
+    "explicit_user_authorization": false,
+    "approved_config_sha256": null,
+    "review_record_ref": null,
+    "passing_test_report_ref": null,
+    "sampling_protocol_ref": null,
+    "provenance_protocol_ref": null,
+    "generator_implementation_verified": false
+  },
+  "archetypes": {
+    "Wedding": {
+      "parameters": {
+        "guest_count": null,
+        "seated_share": null,
+        "vip_seats": null,
+        "seats_per_table": null,
+        "vip_tables": null,
+        "event_hours": null,
+        "setup_hours": null,
+        "clearance_hours": null,
+        "venue_area_m2": null,
+        "excluded_area_m2": null,
+        "area_per_standard_seat_m2": null,
+        "area_per_vip_seat_m2": null,
+        "stage_width_m": null,
+        "stage_length_m": null,
+        "service_area_m2": null,
+        "circulation_area_m2": null,
+        "capacity_persons": null,
+        "base_staff": null,
+        "guests_per_staff": null,
+        "extra_general_staff": null,
+        "regular_paid_hours_limit": null,
+        "overtime_multiplier": null,
+        "initial_budget_lkr": null,
+        "expected_receipts_lkr": null,
+        "minimum_margin_points": null,
+        "reserve_ratio": null
+      },
+      "parameter_approval": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewer_role": null,
+        "reviewed_at": null,
+        "rationale": null,
+        "evidence_ref": null,
+        "parameter_hash": null
+      },
+      "approved_override_bounds": {
+        "guest_count": {
+          "min": null,
+          "max": null
+        },
+        "seated_share": {
+          "min": null,
+          "max": null
+        },
+        "vip_seats": {
+          "min": null,
+          "max": null
+        },
+        "seats_per_table": {
+          "min": null,
+          "max": null
+        },
+        "vip_tables": {
+          "min": null,
+          "max": null
+        },
+        "event_hours": {
+          "min": null,
+          "max": null
+        },
+        "setup_hours": {
+          "min": null,
+          "max": null
+        },
+        "clearance_hours": {
+          "min": null,
+          "max": null
+        },
+        "venue_area_m2": {
+          "min": null,
+          "max": null
+        },
+        "excluded_area_m2": {
+          "min": null,
+          "max": null
+        },
+        "area_per_standard_seat_m2": {
+          "min": null,
+          "max": null
+        },
+        "area_per_vip_seat_m2": {
+          "min": null,
+          "max": null
+        },
+        "stage_width_m": {
+          "min": null,
+          "max": null
+        },
+        "stage_length_m": {
+          "min": null,
+          "max": null
+        },
+        "service_area_m2": {
+          "min": null,
+          "max": null
+        },
+        "circulation_area_m2": {
+          "min": null,
+          "max": null
+        },
+        "capacity_persons": {
+          "min": null,
+          "max": null
+        },
+        "base_staff": {
+          "min": null,
+          "max": null
+        },
+        "guests_per_staff": {
+          "min": null,
+          "max": null
+        },
+        "extra_general_staff": {
+          "min": null,
+          "max": null
+        },
+        "regular_paid_hours_limit": {
+          "min": null,
+          "max": null
+        },
+        "overtime_multiplier": {
+          "min": null,
+          "max": null
+        },
+        "initial_budget_lkr": {
+          "min": null,
+          "max": null
+        },
+        "expected_receipts_lkr": {
+          "min": null,
+          "max": null
+        },
+        "minimum_margin_points": {
+          "min": null,
+          "max": null
+        },
+        "reserve_ratio": {
+          "min": null,
+          "max": null
+        }
+      },
+      "rates": {
+        "catering": {
+          "rate": null,
+          "unit": "LKR/person",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "chairs": {
+          "rate": null,
+          "unit": "LKR/chair",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "tables": {
+          "rate": null,
+          "unit": "LKR/table",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "stage": {
+          "rate": null,
+          "unit": "LKR/m2",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "av": {
+          "rate": null,
+          "unit": "LKR/kit",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "lighting": {
+          "rate": null,
+          "unit": "LKR/kit",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "labour": {
+          "rate": null,
+          "unit": "LKR/person-hour",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "venue_fixed": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "venue_hourly": {
+          "rate": null,
+          "unit": "LKR/hour",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "security": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "decoration": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "transport": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "misc": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "equipment_other": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        }
+      },
+      "billing": {
+        "catering_mode": null,
+        "staff_scope": null,
+        "included_items": null
+      },
+      "av_steps": null,
+      "lighting_steps": null,
+      "outcome_uncertainty": {
+        "distribution": null,
+        "cost_bounds": null,
+        "revenue_bounds": null,
+        "dependence_spec": null,
+        "approval_ref": null
+      },
+      "injected_vendor_regime": {
+        "prevalence": null,
+        "multiplier_bounds": null,
+        "affected_services": null,
+        "approval_ref": null
+      },
+      "sampling_weights": null,
+      "geometry_origin": null,
+      "revenue_mode": null,
+      "date_bounds": null,
+      "vendor_tiers": null,
+      "price_series_whitelist": null
+    },
+    "Corporate": {
+      "parameters": {
+        "guest_count": null,
+        "seated_share": null,
+        "vip_seats": null,
+        "seats_per_table": null,
+        "vip_tables": null,
+        "event_hours": null,
+        "setup_hours": null,
+        "clearance_hours": null,
+        "venue_area_m2": null,
+        "excluded_area_m2": null,
+        "area_per_standard_seat_m2": null,
+        "area_per_vip_seat_m2": null,
+        "stage_width_m": null,
+        "stage_length_m": null,
+        "service_area_m2": null,
+        "circulation_area_m2": null,
+        "capacity_persons": null,
+        "base_staff": null,
+        "guests_per_staff": null,
+        "extra_general_staff": null,
+        "regular_paid_hours_limit": null,
+        "overtime_multiplier": null,
+        "initial_budget_lkr": null,
+        "expected_receipts_lkr": null,
+        "minimum_margin_points": null,
+        "reserve_ratio": null
+      },
+      "parameter_approval": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewer_role": null,
+        "reviewed_at": null,
+        "rationale": null,
+        "evidence_ref": null,
+        "parameter_hash": null
+      },
+      "approved_override_bounds": {
+        "guest_count": {
+          "min": null,
+          "max": null
+        },
+        "seated_share": {
+          "min": null,
+          "max": null
+        },
+        "vip_seats": {
+          "min": null,
+          "max": null
+        },
+        "seats_per_table": {
+          "min": null,
+          "max": null
+        },
+        "vip_tables": {
+          "min": null,
+          "max": null
+        },
+        "event_hours": {
+          "min": null,
+          "max": null
+        },
+        "setup_hours": {
+          "min": null,
+          "max": null
+        },
+        "clearance_hours": {
+          "min": null,
+          "max": null
+        },
+        "venue_area_m2": {
+          "min": null,
+          "max": null
+        },
+        "excluded_area_m2": {
+          "min": null,
+          "max": null
+        },
+        "area_per_standard_seat_m2": {
+          "min": null,
+          "max": null
+        },
+        "area_per_vip_seat_m2": {
+          "min": null,
+          "max": null
+        },
+        "stage_width_m": {
+          "min": null,
+          "max": null
+        },
+        "stage_length_m": {
+          "min": null,
+          "max": null
+        },
+        "service_area_m2": {
+          "min": null,
+          "max": null
+        },
+        "circulation_area_m2": {
+          "min": null,
+          "max": null
+        },
+        "capacity_persons": {
+          "min": null,
+          "max": null
+        },
+        "base_staff": {
+          "min": null,
+          "max": null
+        },
+        "guests_per_staff": {
+          "min": null,
+          "max": null
+        },
+        "extra_general_staff": {
+          "min": null,
+          "max": null
+        },
+        "regular_paid_hours_limit": {
+          "min": null,
+          "max": null
+        },
+        "overtime_multiplier": {
+          "min": null,
+          "max": null
+        },
+        "initial_budget_lkr": {
+          "min": null,
+          "max": null
+        },
+        "expected_receipts_lkr": {
+          "min": null,
+          "max": null
+        },
+        "minimum_margin_points": {
+          "min": null,
+          "max": null
+        },
+        "reserve_ratio": {
+          "min": null,
+          "max": null
+        }
+      },
+      "rates": {
+        "catering": {
+          "rate": null,
+          "unit": "LKR/person",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "chairs": {
+          "rate": null,
+          "unit": "LKR/chair",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "tables": {
+          "rate": null,
+          "unit": "LKR/table",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "stage": {
+          "rate": null,
+          "unit": "LKR/m2",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "av": {
+          "rate": null,
+          "unit": "LKR/kit",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "lighting": {
+          "rate": null,
+          "unit": "LKR/kit",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "labour": {
+          "rate": null,
+          "unit": "LKR/person-hour",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "venue_fixed": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "venue_hourly": {
+          "rate": null,
+          "unit": "LKR/hour",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "security": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "decoration": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "transport": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "misc": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "equipment_other": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        }
+      },
+      "billing": {
+        "catering_mode": null,
+        "staff_scope": null,
+        "included_items": null
+      },
+      "av_steps": null,
+      "lighting_steps": null,
+      "outcome_uncertainty": {
+        "distribution": null,
+        "cost_bounds": null,
+        "revenue_bounds": null,
+        "dependence_spec": null,
+        "approval_ref": null
+      },
+      "injected_vendor_regime": {
+        "prevalence": null,
+        "multiplier_bounds": null,
+        "affected_services": null,
+        "approval_ref": null
+      },
+      "sampling_weights": null,
+      "geometry_origin": null,
+      "revenue_mode": null,
+      "date_bounds": null,
+      "vendor_tiers": null,
+      "price_series_whitelist": null
+    }
+  }
+}

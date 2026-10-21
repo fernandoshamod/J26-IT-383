@@ -1,0 +1,29 @@
+{
+  "experiment_version": "prophet-historical.0.1",
+  "release_sha256": "5baff661b4f6b6e64425b4de2495f77bd395ee1e92dd1f0bf368b753f4e1542f",
+  "scope": "retrospective_univariate_monthly_price_or_index_forecasting_not_event_total_cost",
+  "random_seed": 20261012,
+  "series_policy": "12 archived series modeled separately with their original units and per-series chronological splits",
+  "models": ["last_value", "seasonal_naive_12", "prophet"],
+  "selection_metric": "per_series_validation_MAE_with_deterministic_name_tie_break",
+  "fit_partition": "train_only",
+  "test_policy": "One predeclared comparison of the three fixed methods; report the validation-selected method. No test-driven tuning, thresholding, filtering or refit.",
+  "fixed_origin": "End of training segment; all validation and test months predicted without observing subsequent actual values",
+  "prophet_parameters": {
+    "growth": "linear",
+    "yearly_seasonality": 3,
+    "weekly_seasonality": false,
+    "daily_seasonality": false,
+    "seasonality_mode": "additive",
+    "seasonality_prior_scale": 10.0,
+    "changepoint_prior_scale": 0.05,
+    "n_changepoints": 10,
+    "uncertainty_samples": 0,
+    "mcmc_samples": 0
+  },
+  "quality_policy": "Preserve flags and all original measurements; unresolved source-review flags mean results are exploratory. Report flag-free evaluation sensitivity, not silently cleaned data.",
+  "forecast_constraints": "Month-start dates only. No daily forecasts, clipping, invented regressors, event-cost conversion or LKR/index pooling. Flag nonpositive predictions rather than silently repair them.",
+  "metrics": "MAE and RMSE in each series unit; MASE uses training-only seasonal lag-12 absolute differences; sMAPE explicitly 0..200 percent. Never average raw MAE/RMSE across different units.",
+  "future_deployment": "Not part of this evaluation; no refit to full data or future-date forecasts yet",
+  "documentation": ["https://facebook.github.io/prophet/docs/non-daily_data.html", "https://facebook.github.io/prophet/docs/quick_start.html"]
+}

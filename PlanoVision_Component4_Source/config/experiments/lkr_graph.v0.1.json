@@ -1,0 +1,16 @@
+{
+  "version": "lkr-graph-risk.0.1",
+  "seed": 20261018,
+  "epochs": 40,
+  "batch_size": 256,
+  "hidden_features": 24,
+  "learning_rate": 0.003,
+  "targets": ["Budget_Overrun", "Profit_Margin_Risk"],
+  "candidates": ["gat_dependencies", "gat_self_only", "gat_shuffled_dependencies"],
+  "selection": "Checkpoint and joint candidate selection by mean validation log loss only; include training-prior control.",
+  "source": "data/experiments/v3.0/expense_risk_v3_0_20261015/planning_risk_dataset.jsonl",
+  "split_policy": "Preserve all existing 600-family 60/20/20 assignments; no generation or split changes. Reject cross-split family or exact feature overlap.",
+  "scaling": "Fit standardization per node/feature on training rows only. LKR monetary fields stay LKR before this ordinary training transform.",
+  "serving": "Dependency GAT is an explicitly exploratory comparator; preserve primary XGBoost and rule-based health. Disclose validation-selected control even when it beats intended dependencies.",
+  "limitations": ["Synthetic LKR estimates and simulated labels, not observed event outcomes.", "Fixed functional topology, not CAD adjacency or causal risk propagation.", "Previously inspected test split; exploratory comparison, not a pristine holdout.", "Single seed; no calibrated real-world probabilities or unseen-venue evidence.", "Derived planning totals can dominate graph structure; compare self-only, shuffled, prior and simple-rule controls."]
+}

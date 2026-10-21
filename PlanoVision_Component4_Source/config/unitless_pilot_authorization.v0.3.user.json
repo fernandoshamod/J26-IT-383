@@ -1,0 +1,299 @@
+{
+  "explicit_authorization": true,
+  "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+  "code_sha256": {
+    "component4/unitless_pilot.py": "93cbc3cd045edbb2523bb073bfd06273a883f954fb50c7c7243b7181e04f4452",
+    "component4/unitless_experiment.py": "e2466ef4e91082fd2e84d567a181f83f4099a309d6fe54347272313bcfa2ea6a",
+    "component4/scenario_generator.py": "54ac34ac7460d2b9865248fa8dda976c6bf27d16e5a9916db3efa44c733bd49e",
+    "component4/dataset_design.py": "60bce94d393ff358a7757c7c4a2a94c97ea4b30fb59c1aec2f7e855d844f4949",
+    "component4/engine.py": "9811b95190a70734843d369577494214015cb479a92eec9e98807bdea7f8625a",
+    "component4/diagnostic_design.py": "cd0e1e4d289de0f4dade16ab45434b42c11c66660794fa7d9349c4783c51559d",
+    "work/minimal_pilot_authoring/export_unitless.mjs": "7b7efa5d38169c35d69e9c84cd43835c3e6306917f54907b0e4e2923044da38d"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5"
+  },
+  "scenario_count": 30,
+  "event_types": [
+    "Wedding",
+    "Corporate"
+  ],
+  "authorizer": "Human user in current chat; full name not supplied",
+  "date": "2026-10-12",
+  "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+  "evidence_sha256": "b1f84427449ce162d1645cf17151b0231958b038afd598259c13b56af82bee19",
+  "approval_kind": "experiment_designer_acceptance_with_qualified_review_waived",
+  "qualified_review_performed": false,
+  "supervisor_review_requirement_waived_by_user": true,
+  "institutional_approval_claimed": false,
+  "bulk_generation_authorized": false,
+  "model_training_authorized": false,
+  "approvals": {
+    "A001": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A007": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A008": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A009": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A010": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A011": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A012": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A013": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A014": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A015": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A020": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A021": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A022": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A023": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A024": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A027": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A028": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A029": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "A033": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "numerical_parameters": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "methodology": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "sampling_split": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "acceptance_criteria": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User approved all choices for the reviewed 30-row unitless diagnostic experiment and explicitly waived supervisor review. No empirical validation or professional sign-off claimed.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false
+    },
+    "tests_passed": {
+      "status": "approved",
+      "reviewer": "Human user in current chat; full name not supplied",
+      "role": "experiment_designer_NOT_supervisor",
+      "date": "2026-10-12",
+      "rationale": "User accepts the diagnostic execution; the full software suite was rerun successfully before generation. See bound test receipt.",
+      "evidence_ref": "reports/unitless_pilot_user_authorization_evidence.json",
+      "configuration_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+      "approval_kind": "hypothetical_experiment_only",
+      "qualified_review": false,
+      "test_receipt": "reports/unitless_pilot_execution_20261012/test_results.json"
+    }
+  }
+}

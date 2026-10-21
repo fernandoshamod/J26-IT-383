@@ -1,0 +1,58 @@
+{
+  "version": "practical-financial-workflow.0.1-proposed",
+  "purpose": "Baseline versus client-requested changes, monetary budget impact and organizer margin protection",
+  "status": "design_started_training_not_ready",
+  "existing_frozen_dataset_modified": false,
+  "existing_models_replaced": false,
+  "reporting_currency": "USD",
+  "native_source_currency": "preserve_each_quote_currency",
+  "fx_rate": null,
+  "fx_source": null,
+  "fx_effective_date": null,
+  "input_ownership": {
+    "planner": ["event_type", "guest_count", "event_date", "decision_date", "cost_budget", "agreed_client_price_excluding_output_taxes", "required_margin_fraction", "requested_changes"],
+    "component_1": ["baseline_layout", "revised_layout", "stage_dimensions", "usable_area", "capacity_constraints"],
+    "component_2": ["baseline_vendor_selection", "revised_vendor_selection", "itemized_rates", "billing_units", "included_services", "charge_scope", "quote_validity", "quote_source_and_timestamp"],
+    "component_3": ["baseline_staffing", "revised_staffing", "paid_hours", "wage_rates", "overtime_terms"]
+  },
+  "accounting_definition": {
+    "estimated_cost": "Sum of disjoint expense line totals, including documented non-recoverable taxes and service charges. Unknown treatment blocks all-in totals.",
+    "future_price_effect": "Apply only a documented contractual escalation or separately identified forecast/scenario to eligible unlocked costs; no blanket CPI multiplier on every package.",
+    "contingency": "Separate policy allowance, not an incurred expense; do not double-count a stress uplift already covering the same uncertainty.",
+    "required_client_price": "(estimated_cost + separately_reviewed_risk_allowance) / (1 - required_margin_fraction), before client-side output taxes; requires 0 <= margin < 1.",
+    "expected_profit": "agreed_client_price_excluding_output_taxes - estimated_cost",
+    "expected_margin": "expected_profit / agreed_client_price_excluding_output_taxes when the latter is positive",
+    "change_cost": "revised_estimated_cost - baseline_estimated_cost",
+    "budget_shortfall": "max(0, revised_estimated_cost - cost_budget)",
+    "unknown_tax_rules": null,
+    "contingency_policy": null,
+    "client_price_equals_budget": null
+  },
+  "outputs": ["baseline_estimated_cost", "revised_estimated_cost", "itemized_changes", "change_cost", "budget_headroom", "budget_shortfall", "recommended_client_price", "expected_profit", "expected_margin", "margin_constraint_status", "unpriced_requirements", "price_provenance", "explanation"],
+  "separation": {
+    "vendor_rate_retrieval": "Data/API layer, not performed by a trained classifier. Availability and validity must be checked.",
+    "quoted_budget_and_change_arithmetic": "Deterministic financial engine, not a learned reconstruction of its own formula.",
+    "ML_training_target_proposal": "Realized final cost or deviation from the planning estimate; outcome evidence required. Derived overrun/margin labels may then be evaluated.",
+    "historical_forecasting": "Preserve existing separate commodity/index experiments; these do not establish vendor-service price forecasts.",
+    "health_indicator": "Explicit proposed policy with components and limitations, not automatically a learned target or calibrated probability.",
+    "reports": "Grounded in calculated results and source-backed statements; no fabricated rate, probability, savings recommendation or loss guarantee."
+  },
+  "training_controls": {
+    "planning_only_features": true,
+    "exclude_realized_outcomes_and_shocks_from_inputs": true,
+    "group_baseline_and_variants_by_real_event_family": true,
+    "split_before_fitting_transformations": true,
+    "holdout_policy": null,
+    "numeric_feature_specification": null,
+    "fit_authorization_is_not_data_evidence": true,
+    "do_not_relabel_original_unitless_rows": true
+  },
+  "current_missing_inputs": [
+    "Sample Component 1, 2 and 3 payloads or agreed field contracts",
+    "Compatible complete monetary rate/inclusion/tax evidence for a scoped event configuration",
+    "Baseline and revised client-price policy, distinguished from cost budget",
+    "Documented FX identity when USD reporting uses LKR source prices",
+    "Reviewed escalation and risk-allowance policies",
+    "Matched planning and realized event-financial outcomes for empirical supervised training; otherwise explicitly authorized evidence-anchored simulated targets"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "type":"object",
+  "required":["api_version","operation"],
+  "properties":{
+    "api_version":{"const":"experimental-indicators.0.1"},
+    "operation":{"enum":["planning-health","quote-invoice-comparison"]}
+  },
+  "allOf":[{
+    "if":{"properties":{"operation":{"const":"planning-health"}}},
+    "then":{"required":["decision","indicator"],"properties":{
+      "decision":{"type":"object"},
+      "indicator":{"type":"object","required":["policy","status","score","components","reason","real_world_financial_health_score"],"properties":{
+        "status":{"enum":["experimental","unavailable"]},"score":{"type":["number","null"]},
+        "components":{"type":["object","null"]},"real_world_financial_health_score":{"type":"null"},
+        "policy":{"type":"object","required":["approval_status","empirically_validated","formula"],"properties":{
+          "approval_status":{"const":"proposed_not_formally_approved"},"empirically_validated":{"const":false}
+        }}
+      }}
+    }},
+    "else":{"required":["origin","evidence_kind","source_verified","policy","line_comparisons","Vendor_Cost_Anomaly_prediction","warnings"],"properties":{
+      "origin":{"const":"post_invoice_rule_comparison_not_prediction_or_fraud_proof"},
+      "evidence_kind":{"enum":["mock_test_only","user_supplied_unverified"]},
+      "source_verified":{"const":false},"Vendor_Cost_Anomaly_prediction":{"type":"null"},
+      "line_comparisons":{"type":"array","items":{"type":"object","required":["line_id","status","rate_increase_flag","relative_rate_change","rate_effect_amount","quantity_effect_amount","total_difference_amount","currency","reasons"],"properties":{
+        "status":{"enum":["comparable","manual_review"]},"rate_increase_flag":{"type":["boolean","null"]},
+        "relative_rate_change":{"type":["number","null"]},"rate_effect_amount":{"type":["number","null"]},
+        "quantity_effect_amount":{"type":["number","null"]},"total_difference_amount":{"type":["number","null"]},
+        "reasons":{"type":"array","items":{"type":"string"}}
+      }}}
+    }}
+  }]
+}

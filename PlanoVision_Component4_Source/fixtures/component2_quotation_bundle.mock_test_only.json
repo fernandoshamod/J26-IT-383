@@ -1,0 +1,32 @@
+{
+  "contract_version": "component2.quotation_bundle.v1",
+  "bundle_id": "MOCK-TEST-BUNDLE-001",
+  "supplier_id": "MOCK-NOT-A-REAL-SUPPLIER",
+  "issued_on": "2026-10-18",
+  "event_type": "Wedding",
+  "event_date": "2026-10-22",
+  "quotations": [
+    {
+      "id": "mock_p2_photo",
+      "label": "MOCK TEST photography — not a real quotation",
+      "mode": "add",
+      "service": "photography",
+      "quantity_basis": "booking",
+      "currency": "LKR",
+      "unit_rate_lkr": 10000,
+      "tax_scope": "exclusive_declared",
+      "service_pct": 10,
+      "tax_pct": 18,
+      "pricing_policy": "documented_escalation",
+      "increase_pct": 10,
+      "evidence_ref": "MOCK TEST ONLY: all rates and percentages are illustrative, not market/tax evidence",
+      "valid_from": "2026-10-18",
+      "valid_until": "2026-11-01",
+      "covers": [
+        "photography"
+      ],
+      "committed": false,
+      "cancellation_fee_lkr": 0
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Proposed Component 2 quotation bundle v1",
+  "type": "object",
+  "additionalProperties": false,
+  "description": "Local declared-input adapter; not authenticated integration or independent verification. Backend additionally checks units, inclusions, dates and all-in/double-charge invariants.",
+  "required": [
+    "contract_version",
+    "bundle_id",
+    "supplier_id",
+    "issued_on",
+    "event_type",
+    "event_date",
+    "quotations"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "component2.quotation_bundle.v1"
+    },
+    "bundle_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "supplier_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "issued_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "event_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "event_type": {
+      "enum": [
+        "Wedding",
+        "Corporate"
+      ]
+    },
+    "quotations": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 30,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "cancellation_fee_lkr",
+          "committed",
+          "covers",
+          "currency",
+          "evidence_ref",
+          "id",
+          "increase_pct",
+          "label",
+          "mode",
+          "pricing_policy",
+          "quantity_basis",
+          "service",
+          "service_pct",
+          "tax_pct",
+          "tax_scope",
+          "unit_rate_lkr",
+          "valid_from",
+          "valid_until"
+        ],
+        "properties": {
+          "committed": {
+            "type": "boolean"
+          },
+          "quantity_basis": {
+            "enum": [
+              "av_kits",
+              "booking",
+              "event_hours",
+              "guests",
+              "staff_hours",
+              "stage_m2",
+              "tables"
+            ]
+          },
+          "service_pct": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 100
+          },
+          "cancellation_fee_lkr": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000000.0
+          },
+          "tax_pct": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 100
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "unit_rate_lkr": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1000000000000.0
+          },
+          "increase_pct": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": -99,
+            "maximum": 500
+          },
+          "pricing_policy": {
+            "enum": [
+              "locked",
+              "documented_escalation",
+              "unknown"
+            ]
+          },
+          "mode": {
+            "enum": [
+              "add",
+              "replace"
+            ]
+          },
+          "tax_scope": {
+            "enum": [
+              "all_in",
+              "exclusive_declared",
+              "unknown"
+            ]
+          },
+          "service": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "evidence_ref": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "covers": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            }
+          },
+          "valid_until": {
+            "type": "string",
+            "format": "date"
+          },
+          "valid_from": {
+            "type": "string",
+            "format": "date"
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,64}$"
+          },
+          "currency": {
+            "const": "LKR"
+          }
+        }
+      }
+    }
+  }
+}

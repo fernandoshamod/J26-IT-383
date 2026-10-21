@@ -1,0 +1,12 @@
+{
+  "version": "model-experiment-io.1.0",
+  "immutable_input": "dataset_releases/v1.0/Component4_Hybrid_Dataset_Final_v1.0.zip",
+  "verification_required": "component4.release_input.verified_release",
+  "output_guard_required": "component4.release_input.assert_experiment_output",
+  "forbidden_output_root": "dataset_releases",
+  "working_data_root": "data/experiments/v1.0",
+  "models_predictions_root": "outputs/experiments/v1.0",
+  "evaluation_reports_root": "reports/experiments/v1.0",
+  "release_extraction_policy": "Extract into a new experiment workspace outside dataset_releases; never modify the archived source; retain inherited splits.",
+  "training_performed": false
+}

@@ -1,0 +1,26 @@
+{
+  "experiment_version": "financial-risk-baseline.0.1",
+  "scope": "conditional_in_simulator_risk_classification_not_real_world_prediction",
+  "release_version": "1.0",
+  "release_sha256": "5baff661b4f6b6e64425b4de2495f77bd395ee1e92dd1f0bf368b753f4e1542f",
+  "random_seed": 20261012,
+  "fixed_probability_threshold": 0.5,
+  "selection_metric": "validation_nonoverlap_group_equal_log_loss",
+  "feature_projection_overlap": "Preserve all rows and assigned splits. For model selection exclude validation feature vectors seen in training. Report full test scores plus a fixed sensitivity subset excluding feature vectors seen in train or validation. Masks use planning inputs only, no labels.",
+  "fit_partition": "train_only",
+  "refit_on_validation": false,
+  "test_policy": "Evaluate selected classifier plus the prior baseline once per target; no test-driven selection, tuning or threshold adjustment.",
+  "training_sample_weight": "Each connected split group has equal total weight, normalized to mean row weight one; target-independent.",
+  "positive_targets": ["Budget_Overrun", "Profit_Margin_Risk"],
+  "negative_control_target": "Vendor_Cost_Anomaly",
+  "negative_control_selection": "dummy_prior_regardless_of_validation_scores",
+  "candidate_models": {
+    "dummy_prior": {"strategy": "prior"},
+    "decision_tree": {"max_depth": 4, "min_samples_leaf": 20},
+    "random_forest": {"n_estimators": 200, "max_depth": 8, "min_samples_leaf": 10, "max_features": "sqrt", "n_jobs": 1},
+    "xgboost": {"n_estimators": 200, "max_depth": 3, "learning_rate": 0.05, "subsample": 0.9, "colsample_bytree": 0.9, "reg_lambda": 1.0, "objective": "binary:logistic", "eval_metric": "logloss", "tree_method": "hist", "n_jobs": 1}
+  },
+  "transformations": "None: fixed archived one-hot encodings and finite planning predictors only. No fitted scaling, imputation, resampling, target balancing or feature selection.",
+  "limitations": "Uncalibrated model scores, random realization noise, one shared hypothetical template scope; no unseen-template or real-world accuracy claim.",
+  "library_documentation": ["https://scikit-learn.org/stable/modules/model_evaluation.html", "https://xgboost.readthedocs.io/en/stable/python/python_api.html"]
+}

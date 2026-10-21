@@ -1,0 +1,21 @@
+{
+  "run_id":"expense_risk_v3_1_20261016",
+  "source_run":"expense_risk_v3_0_20261015",
+  "seed":20261016,
+  "outer_group_folds":3,
+  "inner_group_folds":3,
+  "selection_metric":"mean_inner_group_log_loss",
+  "threshold":0.5,
+  "bootstrap_family_draws":1000,
+  "candidates":[
+    {"id":"original_full","scope":"full","n_estimators":200,"max_depth":3,"learning_rate":0.05,"reg_lambda":1,"min_child_weight":1},
+    {"id":"regularized_full","scope":"full","n_estimators":300,"max_depth":2,"learning_rate":0.03,"reg_lambda":5,"min_child_weight":5},
+    {"id":"focused_shallow","scope":"focused","n_estimators":100,"max_depth":1,"learning_rate":0.05,"reg_lambda":5,"min_child_weight":5},
+    {"id":"focused_regularized","scope":"focused","n_estimators":300,"max_depth":2,"learning_rate":0.03,"reg_lambda":5,"min_child_weight":5},
+    {"id":"focused_longer","scope":"focused","n_estimators":500,"max_depth":2,"learning_rate":0.03,"reg_lambda":5,"min_child_weight":5}
+  ],
+  "focused_features":{"Budget_Overrun":["Planned_Budget_Utilization"],"Profit_Margin_Risk":["Planned_Margin_Buffer_Pct","Minimum_Margin_Pct"]},
+  "deployment_gate":{"max_validation_log_loss_increase":0,"max_validation_balanced_accuracy_drop":0.01,"fallback":"retain_v3_0_per_target"},
+  "disclosure":"Existing train/validation/test data and results were previously inspected. No new untouched holdout is claimed. Candidate selection uses training families only; old validation is a declared engineering deployment gate; test is retrospective reporting only. No source, labels, splits or financial parameters change.",
+  "references":["https://scikit-learn.org/stable/modules/cross_validation.html","https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html","https://xgboost.readthedocs.io/en/stable/tutorials/monotonic.html"]
+}

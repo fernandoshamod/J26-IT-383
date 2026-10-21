@@ -1,0 +1,11 @@
+{
+  "version": "planner-calculator-scope.0.1",
+  "base_config_file": "config/lkr_research.v2.0.json",
+  "base_config_sha256": "4165b1f251ea12183fd6a6981cbb16df8387693a3664401dba19682f7eacaa40",
+  "domain_overrides": {"guest_count": [1, 5000], "venue_area_m2": [0.01, 100000000]},
+  "units": {"guest_count": "persons", "venue_area_m2": "m2"},
+  "rationale": "Planner software input bounds, not empirical event-size distributions or approval of extrapolated prices. Existing rates, formulas, fixed 4x6 m stage, 60 m2 circulation, hours and policies remain unchanged.",
+  "budget_policy": "Any finite positive spending limit is accepted by the calculator (subject to existing numerical safety limits); LKR 100000 is valid. Never scale expenses to make a budget feasible.",
+  "model_policy": "Preserve frozen XGBoost/GAT support checks. Withhold predictions outside original training feature ranges. Do not train or regenerate records.",
+  "limitations": ["Wedding and Corporate only; not all event archetypes", "Extrapolated generic-profile costs are not validated small-event or large-event market quotations", "The fixed stage and circulation assumptions may make tiny venues infeasible", "Low-cost or no-stage profiles need separate scoped evidence and rules"]
+}

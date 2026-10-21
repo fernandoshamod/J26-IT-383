@@ -1,0 +1,11 @@
+# React dashboard integration contract
+
+The Python adapter is implemented; an HTTP server and React application are not yet implemented. Proposed routes: `POST /api/v1/financial/calculate` accepts `{event_type, overrides}`; `POST /api/v1/financial/what-if` accepts `{event_type, changes}`. The server owns the configuration and calls `component4.api.dashboard_request`. Never accept client-supplied rates, approval records, mode, realized outcomes or trained-model claims. Input validation errors map to HTTP 400; well-formed requests with unresolved prerequisites return the blocked contract (suggested HTTP 422).
+
+The response carries a deterministic cost estimate, line-item reconciliation, budget/reserve constraints, planned risk flags, spatial/operations summaries, rule version and configuration SHA-256. No forecasting model, uncertainty interval, predicted risk probability or health score exists: these are null. Use the TypeScript contract for React and the JSON Schema for runtime response validation. Python tests use a dependency-free validator limited to the schema keywords used here; it is not a general JSON Schema library.
+
+Blocked state: show blockers and unavailable outputs. Never display null as zero, a green safe indicator, or a prediction. Expected-margin shortfall is a planning flag, not a realized outcome label. Live outcome labels stay null. Render signed cost/profit deltas only when both What-If configurations are calculated; otherwise show the alternative's blockers. A valid negative margin/profit is not masked.
+
+Mock previews may load `api/mock/*.mock.json` only in a separately enabled demonstration route/build. Pin a visible “MOCK TEST DATA — NOT MARKET QUOTATIONS OR TRAINED PREDICTIONS” banner to all cards and exports. Keep fixture files outside production data/feature pipelines. The live adapter cannot enable fixture mode; it rejects requests containing `mode`. No claim of trained accuracy, anomaly detection, venue safety or causal inference is permitted.
+
+Version 0.1.0 is a POC interface, not a deployed authenticated service. Authentication, server-side config selection, rate limiting, persistence and security review are future implementation work.

@@ -1,0 +1,239 @@
+{
+  "explicit_bulk_authorization": false,
+  "configuration_sha256": "2a94673fa623cae6aff278f44d103061129718697dbded14ef1e8fe42404b9bb",
+  "code_sha256": {
+    "component4/unitless_bulk.py": "9cafb99c48fe3b751a25dca19024f6e5c8a79625d33d98a88b72d1a0ab49b323",
+    "component4/unitless_experiment.py": "e2466ef4e91082fd2e84d567a181f83f4099a309d6fe54347272313bcfa2ea6a",
+    "component4/unitless_pilot.py": "93cbc3cd045edbb2523bb073bfd06273a883f954fb50c7c7243b7181e04f4452",
+    "component4/engine.py": "9811b95190a70734843d369577494214015cb479a92eec9e98807bdea7f8625a",
+    "component4/dataset_design.py": "60bce94d393ff358a7757c7c4a2a94c97ea4b30fb59c1aec2f7e855d844f4949",
+    "component4/diagnostic_design.py": "cd0e1e4d289de0f4dade16ab45434b42c11c66660794fa7d9349c4783c51559d",
+    "work/minimal_pilot_authoring/export_unitless.mjs": "7b7efa5d38169c35d69e9c84cd43835c3e6306917f54907b0e4e2923044da38d",
+    "work/minimal_pilot_authoring/export_unitless_bulk.mjs": "4649bbb172d19e3b0987cb8c6ff8680dcaa92573cc820a45b1ca82cb0e7cd651",
+    "scripts/research_pipeline/execute_unitless_bulk.py": "4140b6a897e3f8af8bd97fc0b9d9b7bb81bd614ab8af3e4bebbef58b329f82f8"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5"
+  },
+  "scenario_count": 7500,
+  "event_types": [
+    "Wedding",
+    "Corporate"
+  ],
+  "authorizer": null,
+  "date": null,
+  "evidence_ref": null,
+  "evidence_sha256": null,
+  "approval_rationale": null,
+  "approval_kind": "experiment_designer_only_NOT_qualified_review",
+  "test_receipt": {
+    "path": "reports/unitless_bulk_authorization_v0.1/test_results.json",
+    "sha256": "7f67fd74296db676995f03cbf807dbb5a326da39d41bfdb6c07f75d1e6474329"
+  },
+  "model_training_authorized": false,
+  "lkr_generation_authorized": false,
+  "record_kind": "PENDING_BULK_DESIGN_AND_EXECUTION_DECISION_NOT_AUTHORIZATION",
+  "experiment_designer": {
+    "name_or_chat_identity": null,
+    "role": null
+  },
+  "decision": null,
+  "decision_date": null,
+  "unit": "dimensionless_score",
+  "sampling_policy": {
+    "roots": 1250,
+    "event_root_quotas": {
+      "Wedding": 625,
+      "Corporate": 625
+    },
+    "states": [
+      "baseline",
+      "guest_minus_one",
+      "guest_plus_one"
+    ],
+    "outcome_replications_per_state": 2,
+    "rows": 7500,
+    "seed": 20261022,
+    "root_policy": "unique_baselines_uniform_discrete_rejection_sampling",
+    "attempt_cap_per_root": 100,
+    "event_date_start": "2027-01-01",
+    "event_date_end": "2027-12-31"
+  },
+  "split_policy": {
+    "protocol": "conditional_in_simulator",
+    "fractions": [
+      0.6,
+      0.2,
+      0.2
+    ],
+    "tolerance": 0.05,
+    "grouping": "Scenario families and transitive identical planning fingerprints; no unseen-template claim"
+  },
+  "bulk_specific_waiver": {
+    "status": "requested_not_granted",
+    "decision": null,
+    "reviewer_name_or_chat_identity": null,
+    "role": null,
+    "decision_date": null,
+    "rationale": null,
+    "evidence_ref": null,
+    "scope": "Only the 7500-row hypothetical unitless engineering experiment at the exact configuration and current code/runtime identity",
+    "supersedes_or_extends_pilot_waiver": false,
+    "excluded_claims": [
+      "qualified formula approval",
+      "institutional approval",
+      "LKR calibration",
+      "real observed financial outcomes",
+      "real venue safety",
+      "real-world prediction accuracy",
+      "model training"
+    ],
+    "institutional_requirements": "Unknown; not waived by this form"
+  },
+  "unresolved_formula_reviews": [
+    {
+      "formula_id": "A001",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A007",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A008",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A009",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A010",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A011",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A012",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A013",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A014",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A015",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A020",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A021",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A022",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A023",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A024",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A027",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A028",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A029",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    },
+    {
+      "formula_id": "A033",
+      "qualified_review_status": "not_performed",
+      "qualified_reviewer": null,
+      "qualified_approval_date": null,
+      "limitation": "No external formula/methodology validation; pilot designer acceptance is not formal approval"
+    }
+  ],
+  "qualified_review_performed": false,
+  "institutional_approval_claimed": false,
+  "limitations": [
+    "Hypothetical dimensionless coefficients; no LKR interpretation",
+    "Internal pilot consistency PASS only; market realism not validated",
+    "Shared venue/vendor/source ancestry; unseen-template evaluation unavailable",
+    "Related states and paired replications; 7500 rows are not 7500 independent samples",
+    "Nine unsupported master fields remain missing",
+    "Full-scale outputs and performance not yet measured; native preview warning disclosed"
+  ]
+}

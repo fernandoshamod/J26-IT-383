@@ -1,0 +1,18 @@
+{
+  "version": "graph-risk-exploratory.0.1",
+  "release_sha256": "5baff661b4f6b6e64425b4de2495f77bd395ee1e92dd1f0bf368b753f4e1542f",
+  "seed": 20261012,
+  "epochs": 40,
+  "batch_size": 256,
+  "hidden_features": 24,
+  "learning_rate": 0.003,
+  "candidate_models": ["gat_dependencies", "gat_self_only", "gat_shuffled_dependencies"],
+  "targets": ["Budget_Overrun", "Profit_Margin_Risk", "Vendor_Cost_Anomaly"],
+  "checkpoint_and_model_selection": "mean first-two-target group-equal validation log loss; exclude exact graph-input overlap with training",
+  "vendor_anomaly_selection": "training group-weighted prior only; random injection is negative control",
+  "standardization": "observed values per node/feature fitted on training only; append original masks and node-type indicators",
+  "computational_edges": "directed source-to-target plus self loops; no reverse edges; shuffle uses fixed node permutation of endpoints only",
+  "readout": "two single-head additive-attention layers; mean node pooling; three binary logits",
+  "scope": "single-seed exploratory in-simulator classification, not observed physical adjacency or causal inference",
+  "unsupported": ["unseen-template evaluation", "real-world LKR accuracy", "validated attention explanations", "calibrated deployment probabilities"]
+}

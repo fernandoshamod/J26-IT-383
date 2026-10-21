@@ -1,0 +1,34 @@
+{
+  "run_id":"v3_1_frozen_robustness_20261016",
+  "model_run":"expense_risk_v3_1_20261016",
+  "seed":202610160,
+  "threshold":0.5,
+  "event_types":["Wedding","Corporate"],
+  "templates":[
+    {"id":"small","guests":50,"event_hours":2,"venue_width_m":20,"venue_length_m":20},
+    {"id":"default","guests":150,"event_hours":5,"venue_width_m":20,"venue_length_m":25},
+    {"id":"capacity_edge","guests":277,"event_hours":5,"venue_width_m":20,"venue_length_m":25},
+    {"id":"large","guests":500,"event_hours":8,"venue_width_m":40,"venue_length_m":40},
+    {"id":"short","guests":150,"event_hours":2,"venue_width_m":20,"venue_length_m":40},
+    {"id":"long","guests":150,"event_hours":12,"venue_width_m":20,"venue_length_m":40}
+  ],
+  "budget_factors_of_planned_cost":[0.85,0.95,1,1.05,1.15],
+  "expected_margin_fractions":[0.05,0.15,0.25],
+  "minimum_margin_pct":15,
+  "outcome_draws_per_case_per_regime":512,
+  "outcome_regimes":[
+    {"id":"original_uniform","cost":[0.9,1.1],"receipts":[0.95,1.05],"dependence":"independent"},
+    {"id":"higher_costs","cost":[1,1.2],"receipts":[0.95,1.05],"dependence":"independent"},
+    {"id":"lower_receipts","cost":[0.9,1.1],"receipts":[0.8,1],"dependence":"independent"},
+    {"id":"coupled_adverse","cost":[1,1.2],"receipts":[0.8,1],"dependence":"inverse_common_uniform"}
+  ],
+  "comparison":"Frozen native XGBoost versus financial rule classes and the existing frontend Monte Carlo predictor. Monte Carlo retains ORIGINAL shock assumptions; it is not informed of the outcome regime.",
+  "expense_addition_fractions_of_core":[0,0.1,0.2,0.4],
+  "gate_cases":["capacity_278_in_500m2","guest_49","guest_501","zero_budget","missing_budget","nonfinite_venue","client_stage_injection","five_optional_expenses","excess_optional_exposure","committed_quote_regime","missing_optional_price","geometry_outside_training_marginals"],
+  "software_acceptance":"All hashes unchanged; reconciliation tolerance 0.011 LKR; fixed threshold 0.5; safe invalid/unsupported handling; add/remove identity; monotonic positive expense effects for supported predictions. Zero model fitting.",
+  "performance_acceptance":"Report-only. No minimum accuracy used to tune, select, relabel, retry or promote models. Distribution-shift deterioration is a finding, not permission to change the model.",
+  "origin":"All numerical stress ranges, templates and quotas are hypothetical engineering-test choices, not Sri Lankan market statistics or observed event outcomes.",
+  "ancestry":"12 designed root families, each with 15 budget/receipt planning states. All share existing cost/source templates. Replicated outcomes and grid cases are not independent observed events.",
+  "output_policy":"Reports only: case inputs/provenance and aggregate counts/metrics. No master/training dataset, individual outcome table, retraining or frontend change.",
+  "holdout_disclosure":"New predeclared targeted stress evaluation after model freeze; not a randomly sampled population test, unseen-venue evaluation or independent real-world validation. Existing v3 holdout was previously inspected."
+}

@@ -1,0 +1,12 @@
+{
+  "baseline":{
+    "planning_inputs":{"event_type":"Wedding","guests":150,"event_hours":5,"stage_width_m":4,"stage_length_m":6,"venue_area_m2":1000,"target_budget_lkr":2000000,"retained_receipts_lkr":2500000,"min_profit_margin_pct":15,"reference_id":"HOTEL-PUB-R008"},
+    "event_date":"2026-10-22","quotes":[],"removed_quote_ids":[]
+  },
+  "alternative":{
+    "planning_inputs":{"event_type":"Wedding","guests":150,"event_hours":5,"stage_width_m":4,"stage_length_m":6,"venue_area_m2":1000,"target_budget_lkr":2000000,"retained_receipts_lkr":2500000,"min_profit_margin_pct":15,"reference_id":"HOTEL-PUB-R008"},
+    "event_date":"2026-10-22","removed_quote_ids":[],
+    "quotes":[{"id":"photo_demo","label":"TEST ONLY photography","mode":"add","service":"photography","quantity_basis":"booking","unit_rate_lkr":60000,"tax_scope":"all_in","service_pct":0,"tax_pct":0,"pricing_policy":"locked","increase_pct":0,"source_kind":"mock_test_only","evidence_ref":"TEST FIXTURE - NOT A REAL MARKET QUOTATION","valid_from":"2026-10-15","valid_until":"2026-10-31","covers":["photography"],"committed":false,"cancellation_fee_lkr":0}]
+  },
+  "draws":2000,"seed":20261014
+}

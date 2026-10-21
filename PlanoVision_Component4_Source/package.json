@@ -1,0 +1,16 @@
+{
+  "name": "planovision-component4",
+  "version": "3.5.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": "^20.19.0 || >=22.12.0"},
+  "scripts": {
+    "postinstall": "node scripts/dev/setup-frontend.mjs",
+    "dev": "node scripts/dev/start.mjs",
+    "dev:frontend": "node scripts/dev/start.mjs frontend",
+    "dev:backend": "node scripts/dev/start.mjs backend",
+    "build": "npm --prefix frontend run build",
+    "test": "npm --prefix frontend test -- --run",
+    "test:dev": "node --test scripts/dev/start.test.mjs"
+  }
+}

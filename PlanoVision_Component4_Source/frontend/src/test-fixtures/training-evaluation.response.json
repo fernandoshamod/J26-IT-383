@@ -1,0 +1,1880 @@
+{
+  "version": "planner-services.2.1",
+  "currency": "LKR",
+  "baseline": {
+    "status": "calculated",
+    "inputs": {
+      "event_type": "Wedding",
+      "guests": 150,
+      "event_hours": 5.0,
+      "stage_width_m": 4.0,
+      "stage_length_m": 6.0,
+      "venue_area_m2": 500.0,
+      "target_budget_lkr": 2000000.0,
+      "retained_receipts_lkr": 2500000.0,
+      "min_profit_margin_pct": 15.0,
+      "reference_id": "HOTEL-PUB-R008"
+    },
+    "plan": {
+      "currency": "LKR",
+      "origin": "evidence_anchored_synthetic_estimate_not_confirmed_quote",
+      "line_items_lkr": {
+        "catering": 1158465.0,
+        "chairs": 68145.0,
+        "tables": 48675.0,
+        "stage": 62304.0,
+        "av": 64900.0,
+        "labour": 38161.2,
+        "venue": 129800.0
+      },
+      "reference_allocation_before_charges_lkr": {
+        "catering": 892500.0,
+        "chairs": 52500,
+        "tables": 37500,
+        "stage": 48000.0,
+        "av": 50000,
+        "labour": 29400.0,
+        "venue": 100000
+      },
+      "assumed_incremental_extras_before_charges_lkr": {
+        "catering": 0.0,
+        "chairs": 0.0,
+        "tables": 0.0,
+        "stage": 0.0,
+        "av": 0.0,
+        "labour": 0.0,
+        "venue": 0
+      },
+      "assumed_charge_factor": 1.298,
+      "total_cost_lkr": 1570450.2,
+      "retained_receipts_lkr": 2500000.0,
+      "expected_profit_lkr": 929549.8,
+      "expected_margin_pct": 37.181992,
+      "reserve_lkr": 157045.02,
+      "budget_headroom_lkr": 429549.80000000005,
+      "budget_feasible": true,
+      "affordable_after_reserve": true,
+      "margin_feasible": true,
+      "recommended_client_price_excluding_output_tax_lkr": 2032347.32,
+      "stage_area_m2": 24.0,
+      "used_area_m2": 309.0,
+      "space_utilization": 0.618,
+      "seats": 150,
+      "tables": 25,
+      "staff": 7,
+      "paid_person_hours": 49.0,
+      "reference_rate_lkr_per_person": 5950.0,
+      "source_reference": {
+        "Currency": "LKR",
+        "Rate_Unit": "person",
+        "Service_Charge_Points": null,
+        "Unspecified_Surcharge_Points": null,
+        "Tax_Rate_Points": null,
+        "Valid_From": null,
+        "Valid_Until": null,
+        "Minimum_Guests": null,
+        "Event_Hours": null,
+        "Access_Date": 46307,
+        "Evidence_Kind": "official_advertised_price",
+        "Calibration_Status": "Needs dated quote and scope review",
+        "Reviewer": null,
+        "Review_Date": null,
+        "Decision": "Pending",
+        "Review_Rationale": null,
+        "Evidence_ID": "HOTEL-PUB-R008",
+        "Provider": "Paaruwa Nature Resort",
+        "Event_Scope": "Wedding",
+        "Package": "Manel",
+        "Rate_LKR": 5950,
+        "Price_Kind": "Advertised menu rate",
+        "Published_Surcharge": "+; breakdown not stated for weddings",
+        "Applicability": "Same menus repeated across hybrid, nature and banquet options; counted once",
+        "Inclusions": "Wedding menu; event-specific arrangement by request",
+        "Exclusions_or_Gaps": "Venue, staffing, AV, taxes and duration unconfirmed; 100+ described generally, not binding minimum",
+        "Source_URL": "https://paaruwa.lk/packages/"
+      },
+      "confirmed_all_in_market_quote": false,
+      "warnings": [
+        "Published rates are reference anchors, not signed or availability-confirmed quotes.",
+        "Component allocations, marginal rates, geometry and unknown tax treatment are experimental assumptions.",
+        "Package removal does not automatically discount included services; requotation may be needed."
+      ]
+    },
+    "model_scores": {
+      "Budget_Overrun": {
+        "uncalibrated_score": 0.0023854554165154696,
+        "class": 0,
+        "threshold": 0.5
+      },
+      "Profit_Margin_Risk": {
+        "uncalibrated_score": 0.0030726036056876183,
+        "class": 0,
+        "threshold": 0.5
+      }
+    },
+    "shap_drivers": {
+      "Budget_Overrun": [
+        {
+          "feature": "Planned_Budget_Utilization",
+          "input_value": 0.7852251,
+          "contribution_log_odds": -5.734267711639404,
+          "direction": "lowers_score"
+        }
+      ],
+      "Profit_Margin_Risk": [
+        {
+          "feature": "Planned_Margin_Buffer_Pct",
+          "input_value": 22.181992,
+          "contribution_log_odds": -5.758586883544922,
+          "direction": "lowers_score"
+        },
+        {
+          "feature": "Minimum_Margin_Pct",
+          "input_value": 15.0,
+          "contribution_log_odds": -0.16400834918022156,
+          "direction": "lowers_score"
+        }
+      ]
+    },
+    "monte_carlo": {
+      "origin": "hypothetical_bounded_shocks_not_observed_risk",
+      "cost_lkr": {
+        "mean": 1569344.5580250002,
+        "p05": 1428105.2019999998,
+        "p50": 1568577.97,
+        "p95": 1711495.483
+      },
+      "overrun_frequency": 0.0,
+      "margin_risk_frequency": 0.0,
+      "draws": 2000,
+      "seed": 20261014,
+      "real_world_calibrated": false
+    },
+    "draft_planning_health": {
+      "score_points": 100,
+      "validated": false,
+      "origin": "draft_planning_coverage"
+    },
+    "blockers": [],
+    "actions": [
+      {
+        "action": "additional_client_payment_to_meet_margin_with_reserve",
+        "amount_lkr": 0.0
+      },
+      {
+        "action": "additional_cost_allowance_to_cover_cost_and_reserve",
+        "amount_lkr": 0.0
+      },
+      {
+        "action": "review_uncommitted_optional_services_or_obtain_requotation",
+        "amount_lkr": null
+      }
+    ],
+    "quote_change_status": "no_active_quotes_original_model_rules",
+    "event_date": "2026-10-22",
+    "geometry": {
+      "venue_width_m": 20.0,
+      "venue_length_m": 25.0,
+      "venue_area_m2": 500.0,
+      "guests_per_m2": 0.3,
+      "area_rule_capacity": 277
+    },
+    "model_trace": {
+      "run_id": "expense_risk_v3_1_20261016",
+      "method": "native_xgboost_saved_model_predict",
+      "training_rows": 2160,
+      "test_rows": 720,
+      "independent_root_families": 600,
+      "origin": "synthetic_only_no_observed_event_validation",
+      "calibrated": false,
+      "feature_count": 26,
+      "input_features": {
+        "Guest_Count": 150,
+        "Event_Hours": 5.0,
+        "Venue_Area_m2": 500.0,
+        "Seating_Count": 150,
+        "Stage_Area_m2": 24.0,
+        "Space_Utilization": 0.618,
+        "Quoted_Catering_LKR": 1158465.0,
+        "Quoted_AV_LKR": 64900.0,
+        "Quoted_Venue_LKR": 129800.0,
+        "Quoted_Equipment_LKR": 179124.0,
+        "Staff_Count": 7,
+        "Paid_Person_Hours": 49.0,
+        "Quoted_Labour_LKR": 38161.2,
+        "Target_Budget_LKR": 2000000.0,
+        "Retained_Receipts_LKR": 2500000.0,
+        "Contingency_Reserve_LKR": 157045.02,
+        "Minimum_Margin_Pct": 15.0,
+        "Planned_Total_Cost_LKR": 1570450.2,
+        "Reference_Rate_LKR_Per_Person": 5950.0,
+        "Event_Type_Wedding": 1,
+        "Event_Type_Corporate": 0,
+        "Optional_Expense_Total_LKR": 0.0,
+        "Optional_Expense_Count": 0,
+        "Optional_Expense_Fraction": 0.0,
+        "Planned_Budget_Utilization": 0.7852251,
+        "Planned_Margin_Buffer_Pct": 22.181992
+      },
+      "model_features": {
+        "Budget_Overrun": [
+          "Planned_Budget_Utilization"
+        ],
+        "Profit_Margin_Risk": [
+          "Planned_Margin_Buffer_Pct",
+          "Minimum_Margin_Pct"
+        ]
+      },
+      "model_sha256": {
+        "Budget_Overrun": "d76da83949943ea7a035e3e78f145584aa0dcd19b52942bab5317b4125d065e3",
+        "Profit_Margin_Risk": "bfc14ef5ac280ce0ae1768495af28b317c6ff88917a1fb83b287e93338957648"
+      },
+      "design_sha256": "c7ac36e00d3222db8802dd622b78b0a4066b28b9083c8a14cc110e09e3182702",
+      "enhancement_protocol_sha256": "fcd078a56be71cbad15dc00cdb544b672c833324f1382cbff7f5fc20d5695d21",
+      "support_reasons": [],
+      "test_metrics": {
+        "Budget_Overrun": {
+          "xgboost": {
+            "accuracy": 0.9555555555555556,
+            "balanced_accuracy": 0.952868587672826,
+            "precision": 0.9468085106382979,
+            "recall": 0.9401408450704225,
+            "f1": 0.9434628975265018,
+            "roc_auc": 0.9919401731489856,
+            "average_precision": 0.9875991267534974,
+            "log_loss": 0.10392955255711547,
+            "brier_score": 0.0319842635817678,
+            "tn": 421.0,
+            "fp": 15.0,
+            "fn": 17.0,
+            "tp": 267.0
+          },
+          "original_v3": {
+            "accuracy": 0.95,
+            "balanced_accuracy": 0.9470538829306112,
+            "precision": 0.9397163120567376,
+            "recall": 0.9330985915492958,
+            "f1": 0.9363957597173145,
+            "roc_auc": 0.9906157126243699,
+            "average_precision": 0.9885214029780698,
+            "log_loss": 0.10695256768022067,
+            "brier_score": 0.03343867734538141,
+            "tn": 419.0,
+            "fp": 17.0,
+            "fn": 19.0,
+            "tp": 265.0
+          },
+          "prior": {
+            "accuracy": 0.6055555555555555,
+            "balanced_accuracy": 0.5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "roc_auc": 0.5,
+            "average_precision": 0.39444444444444443,
+            "log_loss": 0.6726182487568884,
+            "brier_score": 0.23979166666666668,
+            "tn": 436.0,
+            "fp": 0.0,
+            "fn": 284.0,
+            "tp": 0.0
+          },
+          "planning_rule_class_accuracy": 0.9555555555555556,
+          "family_bootstrap": {
+            "accuracy_95_interval": [
+              0.9375,
+              0.9722222222222222
+            ],
+            "accuracy_difference_vs_v3_95_interval": [
+              0.0,
+              0.013888888888888888
+            ],
+            "resampling_unit": "Base_Event_ID",
+            "families": 120,
+            "bootstrap_draws": 1000,
+            "limitation": "Conditional synthetic-family uncertainty only; shared sources/rules and prior holdout inspection remain"
+          },
+          "by_event_type": {
+            "Wedding": {
+              "accuracy": 0.9638888888888889,
+              "balanced_accuracy": 0.960785886126704,
+              "precision": 0.9647887323943662,
+              "recall": 0.9448275862068966,
+              "f1": 0.9547038327526133,
+              "roc_auc": 0.9920930232558138,
+              "average_precision": 0.9888724869226746,
+              "log_loss": 0.09835894060440904,
+              "brier_score": 0.027978461526016643,
+              "tn": 210.0,
+              "fp": 5.0,
+              "fn": 8.0,
+              "tp": 137.0
+            },
+            "Corporate": {
+              "accuracy": 0.9472222222222222,
+              "balanced_accuracy": 0.9450014648914353,
+              "precision": 0.9285714285714286,
+              "recall": 0.935251798561151,
+              "f1": 0.931899641577061,
+              "roc_auc": 0.9915524593899541,
+              "average_precision": 0.9853383674815813,
+              "log_loss": 0.10950016450982193,
+              "brier_score": 0.03599006563751895,
+              "tn": 211.0,
+              "fp": 10.0,
+              "fn": 9.0,
+              "tp": 130.0
+            }
+          }
+        },
+        "Profit_Margin_Risk": {
+          "xgboost": {
+            "accuracy": 0.9319444444444445,
+            "balanced_accuracy": 0.9328569549439412,
+            "precision": 0.9101123595505618,
+            "recall": 0.9501466275659824,
+            "f1": 0.9296987087517934,
+            "roc_auc": 0.9911984772398426,
+            "average_precision": 0.9908404777251678,
+            "log_loss": 0.12471001377824889,
+            "brier_score": 0.041522260910275124,
+            "tn": 347.0,
+            "fp": 32.0,
+            "fn": 17.0,
+            "tp": 324.0
+          },
+          "original_v3": {
+            "accuracy": 0.9347222222222222,
+            "balanced_accuracy": 0.935348462925278,
+            "precision": 0.9176136363636364,
+            "recall": 0.9472140762463344,
+            "f1": 0.9321789321789322,
+            "roc_auc": 0.9903705537802057,
+            "average_precision": 0.990192493314838,
+            "log_loss": 0.13751573529719233,
+            "brier_score": 0.04566990671724025,
+            "tn": 350.0,
+            "fp": 29.0,
+            "fn": 18.0,
+            "tp": 323.0
+          },
+          "prior": {
+            "accuracy": 0.4736111111111111,
+            "balanced_accuracy": 0.5,
+            "precision": 0.4736111111111111,
+            "recall": 1.0,
+            "f1": 0.6427898209236569,
+            "roc_auc": 0.5,
+            "average_precision": 0.4736111111111111,
+            "log_loss": 0.6994644984412424,
+            "brier_score": 0.25315222050754455,
+            "tn": 0.0,
+            "fp": 379.0,
+            "fn": 0.0,
+            "tp": 341.0
+          },
+          "planning_rule_class_accuracy": 0.9347222222222222,
+          "family_bootstrap": {
+            "accuracy_95_interval": [
+              0.9083333333333333,
+              0.9569444444444445
+            ],
+            "accuracy_difference_vs_v3_95_interval": [
+              -0.016666666666666666,
+              0.008333333333333333
+            ],
+            "resampling_unit": "Base_Event_ID",
+            "families": 120,
+            "bootstrap_draws": 1000,
+            "limitation": "Conditional synthetic-family uncertainty only; shared sources/rules and prior holdout inspection remain"
+          },
+          "by_event_type": {
+            "Wedding": {
+              "accuracy": 0.9305555555555556,
+              "balanced_accuracy": 0.928849902534113,
+              "precision": 0.91,
+              "recall": 0.9629629629629629,
+              "f1": 0.9357326478149101,
+              "roc_auc": 0.9901760574275194,
+              "average_precision": 0.9915221913745974,
+              "log_loss": 0.13362691118987363,
+              "brier_score": 0.04412933398166346,
+              "tn": 153.0,
+              "fp": 18.0,
+              "fn": 7.0,
+              "tp": 182.0
+            },
+            "Corporate": {
+              "accuracy": 0.9333333333333333,
+              "balanced_accuracy": 0.9334514170040487,
+              "precision": 0.9102564102564102,
+              "recall": 0.9342105263157895,
+              "f1": 0.922077922077922,
+              "roc_auc": 0.9919977226720648,
+              "average_precision": 0.9896576128524777,
+              "log_loss": 0.11579311636662415,
+              "brier_score": 0.03891518783888678,
+              "tn": 194.0,
+              "fp": 14.0,
+              "fn": 10.0,
+              "tp": 142.0
+            }
+          }
+        }
+      },
+      "limitations": [
+        "Zero observed completed-event outcomes",
+        "Shared source profiles and spatial/cost rules; no unseen-provider validation",
+        "Stage fixed at demo 4x6m, not observed CAD",
+        "Expense names ignored by model; only aggregate monetary exposure/count is learned",
+        "Same hypothetical shock mechanism for core and optional costs",
+        "Uncalibrated synthetic risk scores; no validated real-world probabilities",
+        "Health score remains an experimental financial rule, not this ML output",
+        "No date-to-future-price forecasting or vendor anomaly classifier",
+        "Retrospective synthetic test; not a new untouched holdout"
+      ],
+      "prediction_executed": true,
+      "evaluation": {
+        "selection": "3 outer \u00d7 3 inner family-grouped folds; 5 predeclared candidates; training rows only",
+        "previously_inspected_test": true,
+        "test_scope": "Retrospective synthetic test; not a new untouched holdout",
+        "threshold": 0.5,
+        "data_or_labels_or_splits_changed": false,
+        "test_used_for_selection": false,
+        "protocol_sha256": "fcd078a56be71cbad15dc00cdb544b672c833324f1382cbff7f5fc20d5695d21",
+        "source_run": "expense_risk_v3_0_20261015",
+        "split_roots": {
+          "train": 360,
+          "validation": 120,
+          "test": 120
+        },
+        "split_rows": {
+          "train": 2160,
+          "validation": 720,
+          "test": 720
+        },
+        "targets": {
+          "Budget_Overrun": {
+            "nested_cv": {
+              "oof_metrics": {
+                "accuracy": 0.9490740740740741,
+                "balanced_accuracy": 0.9490385526191153,
+                "precision": 0.9325481798715204,
+                "recall": 0.94880174291939,
+                "f1": 0.9406047516198704,
+                "roc_auc": 0.992799230982427,
+                "average_precision": 0.9899103337588637,
+                "log_loss": 0.10504726270431075,
+                "brier_score": 0.03326406603134247,
+                "tn": 1179.0,
+                "fp": 63.0,
+                "fn": 47.0,
+                "tp": 871.0
+              },
+              "original_oof_metrics": {
+                "accuracy": 0.9435185185185185,
+                "balanced_accuracy": 0.9432130340058729,
+                "precision": 0.927038626609442,
+                "recall": 0.9411764705882353,
+                "f1": 0.9340540540540541,
+                "roc_auc": 0.9904486754444128,
+                "average_precision": 0.9883757345094505,
+                "log_loss": 0.11548501719700842,
+                "brier_score": 0.037472650487880746,
+                "tn": 1174.0,
+                "fp": 68.0,
+                "fn": 54.0,
+                "tp": 864.0
+              },
+              "accuracy_fold_sd": 0.005782405554072633,
+              "scope": "training-family nested CV, not real-event or unseen-template validation"
+            },
+            "folds": [
+              {
+                "fold": 0,
+                "accuracy": 0.9555555555555556,
+                "chosen_candidate": "focused_longer"
+              },
+              {
+                "fold": 1,
+                "accuracy": 0.9472222222222222,
+                "chosen_candidate": "focused_regularized"
+              },
+              {
+                "fold": 2,
+                "accuracy": 0.9444444444444444,
+                "chosen_candidate": "focused_regularized"
+              }
+            ],
+            "test": {
+              "xgboost": {
+                "accuracy": 0.9555555555555556,
+                "balanced_accuracy": 0.952868587672826,
+                "precision": 0.9468085106382979,
+                "recall": 0.9401408450704225,
+                "f1": 0.9434628975265018,
+                "roc_auc": 0.9919401731489856,
+                "average_precision": 0.9875991267534974,
+                "log_loss": 0.10392955255711547,
+                "brier_score": 0.0319842635817678,
+                "tn": 421.0,
+                "fp": 15.0,
+                "fn": 17.0,
+                "tp": 267.0
+              },
+              "original_v3": {
+                "accuracy": 0.95,
+                "balanced_accuracy": 0.9470538829306112,
+                "precision": 0.9397163120567376,
+                "recall": 0.9330985915492958,
+                "f1": 0.9363957597173145,
+                "roc_auc": 0.9906157126243699,
+                "average_precision": 0.9885214029780698,
+                "log_loss": 0.10695256768022067,
+                "brier_score": 0.03343867734538141,
+                "tn": 419.0,
+                "fp": 17.0,
+                "fn": 19.0,
+                "tp": 265.0
+              },
+              "prior": {
+                "accuracy": 0.6055555555555555,
+                "balanced_accuracy": 0.5,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "roc_auc": 0.5,
+                "average_precision": 0.39444444444444443,
+                "log_loss": 0.6726182487568884,
+                "brier_score": 0.23979166666666668,
+                "tn": 436.0,
+                "fp": 0.0,
+                "fn": 284.0,
+                "tp": 0.0
+              },
+              "planning_rule_class_accuracy": 0.9555555555555556,
+              "family_bootstrap": {
+                "accuracy_95_interval": [
+                  0.9375,
+                  0.9722222222222222
+                ],
+                "accuracy_difference_vs_v3_95_interval": [
+                  0.0,
+                  0.013888888888888888
+                ],
+                "resampling_unit": "Base_Event_ID",
+                "families": 120,
+                "bootstrap_draws": 1000,
+                "limitation": "Conditional synthetic-family uncertainty only; shared sources/rules and prior holdout inspection remain"
+              },
+              "by_event_type": {
+                "Wedding": {
+                  "accuracy": 0.9638888888888889,
+                  "balanced_accuracy": 0.960785886126704,
+                  "precision": 0.9647887323943662,
+                  "recall": 0.9448275862068966,
+                  "f1": 0.9547038327526133,
+                  "roc_auc": 0.9920930232558138,
+                  "average_precision": 0.9888724869226746,
+                  "log_loss": 0.09835894060440904,
+                  "brier_score": 0.027978461526016643,
+                  "tn": 210.0,
+                  "fp": 5.0,
+                  "fn": 8.0,
+                  "tp": 137.0
+                },
+                "Corporate": {
+                  "accuracy": 0.9472222222222222,
+                  "balanced_accuracy": 0.9450014648914353,
+                  "precision": 0.9285714285714286,
+                  "recall": 0.935251798561151,
+                  "f1": 0.931899641577061,
+                  "roc_auc": 0.9915524593899541,
+                  "average_precision": 0.9853383674815813,
+                  "log_loss": 0.10950016450982193,
+                  "brier_score": 0.03599006563751895,
+                  "tn": 211.0,
+                  "fp": 10.0,
+                  "fn": 9.0,
+                  "tp": 130.0
+                }
+              }
+            },
+            "deployment": {
+              "training_cv_winner": "focused_regularized",
+              "validation_gate_pass": true,
+              "candidate_validation_metrics": {
+                "accuracy": 0.9416666666666667,
+                "balanced_accuracy": 0.9351170568561873,
+                "precision": 0.92578125,
+                "recall": 0.9115384615384615,
+                "f1": 0.9186046511627907,
+                "roc_auc": 0.9902257525083613,
+                "average_precision": 0.9817092954451706,
+                "log_loss": 0.11652106522597025,
+                "brier_score": 0.03813195055712257,
+                "tn": 441.0,
+                "fp": 19.0,
+                "fn": 23.0,
+                "tp": 237.0
+              },
+              "deployed": "enhanced_candidate",
+              "selection_uses_test": false
+            },
+            "training_search": [
+              {
+                "candidate": "original_full",
+                "fold_log_loss": [
+                  0.10055006322663118,
+                  0.1217436706404212,
+                  0.12416131772397286
+                ],
+                "mean_log_loss": 0.11548501719700842
+              },
+              {
+                "candidate": "regularized_full",
+                "fold_log_loss": [
+                  0.09747460478939553,
+                  0.11564445505565807,
+                  0.12029888893343813
+                ],
+                "mean_log_loss": 0.11113931625949725
+              },
+              {
+                "candidate": "focused_shallow",
+                "fold_log_loss": [
+                  0.10557359913690212,
+                  0.1147442862799497,
+                  0.12367623308478569
+                ],
+                "mean_log_loss": 0.11466470616721251
+              },
+              {
+                "candidate": "focused_regularized",
+                "fold_log_loss": [
+                  0.09307914351174632,
+                  0.10879165844698918,
+                  0.1134125353479481
+                ],
+                "mean_log_loss": 0.10509444576889453
+              },
+              {
+                "candidate": "focused_longer",
+                "fold_log_loss": [
+                  0.09293759431799496,
+                  0.10935501192754274,
+                  0.11348346259688481
+                ],
+                "mean_log_loss": 0.10525868961414082
+              }
+            ],
+            "features": [
+              "Planned_Budget_Utilization"
+            ]
+          },
+          "Profit_Margin_Risk": {
+            "nested_cv": {
+              "oof_metrics": {
+                "accuracy": 0.9486111111111111,
+                "balanced_accuracy": 0.9477845633367832,
+                "precision": 0.9454855195911414,
+                "recall": 0.9593777009507347,
+                "f1": 0.9523809523809523,
+                "roc_auc": 0.9912789720725464,
+                "average_precision": 0.9924629739319236,
+                "log_loss": 0.12264860165068235,
+                "brier_score": 0.03697422974695449,
+                "tn": 939.0,
+                "fp": 64.0,
+                "fn": 47.0,
+                "tp": 1110.0
+              },
+              "original_oof_metrics": {
+                "accuracy": 0.9486111111111111,
+                "balanced_accuracy": 0.9479172680747732,
+                "precision": 0.947008547008547,
+                "recall": 0.9576490924805532,
+                "f1": 0.9522990975504942,
+                "roc_auc": 0.9913246431836727,
+                "average_precision": 0.9926414184707396,
+                "log_loss": 0.1197494438831561,
+                "brier_score": 0.03649061688097274,
+                "tn": 941.0,
+                "fp": 62.0,
+                "fn": 49.0,
+                "tp": 1108.0
+              },
+              "accuracy_fold_sd": 0.0036746545987008075,
+              "scope": "training-family nested CV, not real-event or unseen-template validation"
+            },
+            "folds": [
+              {
+                "fold": 0,
+                "accuracy": 0.9513888888888888,
+                "chosen_candidate": "focused_longer"
+              },
+              {
+                "fold": 1,
+                "accuracy": 0.9444444444444444,
+                "chosen_candidate": "focused_regularized"
+              },
+              {
+                "fold": 2,
+                "accuracy": 0.95,
+                "chosen_candidate": "original_full"
+              }
+            ],
+            "test": {
+              "xgboost": {
+                "accuracy": 0.9319444444444445,
+                "balanced_accuracy": 0.9328569549439412,
+                "precision": 0.9101123595505618,
+                "recall": 0.9501466275659824,
+                "f1": 0.9296987087517934,
+                "roc_auc": 0.9911984772398426,
+                "average_precision": 0.9908404777251678,
+                "log_loss": 0.12471001377824889,
+                "brier_score": 0.041522260910275124,
+                "tn": 347.0,
+                "fp": 32.0,
+                "fn": 17.0,
+                "tp": 324.0
+              },
+              "original_v3": {
+                "accuracy": 0.9347222222222222,
+                "balanced_accuracy": 0.935348462925278,
+                "precision": 0.9176136363636364,
+                "recall": 0.9472140762463344,
+                "f1": 0.9321789321789322,
+                "roc_auc": 0.9903705537802057,
+                "average_precision": 0.990192493314838,
+                "log_loss": 0.13751573529719233,
+                "brier_score": 0.04566990671724025,
+                "tn": 350.0,
+                "fp": 29.0,
+                "fn": 18.0,
+                "tp": 323.0
+              },
+              "prior": {
+                "accuracy": 0.4736111111111111,
+                "balanced_accuracy": 0.5,
+                "precision": 0.4736111111111111,
+                "recall": 1.0,
+                "f1": 0.6427898209236569,
+                "roc_auc": 0.5,
+                "average_precision": 0.4736111111111111,
+                "log_loss": 0.6994644984412424,
+                "brier_score": 0.25315222050754455,
+                "tn": 0.0,
+                "fp": 379.0,
+                "fn": 0.0,
+                "tp": 341.0
+              },
+              "planning_rule_class_accuracy": 0.9347222222222222,
+              "family_bootstrap": {
+                "accuracy_95_interval": [
+                  0.9083333333333333,
+                  0.9569444444444445
+                ],
+                "accuracy_difference_vs_v3_95_interval": [
+                  -0.016666666666666666,
+                  0.008333333333333333
+                ],
+                "resampling_unit": "Base_Event_ID",
+                "families": 120,
+                "bootstrap_draws": 1000,
+                "limitation": "Conditional synthetic-family uncertainty only; shared sources/rules and prior holdout inspection remain"
+              },
+              "by_event_type": {
+                "Wedding": {
+                  "accuracy": 0.9305555555555556,
+                  "balanced_accuracy": 0.928849902534113,
+                  "precision": 0.91,
+                  "recall": 0.9629629629629629,
+                  "f1": 0.9357326478149101,
+                  "roc_auc": 0.9901760574275194,
+                  "average_precision": 0.9915221913745974,
+                  "log_loss": 0.13362691118987363,
+                  "brier_score": 0.04412933398166346,
+                  "tn": 153.0,
+                  "fp": 18.0,
+                  "fn": 7.0,
+                  "tp": 182.0
+                },
+                "Corporate": {
+                  "accuracy": 0.9333333333333333,
+                  "balanced_accuracy": 0.9334514170040487,
+                  "precision": 0.9102564102564102,
+                  "recall": 0.9342105263157895,
+                  "f1": 0.922077922077922,
+                  "roc_auc": 0.9919977226720648,
+                  "average_precision": 0.9896576128524777,
+                  "log_loss": 0.11579311636662415,
+                  "brier_score": 0.03891518783888678,
+                  "tn": 194.0,
+                  "fp": 14.0,
+                  "fn": 10.0,
+                  "tp": 142.0
+                }
+              }
+            },
+            "deployment": {
+              "training_cv_winner": "focused_regularized",
+              "validation_gate_pass": true,
+              "candidate_validation_metrics": {
+                "accuracy": 0.9430555555555555,
+                "balanced_accuracy": 0.9423819435309775,
+                "precision": 0.9378238341968912,
+                "recall": 0.9551451187335093,
+                "f1": 0.9464052287581699,
+                "roc_auc": 0.9896896447666726,
+                "average_precision": 0.99108372364818,
+                "log_loss": 0.13122723559674057,
+                "brier_score": 0.04272721478630159,
+                "tn": 317.0,
+                "fp": 24.0,
+                "fn": 17.0,
+                "tp": 362.0
+              },
+              "deployed": "enhanced_candidate",
+              "selection_uses_test": false
+            },
+            "training_search": [
+              {
+                "candidate": "original_full",
+                "fold_log_loss": [
+                  0.11177381474854808,
+                  0.12624704190969507,
+                  0.12122747499122513
+                ],
+                "mean_log_loss": 0.1197494438831561
+              },
+              {
+                "candidate": "regularized_full",
+                "fold_log_loss": [
+                  0.11581297733302805,
+                  0.125797928075785,
+                  0.12143705493429624
+                ],
+                "mean_log_loss": 0.12101598678103642
+              },
+              {
+                "candidate": "focused_shallow",
+                "fold_log_loss": [
+                  0.12356186089995765,
+                  0.1310145526229054,
+                  0.12160302482010152
+                ],
+                "mean_log_loss": 0.1253931461143215
+              },
+              {
+                "candidate": "focused_regularized",
+                "fold_log_loss": [
+                  0.11717239076467559,
+                  0.12425234229011028,
+                  0.11622910806091293
+                ],
+                "mean_log_loss": 0.11921794703856627
+              },
+              {
+                "candidate": "focused_longer",
+                "fold_log_loss": [
+                  0.12246598767071168,
+                  0.12369945502926975,
+                  0.11631941155790564
+                ],
+                "mean_log_loss": 0.12082828475262902
+              }
+            ],
+            "features": [
+              "Planned_Margin_Buffer_Pct",
+              "Minimum_Margin_Pct"
+            ]
+          }
+        }
+      },
+      "shap_method": "native_TreeSHAP",
+      "shap_additivity_verified": true
+    },
+    "model_support": {
+      "reasons": [],
+      "run_id": "expense_risk_v3_1_20261016",
+      "calibrated": false,
+      "joint_support_not_established": true
+    }
+  },
+  "alternative": {
+    "status": "calculated",
+    "inputs": {
+      "event_type": "Wedding",
+      "guests": 150,
+      "event_hours": 5.0,
+      "stage_width_m": 4.0,
+      "stage_length_m": 6.0,
+      "venue_area_m2": 500.0,
+      "target_budget_lkr": 2000000.0,
+      "retained_receipts_lkr": 2500000.0,
+      "min_profit_margin_pct": 15.0,
+      "reference_id": "HOTEL-PUB-R008"
+    },
+    "plan": {
+      "currency": "LKR",
+      "origin": "evidence_anchored_synthetic_estimate_not_confirmed_quote",
+      "line_items_lkr": {
+        "catering": 1158465.0,
+        "chairs": 68145.0,
+        "tables": 48675.0,
+        "stage": 62304.0,
+        "av": 64900.0,
+        "labour": 38161.2,
+        "venue": 129800.0
+      },
+      "reference_allocation_before_charges_lkr": {
+        "catering": 892500.0,
+        "chairs": 52500,
+        "tables": 37500,
+        "stage": 48000.0,
+        "av": 50000,
+        "labour": 29400.0,
+        "venue": 100000
+      },
+      "assumed_incremental_extras_before_charges_lkr": {
+        "catering": 0.0,
+        "chairs": 0.0,
+        "tables": 0.0,
+        "stage": 0.0,
+        "av": 0.0,
+        "labour": 0.0,
+        "venue": 0
+      },
+      "assumed_charge_factor": 1.298,
+      "total_cost_lkr": 1570450.2,
+      "retained_receipts_lkr": 2500000.0,
+      "expected_profit_lkr": 929549.8,
+      "expected_margin_pct": 37.181992,
+      "reserve_lkr": 157045.02,
+      "budget_headroom_lkr": 429549.80000000005,
+      "budget_feasible": true,
+      "affordable_after_reserve": true,
+      "margin_feasible": true,
+      "recommended_client_price_excluding_output_tax_lkr": 2032347.32,
+      "stage_area_m2": 24.0,
+      "used_area_m2": 309.0,
+      "space_utilization": 0.618,
+      "seats": 150,
+      "tables": 25,
+      "staff": 7,
+      "paid_person_hours": 49.0,
+      "reference_rate_lkr_per_person": 5950.0,
+      "source_reference": {
+        "Currency": "LKR",
+        "Rate_Unit": "person",
+        "Service_Charge_Points": null,
+        "Unspecified_Surcharge_Points": null,
+        "Tax_Rate_Points": null,
+        "Valid_From": null,
+        "Valid_Until": null,
+        "Minimum_Guests": null,
+        "Event_Hours": null,
+        "Access_Date": 46307,
+        "Evidence_Kind": "official_advertised_price",
+        "Calibration_Status": "Needs dated quote and scope review",
+        "Reviewer": null,
+        "Review_Date": null,
+        "Decision": "Pending",
+        "Review_Rationale": null,
+        "Evidence_ID": "HOTEL-PUB-R008",
+        "Provider": "Paaruwa Nature Resort",
+        "Event_Scope": "Wedding",
+        "Package": "Manel",
+        "Rate_LKR": 5950,
+        "Price_Kind": "Advertised menu rate",
+        "Published_Surcharge": "+; breakdown not stated for weddings",
+        "Applicability": "Same menus repeated across hybrid, nature and banquet options; counted once",
+        "Inclusions": "Wedding menu; event-specific arrangement by request",
+        "Exclusions_or_Gaps": "Venue, staffing, AV, taxes and duration unconfirmed; 100+ described generally, not binding minimum",
+        "Source_URL": "https://paaruwa.lk/packages/"
+      },
+      "confirmed_all_in_market_quote": false,
+      "warnings": [
+        "Published rates are reference anchors, not signed or availability-confirmed quotes.",
+        "Component allocations, marginal rates, geometry and unknown tax treatment are experimental assumptions.",
+        "Package removal does not automatically discount included services; requotation may be needed."
+      ]
+    },
+    "model_scores": {
+      "Budget_Overrun": {
+        "uncalibrated_score": 0.0023854554165154696,
+        "class": 0,
+        "threshold": 0.5
+      },
+      "Profit_Margin_Risk": {
+        "uncalibrated_score": 0.0030726036056876183,
+        "class": 0,
+        "threshold": 0.5
+      }
+    },
+    "shap_drivers": {
+      "Budget_Overrun": [
+        {
+          "feature": "Planned_Budget_Utilization",
+          "input_value": 0.7852251,
+          "contribution_log_odds": -5.734267711639404,
+          "direction": "lowers_score"
+        }
+      ],
+      "Profit_Margin_Risk": [
+        {
+          "feature": "Planned_Margin_Buffer_Pct",
+          "input_value": 22.181992,
+          "contribution_log_odds": -5.758586883544922,
+          "direction": "lowers_score"
+        },
+        {
+          "feature": "Minimum_Margin_Pct",
+          "input_value": 15.0,
+          "contribution_log_odds": -0.16400834918022156,
+          "direction": "lowers_score"
+        }
+      ]
+    },
+    "monte_carlo": {
+      "origin": "hypothetical_bounded_shocks_not_observed_risk",
+      "cost_lkr": {
+        "mean": 1569344.5580250002,
+        "p05": 1428105.2019999998,
+        "p50": 1568577.97,
+        "p95": 1711495.483
+      },
+      "overrun_frequency": 0.0,
+      "margin_risk_frequency": 0.0,
+      "draws": 2000,
+      "seed": 20261014,
+      "real_world_calibrated": false
+    },
+    "draft_planning_health": {
+      "score_points": 100,
+      "validated": false,
+      "origin": "draft_planning_coverage"
+    },
+    "blockers": [],
+    "actions": [
+      {
+        "action": "additional_client_payment_to_meet_margin_with_reserve",
+        "amount_lkr": 0.0
+      },
+      {
+        "action": "additional_cost_allowance_to_cover_cost_and_reserve",
+        "amount_lkr": 0.0
+      },
+      {
+        "action": "review_uncommitted_optional_services_or_obtain_requotation",
+        "amount_lkr": null
+      }
+    ],
+    "quote_change_status": "no_active_quotes_original_model_rules",
+    "event_date": "2026-10-22",
+    "geometry": {
+      "venue_width_m": 20.0,
+      "venue_length_m": 25.0,
+      "venue_area_m2": 500.0,
+      "guests_per_m2": 0.3,
+      "area_rule_capacity": 277
+    },
+    "model_trace": {
+      "run_id": "expense_risk_v3_1_20261016",
+      "method": "native_xgboost_saved_model_predict",
+      "training_rows": 2160,
+      "test_rows": 720,
+      "independent_root_families": 600,
+      "origin": "synthetic_only_no_observed_event_validation",
+      "calibrated": false,
+      "feature_count": 26,
+      "input_features": {
+        "Guest_Count": 150,
+        "Event_Hours": 5.0,
+        "Venue_Area_m2": 500.0,
+        "Seating_Count": 150,
+        "Stage_Area_m2": 24.0,
+        "Space_Utilization": 0.618,
+        "Quoted_Catering_LKR": 1158465.0,
+        "Quoted_AV_LKR": 64900.0,
+        "Quoted_Venue_LKR": 129800.0,
+        "Quoted_Equipment_LKR": 179124.0,
+        "Staff_Count": 7,
+        "Paid_Person_Hours": 49.0,
+        "Quoted_Labour_LKR": 38161.2,
+        "Target_Budget_LKR": 2000000.0,
+        "Retained_Receipts_LKR": 2500000.0,
+        "Contingency_Reserve_LKR": 157045.02,
+        "Minimum_Margin_Pct": 15.0,
+        "Planned_Total_Cost_LKR": 1570450.2,
+        "Reference_Rate_LKR_Per_Person": 5950.0,
+        "Event_Type_Wedding": 1,
+        "Event_Type_Corporate": 0,
+        "Optional_Expense_Total_LKR": 0.0,
+        "Optional_Expense_Count": 0,
+        "Optional_Expense_Fraction": 0.0,
+        "Planned_Budget_Utilization": 0.7852251,
+        "Planned_Margin_Buffer_Pct": 22.181992
+      },
+      "model_features": {
+        "Budget_Overrun": [
+          "Planned_Budget_Utilization"
+        ],
+        "Profit_Margin_Risk": [
+          "Planned_Margin_Buffer_Pct",
+          "Minimum_Margin_Pct"
+        ]
+      },
+      "model_sha256": {
+        "Budget_Overrun": "d76da83949943ea7a035e3e78f145584aa0dcd19b52942bab5317b4125d065e3",
+        "Profit_Margin_Risk": "bfc14ef5ac280ce0ae1768495af28b317c6ff88917a1fb83b287e93338957648"
+      },
+      "design_sha256": "c7ac36e00d3222db8802dd622b78b0a4066b28b9083c8a14cc110e09e3182702",
+      "enhancement_protocol_sha256": "fcd078a56be71cbad15dc00cdb544b672c833324f1382cbff7f5fc20d5695d21",
+      "support_reasons": [],
+      "test_metrics": {
+        "Budget_Overrun": {
+          "xgboost": {
+            "accuracy": 0.9555555555555556,
+            "balanced_accuracy": 0.952868587672826,
+            "precision": 0.9468085106382979,
+            "recall": 0.9401408450704225,
+            "f1": 0.9434628975265018,
+            "roc_auc": 0.9919401731489856,
+            "average_precision": 0.9875991267534974,
+            "log_loss": 0.10392955255711547,
+            "brier_score": 0.0319842635817678,
+            "tn": 421.0,
+            "fp": 15.0,
+            "fn": 17.0,
+            "tp": 267.0
+          },
+          "original_v3": {
+            "accuracy": 0.95,
+            "balanced_accuracy": 0.9470538829306112,
+            "precision": 0.9397163120567376,
+            "recall": 0.9330985915492958,
+            "f1": 0.9363957597173145,
+            "roc_auc": 0.9906157126243699,
+            "average_precision": 0.9885214029780698,
+            "log_loss": 0.10695256768022067,
+            "brier_score": 0.03343867734538141,
+            "tn": 419.0,
+            "fp": 17.0,
+            "fn": 19.0,
+            "tp": 265.0
+          },
+          "prior": {
+            "accuracy": 0.6055555555555555,
+            "balanced_accuracy": 0.5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "roc_auc": 0.5,
+            "average_precision": 0.39444444444444443,
+            "log_loss": 0.6726182487568884,
+            "brier_score": 0.23979166666666668,
+            "tn": 436.0,
+            "fp": 0.0,
+            "fn": 284.0,
+            "tp": 0.0
+          },
+          "planning_rule_class_accuracy": 0.9555555555555556,
+          "family_bootstrap": {
+            "accuracy_95_interval": [
+              0.9375,
+              0.9722222222222222
+            ],
+            "accuracy_difference_vs_v3_95_interval": [
+              0.0,
+              0.013888888888888888
+            ],
+            "resampling_unit": "Base_Event_ID",
+            "families": 120,
+            "bootstrap_draws": 1000,
+            "limitation": "Conditional synthetic-family uncertainty only; shared sources/rules and prior holdout inspection remain"
+          },
+          "by_event_type": {
+            "Wedding": {
+              "accuracy": 0.9638888888888889,
+              "balanced_accuracy": 0.960785886126704,
+              "precision": 0.9647887323943662,
+              "recall": 0.9448275862068966,
+              "f1": 0.9547038327526133,
+              "roc_auc": 0.9920930232558138,
+              "average_precision": 0.9888724869226746,
+              "log_loss": 0.09835894060440904,
+              "brier_score": 0.027978461526016643,
+              "tn": 210.0,
+              "fp": 5.0,
+              "fn": 8.0,
+              "tp": 137.0
+            },
+            "Corporate": {
+              "accuracy": 0.9472222222222222,
+              "balanced_accuracy": 0.9450014648914353,
+              "precision": 0.9285714285714286,
+              "recall": 0.935251798561151,
+              "f1": 0.931899641577061,
+              "roc_auc": 0.9915524593899541,
+              "average_precision": 0.9853383674815813,
+              "log_loss": 0.10950016450982193,
+              "brier_score": 0.03599006563751895,
+              "tn": 211.0,
+              "fp": 10.0,
+              "fn": 9.0,
+              "tp": 130.0
+            }
+          }
+        },
+        "Profit_Margin_Risk": {
+          "xgboost": {
+            "accuracy": 0.9319444444444445,
+            "balanced_accuracy": 0.9328569549439412,
+            "precision": 0.9101123595505618,
+            "recall": 0.9501466275659824,
+            "f1": 0.9296987087517934,
+            "roc_auc": 0.9911984772398426,
+            "average_precision": 0.9908404777251678,
+            "log_loss": 0.12471001377824889,
+            "brier_score": 0.041522260910275124,
+            "tn": 347.0,
+            "fp": 32.0,
+            "fn": 17.0,
+            "tp": 324.0
+          },
+          "original_v3": {
+            "accuracy": 0.9347222222222222,
+            "balanced_accuracy": 0.935348462925278,
+            "precision": 0.9176136363636364,
+            "recall": 0.9472140762463344,
+            "f1": 0.9321789321789322,
+            "roc_auc": 0.9903705537802057,
+            "average_precision": 0.990192493314838,
+            "log_loss": 0.13751573529719233,
+            "brier_score": 0.04566990671724025,
+            "tn": 350.0,
+            "fp": 29.0,
+            "fn": 18.0,
+            "tp": 323.0
+          },
+          "prior": {
+            "accuracy": 0.4736111111111111,
+            "balanced_accuracy": 0.5,
+            "precision": 0.4736111111111111,
+            "recall": 1.0,
+            "f1": 0.6427898209236569,
+            "roc_auc": 0.5,
+            "average_precision": 0.4736111111111111,
+            "log_loss": 0.6994644984412424,
+            "brier_score": 0.25315222050754455,
+            "tn": 0.0,
+            "fp": 379.0,
+            "fn": 0.0,
+            "tp": 341.0
+          },
+          "planning_rule_class_accuracy": 0.9347222222222222,
+          "family_bootstrap": {
+            "accuracy_95_interval": [
+              0.9083333333333333,
+              0.9569444444444445
+            ],
+            "accuracy_difference_vs_v3_95_interval": [
+              -0.016666666666666666,
+              0.008333333333333333
+            ],
+            "resampling_unit": "Base_Event_ID",
+            "families": 120,
+            "bootstrap_draws": 1000,
+            "limitation": "Conditional synthetic-family uncertainty only; shared sources/rules and prior holdout inspection remain"
+          },
+          "by_event_type": {
+            "Wedding": {
+              "accuracy": 0.9305555555555556,
+              "balanced_accuracy": 0.928849902534113,
+              "precision": 0.91,
+              "recall": 0.9629629629629629,
+              "f1": 0.9357326478149101,
+              "roc_auc": 0.9901760574275194,
+              "average_precision": 0.9915221913745974,
+              "log_loss": 0.13362691118987363,
+              "brier_score": 0.04412933398166346,
+              "tn": 153.0,
+              "fp": 18.0,
+              "fn": 7.0,
+              "tp": 182.0
+            },
+            "Corporate": {
+              "accuracy": 0.9333333333333333,
+              "balanced_accuracy": 0.9334514170040487,
+              "precision": 0.9102564102564102,
+              "recall": 0.9342105263157895,
+              "f1": 0.922077922077922,
+              "roc_auc": 0.9919977226720648,
+              "average_precision": 0.9896576128524777,
+              "log_loss": 0.11579311636662415,
+              "brier_score": 0.03891518783888678,
+              "tn": 194.0,
+              "fp": 14.0,
+              "fn": 10.0,
+              "tp": 142.0
+            }
+          }
+        }
+      },
+      "limitations": [
+        "Zero observed completed-event outcomes",
+        "Shared source profiles and spatial/cost rules; no unseen-provider validation",
+        "Stage fixed at demo 4x6m, not observed CAD",
+        "Expense names ignored by model; only aggregate monetary exposure/count is learned",
+        "Same hypothetical shock mechanism for core and optional costs",
+        "Uncalibrated synthetic risk scores; no validated real-world probabilities",
+        "Health score remains an experimental financial rule, not this ML output",
+        "No date-to-future-price forecasting or vendor anomaly classifier",
+        "Retrospective synthetic test; not a new untouched holdout"
+      ],
+      "prediction_executed": true,
+      "evaluation": {
+        "selection": "3 outer \u00d7 3 inner family-grouped folds; 5 predeclared candidates; training rows only",
+        "previously_inspected_test": true,
+        "test_scope": "Retrospective synthetic test; not a new untouched holdout",
+        "threshold": 0.5,
+        "data_or_labels_or_splits_changed": false,
+        "test_used_for_selection": false,
+        "protocol_sha256": "fcd078a56be71cbad15dc00cdb544b672c833324f1382cbff7f5fc20d5695d21",
+        "source_run": "expense_risk_v3_0_20261015",
+        "split_roots": {
+          "train": 360,
+          "validation": 120,
+          "test": 120
+        },
+        "split_rows": {
+          "train": 2160,
+          "validation": 720,
+          "test": 720
+        },
+        "targets": {
+          "Budget_Overrun": {
+            "nested_cv": {
+              "oof_metrics": {
+                "accuracy": 0.9490740740740741,
+                "balanced_accuracy": 0.9490385526191153,
+                "precision": 0.9325481798715204,
+                "recall": 0.94880174291939,
+                "f1": 0.9406047516198704,
+                "roc_auc": 0.992799230982427,
+                "average_precision": 0.9899103337588637,
+                "log_loss": 0.10504726270431075,
+                "brier_score": 0.03326406603134247,
+                "tn": 1179.0,
+                "fp": 63.0,
+                "fn": 47.0,
+                "tp": 871.0
+              },
+              "original_oof_metrics": {
+                "accuracy": 0.9435185185185185,
+                "balanced_accuracy": 0.9432130340058729,
+                "precision": 0.927038626609442,
+                "recall": 0.9411764705882353,
+                "f1": 0.9340540540540541,
+                "roc_auc": 0.9904486754444128,
+                "average_precision": 0.9883757345094505,
+                "log_loss": 0.11548501719700842,
+                "brier_score": 0.037472650487880746,
+                "tn": 1174.0,
+                "fp": 68.0,
+                "fn": 54.0,
+                "tp": 864.0
+              },
+              "accuracy_fold_sd": 0.005782405554072633,
+              "scope": "training-family nested CV, not real-event or unseen-template validation"
+            },
+            "folds": [
+              {
+                "fold": 0,
+                "accuracy": 0.9555555555555556,
+                "chosen_candidate": "focused_longer"
+              },
+              {
+                "fold": 1,
+                "accuracy": 0.9472222222222222,
+                "chosen_candidate": "focused_regularized"
+              },
+              {
+                "fold": 2,
+                "accuracy": 0.9444444444444444,
+                "chosen_candidate": "focused_regularized"
+              }
+            ],
+            "test": {
+              "xgboost": {
+                "accuracy": 0.9555555555555556,
+                "balanced_accuracy": 0.952868587672826,
+                "precision": 0.9468085106382979,
+                "recall": 0.9401408450704225,
+                "f1": 0.9434628975265018,
+                "roc_auc": 0.9919401731489856,
+                "average_precision": 0.9875991267534974,
+                "log_loss": 0.10392955255711547,
+                "brier_score": 0.0319842635817678,
+                "tn": 421.0,
+                "fp": 15.0,
+                "fn": 17.0,
+                "tp": 267.0
+              },
+              "original_v3": {
+                "accuracy": 0.95,
+                "balanced_accuracy": 0.9470538829306112,
+                "precision": 0.9397163120567376,
+                "recall": 0.9330985915492958,
+                "f1": 0.9363957597173145,
+                "roc_auc": 0.9906157126243699,
+                "average_precision": 0.9885214029780698,
+                "log_loss": 0.10695256768022067,
+                "brier_score": 0.03343867734538141,
+                "tn": 419.0,
+                "fp": 17.0,
+                "fn": 19.0,
+                "tp": 265.0
+              },
+              "prior": {
+                "accuracy": 0.6055555555555555,
+                "balanced_accuracy": 0.5,
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "roc_auc": 0.5,
+                "average_precision": 0.39444444444444443,
+                "log_loss": 0.6726182487568884,
+                "brier_score": 0.23979166666666668,
+                "tn": 436.0,
+                "fp": 0.0,
+                "fn": 284.0,
+                "tp": 0.0
+              },
+              "planning_rule_class_accuracy": 0.9555555555555556,
+              "family_bootstrap": {
+                "accuracy_95_interval": [
+                  0.9375,
+                  0.9722222222222222
+                ],
+                "accuracy_difference_vs_v3_95_interval": [
+                  0.0,
+                  0.013888888888888888
+                ],
+                "resampling_unit": "Base_Event_ID",
+                "families": 120,
+                "bootstrap_draws": 1000,
+                "limitation": "Conditional synthetic-family uncertainty only; shared sources/rules and prior holdout inspection remain"
+              },
+              "by_event_type": {
+                "Wedding": {
+                  "accuracy": 0.9638888888888889,
+                  "balanced_accuracy": 0.960785886126704,
+                  "precision": 0.9647887323943662,
+                  "recall": 0.9448275862068966,
+                  "f1": 0.9547038327526133,
+                  "roc_auc": 0.9920930232558138,
+                  "average_precision": 0.9888724869226746,
+                  "log_loss": 0.09835894060440904,
+                  "brier_score": 0.027978461526016643,
+                  "tn": 210.0,
+                  "fp": 5.0,
+                  "fn": 8.0,
+                  "tp": 137.0
+                },
+                "Corporate": {
+                  "accuracy": 0.9472222222222222,
+                  "balanced_accuracy": 0.9450014648914353,
+                  "precision": 0.9285714285714286,
+                  "recall": 0.935251798561151,
+                  "f1": 0.931899641577061,
+                  "roc_auc": 0.9915524593899541,
+                  "average_precision": 0.9853383674815813,
+                  "log_loss": 0.10950016450982193,
+                  "brier_score": 0.03599006563751895,
+                  "tn": 211.0,
+                  "fp": 10.0,
+                  "fn": 9.0,
+                  "tp": 130.0
+                }
+              }
+            },
+            "deployment": {
+              "training_cv_winner": "focused_regularized",
+              "validation_gate_pass": true,
+              "candidate_validation_metrics": {
+                "accuracy": 0.9416666666666667,
+                "balanced_accuracy": 0.9351170568561873,
+                "precision": 0.92578125,
+                "recall": 0.9115384615384615,
+                "f1": 0.9186046511627907,
+                "roc_auc": 0.9902257525083613,
+                "average_precision": 0.9817092954451706,
+                "log_loss": 0.11652106522597025,
+                "brier_score": 0.03813195055712257,
+                "tn": 441.0,
+                "fp": 19.0,
+                "fn": 23.0,
+                "tp": 237.0
+              },
+              "deployed": "enhanced_candidate",
+              "selection_uses_test": false
+            },
+            "training_search": [
+              {
+                "candidate": "original_full",
+                "fold_log_loss": [
+                  0.10055006322663118,
+                  0.1217436706404212,
+                  0.12416131772397286
+                ],
+                "mean_log_loss": 0.11548501719700842
+              },
+              {
+                "candidate": "regularized_full",
+                "fold_log_loss": [
+                  0.09747460478939553,
+                  0.11564445505565807,
+                  0.12029888893343813
+                ],
+                "mean_log_loss": 0.11113931625949725
+              },
+              {
+                "candidate": "focused_shallow",
+                "fold_log_loss": [
+                  0.10557359913690212,
+                  0.1147442862799497,
+                  0.12367623308478569
+                ],
+                "mean_log_loss": 0.11466470616721251
+              },
+              {
+                "candidate": "focused_regularized",
+                "fold_log_loss": [
+                  0.09307914351174632,
+                  0.10879165844698918,
+                  0.1134125353479481
+                ],
+                "mean_log_loss": 0.10509444576889453
+              },
+              {
+                "candidate": "focused_longer",
+                "fold_log_loss": [
+                  0.09293759431799496,
+                  0.10935501192754274,
+                  0.11348346259688481
+                ],
+                "mean_log_loss": 0.10525868961414082
+              }
+            ],
+            "features": [
+              "Planned_Budget_Utilization"
+            ]
+          },
+          "Profit_Margin_Risk": {
+            "nested_cv": {
+              "oof_metrics": {
+                "accuracy": 0.9486111111111111,
+                "balanced_accuracy": 0.9477845633367832,
+                "precision": 0.9454855195911414,
+                "recall": 0.9593777009507347,
+                "f1": 0.9523809523809523,
+                "roc_auc": 0.9912789720725464,
+                "average_precision": 0.9924629739319236,
+                "log_loss": 0.12264860165068235,
+                "brier_score": 0.03697422974695449,
+                "tn": 939.0,
+                "fp": 64.0,
+                "fn": 47.0,
+                "tp": 1110.0
+              },
+              "original_oof_metrics": {
+                "accuracy": 0.9486111111111111,
+                "balanced_accuracy": 0.9479172680747732,
+                "precision": 0.947008547008547,
+                "recall": 0.9576490924805532,
+                "f1": 0.9522990975504942,
+                "roc_auc": 0.9913246431836727,
+                "average_precision": 0.9926414184707396,
+                "log_loss": 0.1197494438831561,
+                "brier_score": 0.03649061688097274,
+                "tn": 941.0,
+                "fp": 62.0,
+                "fn": 49.0,
+                "tp": 1108.0
+              },
+              "accuracy_fold_sd": 0.0036746545987008075,
+              "scope": "training-family nested CV, not real-event or unseen-template validation"
+            },
+            "folds": [
+              {
+                "fold": 0,
+                "accuracy": 0.9513888888888888,
+                "chosen_candidate": "focused_longer"
+              },
+              {
+                "fold": 1,
+                "accuracy": 0.9444444444444444,
+                "chosen_candidate": "focused_regularized"
+              },
+              {
+                "fold": 2,
+                "accuracy": 0.95,
+                "chosen_candidate": "original_full"
+              }
+            ],
+            "test": {
+              "xgboost": {
+                "accuracy": 0.9319444444444445,
+                "balanced_accuracy": 0.9328569549439412,
+                "precision": 0.9101123595505618,
+                "recall": 0.9501466275659824,
+                "f1": 0.9296987087517934,
+                "roc_auc": 0.9911984772398426,
+                "average_precision": 0.9908404777251678,
+                "log_loss": 0.12471001377824889,
+                "brier_score": 0.041522260910275124,
+                "tn": 347.0,
+                "fp": 32.0,
+                "fn": 17.0,
+                "tp": 324.0
+              },
+              "original_v3": {
+                "accuracy": 0.9347222222222222,
+                "balanced_accuracy": 0.935348462925278,
+                "precision": 0.9176136363636364,
+                "recall": 0.9472140762463344,
+                "f1": 0.9321789321789322,
+                "roc_auc": 0.9903705537802057,
+                "average_precision": 0.990192493314838,
+                "log_loss": 0.13751573529719233,
+                "brier_score": 0.04566990671724025,
+                "tn": 350.0,
+                "fp": 29.0,
+                "fn": 18.0,
+                "tp": 323.0
+              },
+              "prior": {
+                "accuracy": 0.4736111111111111,
+                "balanced_accuracy": 0.5,
+                "precision": 0.4736111111111111,
+                "recall": 1.0,
+                "f1": 0.6427898209236569,
+                "roc_auc": 0.5,
+                "average_precision": 0.4736111111111111,
+                "log_loss": 0.6994644984412424,
+                "brier_score": 0.25315222050754455,
+                "tn": 0.0,
+                "fp": 379.0,
+                "fn": 0.0,
+                "tp": 341.0
+              },
+              "planning_rule_class_accuracy": 0.9347222222222222,
+              "family_bootstrap": {
+                "accuracy_95_interval": [
+                  0.9083333333333333,
+                  0.9569444444444445
+                ],
+                "accuracy_difference_vs_v3_95_interval": [
+                  -0.016666666666666666,
+                  0.008333333333333333
+                ],
+                "resampling_unit": "Base_Event_ID",
+                "families": 120,
+                "bootstrap_draws": 1000,
+                "limitation": "Conditional synthetic-family uncertainty only; shared sources/rules and prior holdout inspection remain"
+              },
+              "by_event_type": {
+                "Wedding": {
+                  "accuracy": 0.9305555555555556,
+                  "balanced_accuracy": 0.928849902534113,
+                  "precision": 0.91,
+                  "recall": 0.9629629629629629,
+                  "f1": 0.9357326478149101,
+                  "roc_auc": 0.9901760574275194,
+                  "average_precision": 0.9915221913745974,
+                  "log_loss": 0.13362691118987363,
+                  "brier_score": 0.04412933398166346,
+                  "tn": 153.0,
+                  "fp": 18.0,
+                  "fn": 7.0,
+                  "tp": 182.0
+                },
+                "Corporate": {
+                  "accuracy": 0.9333333333333333,
+                  "balanced_accuracy": 0.9334514170040487,
+                  "precision": 0.9102564102564102,
+                  "recall": 0.9342105263157895,
+                  "f1": 0.922077922077922,
+                  "roc_auc": 0.9919977226720648,
+                  "average_precision": 0.9896576128524777,
+                  "log_loss": 0.11579311636662415,
+                  "brier_score": 0.03891518783888678,
+                  "tn": 194.0,
+                  "fp": 14.0,
+                  "fn": 10.0,
+                  "tp": 142.0
+                }
+              }
+            },
+            "deployment": {
+              "training_cv_winner": "focused_regularized",
+              "validation_gate_pass": true,
+              "candidate_validation_metrics": {
+                "accuracy": 0.9430555555555555,
+                "balanced_accuracy": 0.9423819435309775,
+                "precision": 0.9378238341968912,
+                "recall": 0.9551451187335093,
+                "f1": 0.9464052287581699,
+                "roc_auc": 0.9896896447666726,
+                "average_precision": 0.99108372364818,
+                "log_loss": 0.13122723559674057,
+                "brier_score": 0.04272721478630159,
+                "tn": 317.0,
+                "fp": 24.0,
+                "fn": 17.0,
+                "tp": 362.0
+              },
+              "deployed": "enhanced_candidate",
+              "selection_uses_test": false
+            },
+            "training_search": [
+              {
+                "candidate": "original_full",
+                "fold_log_loss": [
+                  0.11177381474854808,
+                  0.12624704190969507,
+                  0.12122747499122513
+                ],
+                "mean_log_loss": 0.1197494438831561
+              },
+              {
+                "candidate": "regularized_full",
+                "fold_log_loss": [
+                  0.11581297733302805,
+                  0.125797928075785,
+                  0.12143705493429624
+                ],
+                "mean_log_loss": 0.12101598678103642
+              },
+              {
+                "candidate": "focused_shallow",
+                "fold_log_loss": [
+                  0.12356186089995765,
+                  0.1310145526229054,
+                  0.12160302482010152
+                ],
+                "mean_log_loss": 0.1253931461143215
+              },
+              {
+                "candidate": "focused_regularized",
+                "fold_log_loss": [
+                  0.11717239076467559,
+                  0.12425234229011028,
+                  0.11622910806091293
+                ],
+                "mean_log_loss": 0.11921794703856627
+              },
+              {
+                "candidate": "focused_longer",
+                "fold_log_loss": [
+                  0.12246598767071168,
+                  0.12369945502926975,
+                  0.11631941155790564
+                ],
+                "mean_log_loss": 0.12082828475262902
+              }
+            ],
+            "features": [
+              "Planned_Margin_Buffer_Pct",
+              "Minimum_Margin_Pct"
+            ]
+          }
+        }
+      },
+      "shap_method": "native_TreeSHAP",
+      "shap_additivity_verified": true
+    },
+    "model_support": {
+      "reasons": [],
+      "run_id": "expense_risk_v3_1_20261016",
+      "calibrated": false,
+      "joint_support_not_established": true
+    }
+  },
+  "delta": {
+    "cost_lkr": 0.0,
+    "profit_lkr": 0.0,
+    "margin_pct_points": 0.0,
+    "line_changes_lkr": {
+      "av": 0.0,
+      "catering": 0.0,
+      "chairs": 0.0,
+      "labour": 0.0,
+      "stage": 0.0,
+      "tables": 0.0,
+      "venue": 0.0
+    },
+    "paired_simulated_cost_difference_lkr": {
+      "mean": 0.0,
+      "p05": 0.0,
+      "p50": 0.0,
+      "p95": 0.0
+    }
+  },
+  "provenance": {
+    "origin": "research_calculator_plus_declared_quotes",
+    "model_run": "expense_risk_v3_1_20261016",
+    "configuration_sha256": "ec0eb990a9a2efa6e37115062c4d0ae552c25657118f4b86ba636af0a590d207",
+    "live_vendor_fetch": false,
+    "independent_quote_verification": false,
+    "models_or_datasets_modified": false,
+    "risk_design_sha256": "c7ac36e00d3222db8802dd622b78b0a4066b28b9083c8a14cc110e09e3182702"
+  },
+  "api_version": "lkr-dashboard.0.1",
+  "mode": "research_only",
+  "report_text": "EVENT CHANGE REPORT (LKR)\nPrices/assumptions and model applicability are shown separately.\n\nBASELINE: calculated\nEstimated cost: LKR 1,570,450.20\nExpected retained client payment: LKR 2,500,000.00\nExpected profit: LKR 929,549.80; margin: 37.18%\nReserve earmark: LKR 157,045.02; budget headroom: LKR 429,549.80\nBudget / reserve / margin checks: True / True / True\nDraft planning coverage: 100.00/100 (not validated health)\n  catering: LKR 1,158,465.00\n  chairs: LKR 68,145.00\n  tables: LKR 48,675.00\n  stage: LKR 62,304.00\n  av: LKR 64,900.00\n  labour: LKR 38,161.20\n  venue: LKR 129,800.00\nModel scores: {\"Budget_Overrun\": {\"uncalibrated_score\": 0.0023854554165154696, \"class\": 0, \"threshold\": 0.5}, \"Profit_Margin_Risk\": {\"uncalibrated_score\": 0.0030726036056876183, \"class\": 0, \"threshold\": 0.5}} (uncalibrated if present; unavailable for unsupported quote changes)\nHypothetical simulation overrun frequency: 0.00%\nadditional_client_payment_to_meet_margin_with_reserve: LKR 0.00\nadditional_cost_allowance_to_cover_cost_and_reserve: LKR 0.00\nreview_uncommitted_optional_services_or_obtain_requotation: amount requires a quote\nNote: Published rates are reference anchors, not signed or availability-confirmed quotes.\nNote: Component allocations, marginal rates, geometry and unknown tax treatment are experimental assumptions.\nNote: Package removal does not automatically discount included services; requotation may be needed.\n\nALTERNATIVE: calculated\nEstimated cost: LKR 1,570,450.20\nExpected retained client payment: LKR 2,500,000.00\nExpected profit: LKR 929,549.80; margin: 37.18%\nReserve earmark: LKR 157,045.02; budget headroom: LKR 429,549.80\nBudget / reserve / margin checks: True / True / True\nDraft planning coverage: 100.00/100 (not validated health)\n  catering: LKR 1,158,465.00\n  chairs: LKR 68,145.00\n  tables: LKR 48,675.00\n  stage: LKR 62,304.00\n  av: LKR 64,900.00\n  labour: LKR 38,161.20\n  venue: LKR 129,800.00\nModel scores: {\"Budget_Overrun\": {\"uncalibrated_score\": 0.0023854554165154696, \"class\": 0, \"threshold\": 0.5}, \"Profit_Margin_Risk\": {\"uncalibrated_score\": 0.0030726036056876183, \"class\": 0, \"threshold\": 0.5}} (uncalibrated if present; unavailable for unsupported quote changes)\nHypothetical simulation overrun frequency: 0.00%\nadditional_client_payment_to_meet_margin_with_reserve: LKR 0.00\nadditional_cost_allowance_to_cover_cost_and_reserve: LKR 0.00\nreview_uncommitted_optional_services_or_obtain_requotation: amount requires a quote\nNote: Published rates are reference anchors, not signed or availability-confirmed quotes.\nNote: Component allocations, marginal rates, geometry and unknown tax treatment are experimental assumptions.\nNote: Package removal does not automatically discount included services; requotation may be needed.\n\nCLIENT CHANGE COST: LKR +0.00\nPROFIT EFFECT: LKR +0.00\nMARGIN EFFECT: +0.00 percentage points\n\nEXPERIMENTAL FINANCIAL PLANNING COVERAGE\nScore: 100.00/100; status: within_modelled_rules\nFormula: 100 \u00d7 min(budget_coverage, margin_coverage)\nBudget coverage: 1.000000; margin coverage: 1.000000\nmin(1, budget / (estimated_cost + reserve)); zero cost + reserve gives 1\nmin(1, max(0, expected_margin_pct / minimum_margin_pct)); if minimum = 0, use 1 for nonnegative margin, otherwise 0\nNot a validated financial health score, probability of safety or calibrated ML output. Capacity is a separate mandatory check.\n\nRECOMMENDATIONS (POLICY RULES, NOT ML OR LLM ADVICE)\nCurrent plan meets the modeled financial rules\nKeep the earmarked reserve, verify supplier inclusions/taxes and obtain written price terms. This does not guarantee a profitable outcome.\nReview reserve-inclusive client-price guide \u2014 LKR 0.00\nAdditional retained payment relative to the separate conservative guide (cost + reserve)/(1 \u2212 minimum margin). Reserve is not a second accounting expense.\n\nEXPLANATION OF COST CHANGES (ACCOUNTING, NOT SHAP)\nTreeSHAP explains supported classifier log-odds, not rupee savings. When scores are withheld, no SHAP explanation is fabricated.\n\nNATIVE TREESHAP: Budget_Overrun (log-odds, not monetary effects)\nPlanned_Budget_Utilization: -5.734268 log-odds\n\nNATIVE TREESHAP: Profit_Margin_Risk (log-odds, not monetary effects)\nPlanned_Margin_Buffer_Pct: -5.758587 log-odds\nMinimum_Margin_Pct: -0.164008 log-odds\n",
+  "insights": {
+    "status": "calculated",
+    "score": {
+      "name": "Experimental financial planning coverage",
+      "value": 100,
+      "unit": "points_out_of_100",
+      "validated": false,
+      "status": "within_modelled_rules",
+      "formula": "100 \u00d7 min(budget_coverage, margin_coverage)",
+      "budget_coverage": 1,
+      "margin_coverage": 1,
+      "budget_formula": "min(1, budget / (estimated_cost + reserve)); zero cost + reserve gives 1",
+      "margin_formula": "min(1, max(0, expected_margin_pct / minimum_margin_pct)); if minimum = 0, use 1 for nonnegative margin, otherwise 0",
+      "limitation": "Not a validated financial health score, probability of safety or calibrated ML output. Capacity is a separate mandatory check."
+    },
+    "recommendations": [
+      {
+        "id": "retain_headroom",
+        "title": "Current plan meets the modeled financial rules",
+        "amount_lkr": null,
+        "rationale": "Keep the earmarked reserve, verify supplier inclusions/taxes and obtain written price terms. This does not guarantee a profitable outcome.",
+        "method": "deterministic_policy_calculation",
+        "automatic_action": false
+      },
+      {
+        "id": "conservative_client_quote",
+        "title": "Review reserve-inclusive client-price guide",
+        "amount_lkr": 0.0,
+        "rationale": "Additional retained payment relative to the separate conservative guide (cost + reserve)/(1 \u2212 minimum margin). Reserve is not a second accounting expense.",
+        "method": "deterministic_policy_calculation",
+        "automatic_action": false
+      }
+    ],
+    "explainability": {
+      "method": "native_TreeSHAP_plus_ledger_delta",
+      "model_explanation_available": true,
+      "drivers": [],
+      "model_explanation_note": "TreeSHAP explains supported classifier log-odds, not rupee savings. When scores are withheld, no SHAP explanation is fabricated."
+    }
+  }
+}

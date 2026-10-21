@@ -1,0 +1,14 @@
+{
+  "version": "grounded-local-report.0.1",
+  "provider": "ollama_local",
+  "model": "qwen2.5:1.5b",
+  "expected_model_digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+  "host": "127.0.0.1",
+  "port": 11434,
+  "temperature": 0,
+  "seed": 20261018,
+  "timeout_seconds": 45,
+  "allow_cloud": false,
+  "allow_automatic_model_pull": false,
+  "financial_authority": "Deterministic engine facts only. LLM paraphrases are review-required drafts and never alter amounts, model scores, decisions or saved plans."
+}

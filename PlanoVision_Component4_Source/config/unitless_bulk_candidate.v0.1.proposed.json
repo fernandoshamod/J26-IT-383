@@ -1,0 +1,519 @@
+{
+  "version": "unitless-bulk.0.1",
+  "status": "proposed_NOT_authorized",
+  "record_kind": "hypothetical_unitless_bulk_proposal",
+  "cost_unit": "dimensionless_score",
+  "currency": null,
+  "financial_model": {
+    "version": "unitless-pilot.0.3",
+    "maximum_stage_area_m2": 30,
+    "av_breakpoint_m2": 12,
+    "quantity_units": {
+      "catering": "persons",
+      "chairs": "chairs",
+      "tables": "tables",
+      "stage": "m2",
+      "av": "kits",
+      "labour": "weighted_person_hours",
+      "venue_fixed": "bookings"
+    },
+    "accounting_policy": "Seven disjoint dimensionless charges. No tax or LKR conversion. Reserve is earmarked within budget, not an expense. Expected receipts are retained organizer receipts, not venue/vendor pass-through gross revenue.",
+    "record_kind": "hypothetical_unitless_proposal",
+    "status": "proposed_revision_not_approved",
+    "cost_unit": "dimensionless_score",
+    "currency": null,
+    "market_conversion_factor": null,
+    "origin": "All coefficients are arbitrary experimental choices, not normalized observations or LKR quotations",
+    "geometry_origin": "hypothetical_not_measured",
+    "venue_template_id": "HYP-VENUE-432M2-v1",
+    "vendor_template_id": "HYP-UNITLESS-COEFFICIENT-CARD-v1",
+    "source_dependency_ids": [
+      "HYP-UNITLESS-DESIGN-v1"
+    ],
+    "venue_width_m": 24,
+    "venue_length_m": 18,
+    "excluded_area_m2": 32,
+    "seat_zone_m2": 1.5,
+    "service_area_m2": 24,
+    "circulation_area_m2": 60,
+    "capacity_persons": 180,
+    "seats_per_table": 6,
+    "base_staff": 2,
+    "guests_per_staff": 30,
+    "setup_hours": 1,
+    "clearance_hours": 1,
+    "regular_hours_limit": 8,
+    "overtime_multiplier": 1.5,
+    "reserve_ratio": 0.1,
+    "minimum_margin_points": 10,
+    "coefficients": {
+      "catering": 1,
+      "chairs": 0.1,
+      "tables": 0.2,
+      "stage": 0.3,
+      "av": 0.2,
+      "labour": 0.4,
+      "venue_fixed": 0.5
+    },
+    "reference_quantities": {
+      "catering": 100,
+      "chairs": 100,
+      "tables": 17,
+      "stage": 12,
+      "av": 1,
+      "labour": 36,
+      "venue_fixed": 1
+    },
+    "disabled_services": [
+      "lighting",
+      "venue_hourly",
+      "security",
+      "decoration",
+      "transport",
+      "misc",
+      "equipment_other"
+    ],
+    "profiles": {
+      "Wedding": {
+        "guest_min": 90,
+        "guest_max": 180,
+        "event_hours": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "stage_width_m": [
+          3,
+          4,
+          5
+        ],
+        "stage_length_m": [
+          2.25,
+          3,
+          4,
+          6
+        ],
+        "budget_score": [
+          2,
+          3,
+          4
+        ],
+        "retained_receipts_score": [
+          2,
+          3,
+          4
+        ]
+      },
+      "Corporate": {
+        "guest_min": 40,
+        "guest_max": 120,
+        "event_hours": [
+          2,
+          3,
+          4
+        ],
+        "stage_width_m": [
+          3,
+          4,
+          5
+        ],
+        "stage_length_m": [
+          3,
+          4,
+          6
+        ],
+        "budget_score": [
+          2,
+          3,
+          3.8,
+          4,
+          5
+        ],
+        "retained_receipts_score": [
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    "outcome_proposal": {
+      "ordinary_common_cost_multiplier": [
+        0.9,
+        1.1
+      ],
+      "independent_receipt_multiplier": [
+        0.9,
+        1.1
+      ],
+      "injection_prevalence": 0.1,
+      "injection_multiplier": [
+        1.25,
+        1.5
+      ],
+      "eligible_services": [
+        "stage",
+        "av",
+        "labour"
+      ],
+      "hypothetical_not_calibrated": true,
+      "implementation_status": "implemented_pending_approval",
+      "distribution": "bounded_uniform"
+    },
+    "proposed_pilot": {
+      "rows": 30,
+      "roots": 5,
+      "archetype_root_quotas": {
+        "Wedding": 3,
+        "Corporate": 2
+      },
+      "planning_states_per_root": 3,
+      "outcome_replications_per_state": 2,
+      "seed": 20261022,
+      "split_protocol": "conditional_in_simulator",
+      "approval_status": "pending"
+    },
+    "planning_states": [
+      "baseline",
+      "lower_intervention",
+      "upper_intervention"
+    ],
+    "split_policy": {
+      "protocol": "conditional_in_simulator",
+      "fractions": [
+        0.6,
+        0.2,
+        0.2
+      ],
+      "tolerance": 0
+    },
+    "experimental_source_snapshot": {
+      "kind": "HYPOTHETICAL_DESIGN_NOT_PUBLIC_MARKET_EVIDENCE",
+      "version": "unitless-pilot.0.3",
+      "cost_unit": "dimensionless_score",
+      "source_dependency_ids": [
+        "HYP-UNITLESS-DESIGN-v1"
+      ],
+      "revision_scope": "Predeclared boundary interventions; unchanged coefficients and venue template"
+    },
+    "source_snapshot_sha256": "fd34fb6171ea87baa624b773a589dd187cc4be7e7005d1e53d496cf860b39b74",
+    "revision_of_configuration_sha256": "f22c1c52bfb3ce2a1d0889ff38f73bc1d340f51e907e3979c71e0969506e3be9",
+    "sampling_design": {
+      "kind": "purposive_boundary_diagnostics_not_population_sample",
+      "independent_population_sample_size": null,
+      "synthetic_base_families": 5,
+      "shared_templates": true,
+      "unseen_template_evaluation_supported": false,
+      "randomness": "Only bounded outcome replications; planning states are predeclared",
+      "class_balancing": false
+    },
+    "diagnostic_families": [
+      {
+        "event_type": "Wedding",
+        "diagnostic": "guest_threshold",
+        "states": [
+          {
+            "name": "baseline",
+            "inputs": {
+              "guests": 120,
+              "event_hours": 5,
+              "stage_width_m": 3,
+              "stage_length_m": 4,
+              "budget_score": 4,
+              "retained_receipts_score": 4
+            }
+          },
+          {
+            "name": "lower_intervention",
+            "inputs": {
+              "guests": 119,
+              "event_hours": 5,
+              "stage_width_m": 3,
+              "stage_length_m": 4,
+              "budget_score": 4,
+              "retained_receipts_score": 4
+            }
+          },
+          {
+            "name": "upper_intervention",
+            "inputs": {
+              "guests": 121,
+              "event_hours": 5,
+              "stage_width_m": 3,
+              "stage_length_m": 4,
+              "budget_score": 4,
+              "retained_receipts_score": 4
+            }
+          }
+        ]
+      },
+      {
+        "event_type": "Wedding",
+        "diagnostic": "av_threshold",
+        "states": [
+          {
+            "name": "baseline",
+            "inputs": {
+              "guests": 150,
+              "event_hours": 5,
+              "stage_width_m": 4,
+              "stage_length_m": 3,
+              "budget_score": 4,
+              "retained_receipts_score": 4
+            }
+          },
+          {
+            "name": "lower_intervention",
+            "inputs": {
+              "guests": 150,
+              "event_hours": 5,
+              "stage_width_m": 4,
+              "stage_length_m": 2.25,
+              "budget_score": 4,
+              "retained_receipts_score": 4
+            }
+          },
+          {
+            "name": "upper_intervention",
+            "inputs": {
+              "guests": 150,
+              "event_hours": 5,
+              "stage_width_m": 4,
+              "stage_length_m": 4,
+              "budget_score": 4,
+              "retained_receipts_score": 4
+            }
+          }
+        ]
+      },
+      {
+        "event_type": "Wedding",
+        "diagnostic": "overtime_threshold",
+        "states": [
+          {
+            "name": "baseline",
+            "inputs": {
+              "guests": 150,
+              "event_hours": 6,
+              "stage_width_m": 3,
+              "stage_length_m": 4,
+              "budget_score": 4,
+              "retained_receipts_score": 4
+            }
+          },
+          {
+            "name": "lower_intervention",
+            "inputs": {
+              "guests": 150,
+              "event_hours": 5,
+              "stage_width_m": 3,
+              "stage_length_m": 4,
+              "budget_score": 4,
+              "retained_receipts_score": 4
+            }
+          },
+          {
+            "name": "upper_intervention",
+            "inputs": {
+              "guests": 150,
+              "event_hours": 7,
+              "stage_width_m": 3,
+              "stage_length_m": 4,
+              "budget_score": 4,
+              "retained_receipts_score": 4
+            }
+          }
+        ]
+      },
+      {
+        "event_type": "Corporate",
+        "diagnostic": "guest_threshold",
+        "states": [
+          {
+            "name": "baseline",
+            "inputs": {
+              "guests": 60,
+              "event_hours": 3,
+              "stage_width_m": 3,
+              "stage_length_m": 4,
+              "budget_score": 3,
+              "retained_receipts_score": 3
+            }
+          },
+          {
+            "name": "lower_intervention",
+            "inputs": {
+              "guests": 59,
+              "event_hours": 3,
+              "stage_width_m": 3,
+              "stage_length_m": 4,
+              "budget_score": 3,
+              "retained_receipts_score": 3
+            }
+          },
+          {
+            "name": "upper_intervention",
+            "inputs": {
+              "guests": 61,
+              "event_hours": 3,
+              "stage_width_m": 3,
+              "stage_length_m": 4,
+              "budget_score": 3,
+              "retained_receipts_score": 3
+            }
+          }
+        ]
+      },
+      {
+        "event_type": "Corporate",
+        "diagnostic": "budget_intervention",
+        "states": [
+          {
+            "name": "baseline",
+            "inputs": {
+              "guests": 120,
+              "event_hours": 4,
+              "stage_width_m": 5,
+              "stage_length_m": 6,
+              "budget_score": 3.8,
+              "retained_receipts_score": 4
+            }
+          },
+          {
+            "name": "lower_intervention",
+            "inputs": {
+              "guests": 120,
+              "event_hours": 4,
+              "stage_width_m": 5,
+              "stage_length_m": 6,
+              "budget_score": 3,
+              "retained_receipts_score": 4
+            }
+          },
+          {
+            "name": "upper_intervention",
+            "inputs": {
+              "guests": 120,
+              "event_hours": 4,
+              "stage_width_m": 5,
+              "stage_length_m": 6,
+              "budget_score": 5,
+              "retained_receipts_score": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "financial_model_sha256": "a8192212372a18ac6ce7d90b469a80d7ae50643a634f16088aae0251c7158e2b",
+  "master_columns": [
+    "Scenario_ID",
+    "Base_Event_ID",
+    "Event_ID",
+    "Is_Augmented",
+    "Data_Source",
+    "Event_Type",
+    "Event_Date",
+    "Month",
+    "Event_Duration_Hours",
+    "Guest_Count",
+    "Venue_Area_m2",
+    "Usable_Area_m2",
+    "Seating_Count",
+    "Stage_Area_m2",
+    "VIP_Area_m2",
+    "Space_Utilization",
+    "Quoted_Catering_Cost",
+    "Quoted_AV_Cost",
+    "Quoted_Decoration_Cost",
+    "Quoted_Lighting_Cost",
+    "Quoted_Security_Cost",
+    "Quoted_Venue_Rental_Cost",
+    "Quoted_Equipment_Rental_Cost",
+    "Transport_Cost",
+    "Misc_Cost",
+    "Staff_Count",
+    "Labor_Hours",
+    "Quoted_Labor_Cost",
+    "Initial_Budget",
+    "Expected_Revenue",
+    "Contingency_Reserve",
+    "Historical_Mean_Cost",
+    "Vendor_Price_Volatility",
+    "Required_Min_Profit_Margin",
+    "Forecasted_Total_Cost",
+    "Actual_Total_Cost",
+    "Actual_Revenue",
+    "Budget_Utilization",
+    "Profit",
+    "Profit_Margin",
+    "Cost_Per_Guest",
+    "Cost_Variance",
+    "Budget_Overrun",
+    "Profit_Margin_Risk",
+    "Vendor_Cost_Anomaly",
+    "Financial_Health_Score"
+  ],
+  "master_schema_sha256": "7f003e7e49dfe028d4a5b91ca8d9a40cc2f40b60beef459edc8035b99ecddb0a",
+  "field_semantics_version": "unitless-master-mapping.0.1",
+  "sampling": {
+    "roots": 1250,
+    "states_per_root": 3,
+    "replications_per_state": 2,
+    "rows": 7500,
+    "seed": 20261022,
+    "attempt_cap_per_root": 100,
+    "event_root_quotas": {
+      "Wedding": 625,
+      "Corporate": 625
+    },
+    "states": [
+      "baseline",
+      "guest_minus_one",
+      "guest_plus_one"
+    ],
+    "root_policy": "unique_baselines_uniform_discrete_rejection_sampling",
+    "event_date_start": "2027-01-01",
+    "event_date_end": "2027-12-31"
+  },
+  "split_policy": {
+    "protocol": "conditional_in_simulator",
+    "fractions": [
+      0.6,
+      0.2,
+      0.2
+    ],
+    "tolerance": 0.05
+  },
+  "acceptance_criteria": {
+    "invalid_financial_rows": 0,
+    "invalid_spatial_rows": 0,
+    "missing_provenance_rows": 0,
+    "duplicate_ids": 0,
+    "distinct_baselines": 1250,
+    "unseen_template_evaluation": false,
+    "economic_realism_claim": false,
+    "class_balancing": false
+  },
+  "pilot_review": {
+    "path": "reports/stage6_unitless_pilot_20261012/pilot_review_results.json",
+    "sha256": "02f76c7470b2a6d72ce7abd072640d13bb597be4762ebde18e0d96c6c9d7249e"
+  },
+  "source_snapshot": {
+    "pilot_configuration_file_sha256": "c2b16303a6b70d25a7f173d137ce31e33bca21a42acd0f51395311aacaffc962",
+    "original_schema_file_sha256": "52c3836f1cdc4588122760226f7e6b63212b2c4e0f2c8af2e0e4483d2e4c57fb",
+    "experimental_model_source_sha256": "fd34fb6171ea87baa624b773a589dd187cc4be7e7005d1e53d496cf860b39b74",
+    "real_market_calibration": false
+  },
+  "limitations": [
+    "Arbitrary experimental scores, not LKR prices or normalized observed data.",
+    "625/625 roots are an experimental quota, not market frequency.",
+    "Sampling is without-replacement baselines, not an IID population sample.",
+    "Variants and paired replications are related; 7500 is not independent sample size.",
+    "Shared venue/vendor/source templates preclude unseen-template evaluation.",
+    "Experimental dates have no seasonal cost effect.",
+    "Quoted columns are planned simulated scores; Actual columns are simulated outcomes.",
+    "Unsupported fields are missing; excluded services are not asserted free.",
+    "No models trained, no risk probabilities or real-world accuracy claims."
+  ]
+}

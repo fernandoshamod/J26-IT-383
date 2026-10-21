@@ -1,0 +1,19 @@
+{
+  "version": "future-price-deployment.0.1",
+  "seed": 20261018,
+  "horizon_months": 3,
+  "horizon_rationale": "Conservative experimental demonstration scope, not an empirically validated forecast horizon.",
+  "method_policy": "Reuse original validation-selected method per series; no test-driven reselection or tuning.",
+  "fit_policy": "Refit selected methods using all frozen available observations. Former evaluation records become deployment training data, never a new independent test.",
+  "quality_policy": "Retain all source flags. Any flagged training observation blocks ingredient monetary conversion for that series.",
+  "publication_policy": "Monthly observation keys are not independently verified publication timestamps; retrospective snapshot, not an as-of-market backtest.",
+  "budget_policy": "No automatic expense adjustment, hotel/package indexation, basket weights, or adjustment of locked quotations.",
+  "uncertainty_policy": "No calibrated uncertainty intervals asserted.",
+  "prophet_parameters": {
+    "growth": "linear", "yearly_seasonality": 3,
+    "weekly_seasonality": false, "daily_seasonality": false,
+    "seasonality_mode": "additive", "seasonality_prior_scale": 10.0,
+    "changepoint_prior_scale": 0.05, "n_changepoints": 10,
+    "uncertainty_samples": 0, "mcmc_samples": 0
+  }
+}

@@ -1,0 +1,397 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Component 4 financial response 0.1.0",
+  "type": "object",
+  "required": [
+    "api_version",
+    "status",
+    "event_type",
+    "provenance",
+    "costs",
+    "budget_constraints",
+    "risk_indicators",
+    "spatial",
+    "operations",
+    "outcome_labels",
+    "financial_health_score",
+    "blockers"
+  ],
+  "properties": {
+    "api_version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "enum": [
+        "blocked",
+        "calculated"
+      ]
+    },
+    "event_type": {
+      "enum": [
+        "Wedding",
+        "Corporate"
+      ]
+    },
+    "financial_health_score": {
+      "type": "null"
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "result_kind",
+        "is_trained_model_prediction",
+        "model_version",
+        "rules_version",
+        "config_version",
+        "config_sha256",
+        "warning"
+      ],
+      "properties": {
+        "result_kind": {
+          "enum": [
+            "deterministic_rule_estimate",
+            "mock_test_fixture"
+          ]
+        },
+        "is_trained_model_prediction": {
+          "const": false
+        },
+        "model_version": {
+          "type": "null"
+        },
+        "config_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "rules_version": {
+          "type": "string"
+        },
+        "config_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "warning": {
+          "type": "string"
+        }
+      }
+    },
+    "costs": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "currency",
+        "estimate_lkr",
+        "estimate_kind",
+        "uncertainty_interval",
+        "line_items"
+      ],
+      "properties": {
+        "currency": {
+          "const": "LKR"
+        },
+        "estimate_lkr": {
+          "type": "number"
+        },
+        "estimate_kind": {
+          "enum": [
+            "deterministic_rule_estimate",
+            "mock_test_rule_estimate"
+          ]
+        },
+        "uncertainty_interval": {
+          "type": "null"
+        },
+        "line_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "item_id",
+              "category",
+              "quantity",
+              "unit",
+              "rate_lkr",
+              "net_lkr",
+              "tax_lkr",
+              "gross_lkr",
+              "included_in"
+            ],
+            "properties": {
+              "quantity": {
+                "type": "number"
+              },
+              "net_lkr": {
+                "type": "number"
+              },
+              "tax_lkr": {
+                "type": "number"
+              },
+              "gross_lkr": {
+                "type": "number"
+              },
+              "rate_lkr": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "included_in": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "budget_constraints": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "initial_budget_lkr",
+        "contingency_reserve_lkr",
+        "operating_allowance_lkr",
+        "headroom_lkr",
+        "reserve_is_expense"
+      ],
+      "properties": {
+        "initial_budget_lkr": {
+          "type": "number"
+        },
+        "contingency_reserve_lkr": {
+          "type": "number"
+        },
+        "operating_allowance_lkr": {
+          "type": "number"
+        },
+        "headroom_lkr": {
+          "type": "number"
+        },
+        "reserve_is_expense": {
+          "const": false
+        }
+      }
+    },
+    "risk_indicators": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "planned_budget_breach",
+        "planned_operating_allowance_breach",
+        "expected_profit_lkr",
+        "expected_margin_points",
+        "minimum_margin_points",
+        "planned_margin_shortfall",
+        "predicted_probabilities"
+      ],
+      "properties": {
+        "planned_budget_breach": {
+          "type": "boolean"
+        },
+        "planned_operating_allowance_breach": {
+          "type": "boolean"
+        },
+        "expected_profit_lkr": {
+          "type": "number"
+        },
+        "expected_margin_points": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "minimum_margin_points": {
+          "type": "number"
+        },
+        "planned_margin_shortfall": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "predicted_probabilities": {
+          "type": "null"
+        }
+      }
+    },
+    "spatial": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "usable_area_m2",
+        "used_area_m2",
+        "stage_area_m2",
+        "space_utilization",
+        "planned_seats",
+        "capacity_persons",
+        "layout_origin",
+        "safety_certification"
+      ],
+      "properties": {
+        "usable_area_m2": {
+          "type": "number"
+        },
+        "used_area_m2": {
+          "type": "number"
+        },
+        "stage_area_m2": {
+          "type": "number"
+        },
+        "space_utilization": {
+          "type": "number"
+        },
+        "planned_seats": {
+          "type": "number"
+        },
+        "capacity_persons": {
+          "type": "number"
+        },
+        "layout_origin": {
+          "type": "string"
+        },
+        "safety_certification": {
+          "const": false
+        }
+      }
+    },
+    "operations": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "general_staff_count",
+        "person_hours",
+        "overtime_person_hours",
+        "furniture_tables",
+        "av_kits",
+        "lighting_kits"
+      ],
+      "properties": {
+        "general_staff_count": {
+          "type": "number"
+        },
+        "person_hours": {
+          "type": "number"
+        },
+        "overtime_person_hours": {
+          "type": "number"
+        },
+        "furniture_tables": {
+          "type": "number"
+        },
+        "av_kits": {
+          "type": "number"
+        },
+        "lighting_kits": {
+          "type": "number"
+        }
+      }
+    },
+    "outcome_labels": {
+      "type": "object",
+      "required": [
+        "Budget_Overrun",
+        "Profit_Margin_Risk",
+        "Vendor_Cost_Anomaly",
+        "label_origin"
+      ],
+      "properties": {
+        "Budget_Overrun": {
+          "enum": [
+            null,
+            0,
+            1
+          ]
+        },
+        "Profit_Margin_Risk": {
+          "enum": [
+            null,
+            0,
+            1
+          ]
+        },
+        "Vendor_Cost_Anomaly": {
+          "enum": [
+            null,
+            0,
+            1
+          ]
+        },
+        "label_origin": {
+          "enum": [
+            "unavailable",
+            "mock_test_fixture"
+          ]
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "blocked"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "costs": {
+            "type": "null"
+          },
+          "budget_constraints": {
+            "type": "null"
+          },
+          "risk_indicators": {
+            "type": "null"
+          },
+          "spatial": {
+            "type": "null"
+          },
+          "operations": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "costs": {
+            "type": "object"
+          },
+          "budget_constraints": {
+            "type": "object"
+          },
+          "risk_indicators": {
+            "type": "object"
+          },
+          "spatial": {
+            "type": "object"
+          },
+          "operations": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  ]
+}

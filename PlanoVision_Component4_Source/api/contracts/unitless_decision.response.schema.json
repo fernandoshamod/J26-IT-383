@@ -1,0 +1,14 @@
+{
+  "type":"object",
+  "required":["api_version","operation","provenance"],
+  "properties":{
+    "api_version":{"const":"unitless-decision.0.1"},
+    "operation":{"enum":["calculate","what-if"]},
+    "provenance":{"type":"object","required":["warning","cost_unit","currency","configuration_sha256","model_sha256","draws","seed","observed_event_outcomes"],"properties":{"cost_unit":{"const":"dimensionless_score"},"currency":{"type":"null"},"observed_event_outcomes":{"const":false}}},
+    "comparison_status":{"enum":["comparable","blocked"]},
+    "delta":{"type":["object","null"]}
+  },
+  "allOf":[
+    {"if":{"properties":{"operation":{"const":"calculate"}}},"then":{"required":["result"],"properties":{"result":{"type":"object","required":["status","event_type","inputs","planned","model_risk_scores","monte_carlo","financial_health_score","blockers","warnings"],"properties":{"status":{"enum":["calculated","blocked"]},"financial_health_score":{"type":"null"},"planned":{"type":["object","null"]},"model_risk_scores":{"type":["object","null"]},"monte_carlo":{"type":["object","null"]}}}}},"else":{"required":["baseline","alternative","comparison_status","delta"],"properties":{"baseline":{"type":"object","required":["status","planned","model_risk_scores","monte_carlo","financial_health_score","blockers"],"properties":{"financial_health_score":{"type":"null"}}},"alternative":{"type":"object","required":["status","planned","model_risk_scores","monte_carlo","financial_health_score","blockers"],"properties":{"financial_health_score":{"type":"null"}}}}}}
+  ]
+}

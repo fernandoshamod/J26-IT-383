@@ -1,0 +1,183 @@
+{
+  "document_kind": "NON_EXECUTABLE_BULK_PLANNING_PROPOSAL",
+  "version": "bulk-plan.0.1-proposed",
+  "prepared_date": "2026-10-11",
+  "status": "blocked_unapproved_unfrozen",
+  "warning": "SYNTHETIC SIMULATOR DESIGN — NOT OBSERVED EVENTS, QUOTATIONS OR TRAINED PREDICTIONS",
+  "execution_enabled": false,
+  "simulator_context": {
+    "path": "config/minimal_pilot_candidate.json",
+    "draft_file_sha256": "ce968556a717167c10a3b7bed406edd957f835a425d69984a3d8ed1080ad2e7b",
+    "version": "minimal-pilot.0.1-proposed",
+    "candidate_complete": false,
+    "frozen_configuration_sha256": null,
+    "approved_configuration_version": null
+  },
+  "prerequisites": {
+    "diagnostic_pilot_generated": false,
+    "stage6_mandatory_criteria_passed": false,
+    "formal_formula_reviews_pending": 19,
+    "formal_numeric_reviews_pending": 108,
+    "proposed_active_numeric_nulls": 28,
+    "engine_numeric_nulls": 56,
+    "proposed_excluded_numeric_slots": 28,
+    "effective_engine_disabled_slots": 0,
+    "expanded_generator_implemented": false,
+    "expanded_generator_diagnostic_passed": false
+  },
+  "proposed_size": {
+    "target_rows": 7500,
+    "root_configurations": 1250,
+    "planning_states_per_root_including_base": 3,
+    "controlled_variants_per_root": 2,
+    "outcome_replications_per_planning_state": 2,
+    "planning_states": 3750,
+    "rows_per_root": 6,
+    "population_frequency_claim": false,
+    "independent_observed_event_count": 0,
+    "effective_independent_source_sample_size": null,
+    "root_independence_claim": "conditional design draws, not IID real events; deduplication and shared sources disclosed",
+    "archetypes": {
+      "Wedding": {
+        "root_count": 625,
+        "row_count": 3750,
+        "approval_status": "pending"
+      },
+      "Corporate": {
+        "root_count": 625,
+        "row_count": 3750,
+        "approval_status": "pending"
+      }
+    }
+  },
+  "proposed_sampling": {
+    "seed": 20261022,
+    "split_seed": 20261023,
+    "approval_status": "pending",
+    "root_sampling": "reviewed domains; exact event quotas; unique root planning fingerprints within archetype",
+    "max_planning_attempts_per_root": 20,
+    "deduplication": "sampling_without_replacement_disclosed",
+    "variants": [
+      {
+        "id": "base",
+        "guest_delta_persons": 0
+      },
+      {
+        "id": "guest_minus_1",
+        "guest_delta_persons": -1
+      },
+      {
+        "id": "guest_plus_1",
+        "guest_delta_persons": 1
+      }
+    ],
+    "proposed_root_guest_support": {
+      "Wedding": {
+        "min": 91,
+        "max": 179,
+        "unit": "persons"
+      },
+      "Corporate": {
+        "min": 41,
+        "max": 119,
+        "unit": "persons"
+      }
+    },
+    "support_status": "new experimental restriction pending review; derive anew if approved bounds change",
+    "hold_fixed_within_family": [
+      "date",
+      "duration",
+      "stage",
+      "venue",
+      "budget",
+      "expected_retained_receipts",
+      "rate_card"
+    ],
+    "recompute_derived_quantities": true,
+    "paired_realizations_across_variants": true,
+    "ordinary_cost_dependence": "one common factor across approved cost services; receipts factor separately drawn",
+    "outcome_parameters": "inherit ONLY future complete reviewed simulator; no new financial rate defaults",
+    "outcome_sampling_for_label_balance": false,
+    "retain_financially_risky_valid_states": true
+  },
+  "proposed_split": {
+    "policy": "transitive_shared_source_and_planning_fingerprint_components",
+    "restricted_ancestry_keys": [
+      "venue_profile_id",
+      "vendor_rate_card_id",
+      "archetype_template_id"
+    ],
+    "underlying_source_dependency_ids_required": true,
+    "source_dependency_taxonomy_approval": "pending",
+    "identical_planning_states_merge_groups": true,
+    "keep_all_family_descendants_together": true,
+    "target_row_fractions": {
+      "train": 0.7,
+      "validation": 0.15,
+      "test": 0.15
+    },
+    "max_absolute_fraction_deviation": 0.05,
+    "minimum_components": 3,
+    "current_context_components": 1,
+    "current_context_feasible": false,
+    "assignment_rule": "largest component first; seeded SHA256 tie break; first three train/validation/test; remaining greatest positive target deficit",
+    "assignment_timing": "after planning/provenance, before realized outcomes",
+    "split_map_sha256": null,
+    "weaker_family_only_policy_selected": false,
+    "approval_status": "pending"
+  },
+  "quality": {
+    "approval_status": "pending",
+    "criteria_path": "reports/final_dataset_generation_plan.md",
+    "required_accounting_capacity_label_provenance_pass_fraction": 1.0,
+    "duplicate_scenario_ids_allowed": 0,
+    "cross_split_related_groups_allowed": 0,
+    "mandatory_active_missing_values_allowed": 0,
+    "planning_attempt_rejection_warning_fraction": 0.1,
+    "label_proportion_targets": null,
+    "unavailable_margin_policy": "explicit_null_and_mask_not_healthy_zero",
+    "real_world_accuracy_claim": false
+  },
+  "processing_estimates": {
+    "status": "engineering_estimates_not_measured",
+    "average_jsonl_bytes_per_scenario": 35400,
+    "estimated_primary_output_bytes": 265500000,
+    "ledger_rows_upper_projection": 210000,
+    "proposed_future_batch_rows": 250,
+    "streaming_implemented": false,
+    "provisional_memory_budget_gib": [
+      1,
+      3
+    ],
+    "runtime_seconds": null
+  },
+  "freeze": {
+    "complete": false,
+    "approved_code_revision": null,
+    "code_archive_sha256": null,
+    "source_manifest_sha256": null,
+    "split_policy_sha256": null,
+    "split_map_sha256": null,
+    "split_map_creation_phase": "authorized planning before outcomes; execution-manifest artifact",
+    "acceptance_criteria_sha256": null,
+    "canonical_bulk_authorization_payload_sha256": null
+  },
+  "authorization": {
+    "status": "not_eligible_for_execution_decision",
+    "explicitly_authorized": false,
+    "reviewer": null,
+    "reviewer_role": null,
+    "date": null,
+    "rationale": null,
+    "evidence_reference": null,
+    "authorized_scenario_count": null,
+    "approved_payload_sha256": null
+  },
+  "forbidden_actions": [
+    "pilot_generation",
+    "bulk_generation",
+    "model_training",
+    "fabricated_approvals",
+    "pilot_gate_bypass"
+  ]
+}

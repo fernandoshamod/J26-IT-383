@@ -1,0 +1,5039 @@
+{
+  "config_version": "minimal-pilot.0.1-proposed",
+  "rules_version": "0.1.0-review",
+  "record_kind": "unapproved_minimal_pilot_proposal",
+  "currency": "LKR",
+  "seed": 20261022,
+  "source_snapshot_hashes": {
+    "work/minimal_rate_review.json": "a61e20218a01d1b0590db2c8f9488e6a6ae7a404bf757de442610440d6af891e",
+    "reports/simulation_assumption_register.csv": "9137749d392bc97e2c39551e99ba27d6850c38e6688189d6408488b18ed933db",
+    "reports/financial_dependency_rules.md": "16188ccc5c5a28323989e4f4ae08028f1a72b49d89da6d45f2afcf555c13f58e",
+    "reports/risk_label_definition.md": "8dc4982314474607a0da78975a3bd343d6e3e872b1f50011034cc7a5f53d1354",
+    "reports/minimal_pilot_scope.md": "81e46afc69c581c29d02fbdf5e518460b1cdbbd6499603314410445fdbd437cb",
+    "reports/pilot_acceptance_criteria.md": "eadfad55b3cc7995c7021103d334381402cf4442933ad37a8aa32aa5287d969f"
+  },
+  "calibration_cutoff": "2026-10-11",
+  "formula_approvals": {
+    "A001": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A007": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A008": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A009": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A010": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A011": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A012": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A013": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A014": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A015": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A020": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A021": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A022": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A023": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A024": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A027": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A028": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A029": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    },
+    "A033": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewer_role": null,
+      "reviewed_at": null,
+      "rationale": null,
+      "evidence_ref": null
+    }
+  },
+  "pilot": {
+    "scenario_count": null,
+    "explicit_user_authorization": false,
+    "approved_config_sha256": null,
+    "review_record_ref": null,
+    "passing_test_report_ref": null,
+    "sampling_protocol_ref": null,
+    "provenance_protocol_ref": null,
+    "generator_implementation_verified": false
+  },
+  "archetypes": {
+    "Wedding": {
+      "parameters": {
+        "seated_share": 1.0,
+        "vip_seats": 0,
+        "seats_per_table": 6,
+        "vip_tables": 0,
+        "setup_hours": 1.0,
+        "clearance_hours": 1.0,
+        "venue_area_m2": 432,
+        "excluded_area_m2": 32.0,
+        "area_per_standard_seat_m2": 1.5,
+        "area_per_vip_seat_m2": 1.5,
+        "stage_width_m": 4.0,
+        "stage_length_m": 3.0,
+        "service_area_m2": 24.0,
+        "circulation_area_m2": 60.0,
+        "capacity_persons": 180,
+        "base_staff": 2,
+        "guests_per_staff": 30,
+        "extra_general_staff": 0,
+        "regular_paid_hours_limit": 8.0,
+        "overtime_multiplier": 1.5,
+        "minimum_margin_points": 10.0,
+        "reserve_ratio": 0.1,
+        "guest_count": 120,
+        "event_hours": 4.0,
+        "initial_budget_lkr": 600000,
+        "expected_receipts_lkr": 650000
+      },
+      "parameter_approval": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewer_role": null,
+        "reviewed_at": null,
+        "rationale": null,
+        "evidence_ref": null,
+        "parameter_hash": null
+      },
+      "approved_override_bounds": {
+        "guest_count": {
+          "min": 90,
+          "max": 180
+        },
+        "seated_share": {
+          "min": 1.0,
+          "max": 1.0
+        },
+        "vip_seats": {
+          "min": 0,
+          "max": 0
+        },
+        "seats_per_table": {
+          "min": 6,
+          "max": 6
+        },
+        "vip_tables": {
+          "min": 0,
+          "max": 0
+        },
+        "event_hours": {
+          "min": 4.0,
+          "max": 6.0
+        },
+        "setup_hours": {
+          "min": 1.0,
+          "max": 1.0
+        },
+        "clearance_hours": {
+          "min": 1.0,
+          "max": 1.0
+        },
+        "venue_area_m2": {
+          "min": 432,
+          "max": 432
+        },
+        "excluded_area_m2": {
+          "min": 32.0,
+          "max": 32.0
+        },
+        "area_per_standard_seat_m2": {
+          "min": 1.5,
+          "max": 1.5
+        },
+        "area_per_vip_seat_m2": {
+          "min": 1.5,
+          "max": 1.5
+        },
+        "stage_width_m": {
+          "min": 3.0,
+          "max": 5.0
+        },
+        "stage_length_m": {
+          "min": 3.0,
+          "max": 6.0
+        },
+        "service_area_m2": {
+          "min": 24.0,
+          "max": 24.0
+        },
+        "circulation_area_m2": {
+          "min": 60.0,
+          "max": 60.0
+        },
+        "capacity_persons": {
+          "min": 180,
+          "max": 180
+        },
+        "base_staff": {
+          "min": 2,
+          "max": 2
+        },
+        "guests_per_staff": {
+          "min": 30,
+          "max": 30
+        },
+        "extra_general_staff": {
+          "min": 0,
+          "max": 0
+        },
+        "regular_paid_hours_limit": {
+          "min": 8.0,
+          "max": 8.0
+        },
+        "overtime_multiplier": {
+          "min": 1.5,
+          "max": 1.5
+        },
+        "initial_budget_lkr": {
+          "min": 450000,
+          "max": 750000
+        },
+        "expected_receipts_lkr": {
+          "min": 550000,
+          "max": 850000
+        },
+        "minimum_margin_points": {
+          "min": 10.0,
+          "max": 10.0
+        },
+        "reserve_ratio": {
+          "min": 0.1,
+          "max": 0.1
+        }
+      },
+      "rates": {
+        "catering": {
+          "rate": null,
+          "unit": "LKR/person",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "chairs": {
+          "rate": null,
+          "unit": "LKR/chair",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "tables": {
+          "rate": null,
+          "unit": "LKR/table",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "stage": {
+          "rate": null,
+          "unit": "LKR/m2",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "av": {
+          "rate": null,
+          "unit": "LKR/kit",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "lighting": {
+          "rate": null,
+          "unit": "LKR/kit",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "labour": {
+          "rate": null,
+          "unit": "LKR/person-hour",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "venue_fixed": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "venue_hourly": {
+          "rate": null,
+          "unit": "LKR/hour",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "security": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "decoration": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "transport": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "misc": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "equipment_other": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        }
+      },
+      "billing": {
+        "catering_mode": "package",
+        "staff_scope": "general_staff_excludes_vendor_packages",
+        "included_items": {}
+      },
+      "av_steps": [
+        {
+          "max_stage_area_m2": 12.0,
+          "units": 1
+        },
+        {
+          "max_stage_area_m2": 30.0,
+          "units": 2
+        }
+      ],
+      "lighting_steps": [
+        {
+          "max_stage_area_m2": 30.0,
+          "units": 0
+        }
+      ],
+      "outcome_uncertainty": {
+        "distribution": "bounded_uniform_multipliers",
+        "cost_bounds": {
+          "min": 0.9,
+          "max": 1.1,
+          "unit": "multiplier"
+        },
+        "revenue_bounds": {
+          "min": 0.9,
+          "max": 1.1,
+          "unit": "multiplier"
+        },
+        "dependence_spec": {
+          "mode": "independent",
+          "cost_services": [
+            "catering",
+            "chairs",
+            "tables",
+            "stage",
+            "av",
+            "labour",
+            "venue_fixed"
+          ]
+        },
+        "approval_ref": null
+      },
+      "injected_vendor_regime": {
+        "prevalence": 0.1,
+        "multiplier_bounds": {
+          "min": 1.25,
+          "max": 1.5,
+          "unit": "multiplier"
+        },
+        "affected_services": [
+          "stage",
+          "av",
+          "labour"
+        ],
+        "approval_ref": null
+      },
+      "sampling_weights": 0.5,
+      "geometry_origin": "hypothetical_experimental_plan_NOT_MEASURED",
+      "revenue_mode": "retained_contract_receipts",
+      "date_bounds": {
+        "start": "2026-10-22",
+        "end": "2026-10-22"
+      },
+      "vendor_tiers": [],
+      "price_series_whitelist": []
+    },
+    "Corporate": {
+      "parameters": {
+        "seated_share": 1.0,
+        "vip_seats": 0,
+        "seats_per_table": 6,
+        "vip_tables": 0,
+        "setup_hours": 1.0,
+        "clearance_hours": 1.0,
+        "venue_area_m2": 432,
+        "excluded_area_m2": 32.0,
+        "area_per_standard_seat_m2": 1.5,
+        "area_per_vip_seat_m2": 1.5,
+        "stage_width_m": 4.0,
+        "stage_length_m": 3.0,
+        "service_area_m2": 24.0,
+        "circulation_area_m2": 60.0,
+        "capacity_persons": 180,
+        "base_staff": 2,
+        "guests_per_staff": 30,
+        "extra_general_staff": 0,
+        "regular_paid_hours_limit": 8.0,
+        "overtime_multiplier": 1.5,
+        "minimum_margin_points": 10.0,
+        "reserve_ratio": 0.1,
+        "guest_count": 80,
+        "event_hours": 3.0,
+        "initial_budget_lkr": 300000,
+        "expected_receipts_lkr": 350000
+      },
+      "parameter_approval": {
+        "status": "pending",
+        "reviewer": null,
+        "reviewer_role": null,
+        "reviewed_at": null,
+        "rationale": null,
+        "evidence_ref": null,
+        "parameter_hash": null
+      },
+      "approved_override_bounds": {
+        "guest_count": {
+          "min": 40,
+          "max": 120
+        },
+        "seated_share": {
+          "min": 1.0,
+          "max": 1.0
+        },
+        "vip_seats": {
+          "min": 0,
+          "max": 0
+        },
+        "seats_per_table": {
+          "min": 6,
+          "max": 6
+        },
+        "vip_tables": {
+          "min": 0,
+          "max": 0
+        },
+        "event_hours": {
+          "min": 2.0,
+          "max": 4.0
+        },
+        "setup_hours": {
+          "min": 1.0,
+          "max": 1.0
+        },
+        "clearance_hours": {
+          "min": 1.0,
+          "max": 1.0
+        },
+        "venue_area_m2": {
+          "min": 432,
+          "max": 432
+        },
+        "excluded_area_m2": {
+          "min": 32.0,
+          "max": 32.0
+        },
+        "area_per_standard_seat_m2": {
+          "min": 1.5,
+          "max": 1.5
+        },
+        "area_per_vip_seat_m2": {
+          "min": 1.5,
+          "max": 1.5
+        },
+        "stage_width_m": {
+          "min": 3.0,
+          "max": 5.0
+        },
+        "stage_length_m": {
+          "min": 3.0,
+          "max": 6.0
+        },
+        "service_area_m2": {
+          "min": 24.0,
+          "max": 24.0
+        },
+        "circulation_area_m2": {
+          "min": 60.0,
+          "max": 60.0
+        },
+        "capacity_persons": {
+          "min": 180,
+          "max": 180
+        },
+        "base_staff": {
+          "min": 2,
+          "max": 2
+        },
+        "guests_per_staff": {
+          "min": 30,
+          "max": 30
+        },
+        "extra_general_staff": {
+          "min": 0,
+          "max": 0
+        },
+        "regular_paid_hours_limit": {
+          "min": 8.0,
+          "max": 8.0
+        },
+        "overtime_multiplier": {
+          "min": 1.5,
+          "max": 1.5
+        },
+        "initial_budget_lkr": {
+          "min": 200000,
+          "max": 400000
+        },
+        "expected_receipts_lkr": {
+          "min": 250000,
+          "max": 450000
+        },
+        "minimum_margin_points": {
+          "min": 10.0,
+          "max": 10.0
+        },
+        "reserve_ratio": {
+          "min": 0.1,
+          "max": 0.1
+        }
+      },
+      "rates": {
+        "catering": {
+          "rate": null,
+          "unit": "LKR/person",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "chairs": {
+          "rate": null,
+          "unit": "LKR/chair",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "tables": {
+          "rate": null,
+          "unit": "LKR/table",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "stage": {
+          "rate": null,
+          "unit": "LKR/m2",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "av": {
+          "rate": null,
+          "unit": "LKR/kit",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "lighting": {
+          "rate": null,
+          "unit": "LKR/kit",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "labour": {
+          "rate": null,
+          "unit": "LKR/person-hour",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "venue_fixed": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "venue_hourly": {
+          "rate": null,
+          "unit": "LKR/hour",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "security": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "decoration": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "transport": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "misc": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        },
+        "equipment_other": {
+          "rate": null,
+          "unit": "LKR/booking",
+          "currency": "LKR",
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "evidence_ref": null,
+          "approval_status": "pending"
+        }
+      },
+      "billing": {
+        "catering_mode": "package",
+        "staff_scope": "general_staff_excludes_vendor_packages",
+        "included_items": {}
+      },
+      "av_steps": [
+        {
+          "max_stage_area_m2": 12.0,
+          "units": 1
+        },
+        {
+          "max_stage_area_m2": 30.0,
+          "units": 2
+        }
+      ],
+      "lighting_steps": [
+        {
+          "max_stage_area_m2": 30.0,
+          "units": 0
+        }
+      ],
+      "outcome_uncertainty": {
+        "distribution": "bounded_uniform_multipliers",
+        "cost_bounds": {
+          "min": 0.9,
+          "max": 1.1,
+          "unit": "multiplier"
+        },
+        "revenue_bounds": {
+          "min": 0.9,
+          "max": 1.1,
+          "unit": "multiplier"
+        },
+        "dependence_spec": {
+          "mode": "independent",
+          "cost_services": [
+            "catering",
+            "chairs",
+            "tables",
+            "stage",
+            "av",
+            "labour",
+            "venue_fixed"
+          ]
+        },
+        "approval_ref": null
+      },
+      "injected_vendor_regime": {
+        "prevalence": 0.1,
+        "multiplier_bounds": {
+          "min": 1.25,
+          "max": 1.5,
+          "unit": "multiplier"
+        },
+        "affected_services": [
+          "stage",
+          "av",
+          "labour"
+        ],
+        "approval_ref": null
+      },
+      "sampling_weights": 0.5,
+      "geometry_origin": "hypothetical_experimental_plan_NOT_MEASURED",
+      "revenue_mode": "retained_contract_receipts",
+      "date_bounds": {
+        "start": "2026-10-22",
+        "end": "2026-10-22"
+      },
+      "vendor_tiers": [],
+      "price_series_whitelist": []
+    }
+  },
+  "approval_preparation": {
+    "status": "proposed_incomplete",
+    "candidate_frozen": false,
+    "values_and_units_fully_specified": false,
+    "approved_configuration_sha256": null
+  },
+  "generator_approval": {
+    "status": "pending",
+    "reviewer": null,
+    "reviewer_role": null,
+    "reviewed_at": null,
+    "rationale": null,
+    "evidence_ref": null,
+    "generator_version": "0.1.0-proposed",
+    "assumption_version": "minimal-pilot.0.1-proposed",
+    "payload_sha256": null
+  },
+  "scenario_generator": {
+    "version": "0.1.0-proposed",
+    "record_kind": "proposed_generator_design",
+    "seed": 20261022,
+    "max_attempts_per_scenario": 20,
+    "archetype_weights": {
+      "Wedding": 0.5,
+      "Corporate": 0.5
+    },
+    "parameter_units": {
+      "guest_count": "persons",
+      "seated_share": "fraction",
+      "vip_seats": "seats",
+      "seats_per_table": "seats/table",
+      "vip_tables": "tables",
+      "event_hours": "hours",
+      "setup_hours": "hours",
+      "clearance_hours": "hours",
+      "venue_area_m2": "m2",
+      "excluded_area_m2": "m2",
+      "area_per_standard_seat_m2": "m2/seat",
+      "area_per_vip_seat_m2": "m2/seat",
+      "stage_width_m": "m",
+      "stage_length_m": "m",
+      "service_area_m2": "m2",
+      "circulation_area_m2": "m2",
+      "capacity_persons": "persons",
+      "base_staff": "persons",
+      "guests_per_staff": "persons/staff",
+      "extra_general_staff": "persons",
+      "regular_paid_hours_limit": "hours",
+      "overtime_multiplier": "multiplier",
+      "initial_budget_lkr": "LKR",
+      "expected_receipts_lkr": "LKR",
+      "minimum_margin_points": "percentage points",
+      "reserve_ratio": "fraction"
+    },
+    "profiles": {
+      "Wedding": {
+        "date_bounds": {
+          "start": "2026-10-22",
+          "end": "2026-10-22"
+        },
+        "parameter_domains": {
+          "seated_share": {
+            "distribution": "fixed",
+            "unit": "fraction",
+            "values": [
+              1.0
+            ]
+          },
+          "vip_seats": {
+            "distribution": "fixed",
+            "unit": "seats",
+            "values": [
+              0
+            ]
+          },
+          "seats_per_table": {
+            "distribution": "fixed",
+            "unit": "seats/table",
+            "values": [
+              6
+            ]
+          },
+          "vip_tables": {
+            "distribution": "fixed",
+            "unit": "tables",
+            "values": [
+              0
+            ]
+          },
+          "setup_hours": {
+            "distribution": "fixed",
+            "unit": "hours",
+            "values": [
+              1.0
+            ]
+          },
+          "clearance_hours": {
+            "distribution": "fixed",
+            "unit": "hours",
+            "values": [
+              1.0
+            ]
+          },
+          "venue_area_m2": {
+            "distribution": "fixed",
+            "unit": "m2",
+            "values": [
+              432
+            ]
+          },
+          "excluded_area_m2": {
+            "distribution": "fixed",
+            "unit": "m2",
+            "values": [
+              32.0
+            ]
+          },
+          "area_per_standard_seat_m2": {
+            "distribution": "fixed",
+            "unit": "m2/seat",
+            "values": [
+              1.5
+            ]
+          },
+          "area_per_vip_seat_m2": {
+            "distribution": "fixed",
+            "unit": "m2/seat",
+            "values": [
+              1.5
+            ]
+          },
+          "stage_width_m": {
+            "distribution": "choice",
+            "unit": "m",
+            "values": [
+              3.0,
+              4.0,
+              5.0
+            ]
+          },
+          "stage_length_m": {
+            "distribution": "choice",
+            "unit": "m",
+            "values": [
+              3.0,
+              4.0,
+              6.0
+            ]
+          },
+          "service_area_m2": {
+            "distribution": "fixed",
+            "unit": "m2",
+            "values": [
+              24.0
+            ]
+          },
+          "circulation_area_m2": {
+            "distribution": "fixed",
+            "unit": "m2",
+            "values": [
+              60.0
+            ]
+          },
+          "capacity_persons": {
+            "distribution": "fixed",
+            "unit": "persons",
+            "values": [
+              180
+            ]
+          },
+          "base_staff": {
+            "distribution": "fixed",
+            "unit": "persons",
+            "values": [
+              2
+            ]
+          },
+          "guests_per_staff": {
+            "distribution": "fixed",
+            "unit": "persons/staff",
+            "values": [
+              30
+            ]
+          },
+          "extra_general_staff": {
+            "distribution": "fixed",
+            "unit": "persons",
+            "values": [
+              0
+            ]
+          },
+          "regular_paid_hours_limit": {
+            "distribution": "fixed",
+            "unit": "hours",
+            "values": [
+              8.0
+            ]
+          },
+          "overtime_multiplier": {
+            "distribution": "fixed",
+            "unit": "multiplier",
+            "values": [
+              1.5
+            ]
+          },
+          "minimum_margin_points": {
+            "distribution": "fixed",
+            "unit": "percentage points",
+            "values": [
+              10.0
+            ]
+          },
+          "reserve_ratio": {
+            "distribution": "fixed",
+            "unit": "fraction",
+            "values": [
+              0.1
+            ]
+          },
+          "guest_count": {
+            "distribution": "uniform_integer",
+            "unit": "persons",
+            "min": 90,
+            "max": 180
+          },
+          "event_hours": {
+            "distribution": "choice",
+            "unit": "hours",
+            "values": [
+              4.0,
+              5.0,
+              6.0
+            ]
+          }
+        },
+        "budget_policy": {
+          "mode": "fixed",
+          "budget": {
+            "distribution": "choice",
+            "unit": "LKR",
+            "values": [
+              450000,
+              600000,
+              750000
+            ]
+          }
+        },
+        "retained_receipts": {
+          "distribution": "choice",
+          "unit": "LKR",
+          "values": [
+            550000,
+            650000,
+            850000
+          ]
+        },
+        "ancestry": {
+          "venue_profile_id": "HYP-VENUE-432M2-v1",
+          "vendor_rate_card_id": "UNRESOLVED-WEDDING-RATE-CARD",
+          "archetype_template_id": "HYP-WEDDING-MINIMAL-v1"
+        }
+      },
+      "Corporate": {
+        "date_bounds": {
+          "start": "2026-10-22",
+          "end": "2026-10-22"
+        },
+        "parameter_domains": {
+          "seated_share": {
+            "distribution": "fixed",
+            "unit": "fraction",
+            "values": [
+              1.0
+            ]
+          },
+          "vip_seats": {
+            "distribution": "fixed",
+            "unit": "seats",
+            "values": [
+              0
+            ]
+          },
+          "seats_per_table": {
+            "distribution": "fixed",
+            "unit": "seats/table",
+            "values": [
+              6
+            ]
+          },
+          "vip_tables": {
+            "distribution": "fixed",
+            "unit": "tables",
+            "values": [
+              0
+            ]
+          },
+          "setup_hours": {
+            "distribution": "fixed",
+            "unit": "hours",
+            "values": [
+              1.0
+            ]
+          },
+          "clearance_hours": {
+            "distribution": "fixed",
+            "unit": "hours",
+            "values": [
+              1.0
+            ]
+          },
+          "venue_area_m2": {
+            "distribution": "fixed",
+            "unit": "m2",
+            "values": [
+              432
+            ]
+          },
+          "excluded_area_m2": {
+            "distribution": "fixed",
+            "unit": "m2",
+            "values": [
+              32.0
+            ]
+          },
+          "area_per_standard_seat_m2": {
+            "distribution": "fixed",
+            "unit": "m2/seat",
+            "values": [
+              1.5
+            ]
+          },
+          "area_per_vip_seat_m2": {
+            "distribution": "fixed",
+            "unit": "m2/seat",
+            "values": [
+              1.5
+            ]
+          },
+          "stage_width_m": {
+            "distribution": "choice",
+            "unit": "m",
+            "values": [
+              3.0,
+              4.0,
+              5.0
+            ]
+          },
+          "stage_length_m": {
+            "distribution": "choice",
+            "unit": "m",
+            "values": [
+              3.0,
+              4.0,
+              6.0
+            ]
+          },
+          "service_area_m2": {
+            "distribution": "fixed",
+            "unit": "m2",
+            "values": [
+              24.0
+            ]
+          },
+          "circulation_area_m2": {
+            "distribution": "fixed",
+            "unit": "m2",
+            "values": [
+              60.0
+            ]
+          },
+          "capacity_persons": {
+            "distribution": "fixed",
+            "unit": "persons",
+            "values": [
+              180
+            ]
+          },
+          "base_staff": {
+            "distribution": "fixed",
+            "unit": "persons",
+            "values": [
+              2
+            ]
+          },
+          "guests_per_staff": {
+            "distribution": "fixed",
+            "unit": "persons/staff",
+            "values": [
+              30
+            ]
+          },
+          "extra_general_staff": {
+            "distribution": "fixed",
+            "unit": "persons",
+            "values": [
+              0
+            ]
+          },
+          "regular_paid_hours_limit": {
+            "distribution": "fixed",
+            "unit": "hours",
+            "values": [
+              8.0
+            ]
+          },
+          "overtime_multiplier": {
+            "distribution": "fixed",
+            "unit": "multiplier",
+            "values": [
+              1.5
+            ]
+          },
+          "minimum_margin_points": {
+            "distribution": "fixed",
+            "unit": "percentage points",
+            "values": [
+              10.0
+            ]
+          },
+          "reserve_ratio": {
+            "distribution": "fixed",
+            "unit": "fraction",
+            "values": [
+              0.1
+            ]
+          },
+          "guest_count": {
+            "distribution": "uniform_integer",
+            "unit": "persons",
+            "min": 40,
+            "max": 120
+          },
+          "event_hours": {
+            "distribution": "choice",
+            "unit": "hours",
+            "values": [
+              2.0,
+              3.0,
+              4.0
+            ]
+          }
+        },
+        "budget_policy": {
+          "mode": "fixed",
+          "budget": {
+            "distribution": "choice",
+            "unit": "LKR",
+            "values": [
+              200000,
+              300000,
+              400000
+            ]
+          }
+        },
+        "retained_receipts": {
+          "distribution": "choice",
+          "unit": "LKR",
+          "values": [
+            250000,
+            350000,
+            450000
+          ]
+        },
+        "ancestry": {
+          "venue_profile_id": "HYP-VENUE-432M2-v1",
+          "vendor_rate_card_id": "UNRESOLVED-CORPORATE-RATE-CARD",
+          "archetype_template_id": "HYP-CORPORATE-MINIMAL-v1"
+        }
+      }
+    },
+    "source_snapshot_hashes": {
+      "work/minimal_rate_review.json": "a61e20218a01d1b0590db2c8f9488e6a6ae7a404bf757de442610440d6af891e",
+      "reports/simulation_assumption_register.csv": "9137749d392bc97e2c39551e99ba27d6850c38e6688189d6408488b18ed933db",
+      "reports/financial_dependency_rules.md": "16188ccc5c5a28323989e4f4ae08028f1a72b49d89da6d45f2afcf555c13f58e",
+      "reports/risk_label_definition.md": "8dc4982314474607a0da78975a3bd343d6e3e872b1f50011034cc7a5f53d1354",
+      "reports/minimal_pilot_scope.md": "81e46afc69c581c29d02fbdf5e518460b1cdbbd6499603314410445fdbd437cb",
+      "reports/pilot_acceptance_criteria.md": "eadfad55b3cc7995c7021103d334381402cf4442933ad37a8aa32aa5287d969f"
+    },
+    "code_snapshot_hashes": {
+      "component4/engine.py": "9811b95190a70734843d369577494214015cb479a92eec9e98807bdea7f8625a",
+      "component4/scenario_generator.py": "f7a25eb42a50d6a680e1e7e6cfdc26360e565801f61f0032a4b89d05e5fddcdc",
+      "component4/generator_validation.py": "8290aaf16d17f68eec282ea5530d46cebb29981234bd6a02a523aebcfb1e8a1c",
+      "component4/gates.py": "4b8103d48a07bdbe5375607cd9b4008420261af2503ab9bd8f45db10520d4ceb"
+    },
+    "software_versions": {
+      "python": "3.12.14",
+      "numpy": "2.3.5"
+    },
+    "assumption_version": "minimal-pilot.0.1-proposed",
+    "assumption_ids": [
+      "A001",
+      "A002",
+      "A003",
+      "A005",
+      "A007",
+      "A008",
+      "A009",
+      "A010",
+      "A011",
+      "A012",
+      "A013",
+      "A014",
+      "A015",
+      "A020",
+      "A021",
+      "A022",
+      "A023",
+      "A024",
+      "A025",
+      "A026",
+      "A027",
+      "A028",
+      "A029",
+      "A030",
+      "A032",
+      "A033"
+    ],
+    "outcome_design_label": "hypothetical_not_calibrated"
+  },
+  "minimal_recovery": {
+    "version": "minimal-pilot.0.1-proposed",
+    "prepared_date": "2026-10-11",
+    "status": "review_proposal_NOT_AUTHORIZED",
+    "experimental_values_not_market_statistics": true,
+    "parent_candidate_sha256": "f02e2a4da5c7c64aa82a5af9d154414306fd7e7ff014c057e8b447a0146672d4",
+    "cost_boundary": "restricted_selected_services_NOT_COMPLETE_EVENT_COST",
+    "component_exclusion_proposals": {
+      "Wedding": {
+        "lighting": {
+          "proposed_enabled": false,
+          "status": "pending_scope_review",
+          "reason": "Absent from restricted analytical cost boundary, not free or bundled in a real event",
+          "engine_supported": false,
+          "approval_ref": null
+        },
+        "venue_hourly": {
+          "proposed_enabled": false,
+          "status": "pending_scope_review",
+          "reason": "Absent from restricted analytical cost boundary, not free or bundled in a real event",
+          "engine_supported": false,
+          "approval_ref": null
+        },
+        "security": {
+          "proposed_enabled": false,
+          "status": "pending_scope_review",
+          "reason": "Absent from restricted analytical cost boundary, not free or bundled in a real event",
+          "engine_supported": false,
+          "approval_ref": null
+        },
+        "decoration": {
+          "proposed_enabled": false,
+          "status": "pending_scope_review",
+          "reason": "Absent from restricted analytical cost boundary, not free or bundled in a real event",
+          "engine_supported": false,
+          "approval_ref": null
+        },
+        "transport": {
+          "proposed_enabled": false,
+          "status": "pending_scope_review",
+          "reason": "Absent from restricted analytical cost boundary, not free or bundled in a real event",
+          "engine_supported": false,
+          "approval_ref": null
+        },
+        "misc": {
+          "proposed_enabled": false,
+          "status": "pending_scope_review",
+          "reason": "Absent from restricted analytical cost boundary, not free or bundled in a real event",
+          "engine_supported": false,
+          "approval_ref": null
+        },
+        "equipment_other": {
+          "proposed_enabled": false,
+          "status": "pending_scope_review",
+          "reason": "Absent from restricted analytical cost boundary, not free or bundled in a real event",
+          "engine_supported": false,
+          "approval_ref": null
+        }
+      },
+      "Corporate": {
+        "lighting": {
+          "proposed_enabled": false,
+          "status": "pending_scope_review",
+          "reason": "Absent from restricted analytical cost boundary, not free or bundled in a real event",
+          "engine_supported": false,
+          "approval_ref": null
+        },
+        "venue_hourly": {
+          "proposed_enabled": false,
+          "status": "pending_scope_review",
+          "reason": "Absent from restricted analytical cost boundary, not free or bundled in a real event",
+          "engine_supported": false,
+          "approval_ref": null
+        },
+        "security": {
+          "proposed_enabled": false,
+          "status": "pending_scope_review",
+          "reason": "Absent from restricted analytical cost boundary, not free or bundled in a real event",
+          "engine_supported": false,
+          "approval_ref": null
+        },
+        "decoration": {
+          "proposed_enabled": false,
+          "status": "pending_scope_review",
+          "reason": "Absent from restricted analytical cost boundary, not free or bundled in a real event",
+          "engine_supported": false,
+          "approval_ref": null
+        },
+        "transport": {
+          "proposed_enabled": false,
+          "status": "pending_scope_review",
+          "reason": "Absent from restricted analytical cost boundary, not free or bundled in a real event",
+          "engine_supported": false,
+          "approval_ref": null
+        },
+        "misc": {
+          "proposed_enabled": false,
+          "status": "pending_scope_review",
+          "reason": "Absent from restricted analytical cost boundary, not free or bundled in a real event",
+          "engine_supported": false,
+          "approval_ref": null
+        },
+        "equipment_other": {
+          "proposed_enabled": false,
+          "status": "pending_scope_review",
+          "reason": "Absent from restricted analytical cost boundary, not free or bundled in a real event",
+          "engine_supported": false,
+          "approval_ref": null
+        }
+      }
+    },
+    "exclusion_engine_support": "NOT_IMPLEMENTED; review scope before implementing",
+    "conditional_rate_candidates": {
+      "Wedding": {
+        "chairs": {
+          "amount": 50,
+          "unit": "LKR/chair",
+          "refs": [
+            "MF01"
+          ],
+          "condition": "One 12-hour rental including setup/event/clearance; confirm taxes, validity, quantity availability and pickup terms"
+        },
+        "tables": {
+          "amount": 1500,
+          "unit": "LKR/table",
+          "refs": [
+            "MF03"
+          ],
+          "condition": "One booked rental day only; confirm seating compatibility, pickup/delivery, taxes and date validity"
+        }
+      },
+      "Corporate": {
+        "chairs": {
+          "amount": 50,
+          "unit": "LKR/chair",
+          "refs": [
+            "MF01"
+          ],
+          "condition": "One 12-hour rental including setup/event/clearance; confirm taxes, validity, quantity availability and pickup terms"
+        },
+        "tables": {
+          "amount": 1500,
+          "unit": "LKR/table",
+          "refs": [
+            "MF03"
+          ],
+          "condition": "One booked rental day only; confirm seating compatibility, pickup/delivery, taxes and date validity"
+        }
+      }
+    },
+    "venue_tariff_benchmark_only": {
+      "event": "Corporate",
+      "amount_lkr": 30000,
+      "refs": [
+        "MF05"
+      ],
+      "not_selected": "Actual room and hypothetical geometry are not the same venue"
+    },
+    "date_scope_is_hypothetical": true,
+    "source_snapshots_are_context_not_approved_calibration": true,
+    "proposed_scenario_count": 40,
+    "base_configurations": 40,
+    "additional_variants": 0,
+    "outcome_realizations_per_base": 1,
+    "weighted_archetypes_not_exact_quotas": true,
+    "minimum_profile_coverage_proposal": 10,
+    "outcome_settings_are_not_estimated_probabilities": true,
+    "frozen_configuration_sha256": null,
+    "human_review_records": {
+      "designer": null,
+      "supervisor": null,
+      "domain_expert": null,
+      "review_date": null,
+      "authority_ref": null
+    },
+    "published_evidence": {
+      "access_date": "2026-10-11",
+      "snapshot_kind": "curated_browser_extracted_facts_not_raw_page_archive_or_quotation",
+      "status": "Published advertisements and tariffs only; none approved for execution",
+      "sources": [
+        {
+          "id": "MR01",
+          "provider": "One Events International",
+          "url": "https://oneevents.lk/rentals",
+          "effective_date": null,
+          "valid_until": null,
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "inclusions": "Chair cover for chair item; named portable speaker only",
+          "exclusions": "Delivery extra on request; operator/accessories unknown",
+          "terms": "12-hour rental period; additional hours unpriced; refundable deposit excluded from expenses; self-pickup free",
+          "applicability": "Selected item evidence, not full banquet or AV quotation"
+        },
+        {
+          "id": "MR02",
+          "provider": "Rentitem.lk",
+          "url": "https://rentitem.lk/product/banquet-table/",
+          "effective_date": null,
+          "valid_until": null,
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "inclusions": "One clean 6 by 3 foot banquet table",
+          "exclusions": "Chairs, cloth/skirting not included; delivery charged separately",
+          "terms": "Per-day item rental; advertised seating 6 to 8 depending on arrangement",
+          "applicability": "Propose conservative six-seat design; no measured floor plan or tax determination"
+        },
+        {
+          "id": "MR03",
+          "provider": "National Library and Documentation Services Board",
+          "url": "https://www.natlib.lk/NLDSB/reservation/",
+          "effective_date": null,
+          "valid_until": null,
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "inclusions": "Auditorium PA, whiteboard and refreshments area",
+          "exclusions": "Projector/screen extra; no food inside auditorium; security is organizer responsibility",
+          "terms": "General weekday whole-day block 09:00 to 17:00; other block tariffs are alternatives",
+          "applicability": "Corporate tariff benchmark only. Not a price for the hypothetical venue; no wedding transfer"
+        },
+        {
+          "id": "MR04",
+          "provider": "Mandarina Colombo",
+          "url": "https://www.mandarinacolombo.com/special-offers/meetings-conferences/",
+          "effective_date": null,
+          "valid_until": null,
+          "quote_date": null,
+          "tax_scope": "Advertised NETT; breakdown unknown",
+          "tax_rate_points": null,
+          "inclusions": "Unitemized meeting package",
+          "exclusions": "Unknown",
+          "terms": "Starting from LKR 6500 per person",
+          "applicability": "Do not use as catering alone or add venue/AV to an unidentified bundle"
+        },
+        {
+          "id": "MR05",
+          "provider": "Rent Stuffs",
+          "url": "https://www.rentstuffs.today/",
+          "effective_date": null,
+          "valid_until": null,
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "inclusions": "Named Mini Spider Light item",
+          "exclusions": "Operator, delivery, kit accessories unknown",
+          "terms": "Per-day item advertisement",
+          "applicability": "Lighting excluded from proposed pilot; no kit/area threshold inferred"
+        },
+        {
+          "id": "MR06",
+          "provider": "Plateful",
+          "url": "https://plateful.lk/menu.html",
+          "effective_date": null,
+          "valid_until": null,
+          "quote_date": null,
+          "tax_scope": null,
+          "tax_rate_points": null,
+          "inclusions": "Named sample menus; office lunch pack and wedding buffet descriptions",
+          "exclusions": "Custom add-ons, service style and location affect price",
+          "terms": "Opened page ranges differ from search excerpts; unit denominator not explicit beside amounts",
+          "applicability": "Unselected lead. Do not choose midpoint or infer per-person delivered quotation"
+        },
+        {
+          "id": "MR07",
+          "provider": "Automobile Association of Ceylon",
+          "url": "https://aaceylon.lk/facilities/hire-the-auditorium/",
+          "effective_date": null,
+          "valid_until": null,
+          "quote_date": null,
+          "tax_scope": "Hourly auditorium line states including taxes; other table scope ambiguous",
+          "tax_rate_points": null,
+          "inclusions": "Advertised auditorium capacity 100",
+          "exclusions": "Refundable deposit is not expense",
+          "terms": "Hourly auditorium 2500 including taxes differs in basis from member/nonmember hall figures without defined period",
+          "applicability": "Retain lead; confirm applicable tariff before selection; no composite tax rate inferred"
+        }
+      ],
+      "facts": [
+        {
+          "id": "MF01",
+          "source_id": "MR01",
+          "service": "Covered plastic chair",
+          "value": 50,
+          "min": null,
+          "max": null,
+          "unit": "LKR/chair/12-hour rental",
+          "basis": "advertised_item",
+          "proposal_use": "Candidate chair price only after duration/tax/validity/scope confirmation"
+        },
+        {
+          "id": "MF02",
+          "source_id": "MR01",
+          "service": "JBL Partybox 320 speaker",
+          "value": 3900,
+          "min": null,
+          "max": null,
+          "unit": "LKR/speaker/12-hour rental",
+          "basis": "advertised_item",
+          "proposal_use": "AV lead only; not mapped to complete kit"
+        },
+        {
+          "id": "MF03",
+          "source_id": "MR02",
+          "service": "Banquet table 6 by 3 feet",
+          "value": 1500,
+          "min": null,
+          "max": null,
+          "unit": "LKR/table/day",
+          "basis": "advertised_item",
+          "proposal_use": "Conditional one-day conversion candidate; transport and tax unresolved"
+        },
+        {
+          "id": "MF04",
+          "source_id": "MR02",
+          "service": "Advertised seats per table",
+          "value": null,
+          "min": 6,
+          "max": 8,
+          "unit": "seats/table",
+          "basis": "provider_specification",
+          "proposal_use": "Choose six as conservative experimental arrangement, not measured occupancy"
+        },
+        {
+          "id": "MF05",
+          "source_id": "MR03",
+          "service": "General weekday whole-day auditorium",
+          "value": 30000,
+          "min": null,
+          "max": null,
+          "unit": "LKR/09:00-17:00 booking",
+          "basis": "published_tariff",
+          "proposal_use": "Corporate venue benchmark only, cannot price hypothetical venue automatically"
+        },
+        {
+          "id": "MF06",
+          "source_id": "MR03",
+          "service": "Projector",
+          "value": 6000,
+          "min": null,
+          "max": null,
+          "unit": "LKR/projector/day",
+          "basis": "published_tariff",
+          "proposal_use": "AV lead only, no operator/kit/capacity inference"
+        },
+        {
+          "id": "MF07",
+          "source_id": "MR03",
+          "service": "Screen",
+          "value": 650,
+          "min": null,
+          "max": null,
+          "unit": "LKR/screen/day",
+          "basis": "published_tariff",
+          "proposal_use": "Pair with projector only after reviewed scope, not full AV kit"
+        },
+        {
+          "id": "MF08",
+          "source_id": "MR04",
+          "service": "Meeting package starting price",
+          "value": 6500,
+          "min": null,
+          "max": null,
+          "unit": "LKR/person",
+          "basis": "starting_from_unitemized_bundle",
+          "proposal_use": "No catering-only mapping"
+        },
+        {
+          "id": "MF09",
+          "source_id": "MR05",
+          "service": "Mini Spider Light",
+          "value": 2000,
+          "min": null,
+          "max": null,
+          "unit": "LKR/item/day",
+          "basis": "advertised_item",
+          "proposal_use": "No pilot selection: proposed component excluded"
+        },
+        {
+          "id": "MF10",
+          "source_id": "MR06",
+          "service": "Corporate lunch sample range",
+          "value": null,
+          "min": 550,
+          "max": 1350,
+          "unit": "LKR/menu amount; denominator unstated",
+          "basis": "opened_page_sample_range",
+          "proposal_use": "Unselected, differs from search excerpt 600-800"
+        },
+        {
+          "id": "MF11",
+          "source_id": "MR06",
+          "service": "Wedding buffet sample range",
+          "value": null,
+          "min": 1000,
+          "max": 5000,
+          "unit": "LKR/menu amount; denominator unstated",
+          "basis": "opened_page_sample_range",
+          "proposal_use": "Unselected, differs from search excerpt 1200-1800"
+        },
+        {
+          "id": "MF12",
+          "source_id": "MR07",
+          "service": "Auditorium hourly tax-inclusive line",
+          "value": 2500,
+          "min": null,
+          "max": null,
+          "unit": "LKR/hour",
+          "basis": "published_tariff_scope_unresolved",
+          "proposal_use": "Unselected pending tariff/date confirmation"
+        }
+      ],
+      "excluded_leads": [
+        {
+          "provider": "Dinidu Gardens",
+          "url": "https://www.dinidugardens.lk/catering",
+          "reason": "Search excerpt found starting packages, but direct page open failed (cache miss). No admitted numerical rate."
+        },
+        {
+          "provider": "Advertising Sri Lanka",
+          "url": "https://advertisingsrilanka.lk/stage-rental-sri-lanka",
+          "reason": "Indicative stage packages differ in dimensions and scope; earlier conflicts persist. No linear LKR/m2 tariff inferred."
+        },
+        {
+          "provider": "DailyJob staffing guide",
+          "url": "https://www.dailyjob.lk/en/blog/event-staffing-guide-sri-lanka",
+          "reason": "Editorial guide is not a scoped provider person-hour quotation; no rate admitted."
+        }
+      ]
+    },
+    "numerical_decisions": [
+      {
+        "decision_id": "W-N001",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.guest_count",
+        "parameter": "guest_count",
+        "unit": "persons",
+        "original_unit": "persons",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A003",
+          "A005",
+          "A012"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 120,
+        "proposed_min": 90,
+        "proposed_max": 180,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A003,A005,A012",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N002",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.seated_share",
+        "parameter": "seated_share",
+        "unit": "fraction",
+        "original_unit": "fraction",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A008"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 1.0,
+        "proposed_min": 1.0,
+        "proposed_max": 1.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A008",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N003",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.vip_seats",
+        "parameter": "vip_seats",
+        "unit": "seats",
+        "original_unit": "seats",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A008"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 0,
+        "proposed_min": 0,
+        "proposed_max": 0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A008",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N004",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.seats_per_table",
+        "parameter": "seats_per_table",
+        "unit": "seats/table",
+        "original_unit": "seats/table",
+        "classification": "2. Derived parameter",
+        "assumption_ids": [
+          "A008",
+          "A014"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 6,
+        "proposed_min": 6,
+        "proposed_max": 6,
+        "scope": "Active proposal",
+        "evidence_refs": "MR02/MF04",
+        "rationale": "Select 6 from provider advertised 6-8; arrangement is still experimental",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N005",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.vip_tables",
+        "parameter": "vip_tables",
+        "unit": "tables",
+        "original_unit": "tables",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A008"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 0,
+        "proposed_min": 0,
+        "proposed_max": 0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A008",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N006",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.event_hours",
+        "parameter": "event_hours",
+        "unit": "hours",
+        "original_unit": "hours",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A007",
+          "A020"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 4.0,
+        "proposed_min": 4.0,
+        "proposed_max": 6.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A007,A020",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N007",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.setup_hours",
+        "parameter": "setup_hours",
+        "unit": "hours",
+        "original_unit": "paid hours",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A007",
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 1.0,
+        "proposed_min": 1.0,
+        "proposed_max": 1.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A007,A015",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input; propose canonical hours for individual paid duration; original wording paid hours requires scope review, not a numerical conversion",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N008",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.clearance_hours",
+        "parameter": "clearance_hours",
+        "unit": "hours",
+        "original_unit": "paid hours",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A007",
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 1.0,
+        "proposed_min": 1.0,
+        "proposed_max": 1.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A007,A015",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input; propose canonical hours for individual paid duration; original wording paid hours requires scope review, not a numerical conversion",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N009",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.venue_area_m2",
+        "parameter": "venue_area_m2",
+        "unit": "m2",
+        "original_unit": "m2",
+        "classification": "2. Derived parameter",
+        "assumption_ids": [
+          "A009"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 432,
+        "proposed_min": 432,
+        "proposed_max": 432,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A009",
+        "rationale": "24 m * 18 m = 432 m2, both hypothetical dimensions",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N010",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.excluded_area_m2",
+        "parameter": "excluded_area_m2",
+        "unit": "m2",
+        "original_unit": "m2",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A009",
+          "A012"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 32.0,
+        "proposed_min": 32.0,
+        "proposed_max": 32.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A009,A012",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N011",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.area_per_standard_seat_m2",
+        "parameter": "area_per_standard_seat_m2",
+        "unit": "m2/seat",
+        "original_unit": "m2/seat",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A010",
+          "A012"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 1.5,
+        "proposed_min": 1.5,
+        "proposed_max": 1.5,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A010,A012",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N012",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.area_per_vip_seat_m2",
+        "parameter": "area_per_vip_seat_m2",
+        "unit": "m2/seat",
+        "original_unit": "m2/seat",
+        "classification": "2. Derived parameter",
+        "assumption_ids": [
+          "A010",
+          "A012"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 1.5,
+        "proposed_min": 1.5,
+        "proposed_max": 1.5,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A010,A012",
+        "rationale": "Alias standard seat area 1.5; VIP count fixed zero, not a new density estimate",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N013",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.stage_width_m",
+        "parameter": "stage_width_m",
+        "unit": "m",
+        "original_unit": "m",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A011"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 4.0,
+        "proposed_min": 3.0,
+        "proposed_max": 5.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A011",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N014",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.stage_length_m",
+        "parameter": "stage_length_m",
+        "unit": "m",
+        "original_unit": "m",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A011"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 3.0,
+        "proposed_min": 3.0,
+        "proposed_max": 6.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A011",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N015",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.service_area_m2",
+        "parameter": "service_area_m2",
+        "unit": "m2",
+        "original_unit": "m2",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A010",
+          "A012"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 24.0,
+        "proposed_min": 24.0,
+        "proposed_max": 24.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A010,A012",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N016",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.circulation_area_m2",
+        "parameter": "circulation_area_m2",
+        "unit": "m2",
+        "original_unit": "m2",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A010",
+          "A012"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 60.0,
+        "proposed_min": 60.0,
+        "proposed_max": 60.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A010,A012",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N017",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.capacity_persons",
+        "parameter": "capacity_persons",
+        "unit": "persons",
+        "original_unit": "persons",
+        "classification": "2. Derived parameter",
+        "assumption_ids": [
+          "A004",
+          "A012"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 180,
+        "proposed_min": 180,
+        "proposed_max": 180,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A004,A012",
+        "rationale": "min(180 policy cap, floor((400 usable - 30 maximum stage - 24 service - 60 circulation)/1.5)) = 180",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N018",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.base_staff",
+        "parameter": "base_staff",
+        "unit": "persons",
+        "original_unit": "persons",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 2,
+        "proposed_min": 2,
+        "proposed_max": 2,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A015",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N019",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.guests_per_staff",
+        "parameter": "guests_per_staff",
+        "unit": "persons/staff",
+        "original_unit": "persons/staff",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 30,
+        "proposed_min": 30,
+        "proposed_max": 30,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A015",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N020",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.extra_general_staff",
+        "parameter": "extra_general_staff",
+        "unit": "persons",
+        "original_unit": "persons",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 0,
+        "proposed_min": 0,
+        "proposed_max": 0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A015",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N021",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.regular_paid_hours_limit",
+        "parameter": "regular_paid_hours_limit",
+        "unit": "hours",
+        "original_unit": "hours/person",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A007",
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 8.0,
+        "proposed_min": 8.0,
+        "proposed_max": 8.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A007,A015",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input; propose canonical hours for individual paid duration; original wording hours/person requires scope review, not a numerical conversion",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N022",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.overtime_multiplier",
+        "parameter": "overtime_multiplier",
+        "unit": "multiplier",
+        "original_unit": "multiplier",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A007",
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 1.5,
+        "proposed_min": 1.5,
+        "proposed_max": 1.5,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A007,A015",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N023",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.initial_budget_lkr",
+        "parameter": "initial_budget_lkr",
+        "unit": "LKR",
+        "original_unit": "LKR",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A021"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 600000,
+        "proposed_min": 450000,
+        "proposed_max": 750000,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A021",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N024",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.expected_receipts_lkr",
+        "parameter": "expected_receipts_lkr",
+        "unit": "LKR",
+        "original_unit": "LKR",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A022"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 650000,
+        "proposed_min": 550000,
+        "proposed_max": 850000,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A022",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N025",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.minimum_margin_points",
+        "parameter": "minimum_margin_points",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A023",
+          "A029"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 10.0,
+        "proposed_min": 10.0,
+        "proposed_max": 10.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A023,A029",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N026",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.parameters.reserve_ratio",
+        "parameter": "reserve_ratio",
+        "unit": "fraction",
+        "original_unit": "fraction",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A024"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 0.1,
+        "proposed_min": 0.1,
+        "proposed_max": 0.1,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A024",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N027",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.catering.rate",
+        "parameter": "catering",
+        "unit": "LKR/person",
+        "original_unit": "LKR/person",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A013"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR04/MF08; MR06/MF10/MF11",
+        "rationale": "Need a compatible dated catering quotation or separately declared, supervisor-reviewed simulator-only coefficient; none selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N028",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.catering.tax_rate_points",
+        "parameter": "catering tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A013"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR04/MF08; MR06/MF10/MF11",
+        "rationale": "Tax basis and points unknown. No zero or legal default selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N029",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.chairs.rate",
+        "parameter": "chairs",
+        "unit": "LKR/chair",
+        "original_unit": "LKR/chair",
+        "classification": "1. Publicly evidenced numerical rate",
+        "assumption_ids": [
+          "A002",
+          "A014"
+        ],
+        "observed_candidate_value": 50,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR01/MF01",
+        "rationale": "One 12-hour rental including setup/event/clearance; confirm taxes, validity, quantity availability and pickup terms",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N030",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.chairs.tax_rate_points",
+        "parameter": "chairs tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A014"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR01/MF01",
+        "rationale": "Tax basis and points unknown. No zero or legal default selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N031",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.tables.rate",
+        "parameter": "tables",
+        "unit": "LKR/table",
+        "original_unit": "LKR/table",
+        "classification": "2. Derived parameter",
+        "assumption_ids": [
+          "A002",
+          "A014"
+        ],
+        "observed_candidate_value": 1500,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR02/MF03",
+        "rationale": "One booked rental day only; confirm seating compatibility, pickup/delivery, taxes and date validity",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N032",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.tables.tax_rate_points",
+        "parameter": "tables tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A014"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR02/MF03",
+        "rationale": "Tax basis and points unknown. No zero or legal default selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N033",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.stage.rate",
+        "parameter": "stage",
+        "unit": "LKR/m2",
+        "original_unit": "LKR/m2",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A011",
+          "A014"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "No consistent compatible linear rate",
+        "rationale": "Need a compatible dated stage quotation or separately declared, supervisor-reviewed simulator-only coefficient; none selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N034",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.stage.tax_rate_points",
+        "parameter": "stage tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A011",
+          "A014"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "No consistent compatible linear rate",
+        "rationale": "Tax basis and points unknown. No zero or legal default selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N035",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.av.rate",
+        "parameter": "av",
+        "unit": "LKR/kit",
+        "original_unit": "LKR/kit",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A011"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR01/MF02; MR03/MF06/MF07",
+        "rationale": "Need a compatible dated av quotation or separately declared, supervisor-reviewed simulator-only coefficient; none selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N036",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.av.tax_rate_points",
+        "parameter": "av tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A011"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR01/MF02; MR03/MF06/MF07",
+        "rationale": "Tax basis and points unknown. No zero or legal default selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N037",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.lighting.rate",
+        "parameter": "lighting",
+        "unit": "LKR/kit",
+        "original_unit": "LKR/kit",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A011"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal lighting",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N038",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.lighting.tax_rate_points",
+        "parameter": "lighting tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A011"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal lighting",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N039",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.labour.rate",
+        "parameter": "labour",
+        "unit": "LKR/person-hour",
+        "original_unit": "LKR/person-hour",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A007",
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "No scoped primary hourly quotation",
+        "rationale": "Need a compatible dated labour quotation or separately declared, supervisor-reviewed simulator-only coefficient; none selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N040",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.labour.tax_rate_points",
+        "parameter": "labour tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A007",
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "No scoped primary hourly quotation",
+        "rationale": "Tax basis and points unknown. No zero or legal default selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N041",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.venue_fixed.rate",
+        "parameter": "venue_fixed",
+        "unit": "LKR/booking",
+        "original_unit": "LKR/booking",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A020"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR03/MF05 benchmark only; actual venue unresolved",
+        "rationale": "Need a compatible dated venue_fixed quotation or separately declared, supervisor-reviewed simulator-only coefficient; none selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N042",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.venue_fixed.tax_rate_points",
+        "parameter": "venue_fixed tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A020"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR03/MF05 benchmark only; actual venue unresolved",
+        "rationale": "Tax basis and points unknown. No zero or legal default selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N043",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.venue_hourly.rate",
+        "parameter": "venue_hourly",
+        "unit": "LKR/hour",
+        "original_unit": "LKR/hour",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A020"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal venue_hourly",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N044",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.venue_hourly.tax_rate_points",
+        "parameter": "venue_hourly tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A020"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal venue_hourly",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N045",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.security.rate",
+        "parameter": "security",
+        "unit": "LKR/booking",
+        "original_unit": "LKR/booking",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A001"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal security",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N046",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.security.tax_rate_points",
+        "parameter": "security tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A001"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal security",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N047",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.decoration.rate",
+        "parameter": "decoration",
+        "unit": "LKR/booking",
+        "original_unit": "LKR/booking",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A001"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal decoration",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N048",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.decoration.tax_rate_points",
+        "parameter": "decoration tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A001"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal decoration",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N049",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.transport.rate",
+        "parameter": "transport",
+        "unit": "LKR/booking",
+        "original_unit": "LKR/booking",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A001"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal transport",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N050",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.transport.tax_rate_points",
+        "parameter": "transport tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A001"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal transport",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N051",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.misc.rate",
+        "parameter": "misc",
+        "unit": "LKR/booking",
+        "original_unit": "LKR/booking",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A001"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal misc",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N052",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.misc.tax_rate_points",
+        "parameter": "misc tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A001"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal misc",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N053",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.equipment_other.rate",
+        "parameter": "equipment_other",
+        "unit": "LKR/booking",
+        "original_unit": "LKR/booking",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A014"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal equipment_other",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "W-N054",
+        "event_type": "Wedding",
+        "path": "archetypes.Wedding.rates.equipment_other.tax_rate_points",
+        "parameter": "equipment_other tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A014"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal equipment_other",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N001",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.guest_count",
+        "parameter": "guest_count",
+        "unit": "persons",
+        "original_unit": "persons",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A003",
+          "A005",
+          "A012"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 80,
+        "proposed_min": 40,
+        "proposed_max": 120,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A003,A005,A012",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N002",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.seated_share",
+        "parameter": "seated_share",
+        "unit": "fraction",
+        "original_unit": "fraction",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A008"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 1.0,
+        "proposed_min": 1.0,
+        "proposed_max": 1.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A008",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N003",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.vip_seats",
+        "parameter": "vip_seats",
+        "unit": "seats",
+        "original_unit": "seats",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A008"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 0,
+        "proposed_min": 0,
+        "proposed_max": 0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A008",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N004",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.seats_per_table",
+        "parameter": "seats_per_table",
+        "unit": "seats/table",
+        "original_unit": "seats/table",
+        "classification": "2. Derived parameter",
+        "assumption_ids": [
+          "A008",
+          "A014"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 6,
+        "proposed_min": 6,
+        "proposed_max": 6,
+        "scope": "Active proposal",
+        "evidence_refs": "MR02/MF04",
+        "rationale": "Select 6 from provider advertised 6-8; arrangement is still experimental",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N005",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.vip_tables",
+        "parameter": "vip_tables",
+        "unit": "tables",
+        "original_unit": "tables",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A008"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 0,
+        "proposed_min": 0,
+        "proposed_max": 0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A008",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N006",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.event_hours",
+        "parameter": "event_hours",
+        "unit": "hours",
+        "original_unit": "hours",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A007",
+          "A020"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 3.0,
+        "proposed_min": 2.0,
+        "proposed_max": 4.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A007,A020",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N007",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.setup_hours",
+        "parameter": "setup_hours",
+        "unit": "hours",
+        "original_unit": "paid hours",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A007",
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 1.0,
+        "proposed_min": 1.0,
+        "proposed_max": 1.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A007,A015",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input; propose canonical hours for individual paid duration; original wording paid hours requires scope review, not a numerical conversion",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N008",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.clearance_hours",
+        "parameter": "clearance_hours",
+        "unit": "hours",
+        "original_unit": "paid hours",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A007",
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 1.0,
+        "proposed_min": 1.0,
+        "proposed_max": 1.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A007,A015",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input; propose canonical hours for individual paid duration; original wording paid hours requires scope review, not a numerical conversion",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N009",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.venue_area_m2",
+        "parameter": "venue_area_m2",
+        "unit": "m2",
+        "original_unit": "m2",
+        "classification": "2. Derived parameter",
+        "assumption_ids": [
+          "A009"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 432,
+        "proposed_min": 432,
+        "proposed_max": 432,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A009",
+        "rationale": "24 m * 18 m = 432 m2, both hypothetical dimensions",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N010",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.excluded_area_m2",
+        "parameter": "excluded_area_m2",
+        "unit": "m2",
+        "original_unit": "m2",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A009",
+          "A012"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 32.0,
+        "proposed_min": 32.0,
+        "proposed_max": 32.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A009,A012",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N011",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.area_per_standard_seat_m2",
+        "parameter": "area_per_standard_seat_m2",
+        "unit": "m2/seat",
+        "original_unit": "m2/seat",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A010",
+          "A012"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 1.5,
+        "proposed_min": 1.5,
+        "proposed_max": 1.5,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A010,A012",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N012",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.area_per_vip_seat_m2",
+        "parameter": "area_per_vip_seat_m2",
+        "unit": "m2/seat",
+        "original_unit": "m2/seat",
+        "classification": "2. Derived parameter",
+        "assumption_ids": [
+          "A010",
+          "A012"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 1.5,
+        "proposed_min": 1.5,
+        "proposed_max": 1.5,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A010,A012",
+        "rationale": "Alias standard seat area 1.5; VIP count fixed zero, not a new density estimate",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N013",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.stage_width_m",
+        "parameter": "stage_width_m",
+        "unit": "m",
+        "original_unit": "m",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A011"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 4.0,
+        "proposed_min": 3.0,
+        "proposed_max": 5.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A011",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N014",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.stage_length_m",
+        "parameter": "stage_length_m",
+        "unit": "m",
+        "original_unit": "m",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A011"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 3.0,
+        "proposed_min": 3.0,
+        "proposed_max": 6.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A011",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N015",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.service_area_m2",
+        "parameter": "service_area_m2",
+        "unit": "m2",
+        "original_unit": "m2",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A010",
+          "A012"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 24.0,
+        "proposed_min": 24.0,
+        "proposed_max": 24.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A010,A012",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N016",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.circulation_area_m2",
+        "parameter": "circulation_area_m2",
+        "unit": "m2",
+        "original_unit": "m2",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A010",
+          "A012"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 60.0,
+        "proposed_min": 60.0,
+        "proposed_max": 60.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A010,A012",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N017",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.capacity_persons",
+        "parameter": "capacity_persons",
+        "unit": "persons",
+        "original_unit": "persons",
+        "classification": "2. Derived parameter",
+        "assumption_ids": [
+          "A004",
+          "A012"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 180,
+        "proposed_min": 180,
+        "proposed_max": 180,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A004,A012",
+        "rationale": "min(180 policy cap, floor((400 usable - 30 maximum stage - 24 service - 60 circulation)/1.5)) = 180",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N018",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.base_staff",
+        "parameter": "base_staff",
+        "unit": "persons",
+        "original_unit": "persons",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 2,
+        "proposed_min": 2,
+        "proposed_max": 2,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A015",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N019",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.guests_per_staff",
+        "parameter": "guests_per_staff",
+        "unit": "persons/staff",
+        "original_unit": "persons/staff",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 30,
+        "proposed_min": 30,
+        "proposed_max": 30,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A015",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N020",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.extra_general_staff",
+        "parameter": "extra_general_staff",
+        "unit": "persons",
+        "original_unit": "persons",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 0,
+        "proposed_min": 0,
+        "proposed_max": 0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A015",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N021",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.regular_paid_hours_limit",
+        "parameter": "regular_paid_hours_limit",
+        "unit": "hours",
+        "original_unit": "hours/person",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A007",
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 8.0,
+        "proposed_min": 8.0,
+        "proposed_max": 8.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A007,A015",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input; propose canonical hours for individual paid duration; original wording hours/person requires scope review, not a numerical conversion",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N022",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.overtime_multiplier",
+        "parameter": "overtime_multiplier",
+        "unit": "multiplier",
+        "original_unit": "multiplier",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A007",
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 1.5,
+        "proposed_min": 1.5,
+        "proposed_max": 1.5,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A007,A015",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N023",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.initial_budget_lkr",
+        "parameter": "initial_budget_lkr",
+        "unit": "LKR",
+        "original_unit": "LKR",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A021"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 300000,
+        "proposed_min": 200000,
+        "proposed_max": 400000,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A021",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N024",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.expected_receipts_lkr",
+        "parameter": "expected_receipts_lkr",
+        "unit": "LKR",
+        "original_unit": "LKR",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A022"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 350000,
+        "proposed_min": 250000,
+        "proposed_max": 450000,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A022",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N025",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.minimum_margin_points",
+        "parameter": "minimum_margin_points",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A023",
+          "A029"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 10.0,
+        "proposed_min": 10.0,
+        "proposed_max": 10.0,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A023,A029",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N026",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.parameters.reserve_ratio",
+        "parameter": "reserve_ratio",
+        "unit": "fraction",
+        "original_unit": "fraction",
+        "classification": "3. Experimental simulation parameter",
+        "assumption_ids": [
+          "A024"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": 0.1,
+        "proposed_min": 0.1,
+        "proposed_max": 0.1,
+        "scope": "Active proposal",
+        "evidence_refs": "MINIMAL_SCOPE; original A024",
+        "rationale": "Explicit restricted-pilot setting, not a Sri Lankan population statistic or observed event input",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N027",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.catering.rate",
+        "parameter": "catering",
+        "unit": "LKR/person",
+        "original_unit": "LKR/person",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A013"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR04/MF08; MR06/MF10/MF11",
+        "rationale": "Need a compatible dated catering quotation or separately declared, supervisor-reviewed simulator-only coefficient; none selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N028",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.catering.tax_rate_points",
+        "parameter": "catering tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A013"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR04/MF08; MR06/MF10/MF11",
+        "rationale": "Tax basis and points unknown. No zero or legal default selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N029",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.chairs.rate",
+        "parameter": "chairs",
+        "unit": "LKR/chair",
+        "original_unit": "LKR/chair",
+        "classification": "1. Publicly evidenced numerical rate",
+        "assumption_ids": [
+          "A002",
+          "A014"
+        ],
+        "observed_candidate_value": 50,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR01/MF01",
+        "rationale": "One 12-hour rental including setup/event/clearance; confirm taxes, validity, quantity availability and pickup terms",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N030",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.chairs.tax_rate_points",
+        "parameter": "chairs tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A014"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR01/MF01",
+        "rationale": "Tax basis and points unknown. No zero or legal default selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N031",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.tables.rate",
+        "parameter": "tables",
+        "unit": "LKR/table",
+        "original_unit": "LKR/table",
+        "classification": "2. Derived parameter",
+        "assumption_ids": [
+          "A002",
+          "A014"
+        ],
+        "observed_candidate_value": 1500,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR02/MF03",
+        "rationale": "One booked rental day only; confirm seating compatibility, pickup/delivery, taxes and date validity",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N032",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.tables.tax_rate_points",
+        "parameter": "tables tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A014"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR02/MF03",
+        "rationale": "Tax basis and points unknown. No zero or legal default selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N033",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.stage.rate",
+        "parameter": "stage",
+        "unit": "LKR/m2",
+        "original_unit": "LKR/m2",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A011",
+          "A014"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "No consistent compatible linear rate",
+        "rationale": "Need a compatible dated stage quotation or separately declared, supervisor-reviewed simulator-only coefficient; none selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N034",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.stage.tax_rate_points",
+        "parameter": "stage tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A011",
+          "A014"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "No consistent compatible linear rate",
+        "rationale": "Tax basis and points unknown. No zero or legal default selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N035",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.av.rate",
+        "parameter": "av",
+        "unit": "LKR/kit",
+        "original_unit": "LKR/kit",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A011"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR01/MF02; MR03/MF06/MF07",
+        "rationale": "Need a compatible dated av quotation or separately declared, supervisor-reviewed simulator-only coefficient; none selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N036",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.av.tax_rate_points",
+        "parameter": "av tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A011"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR01/MF02; MR03/MF06/MF07",
+        "rationale": "Tax basis and points unknown. No zero or legal default selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N037",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.lighting.rate",
+        "parameter": "lighting",
+        "unit": "LKR/kit",
+        "original_unit": "LKR/kit",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A011"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal lighting",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N038",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.lighting.tax_rate_points",
+        "parameter": "lighting tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A011"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal lighting",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N039",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.labour.rate",
+        "parameter": "labour",
+        "unit": "LKR/person-hour",
+        "original_unit": "LKR/person-hour",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A007",
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "No scoped primary hourly quotation",
+        "rationale": "Need a compatible dated labour quotation or separately declared, supervisor-reviewed simulator-only coefficient; none selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N040",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.labour.tax_rate_points",
+        "parameter": "labour tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A007",
+          "A015"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "No scoped primary hourly quotation",
+        "rationale": "Tax basis and points unknown. No zero or legal default selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N041",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.venue_fixed.rate",
+        "parameter": "venue_fixed",
+        "unit": "LKR/booking",
+        "original_unit": "LKR/booking",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A020"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR03/MF05 benchmark only; actual venue unresolved",
+        "rationale": "Need a compatible dated venue_fixed quotation or separately declared, supervisor-reviewed simulator-only coefficient; none selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N042",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.venue_fixed.tax_rate_points",
+        "parameter": "venue_fixed tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "5. Truly unresolved essential input",
+        "assumption_ids": [
+          "A002",
+          "A020"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Active proposal",
+        "evidence_refs": "MR03/MF05 benchmark only; actual venue unresolved",
+        "rationale": "Tax basis and points unknown. No zero or legal default selected.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N043",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.venue_hourly.rate",
+        "parameter": "venue_hourly",
+        "unit": "LKR/hour",
+        "original_unit": "LKR/hour",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A020"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal venue_hourly",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N044",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.venue_hourly.tax_rate_points",
+        "parameter": "venue_hourly tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A020"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal venue_hourly",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N045",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.security.rate",
+        "parameter": "security",
+        "unit": "LKR/booking",
+        "original_unit": "LKR/booking",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A001"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal security",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N046",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.security.tax_rate_points",
+        "parameter": "security tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A001"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal security",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N047",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.decoration.rate",
+        "parameter": "decoration",
+        "unit": "LKR/booking",
+        "original_unit": "LKR/booking",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A001"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal decoration",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N048",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.decoration.tax_rate_points",
+        "parameter": "decoration tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A001"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal decoration",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N049",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.transport.rate",
+        "parameter": "transport",
+        "unit": "LKR/booking",
+        "original_unit": "LKR/booking",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A001"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal transport",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N050",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.transport.tax_rate_points",
+        "parameter": "transport tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A001"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal transport",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N051",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.misc.rate",
+        "parameter": "misc",
+        "unit": "LKR/booking",
+        "original_unit": "LKR/booking",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A001"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal misc",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N052",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.misc.tax_rate_points",
+        "parameter": "misc tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A001"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal misc",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N053",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.equipment_other.rate",
+        "parameter": "equipment_other",
+        "unit": "LKR/booking",
+        "original_unit": "LKR/booking",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A014"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal equipment_other",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      },
+      {
+        "decision_id": "C-N054",
+        "event_type": "Corporate",
+        "path": "archetypes.Corporate.rates.equipment_other.tax_rate_points",
+        "parameter": "equipment_other tax",
+        "unit": "percentage points",
+        "original_unit": "percentage points",
+        "classification": "4. Unused parameter that can be explicitly disabled",
+        "assumption_ids": [
+          "A002",
+          "A014"
+        ],
+        "observed_candidate_value": null,
+        "proposed_value": null,
+        "proposed_min": null,
+        "proposed_max": null,
+        "scope": "Excluded proposal, pending review",
+        "evidence_refs": "MINIMAL_SCOPE; exclusion proposal equipment_other",
+        "rationale": "Scope exclusion proposed, not zero-price evidence or bundle inclusion. Existing engine still requires this field until reviewed adapter support.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null
+      }
+    ],
+    "formula_recommendations": [
+      {
+        "assumption_id": "A001",
+        "title": "Accounting and taxes",
+        "actual_formula": "Q=sum(disjoint gross expense lines); exclusive gross=round(q*r*(1+t/100)); inclusive gross=round(q*r), net=round(q*r/(1+t/100))",
+        "purpose": "Dimensional/accounting reconciliation prevents bundle and reserve double counting.",
+        "required_inputs": "All quantity/rate/tax cards; tax_scope; included_items; accounting boundary",
+        "supporting_refs": "FDR;ENGINE;QUOTE;STAGE1",
+        "limitations": "Tax and compound service charges, single-level inclusion map, deposits and rounding need review",
+        "recommendation": "Modify",
+        "recommendation_rationale": "Confirm one accounting boundary and unknown taxes. Excluded components are not provider bundles. No fabricated zero VAT.",
+        "original_register_formula": "Total cost = sum(disjoint expense lines); reserve excluded from expenses.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A007",
+        "title": "Paid duration",
+        "actual_formula": "Hpaid=Hsetup+Hevent+Hclear; Hregular=min(Hpaid,Hlimit); Hovertime=max(0,Hpaid-Hregular)",
+        "purpose": "Separates scheduled span from measured/paid hours.",
+        "required_inputs": "setup_hours; event_hours; clearance_hours; regular_paid_hours_limit",
+        "supporting_refs": "FDR;ENGINE;QUOTE",
+        "limitations": "Actual paid breaks, role scope and overtime agreement missing. Date span is not paid duration; direct hour/overtime boundary checks added in Stage 2 verification",
+        "recommendation": "Accept",
+        "recommendation_rationale": "Accept definition in restricted simulator scope; numerical calibration and genuine review remain separate.",
+        "original_register_formula": "H>0; Hsetup,Hclear>=0; archetype-specific bounds UNSET. Date span is not event hours.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A008",
+        "title": "Seating and furniture demand",
+        "actual_formula": "N=ceil(seated_share*G); tables=ceil((N-VIP)/seats_per_table)+VIP_tables; VIP<=N<=G and VIP<=VIP_tables*seats_per_table",
+        "purpose": "Preserves integer resource requirements and dependent quantities.",
+        "required_inputs": "guest_count; seated_share; vip_seats; vip_tables; seats_per_table",
+        "supporting_refs": "FDR;ENGINE;QUOTE",
+        "limitations": "Single table capacity for VIP and standard tables must fit plan. Seat share is A008, guest occupancy is A005",
+        "recommendation": "Accept",
+        "recommendation_rationale": "Accept definition in restricted simulator scope; numerical calibration and genuine review remain separate.",
+        "original_register_formula": "N=ceil(seated_share*G); 0<=seated_share<=1; 0<=NVIP<=N<=G; seats_per_table positive approved integer.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A009",
+        "title": "Usable venue area",
+        "actual_formula": "U=V-excluded_area; 0<U<=V",
+        "purpose": "Avoids substituting capacity for physical measurement.",
+        "required_inputs": "venue_area_m2; excluded_area_m2",
+        "supporting_refs": "FDR;ENGINE;QUOTE",
+        "limitations": "Need measured plan; capacity is not floor area",
+        "recommendation": "Accept",
+        "recommendation_rationale": "Accept definition in restricted simulator scope; numerical calibration and genuine review remain separate.",
+        "original_register_formula": "U=V-excluded_area; 0<U<=V; V and excluded-area bounds UNSET.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A010",
+        "title": "Area allocation",
+        "actual_formula": "Standard=(N-VIP)*a_standard; VIP_area=VIP*a_vip; non-overlapping service and circulation areas",
+        "purpose": "Dimensionally consistent allocation without inventing venue standards.",
+        "required_inputs": "seats; vip_seats; area_per_standard_seat_m2; area_per_vip_seat_m2",
+        "supporting_refs": "FDR;ENGINE;QUOTE",
+        "limitations": "Densities/circulation not observed. No fire-safety certification",
+        "recommendation": "Modify",
+        "recommendation_rationale": "Accept only as a hypothetical non-overlapping area model; no measured density, egress or fire-safety claim.",
+        "original_register_formula": "Seating_area=(N-NVIP)*a_seat; VIP_area=NVIP*a_VIP; a_seat,a_VIP>0, numeric bounds UNSET.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A011",
+        "title": "Stage and independent package steps",
+        "actual_formula": "S=width*length; separately choose AV and lighting units from first reviewed max_stage_area_m2>=S",
+        "purpose": "Models possible stepwise resource changes rather than an unobserved fitted correlation.",
+        "required_inputs": "stage_width_m; stage_length_m; av_steps; lighting_steps; scoped kit rates",
+        "supporting_refs": "FDR;ENGINE;TECH;STAGE1",
+        "limitations": "Legacy register/R03 uses ceil-area expression; amended engine uses independent steps. Zero stage is accepted by engine, but original positive-dimension scope needs a decision",
+        "recommendation": "Modify",
+        "recommendation_rationale": "Retire legacy ceil-area AV expression; use separate explicit package steps. Lighting off by scope, not free vendor service.",
+        "original_register_formula": "S=width*length; positive approved dimension bounds UNSET; kit count=base+ceil(S/area_per_kit).",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A012",
+        "title": "Spatial constraints",
+        "actual_formula": "Used=(N-VIP)*a_standard+VIP*a_vip+S+service+circulation; Used<=U and G<=C",
+        "purpose": "Prevents physically impossible combinations.",
+        "required_inputs": "guest_count; capacity_persons; usable area; seating/stage/service/circulation areas",
+        "supporting_refs": "FDR;ENGINE;QUOTE",
+        "limitations": "No automatic layout adaptation. Invalid layout blocks; if N<G no standing-person area is explicitly allocated. Restrict review POC to N=G until amendment",
+        "recommendation": "Modify",
+        "recommendation_rationale": "Allow explicitly hypothetical geometry only after a versioned reviewed adapter change, or supply measured reviewed geometry.",
+        "original_register_formula": "Used_area=standard_seats+VIP+stage+booths+service+circulation; Used_area<=U; G<=approved arrangement C.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A013",
+        "title": "Package catering",
+        "actual_formula": "Catering quantity=planned G; charge G*approved per-person package rate once, subject to reviewed inclusion map",
+        "purpose": "Resource accounting makes guest-to-food dependency transparent.",
+        "required_inputs": "guest_count; package catering rate/tax; inclusion map",
+        "supporting_refs": "FDR;ENGINE;STAGE1;QUOTE",
+        "limitations": "No ingredient BOM, wastage, minimum guests or adult/child tiers implemented. Quotes requiring these are not compatible without amendments",
+        "recommendation": "Modify",
+        "recommendation_rationale": "Use package-only; no ingredient BOM. Obtain compatible standalone package quote; reject double charging unitemized meeting bundles.",
+        "original_register_formula": "BOM: sum(G*portion_j*(1+waste_j)*price_j)+fixed_service; package: G*package_rate+extras. Quantities/rates UNSET.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A014",
+        "title": "Disjoint equipment ledger",
+        "actual_formula": "Chairs=N; tables from A008; stage=S; other equipment fixed booking line; each applicable line charged once",
+        "purpose": "Connects seating demand to quantities and avoids bundle duplication.",
+        "required_inputs": "seats; tables; stage area; equipment rates/taxes; reviewed scope/inclusion map",
+        "supporting_refs": "FDR;ENGINE;STAGE1;QUOTE",
+        "limitations": "Item-day rates need duration conversion. Equipment aggregate is not a single podium price",
+        "recommendation": "Modify",
+        "recommendation_rationale": "Add a reviewed explicit component-exclusion mechanism before live use. Do not forge inclusion maps to waive missing rates.",
+        "original_register_formula": "chair_qty*chair_rate+table_qty*table_rate+explicit delivery; bundled items charged zero only when inclusion is established.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A015",
+        "title": "General staff and billing hours",
+        "actual_formula": "Staff=base+ceil(G/guests_per_staff)+extra; physical person_hours=Staff*Hpaid; billing quantity=Staff*(Hregular+Hovertime*multiplier)",
+        "purpose": "Maintains dependencies and units; avoids random independent staff/cost columns.",
+        "required_inputs": "base_staff; guest_count; guests_per_staff; extra_general_staff; paid hours; overtime_multiplier; labour rate",
+        "supporting_refs": "FDR;ENGINE;QUOTE",
+        "limitations": "General pool excludes vendor/security staff. Formula implies at least one ratio-based staff member when G>0; all-staff-bundled cases need a scope amendment",
+        "recommendation": "Modify",
+        "recommendation_rationale": "Restricted general staff only; policy ratios/hours are hypothetical, not measured wages or legal overtime.",
+        "original_register_formula": "Staff=base+ceil(G/guests_per_staff)+approved extras; labour=sum(role_count*paid_hours*role_rate)+overtime. Parameters UNSET.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A020",
+        "title": "Venue billing",
+        "actual_formula": "Venue=approved fixed booking amount + Hevent*approved hourly tariff; each line normalized for tax",
+        "purpose": "Supports costs while preventing a false observed capacity-price correlation.",
+        "required_inputs": "venue_fixed rate; venue_hourly rate; event_hours; tax scope; booking window",
+        "supporting_refs": "FDR;ENGINE;STAGE1;QUOTE",
+        "limitations": "Current formula bills all event hours. Included-hour and clock-time surcharges do not fit without a reviewed extension",
+        "recommendation": "Modify",
+        "recommendation_rationale": "Pilot proposes fixed one-booking charge; hourly component off. Need actual scoped booking price; do not transfer another venue tariff to invented geometry.",
+        "original_register_formula": "rent=fixed_fee+billable_hours*hourly_rate+explicit extras; alternatively approved area tariff, not both without scope.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A021",
+        "title": "Budget constraint",
+        "actual_formula": "B fixed before outcomes; reserve=c*Q; require B>=reserve; planned breaches compare Q>B and Q>B-reserve",
+        "purpose": "Preserves ex-ante constraint and includes financially stressed cases.",
+        "required_inputs": "initial_budget_lkr; planned cost; reserve_ratio",
+        "supporting_refs": "FDR;ENGINE;LABELS",
+        "limitations": "If experimental B=b*Qreference is selected, calculate once for baseline and freeze for What-If pairs. Never recalculate B from realized cost",
+        "recommendation": "Accept",
+        "recommendation_rationale": "Accept definition in restricted simulator scope; numerical calibration and genuine review remain separate.",
+        "original_register_formula": "B=approved independent budget or b*Q; proposed b stress interval [.85,1.30], not population estimate; B>=Reserve.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A022",
+        "title": "Retained receipts and profit",
+        "actual_formula": "Planned profit=expected retained receipts-Q; realized profit=realized retained receipts-realized cost",
+        "purpose": "Allows loss/profit outcomes without forcing expected revenue to match actual costs.",
+        "required_inputs": "expected/realized retained receipts; planned/realized cost",
+        "supporting_refs": "FDR;ENGINE;QUOTE",
+        "limitations": "Do not equate client total turnover or pass-through cash with retained receipts. No receipt amount inferred from desired profit",
+        "recommendation": "Accept",
+        "recommendation_rationale": "Accept definition in restricted simulator scope; numerical calibration and genuine review remain separate.",
+        "original_register_formula": "Contract: approved retained fee. Ticketed: planned attendees*ticket_rate+retained booth/sponsor receipts. Values UNSET.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A023",
+        "title": "Margin policy",
+        "actual_formula": "Margin_points=100*profit/receipts when receipts>0; compare to separately selected minimum_margin_points",
+        "purpose": "Labels have explicit business-policy meaning and auditable boundaries.",
+        "required_inputs": "retained receipts; profit; minimum_margin_points",
+        "supporting_refs": "FDR;ENGINE;LABELS",
+        "limitations": "Zero receipts gives null margin, not a safe zero-risk label. Policy threshold is not industry average",
+        "recommendation": "Accept",
+        "recommendation_rationale": "Accept definition in restricted simulator scope; numerical calibration and genuine review remain separate.",
+        "original_register_formula": "Proposed stress policies 10%,20%,30%; stored as 10,20,30 percentage points. Not industry averages.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A024",
+        "title": "Contingency funding",
+        "actual_formula": "Reserve=round(c*Q); operating allowance=B-Reserve; Reserve excluded from Q and profit expenses",
+        "purpose": "Avoids double counting reserve and exposes policy sensitivity.",
+        "required_inputs": "planned cost; reserve_ratio; initial_budget_lkr",
+        "supporting_refs": "FDR;ENGINE;LABELS",
+        "limitations": "Unspent reserve is funding, not expense. Reserve fraction does not represent a calibrated confidence level",
+        "recommendation": "Accept",
+        "recommendation_rationale": "Accept definition in restricted simulator scope; numerical calibration and genuine review remain separate.",
+        "original_register_formula": "Reserve=c*Q; proposed c stress policies .05,.10,.15,.20; alternative pre-event quantile requires approved shock model.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A027",
+        "title": "Planning estimate",
+        "actual_formula": "Forecasted_Total_Cost=Q for this provisional deterministic POC; historical event mean/vendor volatility remain null",
+        "purpose": "Prevents replacing event history with ingredient or contract aggregates.",
+        "required_inputs": "disjoint planned ledger; reviewed rates, quantities and taxes",
+        "supporting_refs": "ENGINE;FDR;STAGE1",
+        "limitations": "No Prophet forecast or trained-model prediction. Retail history cannot replace observed event outcomes",
+        "recommendation": "Accept",
+        "recommendation_rationale": "Accept definition in restricted simulator scope; numerical calibration and genuine review remain separate.",
+        "original_register_formula": "Forecast=approved planning-rule estimate initially; historical event mean/vendor volatility NULL without defined comparable history.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A028",
+        "title": "Budget outcome label",
+        "actual_formula": "Budget_Overrun=1[round(realized cost)>round(B)] if valid nonnegative operands; equality=0",
+        "purpose": "Transparent financial boundary with no outcome input leakage.",
+        "required_inputs": "realized total cost; fixed ex-ante initial_budget_lkr; rounding convention",
+        "supporting_refs": "ENGINE;LABELS;PILOT",
+        "limitations": "Actual outcomes unavailable. Future synthetic labels require origin and frozen ex-ante budget; planned flag is not target",
+        "recommendation": "Accept",
+        "recommendation_rationale": "Accept definition in restricted simulator scope; numerical calibration and genuine review remain separate.",
+        "original_register_formula": "1[C_sim>B], equality=0; missing when inputs invalid; label origin simulated.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A029",
+        "title": "Margin outcome label",
+        "actual_formula": "Profit_Margin_Risk=1[100*(realized receipts-realized cost)/realized receipts < required margin]; receipts<=0 => null",
+        "purpose": "Avoids false finite margins and incorrect zero labels.",
+        "required_inputs": "realized receipts/cost; minimum_margin_points",
+        "supporting_refs": "ENGINE;LABELS;PILOT",
+        "limitations": "Tested arithmetic does not validate market outcomes. Outcome and injected flags excluded from planning features",
+        "recommendation": "Accept",
+        "recommendation_rationale": "Accept definition in restricted simulator scope; numerical calibration and genuine review remain separate.",
+        "original_register_formula": "margin=100*(R_sim-C_sim)/R_sim; target=1[margin<m_required]; R_sim<=0 or missing => target missing.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      },
+      {
+        "assumption_id": "A033",
+        "title": "Version and identity binding",
+        "actual_formula": "Engine fingerprint=SHA256(sorted compact JSON); parameter payload includes parameters/rates/billing/steps/override bounds; pilot binds full configuration and count",
+        "purpose": "Makes scenario construction and interventions reproducible/auditable.",
+        "required_inputs": "exact payloads; source/code/runtime/seed/rule versions; exact authorized count",
+        "supporting_refs": "ENGINE;GATES;PILOT",
+        "limitations": "Draft hashes identify content, not completeness, signatures or permission. Seed/RNG/source cutoff remain unresolved",
+        "recommendation": "Modify",
+        "recommendation_rationale": "Keep fingerprints separate from signatures/completeness. Reviewed geometry/exclusion changes require new code/rule/hash approval.",
+        "original_register_formula": "Stable SYN/SYNBASE IDs; Is_Augmented=1; independent recorded RNG streams; paired what-if common random draws.",
+        "status": "Pending review",
+        "reviewer": null,
+        "reviewer_role": null,
+        "review_date": null,
+        "decision_rationale": null,
+        "decision_evidence_ref": null,
+        "rules_version": "0.1.0-review",
+        "candidate_version": "minimal-pilot.0.1-proposed"
+      }
+    ],
+    "completeness": {
+      "original_numeric_slots": 108,
+      "specified_non_price_proposals": 52,
+      "active_proposal_numeric_slots": 80,
+      "active_proposal_numeric_nulls": 28,
+      "proposed_excluded_numeric_slots": 28,
+      "effective_engine_disabled_slots": 0,
+      "current_engine_numeric_nulls": 56,
+      "formulas_pending": 19,
+      "formal_numeric_reviews_pending": 108,
+      "candidate_complete": false,
+      "frozen_configuration_sha256": null,
+      "stage5_ready_for_explicit_authorization": false
+    }
+  }
+}

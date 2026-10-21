@@ -1,0 +1,181 @@
+{
+  "version": "unitless-pilot.0.2",
+  "maximum_stage_area_m2": 30,
+  "av_breakpoint_m2": 12,
+  "quantity_units": {"catering": "persons", "chairs": "chairs", "tables": "tables", "stage": "m2", "av": "kits", "labour": "weighted_person_hours", "venue_fixed": "bookings"},
+  "accounting_policy": "Seven disjoint dimensionless charges. No tax or LKR conversion. Reserve is earmarked within budget, not an expense. Expected receipts are retained organizer receipts, not venue/vendor pass-through gross revenue.",
+  "record_kind": "hypothetical_unitless_proposal",
+  "status": "pending_methodology_and_parameter_review",
+  "cost_unit": "dimensionless_score",
+  "currency": null,
+  "market_conversion_factor": null,
+  "origin": "All coefficients are arbitrary experimental choices, not normalized observations or LKR quotations",
+  "geometry_origin": "hypothetical_not_measured",
+  "venue_template_id": "HYP-VENUE-432M2-v1",
+  "vendor_template_id": "HYP-UNITLESS-COEFFICIENT-CARD-v1",
+  "source_dependency_ids": [
+    "HYP-UNITLESS-DESIGN-v1"
+  ],
+  "venue_width_m": 24,
+  "venue_length_m": 18,
+  "excluded_area_m2": 32,
+  "seat_zone_m2": 1.5,
+  "service_area_m2": 24,
+  "circulation_area_m2": 60,
+  "capacity_persons": 180,
+  "seats_per_table": 6,
+  "base_staff": 2,
+  "guests_per_staff": 30,
+  "setup_hours": 1,
+  "clearance_hours": 1,
+  "regular_hours_limit": 8,
+  "overtime_multiplier": 1.5,
+  "reserve_ratio": 0.1,
+  "minimum_margin_points": 10,
+  "coefficients": {
+    "catering": 1,
+    "chairs": 0.1,
+    "tables": 0.2,
+    "stage": 0.3,
+    "av": 0.2,
+    "labour": 0.4,
+    "venue_fixed": 0.5
+  },
+  "reference_quantities": {
+    "catering": 100,
+    "chairs": 100,
+    "tables": 17,
+    "stage": 12,
+    "av": 1,
+    "labour": 36,
+    "venue_fixed": 1
+  },
+  "disabled_services": [
+    "lighting",
+    "venue_hourly",
+    "security",
+    "decoration",
+    "transport",
+    "misc",
+    "equipment_other"
+  ],
+  "profiles": {
+    "Wedding": {
+      "guest_min": 90,
+      "guest_max": 180,
+      "event_hours": [
+        4,
+        5,
+        6
+      ],
+      "stage_width_m": [
+        3,
+        4,
+        5
+      ],
+      "stage_length_m": [
+        3,
+        4,
+        6
+      ],
+      "budget_score": [
+        2,
+        3,
+        4
+      ],
+      "retained_receipts_score": [
+        2,
+        3,
+        4
+      ]
+    },
+    "Corporate": {
+      "guest_min": 40,
+      "guest_max": 120,
+      "event_hours": [
+        2,
+        3,
+        4
+      ],
+      "stage_width_m": [
+        3,
+        4,
+        5
+      ],
+      "stage_length_m": [
+        3,
+        4,
+        6
+      ],
+      "budget_score": [
+        2,
+        3,
+        4
+      ],
+      "retained_receipts_score": [
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "outcome_proposal": {
+    "ordinary_common_cost_multiplier": [
+      0.9,
+      1.1
+    ],
+    "independent_receipt_multiplier": [
+      0.9,
+      1.1
+    ],
+    "injection_prevalence": 0.1,
+    "injection_multiplier": [
+      1.25,
+      1.5
+    ],
+    "eligible_services": [
+      "stage",
+      "av",
+      "labour"
+    ],
+    "hypothetical_not_calibrated": true,
+    "implementation_status": "implemented_pending_approval",
+    "distribution": "bounded_uniform"
+  },
+  "proposed_pilot": {
+    "rows": 30,
+    "roots": 5,
+    "archetype_root_quotas": {
+      "Wedding": 3,
+      "Corporate": 2
+    },
+    "planning_states_per_root": 3,
+    "outcome_replications_per_state": 2,
+    "seed": 20261022,
+    "split_protocol": "conditional_in_simulator",
+    "approval_status": "pending"
+  },
+  "planning_states": [
+    "baseline",
+    "guest_minus_one",
+    "guest_plus_one"
+  ],
+  "split_policy": {
+    "protocol": "conditional_in_simulator",
+    "fractions": [
+      0.6,
+      0.2,
+      0.2
+    ],
+    "tolerance": 0
+  },
+  "experimental_source_snapshot": {
+    "kind": "HYPOTHETICAL_DESIGN_NOT_PUBLIC_MARKET_EVIDENCE",
+    "version": "unitless-pilot.0.2",
+    "cost_unit": "dimensionless_score",
+    "source_dependency_ids": [
+      "HYP-UNITLESS-DESIGN-v1"
+    ]
+  },
+  "source_snapshot_sha256": "ce1f23a72bf7281a91434e8dcf58ef1d27ebf7ee297bb17f9677066990c4bdda"
+}

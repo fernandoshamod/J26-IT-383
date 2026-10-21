@@ -1,0 +1,17 @@
+{
+  "version":"expense-risk.3.0",
+  "run_id":"expense_risk_v3_0_20261015",
+  "seed":20261015,
+  "root_families":600,
+  "planning_states":["original_optional_expenses","add_expense","remove_existing_expense"],
+  "outcome_replications":2,
+  "split_roots":{"train":360,"validation":120,"test":120},
+  "sampling":{"guests":[50,500],"venue_area_m2":[400,1600],"hours":[2,12],"minimum_margin_pct":[0,40],"stage_width_m":4,"stage_length_m":6,"base_optional_count":[1,3],"optional_amount_fraction_of_core_cost":[0.01,0.20],"budget_factor_of_original_cost":[0.6,1.6],"expected_margin_fraction":[-0.25,0.55]},
+  "support":{"max_optional_count":4,"max_optional_fraction_of_core_cost":0.8,"source_kind":"planner_entered_assumption","pricing_policy":"planning_estimate","core_replacements_supported":false,"contracted_cancellations_supported":false},
+  "training":{"n_estimators":200,"max_depth":3,"learning_rate":0.05,"threshold":0.5,"n_jobs":1,"monotonic_constraints":{"Optional_Expense_Total_LKR":1,"Optional_Expense_Count":1,"Optional_Expense_Fraction":1,"Planned_Total_Cost_LKR":1,"Contingency_Reserve_LKR":1,"Planned_Budget_Utilization":1,"Planned_Margin_Buffer_Pct":-1},"selection":"Fixed before fitting; no test tuning, no learned transformations, no class balancing. Monotonic directions encode the reviewed experimental premise that adding positive variable expenses at unchanged receipts and budget must not reduce risk."},
+  "boundary_coverage":"Two training roots per archetype deliberately cover guest, area, duration and required-margin endpoints; hypothetical design anchors, not observations",
+  "labels":{"Budget_Overrun":"simulated_final_cost > spending_limit","Profit_Margin_Risk":"100*(simulated_receipts-simulated_final_cost)/simulated_receipts < minimum_margin_pct"},
+  "outcome_shocks":"Reuse v2 ordinary cost and receipts multipliers; common paired draws within each root; all new allowances variable, not supplier locked",
+  "experimental_choices":"All sampling ranges and optional amounts are hypothetical scenario-design choices, not observed Sri Lankan market statistics. Baseline source prices and financial rules are reused without modification.",
+  "limitations":["Zero observed completed-event outcomes","Shared source profiles and spatial/cost rules; no unseen-provider validation","Stage fixed at demo 4x6m, not observed CAD","Expense names ignored by model; only aggregate monetary exposure/count is learned","Same hypothetical shock mechanism for core and optional costs","Uncalibrated synthetic risk scores; no validated real-world probabilities","Health score remains an experimental financial rule, not this ML output","No date-to-future-price forecasting or vendor anomaly classifier"]
+}
