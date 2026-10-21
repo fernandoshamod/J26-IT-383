@@ -1,0 +1,97 @@
+{
+  "schema_version": "proposed.c1-group-layout.v1",
+  "implementation_status": "proposed_not_implemented",
+  "event": {
+    "event_id": "shared_event_demo_01",
+    "event_type": "wedding",
+    "guest_count": 80,
+    "start_at": "2026-10-22T10:00:00+05:30",
+    "timezone": "Asia/Colombo",
+    "time_epoch_utc": "2026-10-22T00:00:00Z",
+    "start_offset_minutes": 270,
+    "duration_minutes": 180,
+    "client_requirements": [
+      "80 seated guests"
+    ],
+    "planner_preferences": [
+      "balanced"
+    ]
+  },
+  "venue": {
+    "venue_id": "controlled_demo_32x24",
+    "version": 1,
+    "coordinate_frame": "local_plan_x_right_y_down",
+    "units": "m",
+    "source_image_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "metric_status": "controlled",
+    "usable_boundary_m": [
+      [
+        0,
+        0
+      ],
+      [
+        32,
+        0
+      ],
+      [
+        32,
+        24
+      ],
+      [
+        0,
+        24
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "structural_features": []
+  },
+  "layout": {
+    "layout_id": "illustrative_layout_not_computed",
+    "version": 1,
+    "venue_version": 1,
+    "sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+    "objects": [],
+    "objectives": {
+      "mean_stage_distance_m": 0,
+      "relocation_m": 0
+    },
+    "feasibility": {
+      "status": "pending",
+      "checker_version": "illustrative_only",
+      "clearance_m": 0.5,
+      "issues": [
+        "Schema example only; not a computed or approved layout"
+      ]
+    }
+  },
+  "resources": [
+    {
+      "resource_class_id": "chair",
+      "object_ids": [],
+      "quantity": 80,
+      "unit": "item",
+      "c3_role": null,
+      "mapping_status": "pending"
+    }
+  ],
+  "approval": {
+    "state": "draft",
+    "actor_id": null,
+    "authenticated": false,
+    "authority_reference": null,
+    "locked_object_ids": []
+  },
+  "provenance": {
+    "producer": "component-1",
+    "execution_kind": "controlled",
+    "source_evidence_refs": [
+      "illustrative_not_evidence"
+    ],
+    "constraint_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "parent_layout_sha256": null,
+    "created_at_utc": "2026-10-21T00:00:00Z"
+  }
+}

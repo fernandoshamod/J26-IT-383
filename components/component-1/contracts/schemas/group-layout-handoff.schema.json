@@ -1,0 +1,481 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:component-1:proposed:group-layout-handoff:1",
+  "title": "PROPOSED group layout exchange; no implemented adapter",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "implementation_status",
+    "event",
+    "venue",
+    "layout",
+    "resources",
+    "approval",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "proposed.c1-group-layout.v1"
+    },
+    "implementation_status": {
+      "const": "proposed_not_implemented"
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "event_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "guest_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "start_at": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T.*(?:Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "timezone": {
+          "type": "string",
+          "minLength": 1
+        },
+        "time_epoch_utc": {
+          "type": "string",
+          "pattern": "Z$"
+        },
+        "start_offset_minutes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "duration_minutes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "client_requirements": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "planner_preferences": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "event_id",
+        "event_type",
+        "guest_count",
+        "start_at",
+        "timezone",
+        "time_epoch_utc",
+        "start_offset_minutes",
+        "duration_minutes",
+        "client_requirements",
+        "planner_preferences"
+      ]
+    },
+    "venue": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "venue_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "coordinate_frame": {
+          "const": "local_plan_x_right_y_down"
+        },
+        "units": {
+          "const": "m"
+        },
+        "source_image_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "metric_status": {
+          "enum": [
+            "pending",
+            "controlled",
+            "reviewed"
+          ]
+        },
+        "usable_boundary_m": {
+          "$ref": "#/$defs/ring"
+        },
+        "structural_features": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "feature_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "class": {
+                "enum": [
+                  "wall",
+                  "door",
+                  "window",
+                  "room",
+                  "column",
+                  "restricted_zone"
+                ]
+              },
+              "geometry_m": {
+                "$ref": "#/$defs/ring"
+              }
+            },
+            "required": [
+              "feature_id",
+              "class",
+              "geometry_m"
+            ]
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "venue_id",
+        "version",
+        "coordinate_frame",
+        "units",
+        "source_image_sha256",
+        "metric_status",
+        "usable_boundary_m",
+        "structural_features"
+      ]
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "layout_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "venue_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "objects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/object"
+          },
+          "minItems": 0
+        },
+        "objectives": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "mean_stage_distance_m": {
+              "type": "number",
+              "minimum": 0
+            },
+            "relocation_m": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "mean_stage_distance_m",
+            "relocation_m"
+          ]
+        },
+        "feasibility": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "enum": [
+                "pending",
+                "feasible",
+                "infeasible"
+              ]
+            },
+            "checker_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "clearance_m": {
+              "type": "number",
+              "minimum": 0
+            },
+            "issues": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0
+            }
+          },
+          "required": [
+            "status",
+            "checker_version",
+            "clearance_m",
+            "issues"
+          ]
+        }
+      },
+      "required": [
+        "layout_id",
+        "version",
+        "venue_version",
+        "sha256",
+        "objects",
+        "objectives",
+        "feasibility"
+      ]
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "resource_class_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "object_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "unit": {
+            "enum": [
+              "item",
+              "person"
+            ]
+          },
+          "c3_role": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "mapping_status": {
+            "enum": [
+              "pending",
+              "approved"
+            ]
+          }
+        },
+        "required": [
+          "resource_class_id",
+          "object_ids",
+          "quantity",
+          "unit",
+          "c3_role",
+          "mapping_status"
+        ]
+      },
+      "minItems": 0
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "enum": [
+            "draft",
+            "pending",
+            "approved",
+            "rejected",
+            "revoked",
+            "stale"
+          ]
+        },
+        "actor_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "authenticated": {
+          "type": "boolean"
+        },
+        "authority_reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "locked_object_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "state",
+        "actor_id",
+        "authenticated",
+        "authority_reference",
+        "locked_object_ids"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "producer": {
+          "const": "component-1"
+        },
+        "execution_kind": {
+          "enum": [
+            "controlled",
+            "live",
+            "saved"
+          ]
+        },
+        "source_evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "constraint_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "parent_layout_sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "created_at_utc": {
+          "type": "string",
+          "pattern": "Z$"
+        }
+      },
+      "required": [
+        "producer",
+        "execution_kind",
+        "source_evidence_refs",
+        "constraint_sha256",
+        "parent_layout_sha256",
+        "created_at_utc"
+      ]
+    }
+  },
+  "$defs": {
+    "point": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "minItems": 2,
+      "maxItems": 2,
+      "items": false
+    },
+    "ring": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/point"
+      },
+      "minItems": 4
+    },
+    "object": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "object_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "class": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mobility": {
+          "enum": [
+            "fixed",
+            "movable",
+            "uncertain"
+          ]
+        },
+        "geometry_m": {
+          "$ref": "#/$defs/ring"
+        },
+        "width_m": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "depth_m": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "locked": {
+          "type": "boolean"
+        },
+        "stock_reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "object_id",
+        "class",
+        "mobility",
+        "geometry_m",
+        "width_m",
+        "depth_m",
+        "locked",
+        "stock_reference"
+      ]
+    }
+  }
+}

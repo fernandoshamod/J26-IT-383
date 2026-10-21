@@ -1,0 +1,14 @@
+{
+  "checkpoint": "C:\\My Research Component\\PP1_READINESS_20261022\\PP1_VENUE_RECOGNITION_V4\\objects_v2\\published_chair_pilot_final\\weights\\best.pt",
+  "sha256": "d56561aec6652d030f8815ec833345ee38c9d5711a375c42b9b642093dc8deae",
+  "seconds": 310.39621850001276,
+  "classes": [
+    "chair"
+  ],
+  "frozen_event_id_mapping": {
+    "0": 2
+  },
+  "test_opened": false,
+  "gpu": "NVIDIA GeForce RTX 5060",
+  "qualification": "EXPERIMENTAL_NOT_STOCK_QUALIFIED"
+}

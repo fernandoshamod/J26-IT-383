@@ -1,0 +1,14 @@
+# Keep Colab's working preinstalled torch/torchvision pair; do not install Windows CUDA wheels.
+# Model reconstruction contract tested locally with these exact Python packages:
+segmentation-models-pytorch==0.5.0
+timm==1.0.30
+# Normally preinstalled; notebook installs these bounded requirements only if absent:
+numpy>=1.26,<3
+Pillow>=10,<13
+matplotlib>=3.8,<4
+# torch >= 2.6 with its matching torchvision is required; supplied by Colab runtime.
+# Exact local torch/torchvision versions are recorded in LOCAL_ENVIRONMENT.json, not a Colab guarantee.
+
+# Detection notebooks; preserve runtime Torch/Torchvision pair
+ultralytics==8.4.177
+# Ultralytics is AGPL-3.0 licensed; do not infer unrestricted commercial redistribution.

@@ -1,0 +1,199 @@
+{
+  "review": {
+    "contract_id": "COMPONENT1_REVIEWED_TWIN_V1",
+    "venue_id": "FRONTEND_LAB_40X28",
+    "venue_version": 1,
+    "source": {
+      "path": "C:\\My Research Component\\PP1_READINESS_20261022\\PP1_FRONTEND_V1\\runtime\\fixtures\\lab-40x28\\FRONTEND_LAB_40X28_v1.png",
+      "sha256": "7337a1318e49d0a4d10e096fa44eb28392e0170aa174e07d653afe9e2cfe4261",
+      "width_pixels": 400,
+      "height_pixels": 280,
+      "domain": "controlled_synthetic"
+    },
+    "candidate_bundle_sha256": "6866f4619cd50a0d1c0e2ea2bc735051dc60732fea6ea4e45c7fad83a85e8540",
+    "calibration": {
+      "method": "isotropic_two_point_controls",
+      "controls": [
+        {
+          "point_a_px": [
+            0.0,
+            0.0
+          ],
+          "point_b_px": [
+            400.0,
+            0.0
+          ],
+          "known_distance_m": 40.0,
+          "evidence_ref": "CONTROLLED_GENERATOR_HORIZONTAL_DIMENSION"
+        },
+        {
+          "point_a_px": [
+            0.0,
+            0.0
+          ],
+          "point_b_px": [
+            0.0,
+            280.0
+          ],
+          "known_distance_m": 28.0,
+          "evidence_ref": "CONTROLLED_GENERATOR_VERTICAL_DIMENSION"
+        }
+      ],
+      "metric_origin_px": [
+        0.0,
+        0.0
+      ]
+    },
+    "boundary_px": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        400.0,
+        0.0
+      ],
+      [
+        400.0,
+        280.0
+      ],
+      [
+        0.0,
+        280.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "objects": [
+      {
+        "object_id": "stage_0001",
+        "class_name": "stage",
+        "status": "fixed",
+        "polygon_px": [
+          [
+            200.0,
+            205.0
+          ],
+          [
+            200.0,
+            230.0
+          ],
+          [
+            120.0,
+            230.0
+          ],
+          [
+            120.0,
+            205.0
+          ],
+          [
+            200.0,
+            205.0
+          ]
+        ],
+        "candidate_refs": [
+          "stage_0001"
+        ],
+        "decision_evidence_ref": "CONTROLLED_SYNTHETIC_TEST_DECISION_NOT_REAL_REVIEW"
+      },
+      {
+        "object_id": "buffet_counter_0001",
+        "class_name": "buffet_counter",
+        "status": "fixed",
+        "polygon_px": [
+          [
+            45.0,
+            210.0
+          ],
+          [
+            45.0,
+            222.0
+          ],
+          [
+            20.0,
+            222.0
+          ],
+          [
+            20.0,
+            210.0
+          ],
+          [
+            45.0,
+            210.0
+          ]
+        ],
+        "candidate_refs": [
+          "buffet_counter_0001"
+        ],
+        "decision_evidence_ref": "CONTROLLED_SYNTHETIC_TEST_DECISION_NOT_REAL_REVIEW"
+      },
+      {
+        "object_id": "buffet_counter_0002",
+        "class_name": "buffet_counter",
+        "status": "fixed",
+        "polygon_px": [
+          [
+            295.0,
+            210.0
+          ],
+          [
+            295.0,
+            222.0
+          ],
+          [
+            270.0,
+            222.0
+          ],
+          [
+            270.0,
+            210.0
+          ],
+          [
+            295.0,
+            210.0
+          ]
+        ],
+        "candidate_refs": [
+          "buffet_counter_0002"
+        ],
+        "decision_evidence_ref": "CONTROLLED_SYNTHETIC_TEST_DECISION_NOT_REAL_REVIEW"
+      }
+    ],
+    "review": {
+      "status": "approved",
+      "reviewer_id": "SIMULATED_FIXTURE_REVIEWER",
+      "evidence_ref": "EXPLICIT_SYNTHETIC_CALIBRATION_FIXTURE_TEST",
+      "scope": "SIMULATED_FIXTURE_REVIEW",
+      "geometry_confirmed": true,
+      "metric_dimensions_confirmed": true
+    }
+  },
+  "candidate_bundle": {
+    "schema": "IMAGE_SPACE_TWIN_CANDIDATE_V2",
+    "source": {
+      "path": "C:\\My Research Component\\PP1_READINESS_20261022\\PP1_FRONTEND_V1\\runtime\\fixtures\\lab-40x28\\FRONTEND_LAB_40X28_v1.png",
+      "sha256": "7337a1318e49d0a4d10e096fa44eb28392e0170aa174e07d653afe9e2cfe4261",
+      "width_pixels": 400,
+      "height_pixels": 280,
+      "domain": "controlled_synthetic"
+    },
+    "objects": [
+      {
+        "id": "stage_0001",
+        "source_kind": "CONTROLLED_GENERATOR_GEOMETRY_NOT_MODEL_PREDICTION"
+      },
+      {
+        "id": "buffet_counter_0001",
+        "source_kind": "CONTROLLED_GENERATOR_GEOMETRY_NOT_MODEL_PREDICTION"
+      },
+      {
+        "id": "buffet_counter_0002",
+        "source_kind": "CONTROLLED_GENERATOR_GEOMETRY_NOT_MODEL_PREDICTION"
+      }
+    ],
+    "planner_reviewed": false,
+    "optimization_ready": false
+  }
+}

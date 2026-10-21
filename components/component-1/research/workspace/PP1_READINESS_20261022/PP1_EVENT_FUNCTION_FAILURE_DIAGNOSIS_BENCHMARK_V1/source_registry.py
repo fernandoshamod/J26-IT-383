@@ -1,0 +1,18 @@
+﻿from pathlib import Path
+import csv,json
+ROOT=Path(__file__).resolve().parents[2]; OUT=Path(__file__).resolve().parent
+cvc=ROOT/'PP1_READINESS_20261022/PP1_UNET_CVC_EXTERNAL_EVALUATION_V1'
+sel=json.loads((cvc/'FROZEN_SELECTION.json').read_text(encoding='utf-8-sig'))
+rows=[]
+for x in sel['records']:
+ rows.append({'record_id':x['annotation_filename'],'source_family_stratum':x['stratum'],'source_path':x['image']['path'],'source_sha256':x['image']['sha256'],'annotation_path':x['annotation']['path'],'annotation_sha256':x['annotation']['sha256'],'derived_mask_path':x['mask']['path'],'mask_sha256':x['review']['mask_sha256'],'prediction_path':f"PP1_READINESS_20261022/PP1_UNET_CVC_EXTERNAL_EVALUATION_V1/QUALITATIVE_PREDICTIONS/{Path(x['annotation_filename']).stem}/PREDICTION_512.png",'annotation_status':'SOURCE_ANNOTATED_SVG_DERIVED_NOT_INDEPENDENTLY_HUMAN_CERTIFIED','alignment_status':'HASH_LINKED_SOURCE_RASTER_SVG_AND_DERIVED_MASK; 512X512 RESIZE; pixel-space only','metric_geometry':'ABSENT','event_function_label':'ABSENT','rights_status':'ACADEMIC_BENCHMARK_SOURCE; NO BLANKET COMMERCIAL/REDISTRIBUTION LICENSE OR ORIGINAL DOWNLOAD RECEIPT ESTABLISHED','eligible_use':'PIXEL_STRUCTURAL_DIAGNOSTIC_ONLY'})
+extra=[
+{'record_id':'KNOX_6496','source_family_stratum':'single source plan','source_path':'research_inputs/Knox 6496.jpg','source_sha256':'6dbd436b41d78b62e27f6fe321d2ac97d745d43d0c769878775edcc381b40fff','annotation_path':'PP1_READINESS_20261022/PP1_KNOX_REAL_SOURCE_EVENT_AWARE_VALIDATION_V1/RAW_RESULTS/PIXEL_ACCESS_SENSITIVITY.json','annotation_sha256':'embedded source/link evidence; conditional assumptions only','derived_mask_path':'not applicable','mask_sha256':'not applicable','prediction_path':'PP1_READINESS_20261022/PP1_KNOX_REAL_SOURCE_EVENT_AWARE_VALIDATION_V1/ORIGINAL_AND_PREDICTION_OVERLAYS/CANDIDATE_BUNDLE.json','annotation_status':'ACTUAL_MODEL_CANDIDATES; NO INDEPENDENT ANNOTATION','alignment_status':'SOURCE HASH LINKED; ORIGINAL IMAGE PIXELS, NO METRIC TRANSFORM','metric_geometry':'ABSENT / PROVISIONAL INTERPRETATIONS NOT REVIEWED','event_function_label':'ANALYST_AUTHORED CONDITIONAL CONNECTIVITY CASES ONLY','rights_status':'SAMPLE PLAN PROVENANCE IDENTIFIED; REUSE LICENSE/ACQUISITION CONDITIONS NOT FULLY QUALIFIED','eligible_use':'CONDITIONAL PIXEL/TOPLOGY SENSITIVITY ONLY'},
+{'record_id':'OLD_SOUTH_MEETINGHOUSE','source_family_stratum':'single historical plan','source_path':'PP1_READINESS_20261022/PP1_REAL_INDOOR_ACCEPTANCE_V1/DIMENSIONED_PLAN_EVIDENCE/OLD_SOUTH_PLAN.jpg','source_sha256':'see PP1_REAL_SOURCE_LAYOUT_EVIDENCE_V1/ARTIFACT_INDEX.json','annotation_path':'PP1_READINESS_20261022/PP1_REAL_SOURCE_LAYOUT_EVIDENCE_V1/SOURCE_GEOMETRY_REVIEW.json','annotation_sha256':'see ARTIFACT_INDEX.json','derived_mask_path':'not applicable','mask_sha256':'not applicable','prediction_path':'PP1_READINESS_20261022/PP1_REAL_INDOOR_ACCEPTANCE_V1/outputs/API_ANALYSES/c4471e3a479546bc87130917f3d81337/CANDIDATE_BUNDLE.json','annotation_status':'ANALYST VISUAL INTERPRETATION; EXTERNAL REVIEW PENDING','alignment_status':'SOURCE PIXELS HASH LINKED; METRIC INTERPRETATION PROVISIONAL','metric_geometry':'NOT QUALIFIED','event_function_label':'ABSENT','rights_status':'HABS/LOC RIGHTS CONDITIONS RECORDED; THIRD-PARTY EXCEPTIONS AND SOURCE DOCUMENTATION LIMITS','eligible_use':'PENDING REVIEW ONLY'}]
+rows.extend(extra)
+for row in rows:
+ row['selection_stratum']=row.pop('source_family_stratum');row['source_family_ancestry_status']='UNVERIFIED'
+fields=list(rows[0]);
+with (OUT/'SOURCE_AND_ANNOTATION_REGISTRY.csv').open('w',newline='',encoding='utf-8-sig') as f:
+ w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(rows)
+print('registry_rows',len(rows),'CVC',len(sel['records']))

@@ -1,0 +1,33 @@
+{
+  "schema": "PP1_CONSOLIDATED_MODEL_REGISTRY_V1",
+  "models": {
+    "unet": {
+      "path": "C:\\My Research Component\\PP1_READINESS_20261022\\PP1_FLOORPLAN_AI_DEVELOPMENT_V3\\unet\\best_native_unet.pt",
+      "sha256": "352631590f1610b6b29341b3d1c59fad2ad564ed07fa4b77c9c59470bfde5c0c",
+      "role": "V3 native structural segmentation; provisional candidates, never usable metric boundary approval",
+      "default_enabled": true,
+      "metric_authority": false
+    },
+    "opening_yolo": {
+      "path": "C:\\My Research Component\\PP1_READINESS_20261022\\PP1_FLOORPLAN_AI_DEVELOPMENT_V3\\symbols\\native_openings\\weights\\best.pt",
+      "sha256": "64c8d7a0d205362f174871ca861cfa80ff24d2ff1d2a191505dad2688e67abc7",
+      "role": "V3 door/window symbols; no authoritative stock",
+      "default_enabled": true,
+      "metric_authority": false
+    },
+    "controlled_event_yolo": {
+      "path": "C:\\My Research Component\\PP1_READINESS_20261022\\PP1_MODEL_DEVELOPMENT_V2\\yolo\\rare_resample_finetune\\weights\\best.pt",
+      "sha256": "878cabdfafd70544fbcda8154fd80d1007270c00940d699b9b7b340e2afb1a6a",
+      "role": "V2 procedural 12-class; controlled domain only, never real-plan stock inference",
+      "default_enabled": false,
+      "metric_authority": false
+    },
+    "experimental_chair": {
+      "path": "C:\\My Research Component\\PP1_READINESS_20261022\\PP1_VENUE_RECOGNITION_V4\\objects_v2\\published_chair_pilot_final\\weights\\best.pt",
+      "sha256": "d56561aec6652d030f8815ec833345ee38c9d5711a375c42b9b642093dc8deae",
+      "role": "V4 chair pilot; opt-in only, disabled by default, unverified stock",
+      "default_enabled": false,
+      "metric_authority": false
+    }
+  }
+}

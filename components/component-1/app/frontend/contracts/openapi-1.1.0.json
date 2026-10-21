@@ -1,0 +1,2082 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Component 1 executable research backend",
+    "version": "1.1.0"
+  },
+  "paths": {
+    "/images": {
+      "post": {
+        "summary": "Upload",
+        "operationId": "upload_images_post",
+        "requestBody": {
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "contentMediaType": "application/octet-stream",
+                "title": "Body"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageReceipt"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Gate/domain error or persisted schema rejection. Check reason/status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GateError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NonSuccess"
+                    }
+                  ],
+                  "title": "Response 422 Upload Images Post"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/analyses": {
+      "post": {
+        "summary": "Analyze",
+        "operationId": "analyze_analyses_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Analyze"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalysisReceipt"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Gate/domain error or persisted schema rejection. Check reason/status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GateError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NonSuccess"
+                    }
+                  ],
+                  "title": "Response 422 Analyze Analyses Post"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/analyses/{analysis_id}": {
+      "get": {
+        "summary": "Get Analysis",
+        "operationId": "get_analysis_analyses__analysis_id__get",
+        "parameters": [
+          {
+            "name": "analysis_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Analysis Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalysisReceipt"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Gate/domain error or persisted schema rejection. Check reason/status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GateError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NonSuccess"
+                    }
+                  ],
+                  "title": "Response 422 Get Analysis Analyses  Analysis Id  Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/analyses/{analysis_id}/artifacts/{filename}": {
+      "get": {
+        "summary": "Artifact",
+        "operationId": "artifact_analyses__analysis_id__artifacts__filename__get",
+        "parameters": [
+          {
+            "name": "analysis_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Analysis Id"
+            }
+          },
+          {
+            "name": "filename",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Filename"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Gate/domain error or persisted schema rejection. Check reason/status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GateError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NonSuccess"
+                    }
+                  ],
+                  "title": "Response 422 Artifact Analyses  Analysis Id  Artifacts  Filename  Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Health"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Gate/domain error or persisted schema rejection. Check reason/status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GateError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NonSuccess"
+                    }
+                  ],
+                  "title": "Response 422 Health Health Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/twins": {
+      "post": {
+        "summary": "Register",
+        "operationId": "register_twins_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Register"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TwinReceipt"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Gate/domain error or persisted schema rejection. Check reason/status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GateError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NonSuccess"
+                    }
+                  ],
+                  "title": "Response 422 Register Twins Post"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/optimize": {
+      "post": {
+        "summary": "Optimize",
+        "operationId": "optimize_optimize_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Optimize"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Success"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NonSuccess"
+                    }
+                  ],
+                  "title": "Response Optimize Optimize Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Gate/domain error or persisted schema rejection. Check reason/status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GateError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NonSuccess"
+                    }
+                  ],
+                  "title": "Response 422 Optimize Optimize Post"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/twins/{venue_id}/versions/{version}": {
+      "get": {
+        "summary": "Get Twin",
+        "operationId": "get_twin_twins__venue_id__versions__version__get",
+        "parameters": [
+          {
+            "name": "venue_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Venue Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Version"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TwinReceipt"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Gate/domain error or persisted schema rejection. Check reason/status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GateError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NonSuccess"
+                    }
+                  ],
+                  "title": "Response 422 Get Twin Twins  Venue Id  Versions  Version  Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runs/{run_id}": {
+      "get": {
+        "summary": "Get Run",
+        "operationId": "get_run_runs__run_id__get",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StoredRun"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Gate/domain error or persisted schema rejection. Check reason/status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GateError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NonSuccess"
+                    }
+                  ],
+                  "title": "Response 422 Get Run Runs  Run Id  Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runs": {
+      "get": {
+        "summary": "List Runs",
+        "operationId": "list_runs_runs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunIndex"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Gate/domain error or persisted schema rejection. Check reason/status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GateError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NonSuccess"
+                    }
+                  ],
+                  "title": "Response 422 List Runs Runs Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runs/{run_id}/approve": {
+      "post": {
+        "summary": "Approve",
+        "operationId": "approve_runs__run_id__approve_post",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Approve"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApprovalReceipt"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Gate/domain error or persisted schema rejection. Check reason/status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GateError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NonSuccess"
+                    }
+                  ],
+                  "title": "Response 422 Approve Runs  Run Id  Approve Post"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/approvals/{approval_id}/revoke": {
+      "post": {
+        "summary": "Revoke",
+        "operationId": "revoke_approvals__approval_id__revoke_post",
+        "parameters": [
+          {
+            "name": "approval_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Approval Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Revoke"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RevocationReceipt"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Gate/domain error or persisted schema rejection. Check reason/status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GateError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NonSuccess"
+                    }
+                  ],
+                  "title": "Response 422 Revoke Approvals  Approval Id  Revoke Post"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contracts": {
+      "get": {
+        "summary": "Contracts",
+        "operationId": "contracts_contracts_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Gate/domain error or persisted schema rejection. Check reason/status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GateError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/NonSuccess"
+                    }
+                  ],
+                  "title": "Response 422 Contracts Contracts Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AnalysisReceipt": {
+        "properties": {
+          "analysis_id": {
+            "type": "string",
+            "title": "Analysis Id"
+          },
+          "status": {
+            "type": "string",
+            "const": "review_required",
+            "title": "Status"
+          },
+          "candidate_bundle": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Candidate Bundle"
+          },
+          "pending_review_template": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Pending Review Template"
+          },
+          "model_report": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Model Report"
+          },
+          "gate": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Gate"
+          },
+          "artifacts": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ArtifactLink"
+            },
+            "type": "object",
+            "title": "Artifacts"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "analysis_id",
+          "status",
+          "candidate_bundle",
+          "pending_review_template",
+          "model_report",
+          "gate",
+          "artifacts"
+        ],
+        "title": "AnalysisReceipt"
+      },
+      "Analyze": {
+        "properties": {
+          "image_path": {
+            "type": "string",
+            "title": "Image Path"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "image_path"
+        ],
+        "title": "Analyze"
+      },
+      "ApprovalReceipt": {
+        "properties": {
+          "approval_id": {
+            "type": "string",
+            "title": "Approval Id"
+          },
+          "status": {
+            "type": "string",
+            "const": "approved",
+            "title": "Status"
+          },
+          "approval_origin": {
+            "type": "string",
+            "title": "Approval Origin"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "approval_id",
+          "status",
+          "approval_origin"
+        ],
+        "title": "ApprovalReceipt"
+      },
+      "Approve": {
+        "properties": {
+          "layout_id": {
+            "type": "string",
+            "title": "Layout Id"
+          },
+          "layout_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Layout Sha256"
+          },
+          "venue_version": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Venue Version"
+          },
+          "reviewer_id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Reviewer Id"
+          },
+          "evidence_ref": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Evidence Ref"
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "SIMULATED_FIXTURE_REVIEW",
+              "EXTERNAL_RESEARCH_REVIEW"
+            ],
+            "title": "Scope"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "layout_id",
+          "layout_sha256",
+          "venue_version",
+          "reviewer_id",
+          "evidence_ref",
+          "scope"
+        ],
+        "title": "Approve"
+      },
+      "ArtifactLink": {
+        "properties": {
+          "sha256": {
+            "type": "string",
+            "title": "Sha256"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "sha256",
+          "url"
+        ],
+        "title": "ArtifactLink"
+      },
+      "Calibration": {
+        "properties": {
+          "method": {
+            "type": "string",
+            "const": "isotropic_two_point_controls",
+            "title": "Method"
+          },
+          "controls": {
+            "items": {
+              "$ref": "#/components/schemas/Control"
+            },
+            "type": "array",
+            "minItems": 2,
+            "title": "Controls"
+          },
+          "metric_origin_px": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "maxItems": 2,
+            "minItems": 2,
+            "title": "Metric Origin Px"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "method",
+          "controls",
+          "metric_origin_px"
+        ],
+        "title": "Calibration"
+      },
+      "ConstraintResults": {
+        "properties": {
+          "independently_verified": {
+            "type": "boolean",
+            "title": "Independently Verified"
+          },
+          "outside_count": {
+            "type": "integer",
+            "title": "Outside Count"
+          },
+          "overlap_count": {
+            "type": "integer",
+            "title": "Overlap Count"
+          },
+          "locked_object_changes": {
+            "type": "integer",
+            "title": "Locked Object Changes"
+          },
+          "minimum_clearance_m": {
+            "type": "number",
+            "title": "Minimum Clearance M"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "independently_verified",
+          "outside_count",
+          "overlap_count",
+          "locked_object_changes",
+          "minimum_clearance_m"
+        ],
+        "title": "ConstraintResults"
+      },
+      "Control": {
+        "properties": {
+          "point_a_px": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "maxItems": 2,
+            "minItems": 2,
+            "title": "Point A Px"
+          },
+          "point_b_px": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "maxItems": 2,
+            "minItems": 2,
+            "title": "Point B Px"
+          },
+          "known_distance_m": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "title": "Known Distance M"
+          },
+          "evidence_ref": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Evidence Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "point_a_px",
+          "point_b_px",
+          "known_distance_m",
+          "evidence_ref"
+        ],
+        "title": "Control"
+      },
+      "EvidenceArtifact": {
+        "properties": {
+          "evidence_id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Evidence Id"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Path"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Sha256"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Source Sha256"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "evidence_id",
+          "path",
+          "sha256",
+          "source_sha256"
+        ],
+        "title": "EvidenceArtifact"
+      },
+      "GateError": {
+        "properties": {
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          },
+          "details": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Details"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "reason",
+          "details"
+        ],
+        "title": "GateError"
+      },
+      "Hard": {
+        "properties": {
+          "minimum_clearance_m": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Minimum Clearance M"
+          },
+          "maximum_mean_stage_distance_m": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maximum Mean Stage Distance M"
+          },
+          "maximum_total_movement_m": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maximum Total Movement M"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "Hard"
+      },
+      "Health": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "ready",
+            "title": "Status"
+          },
+          "scope": {
+            "type": "string",
+            "const": "local_research",
+            "title": "Scope"
+          },
+          "real_authentication": {
+            "type": "boolean",
+            "title": "Real Authentication"
+          },
+          "database": {
+            "type": "string",
+            "title": "Database"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "scope",
+          "real_authentication",
+          "database"
+        ],
+        "title": "Health"
+      },
+      "ImageReceipt": {
+        "properties": {
+          "image_id": {
+            "type": "string",
+            "title": "Image Id"
+          },
+          "image_path": {
+            "type": "string",
+            "title": "Image Path"
+          },
+          "sha256": {
+            "type": "string",
+            "title": "Sha256"
+          },
+          "width_pixels": {
+            "type": "integer",
+            "title": "Width Pixels"
+          },
+          "height_pixels": {
+            "type": "integer",
+            "title": "Height Pixels"
+          },
+          "physical_real_venue_provenance_verified": {
+            "type": "boolean",
+            "title": "Physical Real Venue Provenance Verified"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "image_id",
+          "image_path",
+          "sha256",
+          "width_pixels",
+          "height_pixels",
+          "physical_real_venue_provenance_verified"
+        ],
+        "title": "ImageReceipt"
+      },
+      "Layout": {
+        "properties": {
+          "layout_id": {
+            "type": "string",
+            "title": "Layout Id"
+          },
+          "objects": {
+            "items": {
+              "$ref": "#/components/schemas/LayoutObject"
+            },
+            "type": "array",
+            "title": "Objects"
+          },
+          "group_centers_m": {
+            "additionalProperties": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "type": "object",
+            "title": "Group Centers M"
+          },
+          "objective_metrics": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Objective Metrics"
+          },
+          "constraint_results": {
+            "$ref": "#/components/schemas/ConstraintResults"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "layout_id",
+          "objects",
+          "group_centers_m",
+          "objective_metrics",
+          "constraint_results"
+        ],
+        "title": "Layout"
+      },
+      "LayoutObject": {
+        "properties": {
+          "object_id": {
+            "type": "string",
+            "title": "Object Id"
+          },
+          "class": {
+            "type": "string",
+            "enum": [
+              "stage",
+              "buffet_counter",
+              "fixed_column",
+              "wall",
+              "restricted_zone",
+              "round_table",
+              "chair"
+            ],
+            "title": "Class"
+          },
+          "group_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Group Id"
+          },
+          "footprint_coordinates_m": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Footprint Coordinates M"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "object_id",
+          "class",
+          "group_id",
+          "footprint_coordinates_m"
+        ],
+        "title": "LayoutObject"
+      },
+      "NonSuccess": {
+        "properties": {
+          "contract_id": {
+            "type": "string",
+            "const": "COMPONENT1_PP1_EXECUTABLE_V1",
+            "title": "Contract Id"
+          },
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "rejected",
+              "denied",
+              "infeasible",
+              "error"
+            ],
+            "title": "Status"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          },
+          "details": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Details"
+          },
+          "candidate_layouts": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Candidate Layouts"
+          },
+          "optimizer_evaluations": {
+            "type": "integer",
+            "title": "Optimizer Evaluations"
+          },
+          "scope": {
+            "type": "string",
+            "const": "local_research",
+            "title": "Scope"
+          },
+          "real_planner_authentication": {
+            "type": "boolean",
+            "title": "Real Planner Authentication"
+          },
+          "xai": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Xai"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "contract_id",
+          "run_id",
+          "status",
+          "reason",
+          "details",
+          "candidate_layouts",
+          "optimizer_evaluations",
+          "scope",
+          "real_planner_authentication",
+          "xai"
+        ],
+        "title": "NonSuccess"
+      },
+      "Optimize": {
+        "properties": {
+          "contract_id": {
+            "type": "string",
+            "const": "COMPONENT1_PP1_EXECUTABLE_V1",
+            "title": "Contract Id"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "initial_design",
+              "adaptive_revision",
+              "guest_change"
+            ],
+            "title": "Mode"
+          },
+          "venue_id": {
+            "type": "string",
+            "title": "Venue Id"
+          },
+          "venue_version": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Venue Version"
+          },
+          "twin_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Twin Sha256"
+          },
+          "requirements": {
+            "$ref": "#/components/schemas/Requirements"
+          },
+          "seed": {
+            "type": "integer",
+            "maximum": 2147483647.0,
+            "minimum": 0.0,
+            "title": "Seed"
+          },
+          "reference": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Reference"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "affected_group_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Affected Group Ids"
+          },
+          "remove_group_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Remove Group Ids"
+          },
+          "permissions": {
+            "items": {
+              "$ref": "#/components/schemas/Permission"
+            },
+            "type": "array",
+            "title": "Permissions"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "contract_id",
+          "mode",
+          "venue_id",
+          "venue_version",
+          "twin_sha256",
+          "requirements",
+          "seed"
+        ],
+        "title": "Optimize"
+      },
+      "Party": {
+        "properties": {
+          "requirement_id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Requirement Id"
+          },
+          "provenance_ref": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Provenance Ref"
+          },
+          "approval_status": {
+            "type": "string",
+            "enum": [
+              "approved",
+              "pending",
+              "rejected"
+            ],
+            "title": "Approval Status"
+          },
+          "guest_count": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Guest Count"
+          },
+          "quantities": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Quantities"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "hard": {
+            "$ref": "#/components/schemas/Hard"
+          },
+          "alternative_preference": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "stage_proximity",
+                  "minimum_disruption",
+                  "balanced"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Alternative Preference"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "requirement_id",
+          "provenance_ref",
+          "approval_status"
+        ],
+        "title": "Party"
+      },
+      "Permission": {
+        "properties": {
+          "group_id": {
+            "type": "string",
+            "title": "Group Id"
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "move",
+              "remove"
+            ],
+            "title": "Action"
+          },
+          "approved": {
+            "type": "boolean",
+            "title": "Approved"
+          },
+          "reviewer_id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Reviewer Id"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Reason"
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "SIMULATED_FIXTURE_REVIEW",
+              "EXTERNAL_RESEARCH_REVIEW"
+            ],
+            "title": "Scope"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "group_id",
+          "action",
+          "approved",
+          "reviewer_id",
+          "reason",
+          "scope"
+        ],
+        "title": "Permission"
+      },
+      "Quantities": {
+        "properties": {
+          "round_table": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Round Table"
+          },
+          "chair": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Chair"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "round_table",
+          "chair"
+        ],
+        "title": "Quantities"
+      },
+      "Reference": {
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "layout_id": {
+            "type": "string",
+            "title": "Layout Id"
+          },
+          "layout_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Layout Sha256"
+          },
+          "approval_id": {
+            "type": "string",
+            "title": "Approval Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "run_id",
+          "layout_id",
+          "layout_sha256",
+          "approval_id"
+        ],
+        "title": "Reference"
+      },
+      "Register": {
+        "properties": {
+          "review": {
+            "$ref": "#/components/schemas/TwinReview"
+          },
+          "candidate_bundle": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Candidate Bundle"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "review",
+          "candidate_bundle"
+        ],
+        "title": "Register"
+      },
+      "Requirements": {
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Event Id"
+          },
+          "event_type": {
+            "type": "string",
+            "const": "Wedding",
+            "title": "Event Type"
+          },
+          "guest_count": {
+            "type": "integer",
+            "maximum": 240.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Guest Count"
+          },
+          "seats_per_table": {
+            "type": "integer",
+            "const": 8,
+            "title": "Seats Per Table",
+            "default": 8
+          },
+          "quantities": {
+            "$ref": "#/components/schemas/Quantities"
+          },
+          "client": {
+            "$ref": "#/components/schemas/Party"
+          },
+          "planner": {
+            "$ref": "#/components/schemas/Party"
+          },
+          "protected_group_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Protected Group Ids"
+          },
+          "protected_object_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Protected Object Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "event_id",
+          "event_type",
+          "guest_count",
+          "quantities",
+          "client",
+          "planner"
+        ],
+        "title": "Requirements"
+      },
+      "ReviewDecision": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "approved",
+              "rejected"
+            ],
+            "title": "Status"
+          },
+          "reviewer_id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Reviewer Id"
+          },
+          "evidence_ref": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Evidence Ref"
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "SIMULATED_FIXTURE_REVIEW",
+              "EXTERNAL_RESEARCH_REVIEW"
+            ],
+            "title": "Scope"
+          },
+          "geometry_confirmed": {
+            "type": "boolean",
+            "title": "Geometry Confirmed"
+          },
+          "metric_dimensions_confirmed": {
+            "type": "boolean",
+            "title": "Metric Dimensions Confirmed"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "reviewer_id",
+          "evidence_ref",
+          "scope",
+          "geometry_confirmed",
+          "metric_dimensions_confirmed"
+        ],
+        "title": "ReviewDecision"
+      },
+      "ReviewedObject": {
+        "properties": {
+          "object_id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Object Id"
+          },
+          "class_name": {
+            "type": "string",
+            "enum": [
+              "stage",
+              "buffet_counter",
+              "fixed_column",
+              "wall",
+              "restricted_zone"
+            ],
+            "title": "Class Name"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "fixed",
+              "movable",
+              "uncertain"
+            ],
+            "title": "Status"
+          },
+          "polygon_px": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "minItems": 3,
+            "title": "Polygon Px"
+          },
+          "candidate_refs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Candidate Refs"
+          },
+          "decision_evidence_ref": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Decision Evidence Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "object_id",
+          "class_name",
+          "status",
+          "polygon_px",
+          "candidate_refs",
+          "decision_evidence_ref"
+        ],
+        "title": "ReviewedObject"
+      },
+      "RevocationReceipt": {
+        "properties": {
+          "approval_id": {
+            "type": "string",
+            "title": "Approval Id"
+          },
+          "status": {
+            "type": "string",
+            "const": "revoked",
+            "title": "Status"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "approval_id",
+          "status"
+        ],
+        "title": "RevocationReceipt"
+      },
+      "Revoke": {
+        "properties": {
+          "reviewer_id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Reviewer Id"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Reason"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "reviewer_id",
+          "reason"
+        ],
+        "title": "Revoke"
+      },
+      "RunIndex": {
+        "properties": {
+          "runs": {
+            "items": {
+              "$ref": "#/components/schemas/RunIndexEntry"
+            },
+            "type": "array",
+            "title": "Runs"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "runs"
+        ],
+        "title": "RunIndex"
+      },
+      "RunIndexEntry": {
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "response_sha": {
+            "type": "string",
+            "title": "Response Sha"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "run_id",
+          "status",
+          "response_sha"
+        ],
+        "title": "RunIndexEntry"
+      },
+      "Source": {
+        "properties": {
+          "path": {
+            "type": "string",
+            "title": "Path"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Sha256"
+          },
+          "width_pixels": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Width Pixels"
+          },
+          "height_pixels": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Height Pixels"
+          },
+          "domain": {
+            "type": "string",
+            "enum": [
+              "real_source",
+              "controlled_synthetic"
+            ],
+            "title": "Domain"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "path",
+          "sha256",
+          "width_pixels",
+          "height_pixels",
+          "domain"
+        ],
+        "title": "Source"
+      },
+      "StoredRun": {
+        "properties": {
+          "request": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Request"
+          },
+          "response": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Success"
+              },
+              {
+                "$ref": "#/components/schemas/NonSuccess"
+              }
+            ],
+            "title": "Response"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "request",
+          "response"
+        ],
+        "title": "StoredRun"
+      },
+      "Success": {
+        "properties": {
+          "contract_id": {
+            "type": "string",
+            "const": "COMPONENT1_PP1_EXECUTABLE_V1",
+            "title": "Contract Id"
+          },
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "status": {
+            "type": "string",
+            "const": "success",
+            "title": "Status"
+          },
+          "source_domain": {
+            "type": "string",
+            "enum": [
+              "controlled_synthetic",
+              "real_source"
+            ],
+            "title": "Source Domain"
+          },
+          "venue_id": {
+            "type": "string",
+            "title": "Venue Id"
+          },
+          "venue_version": {
+            "type": "integer",
+            "title": "Venue Version"
+          },
+          "twin_sha256": {
+            "type": "string",
+            "title": "Twin Sha256"
+          },
+          "actual_boundary_polygon_m": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Actual Boundary Polygon M"
+          },
+          "actual_fixed_geometry_sha256": {
+            "type": "string",
+            "title": "Actual Fixed Geometry Sha256"
+          },
+          "source_image_sha256": {
+            "type": "string",
+            "title": "Source Image Sha256"
+          },
+          "candidate_layouts": {
+            "items": {
+              "$ref": "#/components/schemas/Layout"
+            },
+            "type": "array",
+            "title": "Candidate Layouts"
+          },
+          "selected_layout_id": {
+            "type": "string",
+            "title": "Selected Layout Id"
+          },
+          "resolved_requirements": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Resolved Requirements"
+          },
+          "group_changes": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Group Changes"
+          },
+          "initialization_or_retained_reference_m": {
+            "additionalProperties": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "type": "object",
+            "title": "Initialization Or Retained Reference M"
+          },
+          "verification": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Verification"
+          },
+          "optimizer_evaluations": {
+            "type": "integer",
+            "title": "Optimizer Evaluations"
+          },
+          "provenance": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Provenance"
+          },
+          "real_planner_authentication": {
+            "type": "boolean",
+            "title": "Real Planner Authentication"
+          },
+          "independent_real_venue_validation": {
+            "type": "boolean",
+            "title": "Independent Real Venue Validation"
+          },
+          "safety_certified": {
+            "type": "boolean",
+            "title": "Safety Certified"
+          },
+          "xai": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Xai"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "contract_id",
+          "run_id",
+          "status",
+          "source_domain",
+          "venue_id",
+          "venue_version",
+          "twin_sha256",
+          "actual_boundary_polygon_m",
+          "actual_fixed_geometry_sha256",
+          "source_image_sha256",
+          "candidate_layouts",
+          "selected_layout_id",
+          "resolved_requirements",
+          "group_changes",
+          "initialization_or_retained_reference_m",
+          "verification",
+          "optimizer_evaluations",
+          "provenance",
+          "real_planner_authentication",
+          "independent_real_venue_validation",
+          "safety_certified",
+          "xai"
+        ],
+        "title": "Success"
+      },
+      "TwinReceipt": {
+        "properties": {
+          "venue_id": {
+            "type": "string",
+            "title": "Venue Id"
+          },
+          "venue_version": {
+            "type": "integer",
+            "title": "Venue Version"
+          },
+          "twin_sha256": {
+            "type": "string",
+            "title": "Twin Sha256"
+          },
+          "metric_twin": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Metric Twin"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "venue_id",
+          "venue_version",
+          "twin_sha256",
+          "metric_twin"
+        ],
+        "title": "TwinReceipt"
+      },
+      "TwinReview": {
+        "properties": {
+          "contract_id": {
+            "type": "string",
+            "const": "COMPONENT1_REVIEWED_TWIN_V1",
+            "title": "Contract Id"
+          },
+          "venue_id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Venue Id"
+          },
+          "venue_version": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Venue Version"
+          },
+          "source": {
+            "$ref": "#/components/schemas/Source"
+          },
+          "candidate_bundle_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Candidate Bundle Sha256"
+          },
+          "calibration": {
+            "$ref": "#/components/schemas/Calibration"
+          },
+          "boundary_px": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "minItems": 3,
+            "title": "Boundary Px"
+          },
+          "objects": {
+            "items": {
+              "$ref": "#/components/schemas/ReviewedObject"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Objects"
+          },
+          "review": {
+            "$ref": "#/components/schemas/ReviewDecision"
+          },
+          "evidence_artifacts": {
+            "items": {
+              "$ref": "#/components/schemas/EvidenceArtifact"
+            },
+            "type": "array",
+            "title": "Evidence Artifacts"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "contract_id",
+          "venue_id",
+          "venue_version",
+          "source",
+          "candidate_bundle_sha256",
+          "calibration",
+          "boundary_px",
+          "objects",
+          "review"
+        ],
+        "title": "TwinReview"
+      }
+    }
+  }
+}

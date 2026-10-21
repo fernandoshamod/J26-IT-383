@@ -1,0 +1,12 @@
+{
+  "schema_version": "proposed.group-error.v1",
+  "implementation_status": "proposed_not_implemented",
+  "request_id": "example_request",
+  "component": "component-1",
+  "code": "UNSUPPORTED_CAPABILITY",
+  "message": "Only controlled Wedding optimization is currently supported",
+  "retryable": false,
+  "details": [
+    "No automatic relaxation or silent event conversion"
+  ]
+}

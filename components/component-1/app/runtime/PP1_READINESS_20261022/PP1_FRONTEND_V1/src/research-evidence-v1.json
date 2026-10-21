@@ -1,0 +1,51 @@
+{
+  "schema": "COMPONENT1_RESEARCH_EVIDENCE_V1",
+  "version": "1.0.0",
+  "as_of": "2026-10-20",
+  "scope_note": "Read-only index of saved evidence. These values are historical experiment results, not live backend measurements or a prediction of PP1 marks.",
+  "logics": [
+    {"id": 1, "name": "AI venue understanding", "status": "IMPLEMENTED_VERIFIED", "evidence": "Local V3 ResNet18 U-Net structural segmentation and V3 opening YOLO run on uploaded PNG/JPEG; outputs remain source-linked candidates pending review.", "limits": "Independent real-venue accuracy and metric geometry are not established."},
+    {"id": 2, "name": "Evidence-qualified metric Spatial Twin", "status": "CONTROLLED_VERIFIED / REAL_SOURCE_PENDING", "evidence": "Strict source, calibration, geometry, evidence and review gates; controlled metric-Twin registration succeeds.", "limits": "KNOX and Ravenswood lack genuine measured/reviewed evidence; no real-source optimization."},
+    {"id": 3, "name": "Event requirement-to-scene intelligence", "status": "CONTROLLED_VERIFIED", "evidence": "Four profile families compile explicit function/object demand; actual layout search is supported for the declared controlled Wedding scope.", "limits": "Non-Wedding profiles are specifications only; full inventory and stock movement are unsupported."},
+    {"id": 4, "name": "Historical S-GCN preference intelligence", "status": "RESEARCH_DESIGN_ONLY", "evidence": "Graph and data collection/evaluation design documented.", "limits": "No verified trained S-GCN, genuine historical preference labels or independent preference evaluation."},
+    {"id": 5, "name": "Weather and safety context", "status": "PARTIAL / RESEARCH_DESIGN", "evidence": "Controlled geometry exclusions, containment and clearance checks are implemented.", "limits": "No validated weather-consequence model, legal safety certification, or certified access/egress result."},
+    {"id": 6, "name": "Multi-objective NSGA-II", "status": "CONTROLLED_VERIFIED", "evidence": "Actual local pymoo NSGA-II returns metric polygons and independently checked candidates for supported controlled Wedding cases.", "limits": "No global-optimality guarantee; real venues and broad event-family search are unsupported."},
+    {"id": 7, "name": "Evidence/authority-aware adaptive replanning", "status": "CONTROLLED_VERIFIED / ORIGINALITY_UNRESOLVED", "evidence": "Controlled reuse, authorized singleton revision, full-recompute fallback, refusal and pending cases execute.", "limits": "Matched conventional methods reproduce tested decisions; novelty is not established. Authority is simulated/local, not authenticated."},
+    {"id": 8, "name": "Explainable planner decision support", "status": "CONTROLLED_VERIFIED", "evidence": "Run/layout-bound numerical explanations, validation results, denials and SQLite history are available.", "limits": "Human usefulness and genuine planner feedback have not been evaluated."}
+  ],
+  "models": [
+    {"name": "V3 native-raster U-Net (ResNet18)", "role": "room / wall / door / window segmentation", "sha256": "352631590f1610b6b29341b3d1c59fad2ad564ed07fa4b77c9c59470bfde5c0c", "metric": "Native held-out pooled mIoU 0.7904603037; 448-image qualified technical subset, split 320/64/64.", "qualification": "Source-family independence and broad real-venue generalization remain unverified."},
+    {"name": "V3 opening YOLO", "role": "door/window symbol candidates", "sha256": "64c8d7a0d205362f174871ca861cfa80ff24d2ff1d2a191505dad2688e67abc7", "metric": "Publisher-native mAP50 0.75475.", "qualification": "External CVC development diagnostics show weak door transfer; do not merge protocols."},
+    {"name": "V2 event-object YOLO", "role": "12 event-object classes in synthetic diagrams", "sha256": "878cabdfafd70544fbcda8154fd80d1007270c00940d699b9b7b340e2afb1a6a", "metric": "Synthetic test mAP50 0.91045; 157 clean scenes, 6,529 boxes.", "qualification": "Does not establish reliable physical venue inventory recognition."},
+    {"name": "V4 chair pilot", "role": "experimental chair-symbol detector", "sha256": "d56561aec6652d030f8815ec833345ee38c9d5711a375c42b9b642093dc8deae", "metric": "AP50 0.83951 on a qualified published test with incomplete annotations.", "qualification": "Opt-in/experimental; not verified existing stock; disabled by default."}
+  ],
+  "comparisons": [
+    {"study": "EAG-APR vs conventional B4", "matched": "72/72", "scope": "Controlled finite scenarios; outcomes, candidate pools and budgets matched.", "verdict": "No distinct algorithmic benefit established."},
+    {"study": "Planning-aware review policy vs conventional B5", "matched": "128/128", "scope": "Controlled finite review-policy comparisons.", "verdict": "Proposed policy matched the task-aware conventional baseline."},
+    {"study": "Joint layout search / conventional B2", "matched": "12/12", "scope": "Paired controlled cases; compared traces and candidate pools matched.", "verdict": "No operative distinction survived this baseline."},
+    {"study": "Function-usability repair / conventional B2", "matched": "12/12", "scope": "Declared controlled search scope; equivalent repair/oracle work.", "verdict": "Engineering diagnostic; no exclusive novelty established."},
+    {"study": "Feasibility recovery / conventional enumeration", "matched": "36/36", "scope": "36 controlled queries; 28 unique searches, 3,360 evaluations, 274 checked witnesses.", "verdict": "Outcomes matched; no new recovery operation established."},
+    {"study": "Pixel access diagnostic / conventional geometry", "matched": "3/3", "scope": "Three controlled equal-confusion cases.", "verdict": "Counterexample is useful, but conventional geometry reproduced decisions."}
+  ],
+  "real_floorplans": [
+    {"name": "KNOX_HALL.jpg", "sha256": "9b1e9872b8144aa0535490d33c5a4b4e925d593501ceec32a1d7c2374f7f8e33", "inference": "Actual local U-Net + opening YOLO; 75 structural candidates and 4 door detections.", "twin": "PENDING_REVIEW", "optimization_evaluations": 0, "limitation": "Printed 96 ft × 64 ft dimensions are not independently verified metric controls."},
+    {"name": "RAVENSWOOD_HALL.jpg", "sha256": "8d5d54e5a5ac585fffdfa8c61932c3e9aef842dbb9b1a8294094490b228e16c7", "inference": "Actual local U-Net + opening YOLO; 95 structural candidates and 3 door detections.", "twin": "PENDING_REVIEW", "optimization_evaluations": 0, "limitation": "Raster-axis scale estimates differ by about 24%; no safe calibration is supported."}
+  ],
+  "api_boundary": [
+    {"category": "Hosted third-party AI/optimization", "status": "Not used in tested local core"},
+    {"category": "Local inference and optimizer", "status": "Local checkpoints, Python and pymoo execute on the research machine"},
+    {"category": "Third-party library APIs", "status": "Used (Python/PyTorch/Ultralytics/geometry/optimization libraries)"},
+    {"category": "Internal HTTP API", "status": "Used (FastAPI on localhost; frozen API contract 1.1.0)"},
+    {"category": "Literal no APIs of any kind", "status": "Not satisfied"}
+  ],
+  "evidence_sources": [
+    "PP1_READINESS_20261022/PP1_REAL_FLOORPLAN_END_TO_END_FEASIBILITY_V1/FINAL_ONE_PAGE_SUMMARY.md",
+    "PP1_READINESS_20261022/PP1_REAL_SOURCE_INTEGRATION_V1/FINAL_ONE_PAGE_SUMMARY.md",
+    "PP1_READINESS_20261022/PP1_COMMENT3_FINAL_SCIENTIFIC_RESOLUTION_V1/PANEL_COMMENT3_FINAL_DEFENCE.md",
+    "PP1_READINESS_20261022/PP1_NOVELTY_VALIDATION_V1/EXPERIMENT_STATISTICAL_SUMMARY.md",
+    "PP1_READINESS_20261022/PP1_ORIGINAL_RESEARCH_MECHANISM_V1/ACTUAL_RESULTS.md",
+    "PP1_READINESS_20261022/PP1_FEASIBILITY_RECOVERY_NOVELTY_V1/BASELINE_AND_ABLATION_RESULTS.md",
+    "PP1_READINESS_20261022/PP1_EVENT_SCENE_INTELLIGENCE_V1/outputs/CLOSEOUT_FINAL/FUNCTIONAL_ACCEPTANCE.md",
+    "PP1_READINESS_20261022/PP1_FINAL_BACKEND_FREEZE_V1/BASELINE_ACCEPTANCE_FINAL.json"
+  ]
+}

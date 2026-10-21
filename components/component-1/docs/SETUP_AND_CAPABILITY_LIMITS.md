@@ -1,0 +1,9 @@
+# Setup and demonstrated capability limits
+
+Work from components/component-1/app. Windows x64: install Python 3.12 and Node 22, then run setup.ps1. It creates app/.venv, installs requirements-cpu.txt, runs npm ci and builds the frontend. start.ps1 invokes a four-service launcher and checks health. stop.ps1 verifies the identity of launcher-owned processes. Defaults: frontend 5173, backend 8765, companion 8768, scene 8769. Environment overrides PP1_FRONTEND_PORT, PP1_BACKEND_PORT, PP1_COMPANION_PORT, PP1_SCENE_PORT must be distinct unused unprivileged ports. An occupied unknown listener is refused, never killed automatically.
+
+The launcher creates ignored runtime-state/runs output and SQLite data; environments, node_modules and dist are recreated by setup, not copied. Private model assets are optional for ordinary controlled/CRUD startup. They are required for actual model inference, which has unresolved path bugs. No private inference asset is distributed in this staging tree.
+
+Demonstrate My events SQLite CRUD, Scene compiler controlled partially-furnished Wedding search, and standalone EAG portable_demo.py with a unique --run identifier. Full EAG run is a separate CLI controlled simulated-approval demonstration. Do not describe the three-flow browser smoke test as full real-image workflow coverage. Layout workspace positive source registration, image upload-to-analysis-to-optimization and C1/C3 integration remain incomplete.
+
+The outer research/workspace sources are not runtime dependencies of the launcher; preserve their historical data/output prerequisites. Local validation uses a disposable external copy and explicitly identifies dependency reuse. Actual laptop install/rehearsal is still necessary. No dataset copying or model training is needed for controlled presentation.

@@ -1,0 +1,59 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "proposed.group-error.v1"
+    },
+    "implementation_status": {
+      "const": "proposed_not_implemented"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "component": {
+      "enum": [
+        "component-1",
+        "component-3",
+        "gateway"
+      ]
+    },
+    "code": {
+      "enum": [
+        "SCHEMA_INVALID",
+        "UNSUPPORTED_CAPABILITY",
+        "STALE_VENUE_VERSION",
+        "STALE_LAYOUT",
+        "MISSING_AUTHORITY",
+        "INFEASIBLE",
+        "DEPENDENCY_UNAVAILABLE"
+      ]
+    },
+    "message": {
+      "type": "string",
+      "minLength": 1
+    },
+    "retryable": {
+      "type": "boolean"
+    },
+    "details": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "implementation_status",
+    "request_id",
+    "component",
+    "code",
+    "message",
+    "retryable",
+    "details"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:component-1:proposed:group-error:1"
+}

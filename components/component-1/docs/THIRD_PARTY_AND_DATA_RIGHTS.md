@@ -1,0 +1,9 @@
+# Third-party and dataset rights status
+
+This is a source review snapshot, not legal clearance or a new license grant. The audited public group repository has no declared license. Team ownership, university requirements and publication license must be resolved before public release.
+
+CubiCasa publisher raster/native annotations declare CC BY-NC 4.0. Preserve attribution and noncommercial restrictions; no raw samples are included. Publisher: https://github.com/CubiCasa/CubiCasa5k . FloorPlanCAD annotation terms are noncommercial and do not establish ownership of underlying drawings: https://floorplancad.github.io/ . CVC and private venue source images have no inferred redistribution grant. The chair source's declared CC BY terms do not settle upstream drawing ancestry; no raw chair image is included.
+
+Ultralytics software used by inference/training declares AGPL-3.0 licensing (https://github.com/ultralytics/ultralytics/blob/main/LICENSE). Retain applicable notices and review application distribution obligations. Python/JavaScript dependencies keep their upstream licenses when installed; do not invent a uniform permissive license for this codebase. React, Vite, FastAPI, PyTorch, pymoo, Shapely and segmentation_models_pytorch are external dependencies referenced in lockfiles/manifests, not vendored training datasets.
+
+Unused third-party FloorPlan dataset utility source from the historical integrity allowlist is excluded. No model checkpoint, KNOX/Ravenswood image, private source overlay, local database, dataset original or third-party Component 3 source is included. Public audit contains hashes and scope summaries, not venue pixels. Automated secret scanning is heuristic and does not certify all ownership or confidentiality decisions. A human/team release review remains a blocker.

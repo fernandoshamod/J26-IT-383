@@ -1,0 +1,34 @@
+{
+  "schema": "EXPLICIT_EXPERIMENTAL_EVENT_POLICIES_V1",
+  "version": "1.0.0",
+  "authority": "Controlled research policies, not industry capacity or safety standards",
+  "profiles": {
+    "wedding": {"event_types": ["wedding"], "required_functions": ["dining", "presentation", "buffet"], "optional_functions": ["dancing"]},
+    "celebration": {"event_types": ["birthday", "anniversary"], "required_functions": ["dining", "celebration"], "optional_functions": ["presentation", "buffet", "dancing"]},
+    "corporate": {"event_types": ["corporate", "conference"], "required_functions": ["audience", "presentation", "conference_tools"], "optional_functions": ["buffet", "networking"]},
+    "concert": {"event_types": ["musical_show", "concert"], "required_functions": ["audience", "performance"], "optional_functions": ["buffet"]}
+  },
+  "functions": {
+    "dining": {"objects": [{"class": "round_table", "op": "ceil_guests", "divisor": 8}, {"class": "chair", "op": "guests"}], "zones": ["dining_area"]},
+    "audience": {"objects": [{"class": "chair", "op": "guests"}], "zones": ["audience_area"]},
+    "presentation": {"objects": [{"class": "stage", "op": "constant", "value": 1}], "zones": ["stage_access"]},
+    "buffet": {"objects": [{"class": "buffet_counter", "op": "ceil_guests", "divisor": 80}], "zones": ["buffet_access"]},
+    "celebration": {"objects": [{"class": "cake_table", "op": "constant", "value": 1}], "zones": ["celebration_area"]},
+    "conference_tools": {"objects": [{"class": "lectern", "op": "constant", "value": 1}, {"class": "screen", "op": "constant", "value": 1}], "zones": ["conference_area"]},
+    "networking": {"objects": [{"class": "standing_table", "op": "ceil_guests", "divisor": 10}], "zones": ["networking_area"]},
+    "performance": {"objects": [{"class": "stage", "op": "constant", "value": 1}, {"class": "speaker", "op": "constant", "value": 2}], "zones": ["stage_access", "performance_area"]},
+    "dancing": {"objects": [], "zones": ["dance_area"]}
+  },
+  "zone_parameters": {"access_depth_m": 1.0, "dance_min_area_m2": 16.0},
+  "catalog": {
+    "round_table": {"shape": "circle", "radius_m": 0.8, "evidence": "EXPLICIT_SYNTHETIC_CATALOG"},
+    "chair": {"shape": "circle", "radius_m": 0.27, "evidence": "EXPLICIT_SYNTHETIC_CIRCULAR_PROXY"},
+    "stage": {"shape": "rectangle", "width_m": 8.0, "depth_m": 2.5, "evidence": "EXPLICIT_SYNTHETIC_CATALOG"},
+    "buffet_counter": {"shape": "rectangle", "width_m": 2.5, "depth_m": 1.2, "evidence": "EXPLICIT_SYNTHETIC_CATALOG"},
+    "cake_table": {"shape": "rectangle", "width_m": 1.5, "depth_m": 0.8, "evidence": "EXPLICIT_SYNTHETIC_CATALOG"},
+    "lectern": {"shape": "rectangle", "width_m": 0.8, "depth_m": 0.6, "evidence": "EXPLICIT_SYNTHETIC_CATALOG"},
+    "screen": {"shape": "rectangle", "width_m": 2.0, "depth_m": 0.3, "evidence": "EXPLICIT_SYNTHETIC_CATALOG"},
+    "standing_table": {"shape": "rectangle", "width_m": 0.8, "depth_m": 0.8, "evidence": "EXPLICIT_SYNTHETIC_CATALOG"},
+    "speaker": {"shape": "rectangle", "width_m": 0.6, "depth_m": 0.6, "evidence": "EXPLICIT_SYNTHETIC_CATALOG"}
+  }
+}
