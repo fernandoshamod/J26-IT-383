@@ -365,6 +365,24 @@ The main branch provides the overall project README. Individual component branch
 
 **Component 1**
 
+frontend/ — React/Vite frontend for event management, venue interaction, and layout optimization.
+
+backend/ — Python backend APIs and event management services.
+
+models/ — Venue understanding models, including U-Net structural segmentation and YOLO detection.
+
+data/ — Venue datasets, annotations, and training data.
+
+optimization/ — NSGA-II multi-objective event layout optimization.
+
+adaptive_repair/ — EAG-APR adaptive layout repair and constraint handling.
+
+scene_compiler/ — Venue scene processing and structured spatial representation.
+
+tests/ — Research prototype testing and validation.
+
+research/ — Model training, experimentation, and evaluation.
+
 The original PP1 research implementation and experimental work form part of the research history. The future component structure will be established following approval of the revised research scope.
 
 ---
@@ -430,6 +448,35 @@ Complete model inference additionally requires the matching research datasets an
 ### Component 1 — Original PP1
 
 The original Component 1 used an independent React/FastAPI prototype and AI research environment.
+
+
+The Component 1 PP1 research prototype was developed using a React/Vite frontend, Python backend services, SQLite, and AI-based venue understanding models.
+
+**Frontend:**
+
+From the Component 1 project directory containing the frontend application:
+
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+**Backend:**
+
+The backend uses Python and FastAPI with a configured virtual environment and the component's required dependencies.
+
+**Research modules:**
+
+- **U-Net and YOLO:** Venue structure understanding and detection experiments.
+- **Spatial Digital Twin:** Structured venue representation and planner-review workflow.
+- **NSGA-II:** Multi-objective event layout optimization.
+- **EAG-APR:** Constraint-aware adaptive layout repair.
+- **SQLite:** Local event data management.
+
+Trained model checkpoints and relevant research data are required for AI inference. The complete application setup depends on the Component 1 source configuration and installed Python dependencies.
+
+The PP1 implementation includes experimental AI inference, event management, controlled layout optimization, and adaptive repair. Real-world venue validation and complete system integration remain outside the verified PP1 scope.
 
 Since the original research scope is being replaced, the former implementation is documented as PP1 research work rather than the active final component.
 
